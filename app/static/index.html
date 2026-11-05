@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Générateur d'épreuves</title><link rel="stylesheet" href="/static/style.css"></head>
+<body><main>
+<h1 class="noprint">Générateur d'épreuves</h1>
+<section class="card noprint" id="form">
+  <div class="grid">
+    <div><label for="matiere">Matière *</label><select id="matiere"></select></div>
+    <div><label for="classe">Classe *</label><select id="classe"></select></div>
+    <div><label for="specialite">Spécialité <span id="spec-req"></span></label><select id="specialite"></select></div>
+    <div><label for="session">Séquence / Session</label><select id="session">
+      <option value="">— Sans séquence —</option>
+      <option value="1">Séquence 1</option><option value="2">Séquence 2</option><option value="3">Séquence 3</option>
+      <option value="4">Séquence 4</option><option value="5">Séquence 5</option><option value="6">Séquence 6</option>
+      <option value="EXAMEN_BLANC">Examen blanc</option><option value="EXAMEN">Examen</option></select></div>
+  </div>
+  <label>Difficulté *</label>
+  <div class="seg" id="difficulte">
+    <label><input type="radio" name="diff" value="Facile"><span>Facile</span></label>
+    <label><input type="radio" name="diff" value="Moyen"><span>Moyen</span></label>
+    <label><input type="radio" name="diff" value="Difficile"><span>Difficile</span></label>
+  </div>
+  <div class="row" style="margin-top:1rem"><button class="primary" id="generer" disabled>Générer</button></div>
+  <div id="statut" role="status"></div>
+</section>
+<section class="card" id="epreuve" hidden>
+  <div class="row noprint"><button id="regenerer">Régénérer</button><button id="imprimer">Imprimer</button><button id="corrige">Voir Corrigé</button></div>
+  <div id="exos"></div>
+</section>
+</main><script src="/static/app.js"></script></body></html>

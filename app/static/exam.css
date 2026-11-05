@@ -1,0 +1,5 @@
+body{font:12pt/1.5 Georgia,serif;color:#000;background:#fff;max-width:21cm;margin:0 auto;padding:1.5cm}
+h1{font-size:18pt;margin:0}.meta{margin:.2rem 0 1.2rem;color:#444;border-bottom:2px solid #000;padding-bottom:.5rem}
+.exo{margin:1.2rem 0;break-inside:avoid-page}h2{font-size:13pt;margin:.2rem 0}
+table{border-collapse:collapse}td,th{border:1px solid #000;padding:.2rem .5rem}pre{white-space:pre-wrap}
+@media print{body{padding:0}}
