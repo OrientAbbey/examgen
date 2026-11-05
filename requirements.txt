@@ -1,0 +1,5 @@
+fastapi>=0.110
+uvicorn>=0.29
+polars>=1.0
+markdown-it-py>=3.0
+jsonschema>=4.20
