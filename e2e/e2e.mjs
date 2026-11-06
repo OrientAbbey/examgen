@@ -37,7 +37,10 @@ await page.click('#generer'); await page.waitForSelector('#epreuve:not([hidden])
 const n1 = await page.$$eval('#exos .exo', e => e.length), t1 = await page.$eval('#exos', e => e.innerText);
 ok('U6 épreuve générée (Moyen = 4 exercices)', n1 === 4, `n=${n1}`);
 ok('U7 numérotation Exercice 1..4', (await page.$$eval('#exos h3', h => h.map(x => x.textContent).join('|'))) === 'Exercice 1|Exercice 2|Exercice 3|Exercice 4');
-ok('U8 le sujet ne contient pas de corrigé', !/Corrigé de démonstration/.test(t1));
+ok('U8 le sujet ne contient pas de corrigé', !/Solution/.test(t1));
+const enonces = await page.$$eval('#exos .exo', xs => xs.map(x => ({ t: x.innerText, questions: x.querySelectorAll('li').length })));
+ok('U7b chaque exercice est un vrai énoncé (consigne + liste de questions)', enonces.every(e => e.questions >= 1 && /(Calculer|Résoudre|Déterminer|Démontrer|Montrer|Développer|Dresser|Justifier|Combien|Exprimer|Donner|Étudier|Factoriser|Comparer)/.test(e.t)) && !/démonstration|lorem|#\d+/i.test(enonces.map(e => e.t).join(' ')), enonces.map(e => e.questions).join('/'));
+const themes = await page.evaluate(() => document.querySelectorAll('#exos .exo').length);
 await shot('03-epreuve-generee');
 await page.click('#regenerer'); await sleep(900);
 const t2 = await page.$eval('#exos', e => e.innerText);
@@ -45,13 +48,13 @@ ok('U9 Régénérer produit une autre épreuve (unicité)', t2 !== t1 && (await 
 // pages imprimable / corrigé (nouvel onglet)
 const [popup] = await Promise.all([new Promise(r => browser.once('targetcreated', t => r(t.page()))), page.click('#corrige')]);
 await popup.waitForSelector('.exo'); const ctext = await popup.$eval('body', b => b.innerText);
-ok('U10 corrigé dans un onglet séparé, même nombre d\'exercices', (await popup.$$eval('.exo', e => e.length)) === 4 && /Corrigé de démonstration/.test(ctext) && /^Corrigé — /.test(await popup.title()));
+ok('U10 corrigé dans un onglet séparé, même nombre d\'exercices', (await popup.$$eval('.exo', e => e.length)) === 4 && /Solution :/.test(ctext) && /^Corrigé — /.test(await popup.title()));
 await popup.setViewport({ width: 900, height: 800 }); await popup.screenshot({ path: `${OUT}/04-corrige.png`, fullPage: true });
 const sujetUrl = popup.url().replace('/corrige', '');
 await popup.close();
 const pp = await browser.newPage(); await pp.evaluateOnNewDocument(() => { window.print = () => { window.__printed = true; }; });
 await pp.goto(sujetUrl + '?print=1'); await pp.waitForSelector('.exo'); await sleep(300);
-ok('U11 version imprimable : déclenche l\'impression, sans corrigé', (await pp.evaluate(() => window.__printed === true)) && !/Corrigé de démonstration/.test(await pp.$eval('body', b => b.innerText)));
+ok('U11 version imprimable : déclenche l\'impression, sans corrigé', (await pp.evaluate(() => window.__printed === true)) && !/Solution/.test(await pp.$eval('body', b => b.innerText)));
 await pp.pdf({ path: `${OUT}/epreuve-imprimable.pdf`, format: 'A4', printBackground: true }); await pp.close();
 // mobile
 const mob = await browser.newPage(); await mob.setViewport({ width: 390, height: 800, isMobile: true });
@@ -98,7 +101,7 @@ ok('A8 enregistrement invalide refusé avec message lisible', alerts.length === 
 // suppression avec réaffectation (spécialité référencée)
 await clickText('#tabs button', 'Spécialités'); await sleep(600);
 const before = await page.$$eval('table.t tr', r => r.length);
-const delSVT = () => page.evaluate(() => [...document.querySelectorAll('table.t tr')].find(r => r.innerText.includes('SVT')).querySelector('button.danger').click());
+const delSVT = () => page.evaluate(() => [...document.querySelectorAll('table.t tr')].find(r => r.innerText.includes('Physique-Chimie')).querySelector('button.danger').click());
 await delSVT(); await page.waitForSelector('#dlg[open] select'); await shot('11-admin-reaffectation', false);
 await page.keyboard.press('Escape'); await sleep(600);
 ok('A9 Échap annule la réaffectation (rien supprimé)', (await page.$$eval('table.t tr', r => r.length)) === before);

@@ -218,12 +218,22 @@ class Generation:
 
 def generate(cands: list, demande: Demande, history_keys: set,
              rng=None, max_tentatives: int = MAX_TENTATIVES) -> Generation:
-    """Tirage + unicité silencieuse (4.i). Les contraintes pédagogiques priment : en cas de
-    saturation, le dernier tirage (doublon) est conservé."""
+    """Tirage + unicité silencieuse (4.i).
+
+    Le tirage séquentiel peut se piéger lui-même (ex. consommer l'unique créneau « classe inférieure »
+    qui menait à la dernière partie) alors qu'une épreuve complète existe. On retente donc jusqu'à
+    `max_tentatives` fois et on garde la meilleure : d'abord la plus complète, puis la plus inédite.
+    Les contraintes pédagogiques priment sur l'unicité : en cas de saturation, un doublon est conservé."""
     rng = rng or random.Random()
-    last = None
+    best, best_score, best_dup = None, None, False
     for t in range(1, max_tentatives + 1):
-        last = run_once(cands, demande, rng)
-        if not last.ids or make_key(last.ids) not in history_keys:
-            return Generation(last, t, False)
-    return Generation(last, max_tentatives, True)
+        out = run_once(cands, demande, rng)
+        if not out.ids:
+            return Generation(out, t, False)
+        dup = make_key(out.ids) in history_keys
+        score = (len(out.ids), not dup)
+        if best_score is None or score > best_score:
+            best, best_score, best_dup = out, score, dup
+        if len(out.ids) == out.n_demande and not dup:      # complète ET inédite : on s'arrête
+            return Generation(out, t, False)
+    return Generation(best, max_tentatives, best_dup)

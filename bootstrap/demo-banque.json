@@ -1,144 +1,124 @@
 {
  "schemaVersion": "1.1",
- "exportedAt": "2026-11-06T08:58:03+00:00",
+ "exportedAt": "2026-11-06T20:34:19+00:00",
  "matieres": [
   {
-   "id": "9d31790e-8b5c-4f30-b703-eab241809658",
+   "id": "6bfe83b2-2305-4139-a10f-048b54d3e717",
    "nom": "Mathématiques"
   }
  ],
  "parties": [
   {
-   "id": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1",
-   "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
+   "id": "ddac792c-8e05-4aa9-8edd-4c61121efd55",
+   "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
    "nom": "Algèbre",
    "ordre": 1
   },
   {
-   "id": "f8ed6f86-ea4b-47df-a81b-487506707dc2",
-   "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
+   "id": "34aed3c5-817c-43a2-b935-ea5c89e80ee2",
+   "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
    "nom": "Analyse",
    "ordre": 2
   },
   {
-   "id": "21b3d048-2e4a-4104-8f4c-7705eb3f852c",
-   "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
+   "id": "c79b8ea6-0849-4fe4-92ee-edc875dbc87d",
+   "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
    "nom": "Géométrie",
    "ordre": 3
   },
   {
-   "id": "891799a7-3088-4ef6-8243-f711a7065513",
-   "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-   "nom": "Probabilités",
+   "id": "ab442927-7469-485f-a1d3-5f10ce01492b",
+   "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+   "nom": "Probabilités et statistiques",
    "ordre": 4
   }
  ],
  "classes": [
   {
-   "id": "55a1a255-b158-4ca2-af87-4a497666966c",
+   "id": "75d9e823-7410-4546-855e-0a26b2735890",
    "nom": "Première",
-   "classePrecedenteId": "dc6267af-ed75-4c4e-9876-e0eb31bc215f",
+   "classePrecedenteId": "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0",
    "aExamen": false,
    "specialiteObligatoire": true
   },
   {
-   "id": "dc6267af-ed75-4c4e-9876-e0eb31bc215f",
+   "id": "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0",
    "nom": "Seconde",
    "classePrecedenteId": null,
    "aExamen": false,
    "specialiteObligatoire": false
   },
   {
-   "id": "5fb73539-4358-49d0-989f-1d44edd0903f",
+   "id": "fc7045e6-ba50-4c67-a818-f79c83e09576",
    "nom": "Terminale",
-   "classePrecedenteId": "55a1a255-b158-4ca2-af87-4a497666966c",
+   "classePrecedenteId": "75d9e823-7410-4546-855e-0a26b2735890",
    "aExamen": true,
    "specialiteObligatoire": true
   }
  ],
  "specialites": [
   {
-   "id": "1aa9639e-c956-4a61-b3c8-e56e9ffe8ad2",
+   "id": "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7",
    "nom": "Mathématiques"
   },
   {
-   "id": "c461f94d-03c1-475b-8597-28ac2c0b7f3e",
-   "nom": "SVT"
+   "id": "2e7655ae-cc1e-4105-b4da-a6c327d62b2a",
+   "nom": "Physique-Chimie"
   }
  ],
  "exercices": [
   {
-   "id": "35dc85df-7443-402a-a657-cc63f1c041c5",
-   "sujet": "**Exercice de démonstration #119** (Première, Algèbre)\n\nCalculer f(x) = x² + 119 puis commenter.",
-   "corrige": "Corrigé de démonstration #119 : voir le cours.",
+   "id": "293699cb-fc72-4e2b-b7b9-f41a71ae27fa",
+   "sujet": "**Problème.** Soit f la fonction définie sur ℝ par f(x) = x² e^(−x).\n\n1. Déterminer la limite de f en −∞ (on admettra que x² e^(−x) → 0 quand x → +∞ pour la limite en +∞).\n2. Montrer que f'(x) = x(2 − x)e^(−x).\n3. Dresser le tableau de variations de f.\n4. Préciser les extremums locaux (valeurs exactes puis approchées à 10⁻³ près).",
+   "corrige": "Solution :\n\n1. En −∞ : x² → +∞ et e^(−x) → +∞, donc f(x) → +∞. En +∞ : f(x) → 0.\n2. f'(x) = 2x e^(−x) − x² e^(−x) = x(2 − x)e^(−x).\n3. e^(−x) > 0 : f' a le signe de x(2 − x). f est décroissante sur ]−∞ ; 0], croissante sur [0 ; 2], décroissante sur [2 ; +∞[.\n4. Minimum local f(0) = 0 ; maximum local f(2) = 4e^(−2) ≈ 0,541.",
    "affectations": [
     {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
     }
    ],
    "classeIds": [
-    "55a1a255-b158-4ca2-af87-4a497666966c"
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
    ],
    "specialiteIds": [
-    "1aa9639e-c956-4a61-b3c8-e56e9ffe8ad2"
+    "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7"
    ],
-   "session": 2,
+   "session": null,
    "niveauIntrinseque": "Difficile",
    "tagExamen": false
   },
   {
-   "id": "3c8db91d-b6e6-4721-8aad-72c4e98850ec",
-   "sujet": "**Exercice de démonstration #118** (Terminale, Probabilités)\n\nCalculer f(x) = x² + 118 puis commenter.",
-   "corrige": "Corrigé de démonstration #118 : voir le cours.",
+   "id": "b1a888aa-43a9-4bdc-aa67-609c5f00d1df",
+   "sujet": "**Problème.** Soit f la fonction définie sur ℝ par f(x) = x e^(−2x).\n\n1. Déterminer la limite de f en −∞, puis en +∞ (on admettra que x e^(−2x) → 0 quand x → +∞).\n2. Calculer f'(x) et dresser le tableau de variations de f.\n3. En déduire que f admet un maximum et donner sa valeur exacte, puis une valeur approchée à 10⁻³ près.",
+   "corrige": "Solution :\n\n1. En −∞ : x → −∞ et e^(−2x) → +∞, donc f(x) → −∞. En +∞ : f(x) → 0.\n2. f'(x) = e^(−2x) − 2x e^(−2x) = (1 − 2x)e^(−2x). Elle est positive pour x < 1/2 et négative ensuite : f est croissante sur ]−∞ ; 1/2] et décroissante sur [1/2 ; +∞[.\n3. f admet un maximum en x = 1/2 : f(1/2) = (1/2)e^(−1) = 1/(2e) ≈ 0,184.",
    "affectations": [
     {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "891799a7-3088-4ef6-8243-f711a7065513"
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
     }
    ],
    "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "c461f94d-03c1-475b-8597-28ac2c0b7f3e"
-   ],
-   "session": 2,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": true
-  },
-  {
-   "id": "7791405c-5e83-4d62-878a-7953c61184f9",
-   "sujet": "**Exercice de démonstration #117** (Terminale, Géométrie)\n\nCalculer f(x) = x² + 117 puis commenter.",
-   "corrige": "Corrigé de démonstration #117 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "21b3d048-2e4a-4104-8f4c-7705eb3f852c"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
    ],
    "specialiteIds": [
     "SPECIAL:Aucune"
    ],
-   "session": 2,
+   "session": null,
    "niveauIntrinseque": "Moyen",
    "tagExamen": false
   },
   {
-   "id": "a0a60b97-b998-4f5e-b33b-7b6a00998b73",
-   "sujet": "**Exercice de démonstration #116** (Terminale, Géométrie)\n\nCalculer f(x) = x² + 116 puis commenter.",
-   "corrige": "Corrigé de démonstration #116 : voir le cours.",
+   "id": "031c9d31-7af4-422a-81cd-3e156511929f",
+   "sujet": "**Problème.** Soit f la fonction définie sur ℝ par f(x) = x e^(−x).\n\n1. Déterminer la limite de f en −∞, puis en +∞ (on admettra que x e^(−x) → 0 quand x → +∞).\n2. Calculer f'(x) et dresser le tableau de variations de f.\n3. En déduire que f admet un maximum et donner sa valeur exacte, puis une valeur approchée à 10⁻³ près.",
+   "corrige": "Solution :\n\n1. En −∞ : x → −∞ et e^(−x) → +∞, donc f(x) → −∞. En +∞ : f(x) → 0.\n2. f'(x) = e^(−x) − x e^(−x) = (1 − x)e^(−x). Elle est positive pour x < 1 et négative ensuite : f est croissante sur ]−∞ ; 1] et décroissante sur [1 ; +∞[.\n3. f admet un maximum en x = 1 : f(1) = e^(−1) = 1/e ≈ 0,368.",
    "affectations": [
     {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "21b3d048-2e4a-4104-8f4c-7705eb3f852c"
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
     }
    ],
    "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
    ],
    "specialiteIds": [
     "SPECIAL:Aucune"
@@ -148,237 +128,37 @@
    "tagExamen": false
   },
   {
-   "id": "0c2f1e73-7969-4ee7-ba51-0000fc39de20",
-   "sujet": "**Exercice de démonstration #115** (Terminale, Probabilités)\n\nCalculer f(x) = x² + 115 puis commenter.",
-   "corrige": "Corrigé de démonstration #115 : voir le cours.",
+   "id": "3ce96bb9-bdff-4145-b44d-c8e4780e6123",
+   "sujet": "L'espace est muni d'un repère orthonormé. On considère les points A(−1 ; 0 ; 2), B(1 ; 2 ; 6) et C(2 ; 3 ; 8).\n\n1. Calculer les coordonnées du vecteur AB, puis la distance AB.\n2. Les points A, B et C sont-ils alignés ?",
+   "corrige": "Solution :\n\n1. AB a pour coordonnées (2 ; 2 ; 4) et AB = √(2² + 2² + 4²) = √24 = 2√6.\n2. AC a pour coordonnées (3 ; 3 ; 6). On a AC = 3/2 × AB : les vecteurs sont colinéaires, donc A, B et C sont alignés.",
    "affectations": [
     {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "891799a7-3088-4ef6-8243-f711a7065513"
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "c79b8ea6-0849-4fe4-92ee-edc875dbc87d"
     }
    ],
    "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
    ],
    "specialiteIds": [
-    "1aa9639e-c956-4a61-b3c8-e56e9ffe8ad2"
-   ],
-   "session": 5,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": false
-  },
-  {
-   "id": "05248540-fb34-4262-930a-23687422918b",
-   "sujet": "**Exercice de démonstration #114** (Terminale, Analyse)\n\nCalculer f(x) = x² + 114 puis commenter.",
-   "corrige": "Corrigé de démonstration #114 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "1aa9639e-c956-4a61-b3c8-e56e9ffe8ad2"
-   ],
-   "session": null,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": false
-  },
-  {
-   "id": "fd3397be-1619-4edd-ad3f-534a94d35b71",
-   "sujet": "**Exercice de démonstration #113** (Terminale, Géométrie)\n\nCalculer f(x) = x² + 113 puis commenter.",
-   "corrige": "Corrigé de démonstration #113 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "21b3d048-2e4a-4104-8f4c-7705eb3f852c"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "1aa9639e-c956-4a61-b3c8-e56e9ffe8ad2"
+    "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7"
    ],
    "session": 2,
-   "niveauIntrinseque": "Moyen",
+   "niveauIntrinseque": "Difficile",
    "tagExamen": true
   },
   {
-   "id": "b23d8a6b-b9ad-4d3d-b2ad-edce0f3856c3",
-   "sujet": "**Exercice de démonstration #112** (Première, Probabilités)\n\nCalculer f(x) = x² + 112 puis commenter.",
-   "corrige": "Corrigé de démonstration #112 : voir le cours.",
+   "id": "8ceac851-f279-407e-bf10-5b840d9785fa",
+   "sujet": "L'espace est muni d'un repère orthonormé. On considère les points A(0 ; 1 ; −2), B(2 ; 3 ; 0) et C(1 ; 2 ; 1).\n\n1. Calculer les coordonnées du vecteur AB, puis la distance AB.\n2. Les points A, B et C sont-ils alignés ?",
+   "corrige": "Solution :\n\n1. AB a pour coordonnées (2 ; 2 ; 2) et AB = √(2² + 2² + 2²) = √12 = 2√3.\n2. AC a pour coordonnées (1 ; 1 ; 3). Les coordonnées de AC et AB ne sont pas proportionnelles : les vecteurs ne sont pas colinéaires, donc A, B et C ne sont pas alignés.",
    "affectations": [
     {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "891799a7-3088-4ef6-8243-f711a7065513"
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "c79b8ea6-0849-4fe4-92ee-edc875dbc87d"
     }
    ],
    "classeIds": [
-    "55a1a255-b158-4ca2-af87-4a497666966c"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 4,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": true
-  },
-  {
-   "id": "889d5967-d7f4-4187-9bd2-776042ba2f6a",
-   "sujet": "**Exercice de démonstration #111** (Terminale, Algèbre)\n\nCalculer f(x) = x² + 111 puis commenter.",
-   "corrige": "Corrigé de démonstration #111 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "1aa9639e-c956-4a61-b3c8-e56e9ffe8ad2"
-   ],
-   "session": 6,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": false
-  },
-  {
-   "id": "93831e14-cb82-4b28-a966-1c9f612840eb",
-   "sujet": "**Exercice de démonstration #110** (Terminale, Probabilités)\n\nCalculer f(x) = x² + 110 puis commenter.",
-   "corrige": "Corrigé de démonstration #110 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "891799a7-3088-4ef6-8243-f711a7065513"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 4,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": false
-  },
-  {
-   "id": "2a68cc0e-95d0-49ac-9cf3-66464b6027e9",
-   "sujet": "**Exercice de démonstration #109** (Terminale, Analyse)\n\nCalculer f(x) = x² + 109 puis commenter.",
-   "corrige": "Corrigé de démonstration #109 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 3,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": false
-  },
-  {
-   "id": "b7119f3e-89c6-4177-9998-6d5fe8ec78a8",
-   "sujet": "**Exercice de démonstration #108** (Seconde, Géométrie)\n\nCalculer f(x) = x² + 108 puis commenter.",
-   "corrige": "Corrigé de démonstration #108 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "21b3d048-2e4a-4104-8f4c-7705eb3f852c"
-    }
-   ],
-   "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 3,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": false
-  },
-  {
-   "id": "291aac21-6ee6-47e2-818a-22f9f58ccb42",
-   "sujet": "**Exercice de démonstration #107** (Terminale, Probabilités)\n\nCalculer f(x) = x² + 107 puis commenter.",
-   "corrige": "Corrigé de démonstration #107 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "891799a7-3088-4ef6-8243-f711a7065513"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "c461f94d-03c1-475b-8597-28ac2c0b7f3e"
-   ],
-   "session": null,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": false
-  },
-  {
-   "id": "710d9cc7-59ea-416d-938c-1a1fa8be477f",
-   "sujet": "**Exercice de démonstration #106** (Seconde, Algèbre)\n\nCalculer f(x) = x² + 106 puis commenter.",
-   "corrige": "Corrigé de démonstration #106 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
-    }
-   ],
-   "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 6,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": false
-  },
-  {
-   "id": "467538ce-16e9-41cc-b7f8-cd423e5aa9d8",
-   "sujet": "**Exercice de démonstration #105** (Première, Géométrie)\n\nCalculer f(x) = x² + 105 puis commenter.",
-   "corrige": "Corrigé de démonstration #105 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "21b3d048-2e4a-4104-8f4c-7705eb3f852c"
-    }
-   ],
-   "classeIds": [
-    "55a1a255-b158-4ca2-af87-4a497666966c"
-   ],
-   "specialiteIds": [
-    "1aa9639e-c956-4a61-b3c8-e56e9ffe8ad2"
-   ],
-   "session": null,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": false
-  },
-  {
-   "id": "27c3c7d0-0b7f-4b28-9bce-989e7d395d63",
-   "sujet": "**Exercice de démonstration #104** (Seconde, Probabilités)\n\nCalculer f(x) = x² + 104 puis commenter.",
-   "corrige": "Corrigé de démonstration #104 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "891799a7-3088-4ef6-8243-f711a7065513"
-    }
-   ],
-   "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
    ],
    "specialiteIds": [
     "SPECIAL:Aucune"
@@ -388,137 +168,57 @@
    "tagExamen": false
   },
   {
-   "id": "4e4c434e-db2a-4591-878c-7b0255160778",
-   "sujet": "**Exercice de démonstration #103** (Terminale, Analyse)\n\nCalculer f(x) = x² + 103 puis commenter.",
-   "corrige": "Corrigé de démonstration #103 : voir le cours.",
+   "id": "7da75015-9597-464f-9291-e78d0a662f08",
+   "sujet": "L'espace est muni d'un repère orthonormé. On considère les points A(1 ; 2 ; 3), B(3 ; −1 ; 4) et C(5 ; −4 ; 5).\n\n1. Calculer les coordonnées du vecteur AB, puis la distance AB.\n2. Les points A, B et C sont-ils alignés ?",
+   "corrige": "Solution :\n\n1. AB a pour coordonnées (2 ; −3 ; 1) et AB = √(2² + (−3)² + 1²) = √14.\n2. AC a pour coordonnées (4 ; −6 ; 2). On a AC = 2 × AB : les vecteurs sont colinéaires, donc A, B et C sont alignés.",
    "affectations": [
     {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "c79b8ea6-0849-4fe4-92ee-edc875dbc87d"
     }
    ],
    "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "1aa9639e-c956-4a61-b3c8-e56e9ffe8ad2"
-   ],
-   "session": 6,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": true
-  },
-  {
-   "id": "d21aa454-3db2-4ed9-b6e6-5b3ba5d888b2",
-   "sujet": "**Exercice de démonstration #102** (Seconde, Analyse)\n\nCalculer f(x) = x² + 102 puis commenter.",
-   "corrige": "Corrigé de démonstration #102 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
    ],
    "specialiteIds": [
     "SPECIAL:Aucune"
    ],
-   "session": 4,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": false
-  },
-  {
-   "id": "20e5f642-ec82-49a5-a822-8498f60d4ecd",
-   "sujet": "**Exercice de démonstration #101** (Première, Analyse)\n\nCalculer f(x) = x² + 101 puis commenter.",
-   "corrige": "Corrigé de démonstration #101 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "55a1a255-b158-4ca2-af87-4a497666966c"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 4,
-   "niveauIntrinseque": "Facile",
-   "tagExamen": true
-  },
-  {
-   "id": "449284e0-2c85-4834-bf3d-e73b8e9a12ae",
-   "sujet": "**Exercice de démonstration #100** (Terminale, Algèbre)\n\nCalculer f(x) = x² + 100 puis commenter.",
-   "corrige": "Corrigé de démonstration #100 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "1aa9639e-c956-4a61-b3c8-e56e9ffe8ad2"
-   ],
-   "session": 6,
+   "session": 2,
    "niveauIntrinseque": "Facile",
    "tagExamen": false
   },
   {
-   "id": "7f3f09f2-3332-4855-b7bc-f2a33c47115d",
-   "sujet": "**Exercice de démonstration #99** (Terminale, Algèbre)\n\nCalculer f(x) = x² + 99 puis commenter.",
-   "corrige": "Corrigé de démonstration #99 : voir le cours.",
+   "id": "11c17d00-aa85-4e51-b982-a79d4d0e6696",
+   "sujet": "Soit (u_n) la suite définie pour tout entier n ≥ 0 par u_n = (4n + 7)/(2n + 1).\n\n1. Calculer u_0 et u_1.\n2. Déterminer la limite de (u_n) en factorisant numérateur et dénominateur par le terme de plus haut degré.",
+   "corrige": "Solution :\n\n1. u_0 = 7 et u_1 = 11/3.\n2. On factorise par n au numérateur et au dénominateur : u_n = (4 + termes qui tendent vers 0)/(2 + termes qui tendent vers 0). Les termes en 1/n et 1/n² tendent vers 0, donc u_n tend vers 4/2 = 2.",
    "affectations": [
     {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
     }
    ],
    "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
    ],
    "specialiteIds": [
-    "1aa9639e-c956-4a61-b3c8-e56e9ffe8ad2"
+    "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7"
    ],
-   "session": 3,
+   "session": 1,
    "niveauIntrinseque": "Difficile",
-   "tagExamen": false
+   "tagExamen": true
   },
   {
-   "id": "f787adb3-e036-44c6-83a9-63dd26739b80",
-   "sujet": "**Exercice de démonstration #98** (Première, Probabilités)\n\nCalculer f(x) = x² + 98 puis commenter.",
-   "corrige": "Corrigé de démonstration #98 : voir le cours.",
+   "id": "f67637e0-f95e-4c2a-aadd-e3ddcee29b39",
+   "sujet": "Soit (u_n) la suite définie pour tout entier n ≥ 1 par u_n = (3n² + 1)/(n² + n).\n\n1. Calculer u_1 et u_2.\n2. Déterminer la limite de (u_n) en factorisant numérateur et dénominateur par le terme de plus haut degré.",
+   "corrige": "Solution :\n\n1. u_1 = 2 et u_2 = 13/6.\n2. On factorise par n² au numérateur et au dénominateur : u_n = (3 + termes qui tendent vers 0)/(1 + termes qui tendent vers 0). Les termes en 1/n et 1/n² tendent vers 0, donc u_n tend vers 3/1 = 3.",
    "affectations": [
     {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "891799a7-3088-4ef6-8243-f711a7065513"
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
     }
    ],
    "classeIds": [
-    "55a1a255-b158-4ca2-af87-4a497666966c"
-   ],
-   "specialiteIds": [
-    "c461f94d-03c1-475b-8597-28ac2c0b7f3e"
-   ],
-   "session": 6,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": false
-  },
-  {
-   "id": "fdc32710-03c2-42a4-aa3c-8a2f9f126fb6",
-   "sujet": "**Exercice de démonstration #97** (Première, Algèbre)\n\nCalculer f(x) = x² + 97 puis commenter.",
-   "corrige": "Corrigé de démonstration #97 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
-    }
-   ],
-   "classeIds": [
-    "55a1a255-b158-4ca2-af87-4a497666966c"
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
    ],
    "specialiteIds": [
     "SPECIAL:Aucune"
@@ -528,1237 +228,57 @@
    "tagExamen": false
   },
   {
-   "id": "3b03fa18-521b-4b73-8720-b041ed5f3949",
-   "sujet": "**Exercice de démonstration #96** (Seconde, Algèbre)\n\nCalculer f(x) = x² + 96 puis commenter.",
-   "corrige": "Corrigé de démonstration #96 : voir le cours.",
+   "id": "b61a3de8-5397-431d-a3a8-543d654b8a10",
+   "sujet": "Soit (u_n) la suite définie pour tout entier n ≥ 0 par u_n = (2n + 1)/(n + 3).\n\n1. Calculer u_0 et u_1.\n2. Déterminer la limite de (u_n) en factorisant numérateur et dénominateur par le terme de plus haut degré.",
+   "corrige": "Solution :\n\n1. u_0 = 1/3 et u_1 = 3/4.\n2. On factorise par n au numérateur et au dénominateur : u_n = (2 + termes qui tendent vers 0)/(1 + termes qui tendent vers 0). Les termes en 1/n et 1/n² tendent vers 0, donc u_n tend vers 2/1 = 2.",
    "affectations": [
     {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
     }
    ],
    "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 3,
-   "niveauIntrinseque": "Facile",
-   "tagExamen": false
-  },
-  {
-   "id": "d82b9aaf-6d16-4a57-b4cd-20721a2c1fc4",
-   "sujet": "**Exercice de démonstration #95** (Terminale, Probabilités)\n\nCalculer f(x) = x² + 95 puis commenter.",
-   "corrige": "Corrigé de démonstration #95 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "891799a7-3088-4ef6-8243-f711a7065513"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 6,
-   "niveauIntrinseque": "Facile",
-   "tagExamen": false
-  },
-  {
-   "id": "ef04131c-b333-48dc-90e2-74e5651426a5",
-   "sujet": "**Exercice de démonstration #94** (Seconde, Géométrie)\n\nCalculer f(x) = x² + 94 puis commenter.",
-   "corrige": "Corrigé de démonstration #94 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "21b3d048-2e4a-4104-8f4c-7705eb3f852c"
-    }
-   ],
-   "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 3,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": false
-  },
-  {
-   "id": "3baa9cd3-997d-4adc-9d84-6c7a5d637188",
-   "sujet": "**Exercice de démonstration #93** (Terminale, Analyse)\n\nCalculer f(x) = x² + 93 puis commenter.",
-   "corrige": "Corrigé de démonstration #93 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "1aa9639e-c956-4a61-b3c8-e56e9ffe8ad2"
-   ],
-   "session": 3,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": false
-  },
-  {
-   "id": "b01d83a6-1467-436c-8fc3-003752536db2",
-   "sujet": "**Exercice de démonstration #92** (Seconde, Géométrie)\n\nCalculer f(x) = x² + 92 puis commenter.",
-   "corrige": "Corrigé de démonstration #92 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "21b3d048-2e4a-4104-8f4c-7705eb3f852c"
-    }
-   ],
-   "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 2,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": false
-  },
-  {
-   "id": "c3995cec-9118-4adb-a1ac-b7977c43e5f6",
-   "sujet": "**Exercice de démonstration #91** (Terminale, Algèbre)\n\nCalculer f(x) = x² + 91 puis commenter.",
-   "corrige": "Corrigé de démonstration #91 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 4,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": false
-  },
-  {
-   "id": "ca5ea126-f2ee-42f6-8dd0-eb6ffb4a6e59",
-   "sujet": "**Exercice de démonstration #90** (Terminale, Analyse)\n\nCalculer f(x) = x² + 90 puis commenter.",
-   "corrige": "Corrigé de démonstration #90 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "c461f94d-03c1-475b-8597-28ac2c0b7f3e"
-   ],
-   "session": null,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": false
-  },
-  {
-   "id": "63ba4502-47ea-46ea-9c1d-57bea95075a5",
-   "sujet": "**Exercice de démonstration #89** (Première, Analyse)\n\nCalculer f(x) = x² + 89 puis commenter.",
-   "corrige": "Corrigé de démonstration #89 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "55a1a255-b158-4ca2-af87-4a497666966c"
-   ],
-   "specialiteIds": [
-    "1aa9639e-c956-4a61-b3c8-e56e9ffe8ad2"
-   ],
-   "session": 5,
-   "niveauIntrinseque": "Facile",
-   "tagExamen": false
-  },
-  {
-   "id": "ffd99024-f843-48c9-ab01-82281e62ef5c",
-   "sujet": "**Exercice de démonstration #88** (Terminale, Analyse)\n\nCalculer f(x) = x² + 88 puis commenter.",
-   "corrige": "Corrigé de démonstration #88 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": null,
-   "niveauIntrinseque": "Facile",
-   "tagExamen": false
-  },
-  {
-   "id": "c5ed265f-972b-414c-88be-20fa95f78b20",
-   "sujet": "**Exercice de démonstration #87** (Première, Géométrie)\n\nCalculer f(x) = x² + 87 puis commenter.",
-   "corrige": "Corrigé de démonstration #87 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "21b3d048-2e4a-4104-8f4c-7705eb3f852c"
-    }
-   ],
-   "classeIds": [
-    "55a1a255-b158-4ca2-af87-4a497666966c"
-   ],
-   "specialiteIds": [
-    "1aa9639e-c956-4a61-b3c8-e56e9ffe8ad2"
-   ],
-   "session": 5,
-   "niveauIntrinseque": "Facile",
-   "tagExamen": true
-  },
-  {
-   "id": "3d5204ed-23cf-41c0-a4a7-89a35cac8e2f",
-   "sujet": "**Exercice de démonstration #86** (Terminale, Géométrie)\n\nCalculer f(x) = x² + 86 puis commenter.",
-   "corrige": "Corrigé de démonstration #86 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "21b3d048-2e4a-4104-8f4c-7705eb3f852c"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "1aa9639e-c956-4a61-b3c8-e56e9ffe8ad2"
-   ],
-   "session": 6,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": false
-  },
-  {
-   "id": "4a7daf36-1171-4ba2-9240-a1fb803007f8",
-   "sujet": "**Exercice de démonstration #85** (Terminale, Probabilités)\n\nCalculer f(x) = x² + 85 puis commenter.",
-   "corrige": "Corrigé de démonstration #85 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "891799a7-3088-4ef6-8243-f711a7065513"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 4,
-   "niveauIntrinseque": "Facile",
-   "tagExamen": false
-  },
-  {
-   "id": "a1c5d63b-12e1-420c-ba12-3fb5d5365f1c",
-   "sujet": "**Exercice de démonstration #84** (Terminale, Géométrie)\n\nCalculer f(x) = x² + 84 puis commenter.",
-   "corrige": "Corrigé de démonstration #84 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "21b3d048-2e4a-4104-8f4c-7705eb3f852c"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 4,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": false
-  },
-  {
-   "id": "30dbd203-d53b-4d96-b16f-f77f78aba1c3",
-   "sujet": "**Exercice de démonstration #83** (Terminale, Algèbre)\n\nCalculer f(x) = x² + 83 puis commenter.",
-   "corrige": "Corrigé de démonstration #83 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "1aa9639e-c956-4a61-b3c8-e56e9ffe8ad2"
-   ],
-   "session": 6,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": true
-  },
-  {
-   "id": "70f646b0-f0b4-4b45-b238-d5f61fe6dc83",
-   "sujet": "**Exercice de démonstration #82** (Seconde, Algèbre)\n\nCalculer f(x) = x² + 82 puis commenter.",
-   "corrige": "Corrigé de démonstration #82 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
-    }
-   ],
-   "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 6,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": true
-  },
-  {
-   "id": "062c6adb-1b26-422e-afe1-6fc07f54a493",
-   "sujet": "**Exercice de démonstration #81** (Première, Probabilités)\n\nCalculer f(x) = x² + 81 puis commenter.",
-   "corrige": "Corrigé de démonstration #81 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "891799a7-3088-4ef6-8243-f711a7065513"
-    }
-   ],
-   "classeIds": [
-    "55a1a255-b158-4ca2-af87-4a497666966c"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 3,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": true
-  },
-  {
-   "id": "108fbe7f-e91d-41e2-a8fb-b504f58b6a41",
-   "sujet": "**Exercice de démonstration #80** (Première, Algèbre)\n\nCalculer f(x) = x² + 80 puis commenter.",
-   "corrige": "Corrigé de démonstration #80 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
-    }
-   ],
-   "classeIds": [
-    "55a1a255-b158-4ca2-af87-4a497666966c"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 4,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": false
-  },
-  {
-   "id": "0e35c938-e864-4f5d-8445-e3abff902370",
-   "sujet": "**Exercice de démonstration #79** (Première, Analyse)\n\nCalculer f(x) = x² + 79 puis commenter.",
-   "corrige": "Corrigé de démonstration #79 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "55a1a255-b158-4ca2-af87-4a497666966c"
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
    ],
    "specialiteIds": [
     "SPECIAL:Aucune"
    ],
    "session": 1,
    "niveauIntrinseque": "Facile",
-   "tagExamen": true
-  },
-  {
-   "id": "ee16e22a-9cab-49b7-ada5-cc059490a3e2",
-   "sujet": "**Exercice de démonstration #78** (Première, Géométrie)\n\nCalculer f(x) = x² + 78 puis commenter.",
-   "corrige": "Corrigé de démonstration #78 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "21b3d048-2e4a-4104-8f4c-7705eb3f852c"
-    }
-   ],
-   "classeIds": [
-    "55a1a255-b158-4ca2-af87-4a497666966c"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 2,
-   "niveauIntrinseque": "Facile",
    "tagExamen": false
   },
   {
-   "id": "06eb2750-c200-4252-be80-30cb64c828e7",
-   "sujet": "**Exercice de démonstration #77** (Terminale, Analyse)\n\nCalculer f(x) = x² + 77 puis commenter.",
-   "corrige": "Corrigé de démonstration #77 : voir le cours.",
+   "id": "ebe5d412-d5b9-40d4-80d3-dbc6a5d7d7cb",
+   "sujet": "Soit (u_n) la suite géométrique de premier terme u₀ = 81 et de raison q = 1/3.\n\n1. Exprimer u_n en fonction de n.\n2. Calculer u_3.\n3. Calculer S = u₀ + u₁ + … + u_4.",
+   "corrige": "Solution :\n\n1. u_n = u₀ × q^n = 81 × (1/3)^n.\n2. u_3 = 81 × (1/3)^3 = 3.\n3. S = u₀ × (1 − q^5)/(1 − q) = 81 × (1 − (1/3)^5)/(1 − 1/3) = 121.",
    "affectations": [
     {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
     }
    ],
    "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
+    "75d9e823-7410-4546-855e-0a26b2735890"
    ],
    "specialiteIds": [
-    "c461f94d-03c1-475b-8597-28ac2c0b7f3e"
-   ],
-   "session": 5,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": false
-  },
-  {
-   "id": "0b56492b-8496-436c-9197-61f526b0a83a",
-   "sujet": "**Exercice de démonstration #76** (Terminale, Géométrie)\n\nCalculer f(x) = x² + 76 puis commenter.",
-   "corrige": "Corrigé de démonstration #76 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "21b3d048-2e4a-4104-8f4c-7705eb3f852c"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "1aa9639e-c956-4a61-b3c8-e56e9ffe8ad2"
-   ],
-   "session": 2,
-   "niveauIntrinseque": "Facile",
-   "tagExamen": false
-  },
-  {
-   "id": "fb9d54ec-938f-4ce0-b3a9-2076ec07ec57",
-   "sujet": "**Exercice de démonstration #75** (Première, Analyse)\n\nCalculer f(x) = x² + 75 puis commenter.",
-   "corrige": "Corrigé de démonstration #75 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "55a1a255-b158-4ca2-af87-4a497666966c"
-   ],
-   "specialiteIds": [
-    "c461f94d-03c1-475b-8597-28ac2c0b7f3e"
-   ],
-   "session": 5,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": false
-  },
-  {
-   "id": "1b785bc8-053c-40ed-9634-6ae22f129963",
-   "sujet": "**Exercice de démonstration #74** (Terminale, Probabilités)\n\nCalculer f(x) = x² + 74 puis commenter.",
-   "corrige": "Corrigé de démonstration #74 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "891799a7-3088-4ef6-8243-f711a7065513"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "c461f94d-03c1-475b-8597-28ac2c0b7f3e"
-   ],
-   "session": 2,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": true
-  },
-  {
-   "id": "3a086fef-7508-47f8-aa39-9d11c3349d4b",
-   "sujet": "**Exercice de démonstration #73** (Terminale, Géométrie)\n\nCalculer f(x) = x² + 73 puis commenter.",
-   "corrige": "Corrigé de démonstration #73 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "21b3d048-2e4a-4104-8f4c-7705eb3f852c"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "c461f94d-03c1-475b-8597-28ac2c0b7f3e"
-   ],
-   "session": 4,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": false
-  },
-  {
-   "id": "96f45d66-8e51-4f88-b6a1-64b2b5805e54",
-   "sujet": "**Exercice de démonstration #72** (Première, Analyse)\n\nCalculer f(x) = x² + 72 puis commenter.",
-   "corrige": "Corrigé de démonstration #72 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "55a1a255-b158-4ca2-af87-4a497666966c"
-   ],
-   "specialiteIds": [
-    "c461f94d-03c1-475b-8597-28ac2c0b7f3e"
-   ],
-   "session": null,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": false
-  },
-  {
-   "id": "7835e9cf-fa48-4507-a2c8-999bce0c89f2",
-   "sujet": "**Exercice de démonstration #71** (Terminale, Algèbre)\n\nCalculer f(x) = x² + 71 puis commenter.",
-   "corrige": "Corrigé de démonstration #71 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "c461f94d-03c1-475b-8597-28ac2c0b7f3e"
-   ],
-   "session": 3,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": false
-  },
-  {
-   "id": "900e54c7-7061-47fe-98c4-75d388738aec",
-   "sujet": "**Exercice de démonstration #70** (Terminale, Algèbre)\n\nCalculer f(x) = x² + 70 puis commenter.",
-   "corrige": "Corrigé de démonstration #70 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "c461f94d-03c1-475b-8597-28ac2c0b7f3e"
-   ],
-   "session": null,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": false
-  },
-  {
-   "id": "29062dc2-f29d-4b25-94b4-aeecabf09a80",
-   "sujet": "**Exercice de démonstration #69** (Terminale, Géométrie)\n\nCalculer f(x) = x² + 69 puis commenter.",
-   "corrige": "Corrigé de démonstration #69 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "21b3d048-2e4a-4104-8f4c-7705eb3f852c"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 6,
-   "niveauIntrinseque": "Facile",
-   "tagExamen": true
-  },
-  {
-   "id": "a21ed45b-ea85-4ddc-bb37-88394ea2e2be",
-   "sujet": "**Exercice de démonstration #68** (Terminale, Géométrie)\n\nCalculer f(x) = x² + 68 puis commenter.",
-   "corrige": "Corrigé de démonstration #68 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "21b3d048-2e4a-4104-8f4c-7705eb3f852c"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "1aa9639e-c956-4a61-b3c8-e56e9ffe8ad2"
-   ],
-   "session": 6,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": false
-  },
-  {
-   "id": "e45177cd-aa10-424a-9336-62c1750f7024",
-   "sujet": "**Exercice de démonstration #67** (Terminale, Algèbre)\n\nCalculer f(x) = x² + 67 puis commenter.",
-   "corrige": "Corrigé de démonstration #67 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "1aa9639e-c956-4a61-b3c8-e56e9ffe8ad2"
-   ],
-   "session": 1,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": true
-  },
-  {
-   "id": "432b6c1d-3156-40d3-899f-c4e0de2fb0fc",
-   "sujet": "**Exercice de démonstration #66** (Seconde, Algèbre)\n\nCalculer f(x) = x² + 66 puis commenter.",
-   "corrige": "Corrigé de démonstration #66 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
-    }
-   ],
-   "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 3,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": true
-  },
-  {
-   "id": "cfd7e75e-6dbb-408b-930a-29e83a6eb2c3",
-   "sujet": "**Exercice de démonstration #65** (Terminale, Analyse)\n\nCalculer f(x) = x² + 65 puis commenter.",
-   "corrige": "Corrigé de démonstration #65 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 3,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": true
-  },
-  {
-   "id": "b05bb9ce-a2bd-4b12-9493-b531a8c83797",
-   "sujet": "**Exercice de démonstration #64** (Première, Analyse)\n\nCalculer f(x) = x² + 64 puis commenter.",
-   "corrige": "Corrigé de démonstration #64 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "55a1a255-b158-4ca2-af87-4a497666966c"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 6,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": true
-  },
-  {
-   "id": "741aca79-2d2a-436d-892e-ec0a17bca8e0",
-   "sujet": "**Exercice de démonstration #63** (Seconde, Probabilités)\n\nCalculer f(x) = x² + 63 puis commenter.",
-   "corrige": "Corrigé de démonstration #63 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "891799a7-3088-4ef6-8243-f711a7065513"
-    }
-   ],
-   "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 2,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": false
-  },
-  {
-   "id": "cc1575f3-6208-4e4e-86ae-98fa9f879f55",
-   "sujet": "**Exercice de démonstration #62** (Seconde, Analyse)\n\nCalculer f(x) = x² + 62 puis commenter.",
-   "corrige": "Corrigé de démonstration #62 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 2,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": true
-  },
-  {
-   "id": "91fa5c0c-9170-43d0-8497-2e9fe96b846e",
-   "sujet": "**Exercice de démonstration #61** (Terminale, Analyse)\n\nCalculer f(x) = x² + 61 puis commenter.",
-   "corrige": "Corrigé de démonstration #61 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "1aa9639e-c956-4a61-b3c8-e56e9ffe8ad2"
-   ],
-   "session": 3,
-   "niveauIntrinseque": "Facile",
-   "tagExamen": true
-  },
-  {
-   "id": "0ab02015-5069-483b-8e65-daf892111652",
-   "sujet": "**Exercice de démonstration #60** (Seconde, Analyse)\n\nCalculer f(x) = x² + 60 puis commenter.",
-   "corrige": "Corrigé de démonstration #60 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
+    "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7"
    ],
    "session": 5,
    "niveauIntrinseque": "Difficile",
    "tagExamen": true
   },
   {
-   "id": "de464144-d0e5-4793-83ff-4c1b0272ba6e",
-   "sujet": "**Exercice de démonstration #59** (Première, Probabilités)\n\nCalculer f(x) = x² + 59 puis commenter.",
-   "corrige": "Corrigé de démonstration #59 : voir le cours.",
+   "id": "111e268d-28c9-4687-931e-5e9dc072927f",
+   "sujet": "Soit (u_n) la suite géométrique de premier terme u₀ = 5 et de raison q = 2.\n\n1. Exprimer u_n en fonction de n.\n2. Calculer u_5.\n3. Calculer S = u₀ + u₁ + … + u_6.",
+   "corrige": "Solution :\n\n1. u_n = u₀ × q^n = 5 × (2)^n.\n2. u_5 = 5 × (2)^5 = 160.\n3. S = u₀ × (1 − q^7)/(1 − q) = 5 × (1 − (2)^7)/(1 − 2) = 635.",
    "affectations": [
     {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "891799a7-3088-4ef6-8243-f711a7065513"
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
     }
    ],
    "classeIds": [
-    "55a1a255-b158-4ca2-af87-4a497666966c"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 4,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": true
-  },
-  {
-   "id": "92673090-cc16-42ba-a6dd-1b0548793527",
-   "sujet": "**Exercice de démonstration #58** (Terminale, Analyse)\n\nCalculer f(x) = x² + 58 puis commenter.",
-   "corrige": "Corrigé de démonstration #58 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "c461f94d-03c1-475b-8597-28ac2c0b7f3e"
-   ],
-   "session": 6,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": false
-  },
-  {
-   "id": "38363d85-6b76-4cde-9a13-5dd708c0cbba",
-   "sujet": "**Exercice de démonstration #57** (Terminale, Algèbre)\n\nCalculer f(x) = x² + 57 puis commenter.",
-   "corrige": "Corrigé de démonstration #57 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "c461f94d-03c1-475b-8597-28ac2c0b7f3e"
-   ],
-   "session": 6,
-   "niveauIntrinseque": "Facile",
-   "tagExamen": false
-  },
-  {
-   "id": "ddd8c938-5392-4525-9741-0f14726e974f",
-   "sujet": "**Exercice de démonstration #56** (Terminale, Géométrie)\n\nCalculer f(x) = x² + 56 puis commenter.",
-   "corrige": "Corrigé de démonstration #56 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "21b3d048-2e4a-4104-8f4c-7705eb3f852c"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 5,
-   "niveauIntrinseque": "Facile",
-   "tagExamen": false
-  },
-  {
-   "id": "8e0d9f8a-84ec-472f-97cb-c0a54c2c5ebc",
-   "sujet": "**Exercice de démonstration #55** (Seconde, Analyse)\n\nCalculer f(x) = x² + 55 puis commenter.",
-   "corrige": "Corrigé de démonstration #55 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": null,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": false
-  },
-  {
-   "id": "7f43b8a1-01a6-4ddb-9464-85c6af5b3c8e",
-   "sujet": "**Exercice de démonstration #54** (Terminale, Analyse)\n\nCalculer f(x) = x² + 54 puis commenter.",
-   "corrige": "Corrigé de démonstration #54 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": null,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": false
-  },
-  {
-   "id": "e219975b-6277-4ab6-bee9-bddf03daa634",
-   "sujet": "**Exercice de démonstration #53** (Terminale, Algèbre)\n\nCalculer f(x) = x² + 53 puis commenter.",
-   "corrige": "Corrigé de démonstration #53 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "c461f94d-03c1-475b-8597-28ac2c0b7f3e"
-   ],
-   "session": 4,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": false
-  },
-  {
-   "id": "c230a616-c3b9-4350-bae8-2421fa3b0955",
-   "sujet": "**Exercice de démonstration #52** (Terminale, Analyse)\n\nCalculer f(x) = x² + 52 puis commenter.",
-   "corrige": "Corrigé de démonstration #52 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "c461f94d-03c1-475b-8597-28ac2c0b7f3e"
-   ],
-   "session": null,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": false
-  },
-  {
-   "id": "868152ed-94b7-42ed-8cb7-2a1fbdde9420",
-   "sujet": "**Exercice de démonstration #51** (Seconde, Analyse)\n\nCalculer f(x) = x² + 51 puis commenter.",
-   "corrige": "Corrigé de démonstration #51 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": null,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": false
-  },
-  {
-   "id": "960ca097-e921-4b8f-a66d-c767f7adcbe1",
-   "sujet": "**Exercice de démonstration #50** (Seconde, Probabilités)\n\nCalculer f(x) = x² + 50 puis commenter.",
-   "corrige": "Corrigé de démonstration #50 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "891799a7-3088-4ef6-8243-f711a7065513"
-    }
-   ],
-   "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": null,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": false
-  },
-  {
-   "id": "dfb2a74e-7aa6-433f-bb5f-32c2bf623a43",
-   "sujet": "**Exercice de démonstration #49** (Première, Probabilités)\n\nCalculer f(x) = x² + 49 puis commenter.",
-   "corrige": "Corrigé de démonstration #49 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "891799a7-3088-4ef6-8243-f711a7065513"
-    }
-   ],
-   "classeIds": [
-    "55a1a255-b158-4ca2-af87-4a497666966c"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 2,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": false
-  },
-  {
-   "id": "9bcbacc9-426f-4a24-bb55-2f2c845ec45f",
-   "sujet": "**Exercice de démonstration #48** (Terminale, Géométrie)\n\nCalculer f(x) = x² + 48 puis commenter.",
-   "corrige": "Corrigé de démonstration #48 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "21b3d048-2e4a-4104-8f4c-7705eb3f852c"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 1,
-   "niveauIntrinseque": "Facile",
-   "tagExamen": true
-  },
-  {
-   "id": "b92a8d4d-b6a9-4bd2-b775-a62422faaab8",
-   "sujet": "**Exercice de démonstration #47** (Terminale, Algèbre)\n\nCalculer f(x) = x² + 47 puis commenter.",
-   "corrige": "Corrigé de démonstration #47 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "1aa9639e-c956-4a61-b3c8-e56e9ffe8ad2"
-   ],
-   "session": 4,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": true
-  },
-  {
-   "id": "2f1396aa-2a17-4054-a062-85b4d8d13b41",
-   "sujet": "**Exercice de démonstration #46** (Seconde, Algèbre)\n\nCalculer f(x) = x² + 46 puis commenter.",
-   "corrige": "Corrigé de démonstration #46 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
-    }
-   ],
-   "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 4,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": false
-  },
-  {
-   "id": "d834afda-a223-45ac-b687-f02d08bf4818",
-   "sujet": "**Exercice de démonstration #45** (Terminale, Algèbre)\n\nCalculer f(x) = x² + 45 puis commenter.",
-   "corrige": "Corrigé de démonstration #45 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "1aa9639e-c956-4a61-b3c8-e56e9ffe8ad2"
-   ],
-   "session": null,
-   "niveauIntrinseque": "Facile",
-   "tagExamen": false
-  },
-  {
-   "id": "02fa0d5b-4495-4832-8b4b-f1954af38747",
-   "sujet": "**Exercice de démonstration #44** (Seconde, Géométrie)\n\nCalculer f(x) = x² + 44 puis commenter.",
-   "corrige": "Corrigé de démonstration #44 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "21b3d048-2e4a-4104-8f4c-7705eb3f852c"
-    }
-   ],
-   "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 5,
-   "niveauIntrinseque": "Facile",
-   "tagExamen": true
-  },
-  {
-   "id": "b0dd82d1-a1a5-4238-a227-114ee6bfd06a",
-   "sujet": "**Exercice de démonstration #43** (Terminale, Algèbre)\n\nCalculer f(x) = x² + 43 puis commenter.",
-   "corrige": "Corrigé de démonstration #43 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "c461f94d-03c1-475b-8597-28ac2c0b7f3e"
-   ],
-   "session": 1,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": false
-  },
-  {
-   "id": "81d37836-52c3-4eb8-a1ae-49383cffdc57",
-   "sujet": "**Exercice de démonstration #42** (Seconde, Géométrie)\n\nCalculer f(x) = x² + 42 puis commenter.",
-   "corrige": "Corrigé de démonstration #42 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "21b3d048-2e4a-4104-8f4c-7705eb3f852c"
-    }
-   ],
-   "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 3,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": true
-  },
-  {
-   "id": "f2e3a972-7886-4ab3-83d0-e4ad04649c6d",
-   "sujet": "**Exercice de démonstration #41** (Terminale, Probabilités)\n\nCalculer f(x) = x² + 41 puis commenter.",
-   "corrige": "Corrigé de démonstration #41 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "891799a7-3088-4ef6-8243-f711a7065513"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "1aa9639e-c956-4a61-b3c8-e56e9ffe8ad2"
-   ],
-   "session": 6,
-   "niveauIntrinseque": "Facile",
-   "tagExamen": true
-  },
-  {
-   "id": "33707e73-afc7-4624-8c17-ef8ca4919176",
-   "sujet": "**Exercice de démonstration #40** (Seconde, Analyse)\n\nCalculer f(x) = x² + 40 puis commenter.",
-   "corrige": "Corrigé de démonstration #40 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": null,
-   "niveauIntrinseque": "Facile",
-   "tagExamen": false
-  },
-  {
-   "id": "7d243672-698e-4e19-8ee8-5de7572fb619",
-   "sujet": "**Exercice de démonstration #39** (Seconde, Algèbre)\n\nCalculer f(x) = x² + 39 puis commenter.",
-   "corrige": "Corrigé de démonstration #39 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
-    }
-   ],
-   "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 3,
-   "niveauIntrinseque": "Facile",
-   "tagExamen": false
-  },
-  {
-   "id": "43ae1d68-7745-4d00-a053-ffbc16d2c97d",
-   "sujet": "**Exercice de démonstration #38** (Terminale, Probabilités)\n\nCalculer f(x) = x² + 38 puis commenter.",
-   "corrige": "Corrigé de démonstration #38 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "891799a7-3088-4ef6-8243-f711a7065513"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "1aa9639e-c956-4a61-b3c8-e56e9ffe8ad2"
-   ],
-   "session": 2,
-   "niveauIntrinseque": "Facile",
-   "tagExamen": false
-  },
-  {
-   "id": "d186e81a-6f85-448f-a6d3-163aa1c7381b",
-   "sujet": "**Exercice de démonstration #37** (Terminale, Algèbre)\n\nCalculer f(x) = x² + 37 puis commenter.",
-   "corrige": "Corrigé de démonstration #37 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 6,
-   "niveauIntrinseque": "Facile",
-   "tagExamen": true
-  },
-  {
-   "id": "5df0e40a-30b3-4983-a034-75303f6f2a57",
-   "sujet": "**Exercice de démonstration #36** (Terminale, Algèbre)\n\nCalculer f(x) = x² + 36 puis commenter.",
-   "corrige": "Corrigé de démonstration #36 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": null,
-   "niveauIntrinseque": "Facile",
-   "tagExamen": false
-  },
-  {
-   "id": "006574c2-6be9-4314-bba4-e9997ce6ee02",
-   "sujet": "**Exercice de démonstration #35** (Seconde, Probabilités)\n\nCalculer f(x) = x² + 35 puis commenter.",
-   "corrige": "Corrigé de démonstration #35 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "891799a7-3088-4ef6-8243-f711a7065513"
-    }
-   ],
-   "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
+    "75d9e823-7410-4546-855e-0a26b2735890"
    ],
    "specialiteIds": [
     "SPECIAL:Aucune"
@@ -1768,417 +288,177 @@
    "tagExamen": false
   },
   {
-   "id": "f548b31f-670b-4e7f-b871-e2edefeb5ba7",
-   "sujet": "**Exercice de démonstration #34** (Première, Probabilités)\n\nCalculer f(x) = x² + 34 puis commenter.",
-   "corrige": "Corrigé de démonstration #34 : voir le cours.",
+   "id": "de6ffd8a-0169-44c7-b4c3-d5aaef5c2ec8",
+   "sujet": "Soit (u_n) la suite géométrique de premier terme u₀ = 2 et de raison q = 3.\n\n1. Exprimer u_n en fonction de n.\n2. Calculer u_4.\n3. Calculer S = u₀ + u₁ + … + u_5.",
+   "corrige": "Solution :\n\n1. u_n = u₀ × q^n = 2 × (3)^n.\n2. u_4 = 2 × (3)^4 = 162.\n3. S = u₀ × (1 − q^6)/(1 − q) = 2 × (1 − (3)^6)/(1 − 3) = 728.",
    "affectations": [
     {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "891799a7-3088-4ef6-8243-f711a7065513"
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
     }
    ],
    "classeIds": [
-    "55a1a255-b158-4ca2-af87-4a497666966c"
-   ],
-   "specialiteIds": [
-    "c461f94d-03c1-475b-8597-28ac2c0b7f3e"
-   ],
-   "session": 1,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": true
-  },
-  {
-   "id": "670f7e32-25eb-4aaf-ba60-94c84befac2d",
-   "sujet": "**Exercice de démonstration #33** (Seconde, Analyse)\n\nCalculer f(x) = x² + 33 puis commenter.",
-   "corrige": "Corrigé de démonstration #33 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 4,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": false
-  },
-  {
-   "id": "b0c12adc-c162-4fa2-9acb-1b393d19e7e0",
-   "sujet": "**Exercice de démonstration #32** (Première, Algèbre)\n\nCalculer f(x) = x² + 32 puis commenter.",
-   "corrige": "Corrigé de démonstration #32 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
-    }
-   ],
-   "classeIds": [
-    "55a1a255-b158-4ca2-af87-4a497666966c"
-   ],
-   "specialiteIds": [
-    "1aa9639e-c956-4a61-b3c8-e56e9ffe8ad2"
-   ],
-   "session": 1,
-   "niveauIntrinseque": "Facile",
-   "tagExamen": false
-  },
-  {
-   "id": "1d5d6e82-3003-4ba2-9270-a1e5fdd8831e",
-   "sujet": "**Exercice de démonstration #31** (Seconde, Algèbre)\n\nCalculer f(x) = x² + 31 puis commenter.",
-   "corrige": "Corrigé de démonstration #31 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
-    }
-   ],
-   "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 2,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": false
-  },
-  {
-   "id": "5f9e0ef8-d916-40e7-b3d0-d917771476d4",
-   "sujet": "**Exercice de démonstration #30** (Terminale, Analyse)\n\nCalculer f(x) = x² + 30 puis commenter.",
-   "corrige": "Corrigé de démonstration #30 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "c461f94d-03c1-475b-8597-28ac2c0b7f3e"
-   ],
-   "session": null,
-   "niveauIntrinseque": "Facile",
-   "tagExamen": false
-  },
-  {
-   "id": "db9b3aaf-aafc-4e59-a84d-b1631751caae",
-   "sujet": "**Exercice de démonstration #29** (Terminale, Analyse)\n\nCalculer f(x) = x² + 29 puis commenter.",
-   "corrige": "Corrigé de démonstration #29 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 4,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": true
-  },
-  {
-   "id": "a1814b41-a91d-4031-808f-24691a1a9992",
-   "sujet": "**Exercice de démonstration #28** (Première, Analyse)\n\nCalculer f(x) = x² + 28 puis commenter.",
-   "corrige": "Corrigé de démonstration #28 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "55a1a255-b158-4ca2-af87-4a497666966c"
-   ],
-   "specialiteIds": [
-    "c461f94d-03c1-475b-8597-28ac2c0b7f3e"
-   ],
-   "session": 4,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": false
-  },
-  {
-   "id": "4654e88e-8fe0-44ee-8e17-44b2fa1cab82",
-   "sujet": "**Exercice de démonstration #27** (Seconde, Probabilités)\n\nCalculer f(x) = x² + 27 puis commenter.",
-   "corrige": "Corrigé de démonstration #27 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "891799a7-3088-4ef6-8243-f711a7065513"
-    }
-   ],
-   "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": null,
-   "niveauIntrinseque": "Facile",
-   "tagExamen": false
-  },
-  {
-   "id": "e3bdd59f-dc5c-41d2-9343-02c572efd605",
-   "sujet": "**Exercice de démonstration #26** (Terminale, Géométrie)\n\nCalculer f(x) = x² + 26 puis commenter.",
-   "corrige": "Corrigé de démonstration #26 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "21b3d048-2e4a-4104-8f4c-7705eb3f852c"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 6,
-   "niveauIntrinseque": "Facile",
-   "tagExamen": true
-  },
-  {
-   "id": "3213a6f5-b475-431a-aa5f-76403a9704a5",
-   "sujet": "**Exercice de démonstration #25** (Première, Géométrie)\n\nCalculer f(x) = x² + 25 puis commenter.",
-   "corrige": "Corrigé de démonstration #25 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "21b3d048-2e4a-4104-8f4c-7705eb3f852c"
-    }
-   ],
-   "classeIds": [
-    "55a1a255-b158-4ca2-af87-4a497666966c"
-   ],
-   "specialiteIds": [
-    "1aa9639e-c956-4a61-b3c8-e56e9ffe8ad2"
-   ],
-   "session": 4,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": true
-  },
-  {
-   "id": "f835c11c-f62a-4ad5-bb42-380989fc6236",
-   "sujet": "**Exercice de démonstration #24** (Terminale, Analyse)\n\nCalculer f(x) = x² + 24 puis commenter.",
-   "corrige": "Corrigé de démonstration #24 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 4,
-   "niveauIntrinseque": "Facile",
-   "tagExamen": false
-  },
-  {
-   "id": "aeeaa9bb-7478-4154-bda9-cd21c73d9511",
-   "sujet": "**Exercice de démonstration #23** (Terminale, Analyse)\n\nCalculer f(x) = x² + 23 puis commenter.",
-   "corrige": "Corrigé de démonstration #23 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "c461f94d-03c1-475b-8597-28ac2c0b7f3e"
-   ],
-   "session": 4,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": false
-  },
-  {
-   "id": "bfc20774-0e67-43aa-95cf-4a1a84af11a9",
-   "sujet": "**Exercice de démonstration #22** (Terminale, Algèbre)\n\nCalculer f(x) = x² + 22 puis commenter.",
-   "corrige": "Corrigé de démonstration #22 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 2,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": false
-  },
-  {
-   "id": "9e2a2c10-66a9-4e9b-bb61-c72371af31b8",
-   "sujet": "**Exercice de démonstration #21** (Terminale, Algèbre)\n\nCalculer f(x) = x² + 21 puis commenter.",
-   "corrige": "Corrigé de démonstration #21 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 6,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": false
-  },
-  {
-   "id": "bb009f85-aa06-418a-b6c1-c3918d54525a",
-   "sujet": "**Exercice de démonstration #20** (Seconde, Probabilités)\n\nCalculer f(x) = x² + 20 puis commenter.",
-   "corrige": "Corrigé de démonstration #20 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "891799a7-3088-4ef6-8243-f711a7065513"
-    }
-   ],
-   "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 3,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": false
-  },
-  {
-   "id": "acd69909-f98d-42ee-a3ca-cd406cd64741",
-   "sujet": "**Exercice de démonstration #19** (Seconde, Analyse)\n\nCalculer f(x) = x² + 19 puis commenter.",
-   "corrige": "Corrigé de démonstration #19 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 1,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": false
-  },
-  {
-   "id": "c6150a56-c455-4160-bccc-a5c451ab6f30",
-   "sujet": "**Exercice de démonstration #18** (Terminale, Probabilités)\n\nCalculer f(x) = x² + 18 puis commenter.",
-   "corrige": "Corrigé de démonstration #18 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "891799a7-3088-4ef6-8243-f711a7065513"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "1aa9639e-c956-4a61-b3c8-e56e9ffe8ad2"
-   ],
-   "session": 4,
-   "niveauIntrinseque": "Facile",
-   "tagExamen": false
-  },
-  {
-   "id": "37228ccf-dbde-41e5-9b26-97b71ee3bc39",
-   "sujet": "**Exercice de démonstration #17** (Première, Géométrie)\n\nCalculer f(x) = x² + 17 puis commenter.",
-   "corrige": "Corrigé de démonstration #17 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "21b3d048-2e4a-4104-8f4c-7705eb3f852c"
-    }
-   ],
-   "classeIds": [
-    "55a1a255-b158-4ca2-af87-4a497666966c"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 4,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": false
-  },
-  {
-   "id": "00c98abc-27d8-4bd0-a114-ee6c45ba28b3",
-   "sujet": "**Exercice de démonstration #16** (Terminale, Probabilités)\n\nCalculer f(x) = x² + 16 puis commenter.",
-   "corrige": "Corrigé de démonstration #16 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "891799a7-3088-4ef6-8243-f711a7065513"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
+    "75d9e823-7410-4546-855e-0a26b2735890"
    ],
    "specialiteIds": [
     "SPECIAL:Aucune"
    ],
    "session": 5,
    "niveauIntrinseque": "Facile",
-   "tagExamen": true
+   "tagExamen": false
   },
   {
-   "id": "c8fe0b69-eedb-42f5-81d4-926964faf42b",
-   "sujet": "**Exercice de démonstration #15** (Seconde, Géométrie)\n\nCalculer f(x) = x² + 15 puis commenter.",
-   "corrige": "Corrigé de démonstration #15 : voir le cours.",
+   "id": "90bc521a-05bb-451f-9a59-3d3e26a5387a",
+   "sujet": "Soit f la fonction définie sur ℝ par f(x) = (x² + 4)(−x + 2).\n\n1. En utilisant la formule de dérivation d'un produit, calculer f'(x).\n2. Calculer f'(1).",
+   "corrige": "Solution :\n\n1. f = u×v avec u(x) = x² + 4 et v(x) = −x + 2 ; u'(x) = 2x et v'(x) = −1. f'(x) = u'v + uv' = 2x(−x + 2) + (−1)(x² + 4) = −3x² + 4x − 4.\n2. f'(1) = −3 + 4 + (−4) = −3.",
    "affectations": [
     {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "21b3d048-2e4a-4104-8f4c-7705eb3f852c"
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
     }
    ],
    "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "49e4f36e-57b9-498f-8bc9-733bc06dad04",
+   "sujet": "Soit f la fonction définie sur ℝ par f(x) = (x² − 2)(3x + 1).\n\n1. En utilisant la formule de dérivation d'un produit, calculer f'(x).\n2. Calculer f'(1).",
+   "corrige": "Solution :\n\n1. f = u×v avec u(x) = x² − 2 et v(x) = 3x + 1 ; u'(x) = 2x et v'(x) = 3. f'(x) = u'v + uv' = 2x(3x + 1) + 3(x² − 2) = 9x² + 2x − 6.\n2. f'(1) = 9 + 2 + (−6) = 5.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
    ],
    "specialiteIds": [
     "SPECIAL:Aucune"
    ],
-   "session": 1,
+   "session": 4,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "100b6cd2-37a4-4291-ba4a-8ac9321f39f3",
+   "sujet": "Soit f la fonction définie sur ℝ par f(x) = (x² + 1)(2x − 3).\n\n1. En utilisant la formule de dérivation d'un produit, calculer f'(x).\n2. Calculer f'(1).",
+   "corrige": "Solution :\n\n1. f = u×v avec u(x) = x² + 1 et v(x) = 2x − 3 ; u'(x) = 2x et v'(x) = 2. f'(x) = u'v + uv' = 2x(2x − 3) + 2(x² + 1) = 6x² − 6x + 2.\n2. f'(1) = 6 + (−6) + 2 = 2.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
    "niveauIntrinseque": "Facile",
    "tagExamen": false
   },
   {
-   "id": "c1cdabf6-2e45-4973-8bad-f1fcc1b945c7",
-   "sujet": "**Exercice de démonstration #14** (Seconde, Algèbre)\n\nCalculer f(x) = x² + 14 puis commenter.",
-   "corrige": "Corrigé de démonstration #14 : voir le cours.",
+   "id": "5d13561e-47ff-4fa0-9240-a4bc4613267b",
+   "sujet": "Soit (u_n) la suite définie pour tout entier naturel n par u_n = −2n² + 10.\n\n1. Calculer u₀, u₁ et u₂.\n2. Exprimer u_{n+1} − u_n en fonction de n.\n3. En déduire le sens de variation de la suite (u_n).",
+   "corrige": "Solution :\n\n1. u₀ = 10, u₁ = 8, u₂ = 2.\n2. u_{n+1} − u_n = −4n − 2.\n3. Pour tout n ≥ 0, −4n − 2 est strictement négatif : la suite (u_n) est strictement décroissante.",
    "affectations": [
     {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
     }
    ],
    "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "ba5b6b43-494c-48da-96b6-5d03e60f7ce9",
+   "sujet": "Soit (u_n) la suite définie pour tout entier naturel n par u_n = 3n² − 2.\n\n1. Calculer u₀, u₁ et u₂.\n2. Exprimer u_{n+1} − u_n en fonction de n.\n3. En déduire le sens de variation de la suite (u_n).",
+   "corrige": "Solution :\n\n1. u₀ = −2, u₁ = 1, u₂ = 10.\n2. u_{n+1} − u_n = 6n + 3.\n3. Pour tout n ≥ 0, 6n + 3 est strictement positif : la suite (u_n) est strictement croissante.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "6b7a627d-04ef-4dd9-b4f1-f27b2a76cd4d",
+   "sujet": "Soit (u_n) la suite définie pour tout entier naturel n par u_n = n² + 3n.\n\n1. Calculer u₀, u₁ et u₂.\n2. Exprimer u_{n+1} − u_n en fonction de n.\n3. En déduire le sens de variation de la suite (u_n).",
+   "corrige": "Solution :\n\n1. u₀ = 0, u₁ = 4, u₂ = 10.\n2. u_{n+1} − u_n = 2n + 4.\n3. Pour tout n ≥ 0, 2n + 4 est strictement positif : la suite (u_n) est strictement croissante.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "e8b75dad-1cc4-4fbf-b2cb-2523a4142c9c",
+   "sujet": "Dans un repère orthonormé, on considère les points A(0 ; 5), B(4 ; 2) et C(8 ; −1).\n\n1. Calculer le coefficient directeur de la droite (AB).\n2. Déterminer une équation réduite de (AB).\n3. Le point C appartient-il à la droite (AB) ?",
+   "corrige": "Solution :\n\n1. m = (y_B − y_A)/(x_B − x_A) = (2 − 5)/(4 − 0) = −3/4.\n2. y = −(3/4)x + 5 : en effet, A appartient à la droite, donc 5 = −3/4×0 + p, d'où p = 5.\n3. Pour x = 8 : −3/4×8 + 5 = −1 = −1 : C appartient à (AB).",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "c79b8ea6-0849-4fe4-92ee-edc875dbc87d"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "00e1f7f5-3b47-4794-9c39-537417d7c010",
+   "sujet": "Dans un repère orthonormé, on considère les points A(−1 ; 3), B(2 ; −3) et C(3 ; −4).\n\n1. Calculer le coefficient directeur de la droite (AB).\n2. Déterminer une équation réduite de (AB).\n3. Le point C appartient-il à la droite (AB) ?",
+   "corrige": "Solution :\n\n1. m = (y_B − y_A)/(x_B − x_A) = (−3 − 3)/(2 − (−1)) = −2.\n2. y = −2x + 1 : en effet, A appartient à la droite, donc 3 = −2×(−1) + p, d'où p = 1.\n3. Pour x = 3 : −2×3 + 1 = −5 ≠ −4 : C n'appartient pas à (AB).",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "c79b8ea6-0849-4fe4-92ee-edc875dbc87d"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
    ],
    "specialiteIds": [
     "SPECIAL:Aucune"
@@ -2188,77 +468,77 @@
    "tagExamen": false
   },
   {
-   "id": "e4810f00-69bd-4f94-89c4-5b007712e485",
-   "sujet": "**Exercice de démonstration #13** (Première, Analyse)\n\nCalculer f(x) = x² + 13 puis commenter.",
-   "corrige": "Corrigé de démonstration #13 : voir le cours.",
+   "id": "acfb9e4f-78ca-45c5-9962-fa27dd1c00bb",
+   "sujet": "Dans un repère orthonormé, on considère les points A(1 ; 2), B(3 ; 6) et C(4 ; 8).\n\n1. Calculer le coefficient directeur de la droite (AB).\n2. Déterminer une équation réduite de (AB).\n3. Le point C appartient-il à la droite (AB) ?",
+   "corrige": "Solution :\n\n1. m = (y_B − y_A)/(x_B − x_A) = (6 − 2)/(3 − 1) = 2.\n2. y = 2x : en effet, A appartient à la droite, donc 2 = 2×1 + p, d'où p = 0.\n3. Pour x = 4 : 2×4 + 0 = 8 = 8 : C appartient à (AB).",
    "affectations": [
     {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "c79b8ea6-0849-4fe4-92ee-edc875dbc87d"
     }
    ],
    "classeIds": [
-    "55a1a255-b158-4ca2-af87-4a497666966c"
+    "75d9e823-7410-4546-855e-0a26b2735890"
    ],
    "specialiteIds": [
-    "c461f94d-03c1-475b-8597-28ac2c0b7f3e"
+    "SPECIAL:Aucune"
    ],
-   "session": 2,
+   "session": 1,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "ce88f70b-322b-4d4f-a0d5-1f6dc6a0f656",
+   "sujet": "Soit f la fonction inverse définie sur ]0 ; +∞[ par f(x) = 1/x.\n\n1. Calculer f(5) et f(2).\n2. Déterminer l'antécédent de 1/4 par f.\n3. Comparer f(2) et f(5). Que peut-on en déduire pour le sens de variation de f ?",
+   "corrige": "Solution :\n\n1. f(5) = 1/5 et f(2) = 1/2.\n2. f(x) = 1/4 ⇔ 1/x = 1/4 ⇔ x = 4.\n3. f(2) = 1/2 > f(5) = 1/5 alors que 2 < 5 : l'ordre est inversé, ce qui illustre que f est strictement décroissante sur ]0 ; +∞[.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 6,
    "niveauIntrinseque": "Difficile",
    "tagExamen": true
   },
   {
-   "id": "9aece005-e660-45d1-9a0d-ae85d692378e",
-   "sujet": "**Exercice de démonstration #12** (Terminale, Algèbre)\n\nCalculer f(x) = x² + 12 puis commenter.",
-   "corrige": "Corrigé de démonstration #12 : voir le cours.",
+   "id": "a350b3a2-05e8-4075-884f-a9d3d3fca479",
+   "sujet": "Soit f la fonction inverse définie sur ]0 ; +∞[ par f(x) = 1/x.\n\n1. Calculer f(1/3) et f(3).\n2. Déterminer l'antécédent de 10 par f.\n3. Comparer f(1/3) et f(3). Que peut-on en déduire pour le sens de variation de f ?",
+   "corrige": "Solution :\n\n1. f(1/3) = 3 et f(3) = 1/3.\n2. f(x) = 10 ⇔ 1/x = 10 ⇔ x = 1/10.\n3. f(1/3) = 3 > f(3) = 1/3 alors que 1/3 < 3 : l'ordre est inversé, ce qui illustre que f est strictement décroissante sur ]0 ; +∞[.",
    "affectations": [
     {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
     }
    ],
    "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
    ],
    "specialiteIds": [
     "SPECIAL:Aucune"
    ],
-   "session": 5,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": false
-  },
-  {
-   "id": "e38aa8cb-233d-4098-9b10-4b707b6c1750",
-   "sujet": "**Exercice de démonstration #11** (Terminale, Analyse)\n\nCalculer f(x) = x² + 11 puis commenter.",
-   "corrige": "Corrigé de démonstration #11 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": 2,
+   "session": 6,
    "niveauIntrinseque": "Moyen",
-   "tagExamen": false
+   "tagExamen": true
   },
   {
-   "id": "3229e894-f281-4125-93bd-7e58243cd40a",
-   "sujet": "**Exercice de démonstration #10** (Seconde, Analyse)\n\nCalculer f(x) = x² + 10 puis commenter.",
-   "corrige": "Corrigé de démonstration #10 : voir le cours.",
+   "id": "5735ff0e-582f-4afe-8d81-d0eaebe46af8",
+   "sujet": "Soit f la fonction inverse définie sur ]0 ; +∞[ par f(x) = 1/x.\n\n1. Calculer f(2) et f(4).\n2. Déterminer l'antécédent de 5 par f.\n3. Comparer f(2) et f(4). Que peut-on en déduire pour le sens de variation de f ?",
+   "corrige": "Solution :\n\n1. f(2) = 1/2 et f(4) = 1/4.\n2. f(x) = 5 ⇔ 1/x = 5 ⇔ x = 1/5.\n3. f(2) = 1/2 > f(4) = 1/4 alors que 2 < 4 : l'ordre est inversé, ce qui illustre que f est strictement décroissante sur ]0 ; +∞[.",
    "affectations": [
     {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
     }
    ],
    "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
    ],
    "specialiteIds": [
     "SPECIAL:Aucune"
@@ -2268,57 +548,17 @@
    "tagExamen": false
   },
   {
-   "id": "2c190938-82c9-4917-aa41-ceee27e991fb",
-   "sujet": "**Exercice de démonstration #9** (Seconde, Analyse)\n\nCalculer f(x) = x² + 9 puis commenter.",
-   "corrige": "Corrigé de démonstration #9 : voir le cours.",
+   "id": "fd4b53a0-abc4-4c8c-9c23-71ea713fa4cd",
+   "sujet": "**Système d'équations.** Résoudre dans ℝ² le système suivant, en éliminant une inconnue par combinaison linéaire :\n\n- (L1) 3x − 2y = 4\n- (L2) 5x + 4y = 14",
+   "corrige": "Solution :\n\n- On élimine y : (L1)×4 − (L2)×(−2) donne 22x = 44, d'où x = 2.\n- En reportant dans (L1) : 3×2 − 2y = 4, d'où y = 1.\n- Vérification dans (L2) : 5×2 + 4×1 = 14 ✓.\n\nConclusion : (x ; y) = (2 ; 1).",
    "affectations": [
     {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
     }
    ],
    "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
-   ],
-   "specialiteIds": [
-    "SPECIAL:Aucune"
-   ],
-   "session": null,
-   "niveauIntrinseque": "Moyen",
-   "tagExamen": false
-  },
-  {
-   "id": "e55f761d-644e-4fae-bb58-ab504bee5704",
-   "sujet": "**Exercice de démonstration #8** (Terminale, Géométrie)\n\nCalculer f(x) = x² + 8 puis commenter.",
-   "corrige": "Corrigé de démonstration #8 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "21b3d048-2e4a-4104-8f4c-7705eb3f852c"
-    }
-   ],
-   "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
-   ],
-   "specialiteIds": [
-    "c461f94d-03c1-475b-8597-28ac2c0b7f3e"
-   ],
-   "session": 6,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": true
-  },
-  {
-   "id": "9bd9eb0d-9726-4ff6-8f38-052fabe04082",
-   "sujet": "**Exercice de démonstration #7** (Seconde, Probabilités)\n\nCalculer f(x) = x² + 7 puis commenter.",
-   "corrige": "Corrigé de démonstration #7 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "891799a7-3088-4ef6-8243-f711a7065513"
-    }
-   ],
-   "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
    ],
    "specialiteIds": [
     "SPECIAL:Aucune"
@@ -2328,142 +568,1785 @@
    "tagExamen": true
   },
   {
-   "id": "bf526074-2cfc-479a-aad8-df3fdbdc0664",
-   "sujet": "**Exercice de démonstration #6** (Seconde, Géométrie)\n\nCalculer f(x) = x² + 6 puis commenter.",
-   "corrige": "Corrigé de démonstration #6 : voir le cours.",
+   "id": "2ac857f7-2c8a-4ae0-8e0d-b73fc05f3887",
+   "sujet": "**Système d'équations.** Résoudre dans ℝ² le système suivant, en éliminant une inconnue par combinaison linéaire :\n\n- (L1) 2x + 3y = 12\n- (L2) x − y = 1",
+   "corrige": "Solution :\n\n- On élimine y : (L1)×(−1) − (L2)×3 donne −5x = −15, d'où x = 3.\n- En reportant dans (L1) : 2×3 + 3y = 12, d'où y = 2.\n- Vérification dans (L2) : 1×3 − 1×2 = 1 ✓.\n\nConclusion : (x ; y) = (3 ; 2).",
    "affectations": [
     {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "21b3d048-2e4a-4104-8f4c-7705eb3f852c"
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
     }
    ],
    "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
    ],
    "specialiteIds": [
     "SPECIAL:Aucune"
    ],
-   "session": 2,
+   "session": 5,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "86b99290-fe9c-4df4-92a4-894c0fd5954c",
+   "sujet": "**Système d'équations.** Résoudre dans ℝ² le système suivant, en éliminant une inconnue par combinaison linéaire :\n\n- (L1) x + y = 3\n- (L2) x − y = 1",
+   "corrige": "Solution :\n\n- On élimine y : (L1)×(−1) − (L2)×1 donne −2x = −4, d'où x = 2.\n- En reportant dans (L1) : 1×2 + y = 3, d'où y = 1.\n- Vérification dans (L2) : 1×2 − 1×1 = 1 ✓.\n\nConclusion : (x ; y) = (2 ; 1).",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "e8374809-31d7-45b1-a894-7d8a740dda8b",
+   "sujet": "Dans un repère orthonormé, on considère les vecteurs u(4 ; −2) et v(−6 ; 3).\n\n1. Calculer les coordonnées de u + v et de 2u − v.\n2. Les vecteurs u et v sont-ils colinéaires ? Justifier.\n3. Déterminer le réel k tel que u et w(k ; 6) soient colinéaires.",
+   "corrige": "Solution :\n\n1. u + v a pour coordonnées (−2 ; 1) et 2u − v a pour coordonnées (14 ; −7).\n2. Déterminant : 4×3 − (−2)×(−6) = 0. Il est nul : u et v sont colinéaires.\n3. u et w colinéaires ⇔ 4×6 − (−2)×k = 0 ⇔ k = −12.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "c79b8ea6-0849-4fe4-92ee-edc875dbc87d"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
    "niveauIntrinseque": "Difficile",
    "tagExamen": true
   },
   {
-   "id": "c87876fa-772b-4fcc-b786-562ff3ec69b3",
-   "sujet": "**Exercice de démonstration #5** (Terminale, Géométrie)\n\nCalculer f(x) = x² + 5 puis commenter.",
-   "corrige": "Corrigé de démonstration #5 : voir le cours.",
+   "id": "43706257-6783-4664-91e3-cdc45be270f0",
+   "sujet": "Dans un repère orthonormé, on considère les vecteurs u(−3 ; 6) et v(2 ; −4).\n\n1. Calculer les coordonnées de u + v et de 2u − v.\n2. Les vecteurs u et v sont-ils colinéaires ? Justifier.",
+   "corrige": "Solution :\n\n1. u + v a pour coordonnées (−1 ; 2) et 2u − v a pour coordonnées (−8 ; 16).\n2. Déterminant : −3×(−4) − 6×2 = 0. Il est nul : u et v sont colinéaires.",
    "affectations": [
     {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "21b3d048-2e4a-4104-8f4c-7705eb3f852c"
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "c79b8ea6-0849-4fe4-92ee-edc875dbc87d"
     }
    ],
    "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
    ],
    "specialiteIds": [
-    "1aa9639e-c956-4a61-b3c8-e56e9ffe8ad2"
+    "SPECIAL:Aucune"
    ],
-   "session": 6,
+   "session": 1,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "42476bde-5ec4-4bdf-a411-93e48e7c9565",
+   "sujet": "Dans un repère orthonormé, on considère les vecteurs u(2 ; 3) et v(1 ; −4).\n\n1. Calculer les coordonnées de u + v et de 2u − v.\n2. Les vecteurs u et v sont-ils colinéaires ? Justifier.",
+   "corrige": "Solution :\n\n1. u + v a pour coordonnées (3 ; −1) et 2u − v a pour coordonnées (3 ; 10).\n2. Déterminant : 2×(−4) − 3×1 = −11. Il n'est pas nul : u et v ne sont pas colinéaires.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "c79b8ea6-0849-4fe4-92ee-edc875dbc87d"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
    "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "59a9c11e-0314-4593-a6cc-37bcf895b625",
+   "sujet": "Un comité de 5 personnes est choisi parmi 14 candidats : 8 femmes et 6 hommes.\n\n1. Combien de comités différents peut-on former ?\n2. Combien de comités comportent exactement 3 femmes ?\n3. Combien de comités comportent au moins une femme ?",
+   "corrige": "Solution :\n\n1. C(14,5) = 2002.\n2. C(8,3) × C(6,2) = 56 × 15 = 840.\n3. Total − comités sans femme = 2002 − C(6,5) = 2002 − 6 = 1996.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ab442927-7469-485f-a1d3-5f10ce01492b"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Difficile",
    "tagExamen": true
   },
   {
-   "id": "604e3ded-a86c-43a5-86c6-e8558659fad6",
-   "sujet": "**Exercice de démonstration #4** (Terminale, Algèbre)\n\nCalculer f(x) = x² + 4 puis commenter.",
-   "corrige": "Corrigé de démonstration #4 : voir le cours.",
+   "id": "617a9ebf-d351-4a39-bd7d-26b461d3927c",
+   "sujet": "Un comité de 4 personnes est choisi parmi 12 candidats : 7 femmes et 5 hommes.\n\n1. Combien de comités différents peut-on former ?\n2. Combien de comités comportent exactement 2 femmes ?\n3. Combien de comités comportent au moins une femme ?",
+   "corrige": "Solution :\n\n1. C(12,4) = 495.\n2. C(7,2) × C(5,2) = 21 × 10 = 210.\n3. Total − comités sans femme = 495 − C(5,4) = 495 − 5 = 490.",
    "affectations": [
     {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ab442927-7469-485f-a1d3-5f10ce01492b"
     }
    ],
    "classeIds": [
-    "5fb73539-4358-49d0-989f-1d44edd0903f"
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
    ],
    "specialiteIds": [
-    "c461f94d-03c1-475b-8597-28ac2c0b7f3e"
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "c6cf5727-6600-4f61-a3e7-787a8dd1421d",
+   "sujet": "Un comité de 3 personnes est choisi parmi 10 candidats : 6 femmes et 4 hommes.\n\n1. Combien de comités différents peut-on former ?\n2. Combien de comités comportent exactement 2 femmes ?\n3. Combien de comités comportent au moins une femme ?",
+   "corrige": "Solution :\n\n1. C(10,3) = 120.\n2. C(6,2) × C(4,1) = 15 × 4 = 60.\n3. Total − comités sans femme = 120 − C(4,3) = 120 − 4 = 116.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ab442927-7469-485f-a1d3-5f10ce01492b"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "70fffcb7-61aa-48fa-bf4a-7efd6115d131",
+   "sujet": "Un test comporte 12 questions indépendantes ; pour chacune, la probabilité de répondre correctement au hasard est 0,2. On note X le nombre de bonnes réponses.\n\n1. Justifier que X suit une loi binomiale dont on précisera les paramètres.\n2. Calculer P(X = 2) à 10⁻⁴ près.\n3. Calculer la probabilité d'obtenir au moins une bonne réponse (à 10⁻⁴ près).\n4. Calculer E(X).",
+   "corrige": "Solution :\n\n1. On répète 12 fois la même épreuve de Bernoulli (succès de probabilité 0,2) de façon indépendante : X suit B(12 ; 0,2).\n2. P(X = 2) = C(12,2) × 0,2^2 × 0,8^10 ≈ 0,2835.\n3. P(X ≥ 1) = 1 − 0,8^12 ≈ 0,9313.\n4. E(X) = 12 × 0,2 = 2,4.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ab442927-7469-485f-a1d3-5f10ce01492b"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "b8ac8a39-457e-4799-bcdb-fdaf48eb8bbd",
+   "sujet": "Un test comporte 8 questions indépendantes ; pour chacune, la probabilité de répondre correctement au hasard est 0,5. On note X le nombre de bonnes réponses.\n\n1. Justifier que X suit une loi binomiale dont on précisera les paramètres.\n2. Calculer P(X = 4) à 10⁻⁴ près.\n3. Calculer la probabilité d'obtenir au moins une bonne réponse (à 10⁻⁴ près).\n4. Calculer E(X).",
+   "corrige": "Solution :\n\n1. On répète 8 fois la même épreuve de Bernoulli (succès de probabilité 0,5) de façon indépendante : X suit B(8 ; 0,5).\n2. P(X = 4) = C(8,4) × 0,5^4 × 0,5^4 ≈ 0,2734.\n3. P(X ≥ 1) = 1 − 0,5^8 ≈ 0,9961.\n4. E(X) = 8 × 0,5 = 4,0.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ab442927-7469-485f-a1d3-5f10ce01492b"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": true
+  },
+  {
+   "id": "d8d18572-b98b-49f5-854c-3f4570a28174",
+   "sujet": "Un test comporte 10 questions indépendantes ; pour chacune, la probabilité de répondre correctement au hasard est 0,3. On note X le nombre de bonnes réponses.\n\n1. Justifier que X suit une loi binomiale dont on précisera les paramètres.\n2. Calculer P(X = 3) à 10⁻⁴ près.\n3. Calculer la probabilité d'obtenir au moins une bonne réponse (à 10⁻⁴ près).\n4. Calculer E(X).",
+   "corrige": "Solution :\n\n1. On répète 10 fois la même épreuve de Bernoulli (succès de probabilité 0,3) de façon indépendante : X suit B(10 ; 0,3).\n2. P(X = 3) = C(10,3) × 0,3^3 × 0,7^7 ≈ 0,2668.\n3. P(X ≥ 1) = 1 − 0,7^10 ≈ 0,9718.\n4. E(X) = 10 × 0,3 = 3,0.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ab442927-7469-485f-a1d3-5f10ce01492b"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "5c72968a-b2c9-4e4f-966d-3a5d4dd232f2",
+   "sujet": "On considère les nombres complexes z₁ = 3 − 4i et z₂ = 2 + i.\n\n1. Calculer z₁ + z₂ et z₁ × z₂.\n2. Calculer le module de z₁.\n3. Écrire le quotient z₁ / z₂ sous forme algébrique.",
+   "corrige": "Solution :\n\n1. z₁ + z₂ = 5 − 3i et z₁ × z₂ = 10 − 5i.\n2. |z₁| = √(3² + (−4)²) = √25 = 5.\n3. z₁ / z₂ = z₁ × conj(z₂) / |z₂|² = (3 − 4i)(2 − i) / 5 = 2/5 − (11/5)i.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "c79b8ea6-0849-4fe4-92ee-edc875dbc87d"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "7b55b04a-0374-4ea0-8da4-c0059c14a297",
+   "sujet": "On considère les nombres complexes z₁ = −2 + 3i et z₂ = 1 + i.\n\n1. Calculer z₁ + z₂ et z₁ × z₂.\n2. Calculer le module de z₁.\n3. Écrire le quotient z₁ / z₂ sous forme algébrique.",
+   "corrige": "Solution :\n\n1. z₁ + z₂ = −1 + 4i et z₁ × z₂ = −5 + i.\n2. |z₁| = √((−2)² + 3²) = √13.\n3. z₁ / z₂ = z₁ × conj(z₂) / |z₂|² = (−2 + 3i)(1 − i) / 2 = 1/2 + (5/2)i.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "c79b8ea6-0849-4fe4-92ee-edc875dbc87d"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": true
+  },
+  {
+   "id": "26bb000b-0051-4c4f-bd2c-aa5d0f77100b",
+   "sujet": "On considère les nombres complexes z₁ = 1 + 2i et z₂ = 3 − i.\n\n1. Calculer z₁ + z₂ et z₁ × z₂.\n2. Calculer le module de z₁.\n3. Écrire le quotient z₁ / z₂ sous forme algébrique.",
+   "corrige": "Solution :\n\n1. z₁ + z₂ = 4 + i et z₁ × z₂ = 5 + 5i.\n2. |z₁| = √(1² + 2²) = √5.\n3. z₁ / z₂ = z₁ × conj(z₂) / |z₂|² = (1 + 2i)(3 + i) / 10 = 1/10 + (7/10)i.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "c79b8ea6-0849-4fe4-92ee-edc875dbc87d"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
    ],
    "session": 6,
    "niveauIntrinseque": "Facile",
    "tagExamen": false
   },
   {
-   "id": "5521a865-a345-4adf-af1b-2f73eb6ca11c",
-   "sujet": "**Exercice de démonstration #3** (Seconde, Analyse)\n\nCalculer f(x) = x² + 3 puis commenter.",
-   "corrige": "Corrigé de démonstration #3 : voir le cours.",
+   "id": "c3064c99-6ba1-4327-af13-b2b25da0eb9e",
+   "sujet": "L'espace est muni d'un repère orthonormé. Le plan P a pour équation 3x − 2y + z − 4 = 0.\n\n1. Donner un vecteur normal au plan P.\n2. Le point A(1 ; −1 ; −1) appartient-il à P ?\n3. Donner une représentation paramétrique de la droite D perpendiculaire à P passant par A.",
+   "corrige": "Solution :\n\n1. Un vecteur normal est n(3 ; −2 ; 1).\n2. 3×1 − 2×(−1) + 1×(−1) − 4 = 0 : A appartient à P.\n3. D est dirigée par n : x = 1 + 3t, y = −1 − 2t, z = −1 + t, avec t ∈ ℝ.",
    "affectations": [
     {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "c79b8ea6-0849-4fe4-92ee-edc875dbc87d"
     }
    ],
    "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "034b580b-08f0-41c4-a8c3-5296d29fd1f3",
+   "sujet": "L'espace est muni d'un repère orthonormé. Le plan P a pour équation x + 2y − z − 3 = 0.\n\n1. Donner un vecteur normal au plan P.\n2. Le point A(2 ; 1 ; 3) appartient-il à P ?\n3. Donner une représentation paramétrique de la droite D perpendiculaire à P passant par A.\n4. Calculer la distance du point A au plan P.",
+   "corrige": "Solution :\n\n1. Un vecteur normal est n(1 ; 2 ; −1).\n2. 1×2 + 2×1 − 1×3 − 3 = −2 ≠ 0 : A n'appartient pas à P.\n3. D est dirigée par n : x = 2 + t, y = 1 + 2t, z = 3 − t, avec t ∈ ℝ.\n4. d(A, P) = |−2|/√(1 + 4 + 1) = 2/√6 ≈ 0,816.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "c79b8ea6-0849-4fe4-92ee-edc875dbc87d"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "c63ebf20-8eee-4041-9616-dcadb3a60632",
+   "sujet": "L'espace est muni d'un repère orthonormé. Le plan P a pour équation 2x − y + 3z − 5 = 0.\n\n1. Donner un vecteur normal au plan P.\n2. Le point A(1 ; 0 ; 1) appartient-il à P ?\n3. Donner une représentation paramétrique de la droite D perpendiculaire à P passant par A.",
+   "corrige": "Solution :\n\n1. Un vecteur normal est n(2 ; −1 ; 3).\n2. 2×1 − 1×0 + 3×1 − 5 = 0 : A appartient à P.\n3. D est dirigée par n : x = 1 + 2t, y = −t, z = 1 + 3t, avec t ∈ ℝ.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "c79b8ea6-0849-4fe4-92ee-edc875dbc87d"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "7fca9e02-7ec4-4bad-9be3-28b756dbf586",
+   "sujet": "On considère le problème : y' = 2y + 4, avec y(0) = 1.\n\n1. Déterminer la solution y de ce problème.\n2. Calculer y(1) (valeur approchée à 10⁻² près).",
+   "corrige": "Solution :\n\n1. Une solution constante est y = −b/a = −2 ; les solutions sont y(x) = C e^(2x) − 2. La condition y(0) = 1 donne C = 3. Donc y(x) = 3e^(2x) − 2.\n2. y(1) = 3e^2 − 2 ≈ 20,17.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "2e7655ae-cc1e-4105-b4da-a6c327d62b2a",
+    "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "0d9dcc80-9a86-4e1d-a342-e8e896318e71",
+   "sujet": "On considère le problème : y' = (−1/2)y, avec y(0) = 4.\n\n1. Déterminer la solution y de ce problème.\n2. Calculer y(2) (valeur approchée à 10⁻² près).",
+   "corrige": "Solution :\n\n1. Les solutions de y' = ay sont les fonctions y(x) = C e^(ax). La condition y(0) = 4 donne C = 4. Donc y(x) = 4e^(−x/2).\n2. y(2) = 4e^(−1) ≈ 1,47.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "2e7655ae-cc1e-4105-b4da-a6c327d62b2a",
+    "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": true
+  },
+  {
+   "id": "c9ec8477-451b-4cd9-b53c-1fc98a187846",
+   "sujet": "On considère le problème : y' = 2y, avec y(0) = 3.\n\n1. Déterminer la solution y de ce problème.\n2. Calculer y(1) (valeur approchée à 10⁻² près).",
+   "corrige": "Solution :\n\n1. Les solutions de y' = ay sont les fonctions y(x) = C e^(ax). La condition y(0) = 3 donne C = 3. Donc y(x) = 3e^(2x).\n2. y(1) = 3e^2 ≈ 22,17.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "2e7655ae-cc1e-4105-b4da-a6c327d62b2a",
+    "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "15cb6e87-3855-414d-b407-b55aa295844c",
+   "sujet": "Soit f la fonction définie sur ℝ par f(x) = 4x² + 3x − 2.\n\n1. Déterminer une primitive F de f sur ℝ.\n2. Calculer l'intégrale I = ∫₀¹ f(x) dx.",
+   "corrige": "Solution :\n\n1. F(x) = (4/3)x³ + (3/2)x² − 2x.\n2. I = F(1) − F(0) = 5/6 − 0 = 5/6.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "44878bdc-9125-4c72-b857-8640e3b41a2d",
+   "sujet": "Soit f la fonction définie sur ℝ par f(x) = 6x² − 4x + 5.\n\n1. Déterminer une primitive F de f sur ℝ.\n2. Calculer l'intégrale I = ∫₀¹ f(x) dx.",
+   "corrige": "Solution :\n\n1. F(x) = 2x³ − 2x² + 5x.\n2. I = F(1) − F(0) = 5 − 0 = 5.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "051af365-80f5-4b3a-9087-c3433a7dcd8f",
+   "sujet": "Soit f la fonction définie sur ℝ par f(x) = 3x² + 2x + 1.\n\n1. Déterminer une primitive F de f sur ℝ.\n2. Calculer l'intégrale I = ∫₀¹ f(x) dx.",
+   "corrige": "Solution :\n\n1. F(x) = x³ + x² + x.\n2. I = F(1) − F(0) = 3 − 0 = 3.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "d7126332-693c-4ecc-b450-fb742264ac1b",
+   "sujet": "**Exponentielle et logarithme.** Résoudre dans ℝ :\n\n1. e^x = 20\n2. ln(x + 3) = ln(11)  (on précisera l'ensemble de définition)\n3. e^x ≥ 20",
+   "corrige": "Solution :\n\n1. e^x = 20 ⇔ x = ln(20) ≈ 2,996.\n2. L'équation a un sens pour x + 3 > 0, soit x > −3. Alors x + 3 = 11 ⇔ x = 8, valeur bien supérieure à −3.\n3. La fonction ln est croissante : e^x ≥ 20 ⇔ x ≥ ln(20). Ensemble des solutions : [ln(20) ; +∞[.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "4e9ac361-2af8-4eba-8eb1-f816e86b5f49",
+   "sujet": "**Exponentielle et logarithme.** Résoudre dans ℝ :\n\n1. e^x = 12\n2. ln(x + 2) = ln(9)  (on précisera l'ensemble de définition)\n3. e^x ≥ 12",
+   "corrige": "Solution :\n\n1. e^x = 12 ⇔ x = ln(12) ≈ 2,485.\n2. L'équation a un sens pour x + 2 > 0, soit x > −2. Alors x + 2 = 9 ⇔ x = 7, valeur bien supérieure à −2.\n3. La fonction ln est croissante : e^x ≥ 12 ⇔ x ≥ ln(12). Ensemble des solutions : [ln(12) ; +∞[.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": true
+  },
+  {
+   "id": "95259d65-b6c9-4096-bc45-2f599c24fdef",
+   "sujet": "**Exponentielle et logarithme.** Résoudre dans ℝ :\n\n1. e^x = 5\n2. ln(x + 1) = ln(7)  (on précisera l'ensemble de définition)\n3. e^x ≥ 5",
+   "corrige": "Solution :\n\n1. e^x = 5 ⇔ x = ln(5) ≈ 1,609.\n2. L'équation a un sens pour x + 1 > 0, soit x > −1. Alors x + 1 = 7 ⇔ x = 6, valeur bien supérieure à −1.\n3. La fonction ln est croissante : e^x ≥ 5 ⇔ x ≥ ln(5). Ensemble des solutions : [ln(5) ; +∞[.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "9dd9853a-5c10-4a5a-95fd-d62f49bd335e",
+   "sujet": "Soit f la fonction définie sur ℝ par f(x) = (x + 2)e^x.\n\n1. Calculer f'(x) et montrer que f'(x) = (x + 3)e^x.\n2. Étudier le signe de f'(x) et dresser le tableau de variations de f.\n3. En déduire le minimum de f ; donner une valeur approchée à 10⁻³ près.",
+   "corrige": "Solution :\n\n1. f = u×v avec u(x) = x + 2 et v(x) = e^x : f'(x) = 1×e^x + (x + 2)e^x = (x + 3)e^x.\n2. e^x > 0, donc f'(x) a le signe de x + 3 : f est décroissante sur ]−∞ ; −3] et croissante sur [−3 ; +∞[.\n3. Le minimum est f(−3) = −e^(−3) ≈ −0,050.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "386186dd-f6f3-4b8f-89b6-01cacb06c36c",
+   "sujet": "Soit f la fonction définie sur ℝ par f(x) = (x + 1)e^x.\n\n1. Calculer f'(x) et montrer que f'(x) = (x + 2)e^x.\n2. Étudier le signe de f'(x) et dresser le tableau de variations de f.\n3. En déduire le minimum de f ; donner une valeur approchée à 10⁻³ près.",
+   "corrige": "Solution :\n\n1. f = u×v avec u(x) = x + 1 et v(x) = e^x : f'(x) = 1×e^x + (x + 1)e^x = (x + 2)e^x.\n2. e^x > 0, donc f'(x) a le signe de x + 2 : f est décroissante sur ]−∞ ; −2] et croissante sur [−2 ; +∞[.\n3. Le minimum est f(−2) = −e^(−2) ≈ −0,135.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "6e9267a1-b668-452e-a30e-97bbea492bf9",
+   "sujet": "Soit f la fonction définie sur ℝ par f(x) = x e^x.\n\n1. Calculer f'(x) et montrer que f'(x) = (x + 1)e^x.\n2. Étudier le signe de f'(x) et dresser le tableau de variations de f.\n3. En déduire le minimum de f ; donner une valeur approchée à 10⁻³ près.",
+   "corrige": "Solution :\n\n1. f = u×v avec u(x) = x et v(x) = e^x : f'(x) = 1×e^x + xe^x = (x + 1)e^x.\n2. e^x > 0, donc f'(x) a le signe de x + 1 : f est décroissante sur ]−∞ ; −1] et croissante sur [−1 ; +∞[.\n3. Le minimum est f(−1) = −e^(−1) ≈ −0,368.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "0e0652b2-cab4-4802-84eb-ce6c6eba1b65",
+   "sujet": "Soit f la fonction définie sur ℝ \\ {1/2} par f(x) = (−x + 5)/(4x − 2).\n\n1. Déterminer la limite de f en +∞. Que peut-on en déduire pour la courbe de f ?\n2. Justifier que la droite d'équation x = 1/2 est asymptote verticale à la courbe.",
+   "corrige": "Solution :\n\n1. Pour x ≠ 0, f(x) = (−1 + 5/x) / (4 − 2/x) → −1/4 quand x → +∞. La droite d'équation y = −1/4 est asymptote horizontale à la courbe en +∞.\n2. Le dénominateur s'annule en x = 1/2 alors que le numérateur y vaut 9/2 ≠ 0 : f(x) tend vers ±∞ quand x se rapproche de 1/2, donc la droite x = 1/2 est asymptote verticale.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "5c3f6616-2551-4458-8876-01bc5f397e64",
+   "sujet": "Soit f la fonction définie sur ℝ \\ {−2} par f(x) = (3x − 2)/(2x + 4).\n\n1. Déterminer la limite de f en +∞. Que peut-on en déduire pour la courbe de f ?\n2. Justifier que la droite d'équation x = −2 est asymptote verticale à la courbe.",
+   "corrige": "Solution :\n\n1. Pour x ≠ 0, f(x) = (3 − 2/x) / (2 + 4/x) → 3/2 quand x → +∞. La droite d'équation y = 3/2 est asymptote horizontale à la courbe en +∞.\n2. Le dénominateur s'annule en x = −2 alors que le numérateur y vaut −8 ≠ 0 : f(x) tend vers ±∞ quand x se rapproche de −2, donc la droite x = −2 est asymptote verticale.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "83ebf6ef-ac83-4869-b398-267bae1e902e",
+   "sujet": "Soit f la fonction définie sur ℝ \\ {3} par f(x) = (2x + 1)/(x − 3).\n\n1. Déterminer la limite de f en +∞. Que peut-on en déduire pour la courbe de f ?\n2. Justifier que la droite d'équation x = 3 est asymptote verticale à la courbe.",
+   "corrige": "Solution :\n\n1. Pour x ≠ 0, f(x) = (2 + 1/x) / (1 − 3/x) → 2 quand x → +∞. La droite d'équation y = 2 est asymptote horizontale à la courbe en +∞.\n2. Le dénominateur s'annule en x = 3 alors que le numérateur y vaut 7 ≠ 0 : f(x) tend vers ±∞ quand x se rapproche de 3, donc la droite x = 3 est asymptote verticale.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "4f27fec3-7380-4694-ac9f-836a38e8fa13",
+   "sujet": "Soit (u_n) la suite géométrique de premier terme u₀ = −6 et de raison q = 2/3.\n\n1. Exprimer u_n en fonction de n, puis calculer u₅.\n2. Déterminer la limite de (u_n).\n3. Pour tout n, on pose S_n = u₀ + u₁ + … + u_n. Exprimer S_n en fonction de n puis déterminer la limite de (S_n).",
+   "corrige": "Solution :\n\n1. u_n = −6 × (2/3)^n ; u₅ = −6 × (2/3)⁵ = −64/81.\n2. Comme −1 < q < 1, (q^n) tend vers 0, donc (u_n) converge vers 0.\n3. S_n = u₀ × (1 − q^(n+1))/(1 − q) = −18 × (1 − (2/3)^(n+1)). Comme q^(n+1) → 0, S_n tend vers −18.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "382884a4-d69e-4052-acb6-d6febff173c5",
+   "sujet": "Soit (u_n) la suite géométrique de premier terme u₀ = 5 et de raison q = 1/3.\n\n1. Exprimer u_n en fonction de n, puis calculer u₅.\n2. Déterminer la limite de (u_n).\n3. Pour tout n, on pose S_n = u₀ + u₁ + … + u_n. Exprimer S_n en fonction de n puis déterminer la limite de (S_n).",
+   "corrige": "Solution :\n\n1. u_n = 5 × (1/3)^n ; u₅ = 5 × (1/3)⁵ = 5/243.\n2. Comme −1 < q < 1, (q^n) tend vers 0, donc (u_n) converge vers 0.\n3. S_n = u₀ × (1 − q^(n+1))/(1 − q) = 15/2 × (1 − (1/3)^(n+1)). Comme q^(n+1) → 0, S_n tend vers 15/2.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "a45fa75c-dd7b-4753-882c-48c50baa330f",
+   "sujet": "Soit (u_n) la suite géométrique de premier terme u₀ = 8 et de raison q = 1/2.\n\n1. Exprimer u_n en fonction de n, puis calculer u₅.\n2. Déterminer la limite de (u_n).\n3. Pour tout n, on pose S_n = u₀ + u₁ + … + u_n. Exprimer S_n en fonction de n puis déterminer la limite de (S_n).",
+   "corrige": "Solution :\n\n1. u_n = 8 × (1/2)^n ; u₅ = 8 × (1/2)⁵ = 1/4.\n2. Comme −1 < q < 1, (q^n) tend vers 0, donc (u_n) converge vers 0.\n3. S_n = u₀ × (1 − q^(n+1))/(1 − q) = 16 × (1 − (1/2)^(n+1)). Comme q^(n+1) → 0, S_n tend vers 16.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "1a1bf4a1-bb65-416b-8cda-2ceb8b7016ff",
+   "sujet": "Soit (u_n) la suite définie par u₀ = 2 et, pour tout entier naturel n, u_{n+1} = 3u_n − 2.\n\n1. Calculer u₁, u₂ et u₃.\n2. Démontrer par récurrence que, pour tout entier naturel n, u_n = 3^n + 1.",
+   "corrige": "Solution :\n\n1. u₁ = 4, u₂ = 10, u₃ = 28.\n2. **Initialisation** : pour n = 0, 3^0 + 1 = 2 = u₀ : la propriété est vraie.\n   **Hérédité** : supposons u_n = 3^n + 1 pour un entier n. Alors u_{n+1} = 3(3^n + 1) − 2 = 3^(n+1) + 3 − 2 = 3^(n+1) + 1. La propriété est vraie au rang n+1.\n   **Conclusion** : elle est vraie pour tout entier naturel n.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "85e926cc-12b3-49e3-94b0-ae9b08d64925",
+   "sujet": "Soit (u_n) la suite définie par u₀ = 0 et, pour tout entier naturel n, u_{n+1} = 2u_n + 1.\n\n1. Calculer u₁, u₂ et u₃.\n2. Démontrer par récurrence que, pour tout entier naturel n, u_n = 2^n − 1.",
+   "corrige": "Solution :\n\n1. u₁ = 1, u₂ = 3, u₃ = 7.\n2. **Initialisation** : pour n = 0, 2^0 − 1 = 0 = u₀ : la propriété est vraie.\n   **Hérédité** : supposons u_n = 2^n − 1 pour un entier n. Alors u_{n+1} = 2(2^n − 1) + 1 = 2^(n+1) − 2 + 1 = 2^(n+1) − 1. La propriété est vraie au rang n+1.\n   **Conclusion** : elle est vraie pour tout entier naturel n.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "43f04c98-f21f-41e8-984f-e31c068dc603",
+   "sujet": "Soit (u_n) la suite définie par u₀ = 1 et, pour tout entier naturel n, u_{n+1} = 2u_n + 1.\n\n1. Calculer u₁, u₂ et u₃.\n2. Démontrer par récurrence que, pour tout entier naturel n, u_n = 2^(n+1) − 1.",
+   "corrige": "Solution :\n\n1. u₁ = 3, u₂ = 7, u₃ = 15.\n2. **Initialisation** : pour n = 0, 2^(0+1) − 1 = 1 = u₀ : la propriété est vraie.\n   **Hérédité** : supposons u_n = 2^(n+1) − 1 pour un entier n. Alors u_{n+1} = 2(2^(n+1) − 1) + 1 = 2^(n+2) − 2 + 1 = 2^(n+2) − 1. La propriété est vraie au rang n+1.\n   **Conclusion** : elle est vraie pour tout entier naturel n.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
+    }
+   ],
+   "classeIds": [
+    "fc7045e6-ba50-4c67-a818-f79c83e09576"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "655ffa00-e5af-46a0-9533-3a9b66edccf7",
+   "sujet": "Soit X une variable aléatoire suivant la loi binomiale B(6 ; 1/4).\n\n1. Calculer P(X = 3).\n2. Calculer P(X ≥ 1).\n3. Calculer l'espérance E(X).",
+   "corrige": "Solution :\n\n1. P(X = 3) = C(6,3) × (1/4)^3 × (3/4)^3 = 20 × 1/64 × 27/64 = 135/1024.\n2. P(X ≥ 1) = 1 − P(X = 0) = 1 − (3/4)^6 = 3367/4096.\n3. E(X) = n × p = 6 × 1/4 = 3/2.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ab442927-7469-485f-a1d3-5f10ce01492b"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "70826920-2ab3-4727-a393-7074bd0a5c8d",
+   "sujet": "Soit X une variable aléatoire suivant la loi binomiale B(5 ; 1/3).\n\n1. Calculer P(X = 2).\n2. Calculer P(X ≥ 1).\n3. Calculer l'espérance E(X).",
+   "corrige": "Solution :\n\n1. P(X = 2) = C(5,2) × (1/3)^2 × (2/3)^3 = 10 × 1/9 × 8/27 = 80/243.\n2. P(X ≥ 1) = 1 − P(X = 0) = 1 − (2/3)^5 = 211/243.\n3. E(X) = n × p = 5 × 1/3 = 5/3.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ab442927-7469-485f-a1d3-5f10ce01492b"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": true
+  },
+  {
+   "id": "c6814ed9-996a-40fe-ad77-70b7f5f8810e",
+   "sujet": "Soit X une variable aléatoire suivant la loi binomiale B(4 ; 1/2).\n\n1. Calculer P(X = 2).\n2. Calculer P(X ≥ 1).\n3. Calculer l'espérance E(X).",
+   "corrige": "Solution :\n\n1. P(X = 2) = C(4,2) × (1/2)^2 × (1/2)^2 = 6 × 1/4 × 1/4 = 3/8.\n2. P(X ≥ 1) = 1 − P(X = 0) = 1 − (1/2)^4 = 15/16.\n3. E(X) = n × p = 4 × 1/2 = 2.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ab442927-7469-485f-a1d3-5f10ce01492b"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "5004f3e7-ac0a-438a-b7f8-3de6bc5af105",
+   "sujet": "Dans un lycée, une proportion 3/10 des élèves est en classe de Première (événement A). Parmi ces élèves, une proportion 2/3 pratique un sport (événement B) ; parmi les autres élèves, une proportion 1/5 pratique un sport. On choisit un élève au hasard.\n\n1. Calculer P(A ∩ B).\n2. Calculer P(B) à l'aide de la formule des probabilités totales.\n3. Sachant que l'élève pratique un sport, quelle est la probabilité qu'il soit en Première ?",
+   "corrige": "Solution :\n\n1. P(A ∩ B) = P(A) × P_A(B) = (3/10) × (2/3) = 1/5.\n2. P(B) = P(A ∩ B) + P(Ā ∩ B) = 1/5 + (7/10) × (1/5) = 17/50.\n3. P_B(A) = P(A ∩ B) / P(B) = (1/5) / (17/50) = 10/17.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ab442927-7469-485f-a1d3-5f10ce01492b"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "17951ea5-d18f-4b99-8de8-43ab041841ba",
+   "sujet": "Dans un lycée, une proportion 1/3 des élèves est en classe de Première (événement A). Parmi ces élèves, une proportion 3/4 pratique un sport (événement B) ; parmi les autres élèves, une proportion 1/2 pratique un sport. On choisit un élève au hasard.\n\n1. Calculer P(A ∩ B).\n2. Calculer P(B) à l'aide de la formule des probabilités totales.\n3. Sachant que l'élève pratique un sport, quelle est la probabilité qu'il soit en Première ?",
+   "corrige": "Solution :\n\n1. P(A ∩ B) = P(A) × P_A(B) = (1/3) × (3/4) = 1/4.\n2. P(B) = P(A ∩ B) + P(Ā ∩ B) = 1/4 + (2/3) × (1/2) = 7/12.\n3. P_B(A) = P(A ∩ B) / P(B) = (1/4) / (7/12) = 3/7.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ab442927-7469-485f-a1d3-5f10ce01492b"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": true
+  },
+  {
+   "id": "f3aa7fe9-93fd-4b01-856d-e73fe61c33bb",
+   "sujet": "Dans un lycée, une proportion 2/5 des élèves est en classe de Première (événement A). Parmi ces élèves, une proportion 1/2 pratique un sport (événement B) ; parmi les autres élèves, une proportion 1/10 pratique un sport. On choisit un élève au hasard.\n\n1. Calculer P(A ∩ B).\n2. Calculer P(B) à l'aide de la formule des probabilités totales.\n3. Sachant que l'élève pratique un sport, quelle est la probabilité qu'il soit en Première ?",
+   "corrige": "Solution :\n\n1. P(A ∩ B) = P(A) × P_A(B) = (2/5) × (1/2) = 1/5.\n2. P(B) = P(A ∩ B) + P(Ā ∩ B) = 1/5 + (3/5) × (1/10) = 13/50.\n3. P_B(A) = P(A ∩ B) / P(B) = (1/5) / (13/50) = 10/13.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ab442927-7469-485f-a1d3-5f10ce01492b"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "14886140-62cb-458d-8187-26a23e7a6980",
+   "sujet": "**Trigonométrie.** Résoudre dans l'intervalle [0 ; 2π] les équations suivantes :\n\n1. sin x = −1/2\n2. cos x = −1/2\n3. sin x = √2/2",
+   "corrige": "Solution :\n\n1. sin x = −1/2 ⇔ x ∈ { 7π/6 ; 11π/6 }.\n2. cos x = −1/2 ⇔ x ∈ { 2π/3 ; 4π/3 }.\n3. sin x = √2/2 ⇔ x ∈ { π/4 ; 3π/4 }.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "c79b8ea6-0849-4fe4-92ee-edc875dbc87d"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "ccc783c6-7e43-49f6-9414-a59aed04d67d",
+   "sujet": "**Trigonométrie.** Résoudre dans l'intervalle [0 ; 2π] les équations suivantes :\n\n1. sin x = √3/2\n2. cos x = −√2/2",
+   "corrige": "Solution :\n\n1. sin x = √3/2 ⇔ x ∈ { π/3 ; 2π/3 }.\n2. cos x = −√2/2 ⇔ x ∈ { 3π/4 ; 5π/4 }.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "c79b8ea6-0849-4fe4-92ee-edc875dbc87d"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": true
+  },
+  {
+   "id": "b2fbca38-f644-47f2-a083-4ecf1e5dccf4",
+   "sujet": "**Trigonométrie.** Résoudre dans l'intervalle [0 ; 2π] les équations suivantes :\n\n1. cos x = 1/2",
+   "corrige": "Solution :\n\n1. cos x = 1/2 ⇔ x ∈ { π/3 ; 5π/3 }.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "c79b8ea6-0849-4fe4-92ee-edc875dbc87d"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "8efa58f4-dbb0-4f4d-b352-de718ce07920",
+   "sujet": "Dans un repère orthonormé, on considère les vecteurs u(2 ; 3) et v(1 ; 5).\n\n1. Calculer le produit scalaire u · v.\n2. Les vecteurs u et v sont-ils orthogonaux ?\n3. Calculer les normes ‖u‖ et ‖v‖.\n4. Déterminer l'angle géométrique θ entre u et v, au dixième de degré près.",
+   "corrige": "Solution :\n\n1. u · v = 2×1 + 3×5 = 17.\n2. u · v = 17 ≠ 0 : ils ne sont pas orthogonaux.\n3. ‖u‖ = √13 et ‖v‖ = √26.\n4. cos θ = u · v / (‖u‖ × ‖v‖) = 17/√338 ≈ 0,9247, donc θ ≈ 22,4°.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "c79b8ea6-0849-4fe4-92ee-edc875dbc87d"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "635fd3e9-5ed2-4be4-8bc9-4270efcceb37",
+   "sujet": "Dans un repère orthonormé, on considère les vecteurs u(2 ; 1) et v(1 ; 3).\n\n1. Calculer le produit scalaire u · v.\n2. Les vecteurs u et v sont-ils orthogonaux ?\n3. Calculer les normes ‖u‖ et ‖v‖.\n4. Déterminer l'angle géométrique θ entre u et v, au dixième de degré près.",
+   "corrige": "Solution :\n\n1. u · v = 2×1 + 1×3 = 5.\n2. u · v = 5 ≠ 0 : ils ne sont pas orthogonaux.\n3. ‖u‖ = √5 et ‖v‖ = √10.\n4. cos θ = u · v / (‖u‖ × ‖v‖) = 5/√50 ≈ 0,7071, donc θ ≈ 45,0°.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "c79b8ea6-0849-4fe4-92ee-edc875dbc87d"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "f7f24ca3-3ade-4523-a4cb-529f985d4ebf",
+   "sujet": "Dans un repère orthonormé, on considère les vecteurs u(3 ; 4) et v(−4 ; 3).\n\n1. Calculer le produit scalaire u · v.\n2. Les vecteurs u et v sont-ils orthogonaux ?\n3. Calculer les normes ‖u‖ et ‖v‖.",
+   "corrige": "Solution :\n\n1. u · v = 3×(−4) + 4×3 = 0.\n2. u · v = 0 : les vecteurs sont orthogonaux.\n3. ‖u‖ = √25 = 5 et ‖v‖ = √25 = 5.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "c79b8ea6-0849-4fe4-92ee-edc875dbc87d"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "2bc1ef4f-fe9e-4f68-81ac-bc05b6a55edd",
+   "sujet": "Soit f la fonction définie sur ℝ par f(x) = x³ − 27x.\n\n1. Calculer f'(x) et la factoriser.\n2. Étudier le signe de f'(x) et dresser le tableau de variations de f.\n3. Préciser les extremums locaux de f.",
+   "corrige": "Solution :\n\n1. f'(x) = 3x² − 27 = 3(x − 3)(x + 3).\n2. f'(x) est positif pour x ≤ −3 et pour x ≥ 3, négatif entre −3 et 3. f est donc croissante sur ]−∞ ; −3], décroissante sur [−3 ; 3], croissante sur [3 ; +∞[.\n3. Maximum local f(−3) = 54 ; minimum local f(3) = −54.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "bfe12763-51f5-49c2-8888-e57e59b605e8",
+   "sujet": "Soit f la fonction définie sur ℝ par f(x) = x³ − 12x.\n\n1. Calculer f'(x) et la factoriser.\n2. Étudier le signe de f'(x) et dresser le tableau de variations de f.\n3. Préciser les extremums locaux de f.",
+   "corrige": "Solution :\n\n1. f'(x) = 3x² − 12 = 3(x − 2)(x + 2).\n2. f'(x) est positif pour x ≤ −2 et pour x ≥ 2, négatif entre −2 et 2. f est donc croissante sur ]−∞ ; −2], décroissante sur [−2 ; 2], croissante sur [2 ; +∞[.\n3. Maximum local f(−2) = 16 ; minimum local f(2) = −16.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "72b430bf-a068-4f08-a24b-5a666d2f26a5",
+   "sujet": "Soit f la fonction définie sur ℝ par f(x) = x³ − 3x.\n\n1. Calculer f'(x) et la factoriser.\n2. Étudier le signe de f'(x) et dresser le tableau de variations de f.\n3. Préciser les extremums locaux de f.",
+   "corrige": "Solution :\n\n1. f'(x) = 3x² − 3 = 3(x − 1)(x + 1).\n2. f'(x) est positif pour x ≤ −1 et pour x ≥ 1, négatif entre −1 et 1. f est donc croissante sur ]−∞ ; −1], décroissante sur [−1 ; 1], croissante sur [1 ; +∞[.\n3. Maximum local f(−1) = 2 ; minimum local f(1) = −2.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "70d2ac8c-71cf-433b-a97f-6d20b54d675c",
+   "sujet": "Soit f la fonction définie sur ℝ par f(x) = −x³ + 4x² + 3x − 2.\n\n1. Calculer f'(x).\n2. Calculer f(1) et f'(1).\n3. En déduire une équation de la tangente T à la courbe de f au point d'abscisse 1.",
+   "corrige": "Solution :\n\n1. f'(x) = −3x² + 8x + 3.\n2. f(1) = 4 et f'(1) = 8.\n3. T : y = f'(1)(x − 1) + f(1) = 8(x − 1) + 4, soit y = 8x − 4.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "1e5f7dc3-50aa-4f2b-b535-faa5b325c2b3",
+   "sujet": "Soit f la fonction définie sur ℝ par f(x) = 2x³ + x² − 4x + 5.\n\n1. Calculer f'(x).\n2. Calculer f(1) et f'(1).\n3. En déduire une équation de la tangente T à la courbe de f au point d'abscisse 1.",
+   "corrige": "Solution :\n\n1. f'(x) = 6x² + 2x − 4.\n2. f(1) = 4 et f'(1) = 4.\n3. T : y = f'(1)(x − 1) + f(1) = 4(x − 1) + 4, soit y = 4x.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "b06a74ce-a908-4660-a1ad-3b3b98ae159a",
+   "sujet": "Soit f la fonction définie sur ℝ par f(x) = x³ − 3x² + 2.\n\n1. Calculer f'(x).\n2. Calculer f(1) et f'(1).\n3. En déduire une équation de la tangente T à la courbe de f au point d'abscisse 1.\n4. Résoudre f'(x) = 0.",
+   "corrige": "Solution :\n\n1. f'(x) = 3x² − 6x.\n2. f(1) = 0 et f'(1) = −3.\n3. T : y = f'(1)(x − 1) + f(1) = −3(x − 1) + 0, soit y = −3x + 3.\n4. f'(x) = 3x² − 6x = 3x(x − 2) = 0 ⇔ x = 0 ou x = 2.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "4b6bdc2c-617a-43bc-af5c-4bf89a78029b",
+   "sujet": "Soit (u_n) la suite arithmétique de premier terme u₀ = 12 et de raison r = −2.\n\n1. Exprimer u_n en fonction de n.\n2. Calculer u₁₀.\n3. Calculer S = u₀ + u₁ + … + u₁₀.",
+   "corrige": "Solution :\n\n1. u_n = u₀ + n×r = −2n + 12.\n2. u₁₀ = 12 + 10×(−2) = −8.\n3. S = 11 × (u₀ + u₁₀)/2 = 11 × (12 − 8)/2 = 22.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "e104ab9b-5923-49db-b8b4-f9cea8419894",
+   "sujet": "Soit (u_n) la suite arithmétique de premier terme u₀ = −4 et de raison r = 3.\n\n1. Exprimer u_n en fonction de n.\n2. Calculer u₁₀.\n3. Calculer S = u₀ + u₁ + … + u₁₀.\n4. Déterminer le plus petit entier n tel que u_n > 100.",
+   "corrige": "Solution :\n\n1. u_n = u₀ + n×r = 3n − 4.\n2. u₁₀ = −4 + 10×3 = 26.\n3. S = 11 × (u₀ + u₁₀)/2 = 11 × (−4 + 26)/2 = 121.\n4. 3n − 4 > 100 ⇔ n > 104/3 ; le plus petit entier est n = 35 (u_35 = 101).",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": true
+  },
+  {
+   "id": "e6ad5a62-9008-4e5a-9e39-f3c9e16a6b3e",
+   "sujet": "Soit (u_n) la suite arithmétique de premier terme u₀ = 3 et de raison r = 2.\n\n1. Exprimer u_n en fonction de n.\n2. Calculer u₁₀.\n3. Calculer S = u₀ + u₁ + … + u₁₀.\n4. Déterminer le plus petit entier n tel que u_n > 50.",
+   "corrige": "Solution :\n\n1. u_n = u₀ + n×r = 2n + 3.\n2. u₁₀ = 3 + 10×2 = 23.\n3. S = 11 × (u₀ + u₁₀)/2 = 11 × (3 + 23)/2 = 143.\n4. 2n + 3 > 50 ⇔ n > 47/2 ; le plus petit entier est n = 24 (u_24 = 51).",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "54fe25ea-8bb0-49ba-8f86-392ef96d9c7c",
+   "sujet": "Soit f la fonction définie sur ℝ par f(x) = 2x² + 4x − 6.\n\n1. Calculer le discriminant Δ de f(x).\n2. Résoudre l'équation f(x) = 0.\n3. En déduire le signe de f(x) selon les valeurs de x.",
+   "corrige": "Solution :\n\n1. Δ = b² − 4ac = 4² − 4×2×(−6) = 64.\n2. Δ > 0 : deux racines x₁ = (−4 − 8)/4 = −3 et x₂ = (−4 + 8)/4 = 1.\n3. Le coefficient de x² est positif : f(x) est positif à l'extérieur des racines et négatif entre −3 et 1.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "9363ac34-ebb2-4369-bcae-5ffa8c0a78b7"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "b60663e0-f901-4bd3-920c-23a00954963e",
+   "sujet": "Soit f la fonction définie sur ℝ par f(x) = x² − 3x − 4.\n\n1. Calculer le discriminant Δ de f(x).\n2. Résoudre l'équation f(x) = 0.\n3. En déduire le signe de f(x) selon les valeurs de x.",
+   "corrige": "Solution :\n\n1. Δ = b² − 4ac = (−3)² − 4×1×(−4) = 25.\n2. Δ > 0 : deux racines x₁ = (3 − 5)/2 = −1 et x₂ = (3 + 5)/2 = 4.\n3. Le coefficient de x² est positif : f(x) est positif à l'extérieur des racines et négatif entre −1 et 4.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "fae799a5-9017-4eb1-b9ff-c29a4fb67a14",
+   "sujet": "Soit f la fonction définie sur ℝ par f(x) = x² − 5x + 6.\n\n1. Calculer le discriminant Δ de f(x).\n2. Résoudre l'équation f(x) = 0.\n3. En déduire le signe de f(x) selon les valeurs de x.",
+   "corrige": "Solution :\n\n1. Δ = b² − 4ac = (−5)² − 4×1×6 = 1.\n2. Δ > 0 : deux racines x₁ = (5 − 1)/2 = 2 et x₂ = (5 + 1)/2 = 3.\n3. Le coefficient de x² est positif : f(x) est positif à l'extérieur des racines et négatif entre 2 et 3.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
+    }
+   ],
+   "classeIds": [
+    "75d9e823-7410-4546-855e-0a26b2735890"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "b78baf7a-efed-4734-94e9-ee1f0cf8463d",
+   "sujet": "Voici les notes obtenues par 9 élèves à un contrôle : 4 ; 17 ; 9 ; 12 ; 14 ; 7 ; 19 ; 10 ; 15.\n\n1. Calculer la moyenne de cette série.\n2. Déterminer sa médiane.\n3. Calculer son étendue.\n4. Déterminer les premier et troisième quartiles.",
+   "corrige": "Solution :\n\n1. Moyenne = 107/9 ≈ 11,89.\n2. Série ordonnée : 4 ; 7 ; 9 ; 10 ; 12 ; 14 ; 15 ; 17 ; 19. Effectif impair (9) : la médiane est la valeur de rang 5, soit 12.\n3. Étendue = 19 − 4 = 15.\n4. Q1 est la valeur de rang 3 : Q1 = 9. Q3 est la valeur de rang 7 : Q3 = 15.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ab442927-7469-485f-a1d3-5f10ce01492b"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "21c0eb8e-0ecc-41e6-b798-15ace859b458",
+   "sujet": "Voici les notes obtenues par 9 élèves à un contrôle : 6 ; 15 ; 9 ; 12 ; 11 ; 8 ; 16 ; 10 ; 12.\n\n1. Calculer la moyenne de cette série.\n2. Déterminer sa médiane.\n3. Calculer son étendue.",
+   "corrige": "Solution :\n\n1. Moyenne = 99/9 = 11.\n2. Série ordonnée : 6 ; 8 ; 9 ; 10 ; 11 ; 12 ; 12 ; 15 ; 16. Effectif impair (9) : la médiane est la valeur de rang 5, soit 11.\n3. Étendue = 16 − 6 = 10.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ab442927-7469-485f-a1d3-5f10ce01492b"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": true
+  },
+  {
+   "id": "560b8958-5af3-40bd-8ddf-8f1f34bd06fd",
+   "sujet": "Voici les notes obtenues par 7 élèves à un contrôle : 12 ; 8 ; 13 ; 10 ; 13 ; 9 ; 12.\n\n1. Calculer la moyenne de cette série.\n2. Déterminer sa médiane.\n3. Calculer son étendue.",
+   "corrige": "Solution :\n\n1. Moyenne = 77/7 = 11.\n2. Série ordonnée : 8 ; 9 ; 10 ; 12 ; 12 ; 13 ; 13. Effectif impair (7) : la médiane est la valeur de rang 4, soit 12.\n3. Étendue = 13 − 8 = 5.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ab442927-7469-485f-a1d3-5f10ce01492b"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "516a1de0-c333-41ef-9842-2b9a791de3f2",
+   "sujet": "Une urne contient 7 boules rouges, 9 boules bleues et 4 boules vertes, indiscernables au toucher. On tire une boule au hasard. On tire ensuite deux boules successivement, **sans remise**.\n\n1. Calculer la probabilité de tirer une boule rouge.\n2. Calculer la probabilité de ne pas tirer une boule rouge.\n3. Calculer la probabilité de tirer une boule rouge ou une boule verte.\n4. Calculer la probabilité d'obtenir deux boules rouges.",
+   "corrige": "Solution :\n\n1. P(R) = 7/20.\n2. P(non R) = 1 − 7/20 = 13/20.\n3. P(R ou V) = (7 + 4)/20 = 11/20.\n4. P = 7/20 × 6/19 = 21/190.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ab442927-7469-485f-a1d3-5f10ce01492b"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
    ],
    "specialiteIds": [
     "SPECIAL:Aucune"
    ],
    "session": 4,
    "niveauIntrinseque": "Difficile",
-   "tagExamen": false
+   "tagExamen": true
   },
   {
-   "id": "7e70a280-c24f-4700-81bc-839d939ae974",
-   "sujet": "**Exercice de démonstration #2** (Seconde, Analyse)\n\nCalculer f(x) = x² + 2 puis commenter.",
-   "corrige": "Corrigé de démonstration #2 : voir le cours.",
+   "id": "90edbcd8-3611-4a9d-b8ee-aeffea63f6fa",
+   "sujet": "Une urne contient 6 boules rouges, 4 boules bleues et 5 boules vertes, indiscernables au toucher. On tire une boule au hasard. On répète l'expérience deux fois, **avec remise**.\n\n1. Calculer la probabilité de tirer une boule rouge.\n2. Calculer la probabilité de ne pas tirer une boule rouge.\n3. Calculer la probabilité de tirer une boule rouge ou une boule verte.\n4. Calculer la probabilité d'obtenir deux boules rouges.",
+   "corrige": "Solution :\n\n1. P(R) = 6/15 = 2/5.\n2. P(non R) = 1 − 2/5 = 3/5.\n3. P(R ou V) = (6 + 5)/15 = 11/15.\n4. Tirages indépendants : P = (2/5)² = 4/25.",
    "affectations": [
     {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "f8ed6f86-ea4b-47df-a81b-487506707dc2"
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ab442927-7469-485f-a1d3-5f10ce01492b"
     }
    ],
    "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
    ],
    "specialiteIds": [
     "SPECIAL:Aucune"
    ],
-   "session": null,
+   "session": 4,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "f9f6fa59-d2a0-4183-b26e-0d2a2af058f5",
+   "sujet": "Une urne contient 3 boules rouges, 5 boules bleues et 2 boules vertes, indiscernables au toucher. On tire une boule au hasard.\n\n1. Calculer la probabilité de tirer une boule rouge.\n2. Calculer la probabilité de ne pas tirer une boule rouge.\n3. Calculer la probabilité de tirer une boule rouge ou une boule verte.",
+   "corrige": "Solution :\n\n1. P(R) = 3/10.\n2. P(non R) = 1 − 3/10 = 7/10.\n3. P(R ou V) = (3 + 2)/10 = 1/2.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ab442927-7469-485f-a1d3-5f10ce01492b"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
    "niveauIntrinseque": "Facile",
    "tagExamen": false
   },
   {
-   "id": "772d839b-7932-4d8e-a6a3-347ccca94245",
-   "sujet": "**Exercice de démonstration #1** (Première, Algèbre)\n\nCalculer f(x) = x² + 1 puis commenter.",
-   "corrige": "Corrigé de démonstration #1 : voir le cours.",
+   "id": "62b51499-10be-43ec-b668-30e93c8c5ccf",
+   "sujet": "Dans un repère orthonormé, on donne A(0 ; −2), B(3 ; 1) et C(2 ; 5).\n\n1. Déterminer les coordonnées du point D tel que ABCD soit un parallélogramme.\n2. Vérifier que les diagonales [AC] et [BD] ont le même milieu.",
+   "corrige": "Solution :\n\n1. ABCD est un parallélogramme ⇔ le vecteur AB est égal au vecteur DC. AB a pour coordonnées (3 ; 3) ; en notant D(x ; y), DC a pour coordonnées (2 − x ; 5 − y). On obtient D(−1 ; 2).\n2. Milieu de [AC] : (1 ; 3/2). Milieu de [BD] : (1 ; 3/2). Les deux milieux sont confondus.",
    "affectations": [
     {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "20c482ed-dd21-4cd8-ab33-112fc7ed11d1"
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "c79b8ea6-0849-4fe4-92ee-edc875dbc87d"
     }
    ],
    "classeIds": [
-    "55a1a255-b158-4ca2-af87-4a497666966c"
-   ],
-   "specialiteIds": [
-    "1aa9639e-c956-4a61-b3c8-e56e9ffe8ad2"
-   ],
-   "session": 5,
-   "niveauIntrinseque": "Difficile",
-   "tagExamen": false
-  },
-  {
-   "id": "0c890adc-2f74-41fc-98c6-6dc1e87c4738",
-   "sujet": "**Exercice de démonstration #0** (Seconde, Géométrie)\n\nCalculer f(x) = x² + 0 puis commenter.",
-   "corrige": "Corrigé de démonstration #0 : voir le cours.",
-   "affectations": [
-    {
-     "matiereId": "9d31790e-8b5c-4f30-b703-eab241809658",
-     "partieId": "21b3d048-2e4a-4104-8f4c-7705eb3f852c"
-    }
-   ],
-   "classeIds": [
-    "dc6267af-ed75-4c4e-9876-e0eb31bc215f"
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
    ],
    "specialiteIds": [
     "SPECIAL:Aucune"
    ],
-   "session": null,
+   "session": 5,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "72d4705a-d785-401c-b94a-ef59ec01ae0d",
+   "sujet": "Dans un repère orthonormé, on donne A(−1 ; 2), B(2 ; 0) et C(4 ; 3).\n\n1. Déterminer les coordonnées du point D tel que ABCD soit un parallélogramme.\n2. Vérifier que les diagonales [AC] et [BD] ont le même milieu.",
+   "corrige": "Solution :\n\n1. ABCD est un parallélogramme ⇔ le vecteur AB est égal au vecteur DC. AB a pour coordonnées (3 ; −2) ; en notant D(x ; y), DC a pour coordonnées (4 − x ; 3 − y). On obtient D(1 ; 5).\n2. Milieu de [AC] : (3/2 ; 5/2). Milieu de [BD] : (3/2 ; 5/2). Les deux milieux sont confondus.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "c79b8ea6-0849-4fe4-92ee-edc875dbc87d"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "2a7f07f7-7218-4890-ab78-63bfa4b74eb0",
+   "sujet": "Dans un repère orthonormé, on donne A(1 ; 1), B(4 ; 2) et C(5 ; 5).\n\n1. Déterminer les coordonnées du point D tel que ABCD soit un parallélogramme.\n2. Vérifier que les diagonales [AC] et [BD] ont le même milieu.",
+   "corrige": "Solution :\n\n1. ABCD est un parallélogramme ⇔ le vecteur AB est égal au vecteur DC. AB a pour coordonnées (3 ; 1) ; en notant D(x ; y), DC a pour coordonnées (5 − x ; 5 − y). On obtient D(2 ; 4).\n2. Milieu de [AC] : (3 ; 3). Milieu de [BD] : (3 ; 3). Les deux milieux sont confondus.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "c79b8ea6-0849-4fe4-92ee-edc875dbc87d"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "052e7ae0-0460-449b-99cb-e47f01c4f33c",
+   "sujet": "Dans un repère orthonormé, on considère les points A(−3 ; −1) et B(5 ; 5).\n\n1. Calculer la distance AB.\n2. Déterminer les coordonnées du milieu I du segment [AB].",
+   "corrige": "Solution :\n\n1. AB = √((5 − (−3))² + (5 − (−1))²) = √(64 + 36) = √100 = 10.\n2. I a pour coordonnées ((−3 + 5)/2 ; (−1 + 5)/2) = (1 ; 2).",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "c79b8ea6-0849-4fe4-92ee-edc875dbc87d"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "f846ee1c-dcde-4579-b89a-b039cfc3dc88",
+   "sujet": "Dans un repère orthonormé, on considère les points A(−2 ; 1) et B(3 ; −4).\n\n1. Calculer la distance AB.\n2. Déterminer les coordonnées du milieu I du segment [AB].",
+   "corrige": "Solution :\n\n1. AB = √((3 − (−2))² + (−4 − 1)²) = √(25 + 25) = √50 = 5√2.\n2. I a pour coordonnées ((−2 + 3)/2 ; (1 + (−4))/2) = (1/2 ; −3/2).",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "c79b8ea6-0849-4fe4-92ee-edc875dbc87d"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": true
+  },
+  {
+   "id": "98d82c78-301a-474a-8f37-0f9930f07494",
+   "sujet": "Dans un repère orthonormé, on considère les points A(1 ; 2) et B(4 ; 6).\n\n1. Calculer la distance AB.\n2. Déterminer les coordonnées du milieu I du segment [AB].",
+   "corrige": "Solution :\n\n1. AB = √((4 − 1)² + (6 − 2)²) = √(9 + 16) = √25 = 5.\n2. I a pour coordonnées ((1 + 4)/2 ; (2 + 6)/2) = (5/2 ; 4).",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "c79b8ea6-0849-4fe4-92ee-edc875dbc87d"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "0c3ac993-d8ed-4e13-8f52-1154bf578d55",
+   "sujet": "Soit f la fonction définie sur ℝ par f(x) = x² − 10x.\n\n1. Factoriser f(x).\n2. Résoudre l'équation f(x) = 0.\n3. Montrer que f(x) = (x − 5)² − 25. En déduire le minimum de f.\n4. Résoudre l'équation f(x) = 24.",
+   "corrige": "Solution :\n\n1. f(x) = x(x − 10).\n2. x(x − 10) = 0 ⇔ x = 0 ou x = 10.\n3. (x − 5)² − 25 = x² − 10x + 25 − 25 = f(x). Un carré est positif ou nul, donc f(x) ≥ −25, avec égalité pour x = 5 : le minimum de f est −25.\n4. f(x) = 24 ⇔ (x − 5)² = 49 ⇔ x − 5 = 7 ou x − 5 = −7 ⇔ x = 12 ou x = −2.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "c0883d36-3cc4-47f8-8749-6033d8eac1b6",
+   "sujet": "Soit f la fonction définie sur ℝ par f(x) = x² − 6x.\n\n1. Factoriser f(x).\n2. Résoudre l'équation f(x) = 0.\n3. Montrer que f(x) = (x − 3)² − 9. En déduire le minimum de f.\n4. Résoudre l'équation f(x) = 16.",
+   "corrige": "Solution :\n\n1. f(x) = x(x − 6).\n2. x(x − 6) = 0 ⇔ x = 0 ou x = 6.\n3. (x − 3)² − 9 = x² − 6x + 9 − 9 = f(x). Un carré est positif ou nul, donc f(x) ≥ −9, avec égalité pour x = 3 : le minimum de f est −9.\n4. f(x) = 16 ⇔ (x − 3)² = 25 ⇔ x − 3 = 5 ou x − 3 = −5 ⇔ x = 8 ou x = −2.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "49bd7e8e-7dbe-4b6c-88d2-b3a56b6c8545",
+   "sujet": "Soit f la fonction définie sur ℝ par f(x) = x² − 4x.\n\n1. Factoriser f(x).\n2. Résoudre l'équation f(x) = 0.\n3. Montrer que f(x) = (x − 2)² − 4. En déduire le minimum de f.",
+   "corrige": "Solution :\n\n1. f(x) = x(x − 4).\n2. x(x − 4) = 0 ⇔ x = 0 ou x = 4.\n3. (x − 2)² − 4 = x² − 4x + 4 − 4 = f(x). Un carré est positif ou nul, donc f(x) ≥ −4, avec égalité pour x = 2 : le minimum de f est −4.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "ad7af5c0-c759-438d-8bd7-b1e54cf858be",
+   "sujet": "Soit f la fonction affine définie sur ℝ par f(x) = (5/2)x − 1.\n\n1. Calculer f(4).\n2. Déterminer l'antécédent de 14 par f.\n3. Donner le sens de variation de f, en justifiant.",
+   "corrige": "Solution :\n\n1. f(4) = 9.\n2. f(x) = 14 ⇔ (5/2)x − 1 = 14 ⇔ x = 6.\n3. Le coefficient directeur 5/2 est positif : f est strictement croissante sur ℝ.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "0e30ac47-5a97-440c-b254-aed3a1f62266",
+   "sujet": "Soit f la fonction affine définie sur ℝ par f(x) = −3x + 4.\n\n1. Calculer f(2).\n2. Déterminer l'antécédent de −5 par f.\n3. Donner le sens de variation de f, en justifiant.",
+   "corrige": "Solution :\n\n1. f(2) = −2.\n2. f(x) = −5 ⇔ −3x + 4 = −5 ⇔ x = 3.\n3. Le coefficient directeur −3 est négatif : f est strictement décroissante sur ℝ.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "8a439ffe-f2eb-4a7b-937e-ecc4e37e6172",
+   "sujet": "Soit f la fonction affine définie sur ℝ par f(x) = 2x + 1.\n\n1. Calculer f(3).\n2. Déterminer l'antécédent de 9 par f.\n3. Donner le sens de variation de f, en justifiant.",
+   "corrige": "Solution :\n\n1. f(3) = 7.\n2. f(x) = 9 ⇔ 2x + 1 = 9 ⇔ x = 4.\n3. Le coefficient directeur 2 est positif : f est strictement croissante sur ℝ.",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "34aed3c5-817c-43a2-b935-ea5c89e80ee2"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "3b5e3d6d-dcca-4221-a8b3-a8a2b09cc876",
+   "sujet": "**Inéquations.** Résoudre dans ℝ, puis donner l'ensemble des solutions sous forme d'intervalle :\n\n1. −4x + 3 < 15\n2. 5x + 2 ≥ −8\n3. −3x + 1 > 7",
+   "corrige": "Solution :\n\n1. −4x + 3 < 15 ⇔ −4x < 12 ⇔ x > −3. Ensemble des solutions : ]−3 ; +∞[. (On change le sens de l'inégalité car on divise par un nombre négatif.)\n2. 5x + 2 ≥ −8 ⇔ 5x ≥ −10 ⇔ x ≥ −2. Ensemble des solutions : [−2 ; +∞[.\n3. −3x + 1 > 7 ⇔ −3x > 6 ⇔ x < −2. Ensemble des solutions : ]−∞ ; −2[. (On change le sens de l'inégalité car on divise par un nombre négatif.)",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "e97c59d4-836f-4d32-a382-81a82c54ecae",
+   "sujet": "**Inéquations.** Résoudre dans ℝ, puis donner l'ensemble des solutions sous forme d'intervalle :\n\n1. 3x − 1 > 8\n2. −2x + 5 ≤ 1",
+   "corrige": "Solution :\n\n1. 3x − 1 > 8 ⇔ 3x > 9 ⇔ x > 3. Ensemble des solutions : ]3 ; +∞[.\n2. −2x + 5 ≤ 1 ⇔ −2x ≤ −4 ⇔ x ≥ 2. Ensemble des solutions : [2 ; +∞[. (On change le sens de l'inégalité car on divise par un nombre négatif.)",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": true
+  },
+  {
+   "id": "34d223e5-9c19-4899-86df-c66920a5b788",
+   "sujet": "**Inéquations.** Résoudre dans ℝ, puis donner l'ensemble des solutions sous forme d'intervalle :\n\n1. 2x + 3 ≤ 11",
+   "corrige": "Solution :\n\n1. 2x + 3 ≤ 11 ⇔ 2x ≤ 8 ⇔ x ≤ 4. Ensemble des solutions : ]−∞ ; 4].",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "575003dc-c8ec-4638-8009-be27dfea7c85",
+   "sujet": "**Développer et réduire** chacune des expressions suivantes :\n\n1. (3x − 2)(2x + 5)\n2. (2x + 1)²\n3. (x − 5)(x + 5)",
+   "corrige": "Solution :\n\n1. (3x − 2)(2x + 5) = 6x² + 11x − 10\n2. (2x + 1)² = 4x² + 4x + 1\n3. (x − 5)(x + 5) = x² − 25",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "17034993-03dd-4a8e-900f-973a193ea29f",
+   "sujet": "**Développer et réduire** chacune des expressions suivantes :\n\n1. (x + 2)(x − 7)\n2. (2x + 3)(x − 1)\n3. (x + 6)²",
+   "corrige": "Solution :\n\n1. (x + 2)(x − 7) = x² − 5x − 14\n2. (2x + 3)(x − 1) = 2x² + x − 3\n3. (x + 6)² = x² + 12x + 36",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "609dffee-e69e-4585-a881-dd97e1fc50bf",
+   "sujet": "**Développer et réduire** chacune des expressions suivantes :\n\n1. (x + 3)(x + 5)\n2. (x − 4)²",
+   "corrige": "Solution :\n\n1. (x + 3)(x + 5) = x² + 8x + 15\n2. (x − 4)² = x² − 8x + 16",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "adf70f03-3c40-4c10-a382-b24c1d9fdace",
+   "sujet": "**Équations du premier degré.** Résoudre dans ℝ les équations suivantes :\n\n1. −3x + 8 = 2x − 7\n2. 9x − 4 = −5x + 11\n3. 2x + 5 = 7x − 5",
+   "corrige": "Solution :\n\n1. −3x + 8 = 2x − 7 ⇔ −5x = −15 ⇔ x = 3\n2. 9x − 4 = −5x + 11 ⇔ 14x = 15 ⇔ x = 15/14\n3. 2x + 5 = 7x − 5 ⇔ −5x = −10 ⇔ x = 2",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "cb952025-82c5-4802-b763-8ca1d38878b3",
+   "sujet": "**Équations du premier degré.** Résoudre dans ℝ les équations suivantes :\n\n1. 4x + 3 = −x + 13\n2. 6x − 5 = 2x + 9\n3. 7x + 1 = 3x − 4",
+   "corrige": "Solution :\n\n1. 4x + 3 = −x + 13 ⇔ 5x = 10 ⇔ x = 2\n2. 6x − 5 = 2x + 9 ⇔ 4x = 14 ⇔ x = 7/2\n3. 7x + 1 = 3x − 4 ⇔ 4x = −5 ⇔ x = −5/4",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "ce7d6b05-5cbf-4789-bb34-f5ae287427f7",
+   "sujet": "**Équations du premier degré.** Résoudre dans ℝ les équations suivantes :\n\n1. 3x + 7 = x + 15\n2. 5x − 2 = 2x + 10",
+   "corrige": "Solution :\n\n1. 3x + 7 = x + 15 ⇔ 2x = 8 ⇔ x = 4\n2. 5x − 2 = 2x + 10 ⇔ 3x = 12 ⇔ x = 4",
+   "affectations": [
+    {
+     "matiereId": "6bfe83b2-2305-4139-a10f-048b54d3e717",
+     "partieId": "ddac792c-8e05-4aa9-8edd-4c61121efd55"
+    }
+   ],
+   "classeIds": [
+    "d28cae3e-de5a-40c2-a4ff-3d0f0c00dbb0"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
    "niveauIntrinseque": "Facile",
    "tagExamen": false
   }

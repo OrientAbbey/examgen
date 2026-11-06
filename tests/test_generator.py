@@ -235,3 +235,27 @@ def test_point_a_arbitrer_4a_sans_relachement_donne_epreuve_incomplete():
     d = Demande("Difficile")
     out = run_once(cands(rows, d), d, random.Random(0))
     assert len(out.ids) == 4 and out.stopped_at == "2b"
+
+
+def test_retentative_evite_le_piege_du_tirage_glouton():
+    """Une épreuve complète existe, mais un tirage séquentiel peut consommer l'unique créneau « rang inférieur »
+    nécessaire pour atteindre la partie C. generate() retente et renvoie une épreuve complète."""
+    rows = [ex(i, "T", "A", session=1) for i in range(4)] + [ex(10 + i, "T", "B", session=1) for i in range(4)] \
+        + [ex(20 + i, "P", "C", session=6) for i in range(3)] + [ex(30 + i, "P", "B", session=6) for i in range(3)]
+    d = Demande("Moyen", a_examen=True)          # N=4, P=3 parties (A, B, C) : C n'est joignable que via le rang inférieur
+    cs = cands(rows, d)
+    seuls = [len(run_once(cs, d, random.Random(s)).ids) for s in range(80)]
+    assert min(seuls) < 4                        # le piège existe bel et bien avec un seul tirage
+    for s in range(80):
+        g = generate(cs, d, set(), random.Random(s))
+        assert len(g.outcome.ids) == 4 and not g.outcome.incomplete
+
+
+def test_completude_prioritaire_sur_unicite():
+    """Entre une épreuve complète déjà vue et une épreuve incomplète inédite, on préfère la complète."""
+    rows = [ex(1, partie="a", session=1), ex(2, partie="b", session=1)]
+    d = Demande("Facile")
+    cs = cands(rows, d)
+    vue = make_key(["e1", "e2"])
+    g = generate(cs, d, {vue}, random.Random(0))
+    assert make_key(g.outcome.ids) == vue and g.saturee and not g.outcome.incomplete

@@ -24,7 +24,7 @@ Le V4.10 se déclare « sans ambiguïté résiduelle » ; la lecture critique en
 3. **4.k Facile « encourage »** : poids ×2 pour les exercices de classes inférieures éligibles (constante `FACILE_BONUS_CLASSE_INFERIEURE`).
 4. **Nombre de parties P** : calculé sur les exercices **éligibles** (pas sur les parties configurées).
 5. **Tirage des parties** : aléatoire via le tirage pondéré des exercices (7.4) ; une partie riche en exercices est donc plus probable qu'une partie pauvre. Un tirage uniforme des parties est possible mais contredit la formule 7.4.
-6. **Unicité** : jusqu'à 50 tirages successifs pour éviter un multiensemble déjà généré par l'utilisateur (tous paramètres confondus) ; au-delà → doublon silencieux + `UNIQUENESS_SATURATED`.
+6. **Unicité et complétude** : jusqu'à 50 tirages successifs (le tirage séquentiel pouvant se piéger lui-même alors qu'une épreuve complète existe). On garde la meilleure : d'abord la plus complète, puis la plus inédite (multiensemble jamais généré par l'utilisateur, tous paramètres confondus). Si seuls des doublons existent → doublon silencieux + `UNIQUENESS_SATURATED`.
 7. **Ordre d'affichage** : par ordre des parties puis ordre de tirage ; sujet et corrigé affichent « Exercice n » (même numérotation). Le contenu est **figé** à la génération (une modification ultérieure de la banque ne change pas une épreuve déjà générée).
 8. **« Classes de même niveau »** (3.1) : lu comme une faculté, non comme une contrainte validée.
 9. **Markdown** : HTML brut désactivé (sécurité) ; pas de rendu LaTeX pour l'instant.
@@ -32,6 +32,7 @@ Le V4.10 se déclare « sans ambiguïté résiduelle » ; la lecture critique en
 ## C. Points à arbitrer (non tranchés par le V4.10)
 
 1. **4.a sans relâchement** : si une partie manque d'exercices (ex. P = 2, N = 6, une partie n'a qu'1 exercice), l'épreuve sort **incomplète (4 exercices)** alors que la banque en contient plus. Le cahier ne prévoit de relâchement que pour 4.g. Faut-il relâcher 4.a en dernier recours ?
+   *Cas réel observé sur la banque de démonstration* : Première, séquence 1, difficulté Moyen. Les exercices de Seconde (rang inférieur) ajoutent deux parties au calcul de P (P = 4 = N, donc 1 exercice par partie), mais 4.f n'autorise qu'un seul exercice de rang inférieur : une épreuve de 4 exercices est alors impossible. Calculer P sur les seuls exercices de la classe demandée résoudrait ce cas.
 2. **Décision 26 (2b sautée après échec de 2a)** : peut laisser 1-2 exercices de classes inférieures inutilisés alors qu'ils seraient éligibles. Voulu ?
 3. **Table 7.4, ligne Moyen = 1/3/1** : asymétrique par rapport aux lignes Facile (3/2/1) et Difficile (1/2/3) ; une ligne 2/3/2 serait plus symétrique. Valeur du V4.10 conservée.
 4. **Comptes utilisateurs** : l'identité par cookie perd l'historique si le cookie est effacé. Authentification réelle souhaitée ?
