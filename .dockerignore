@@ -1,0 +1,11 @@
+.git
+.env
+*.db
+*.db-wal
+*.db-shm
+tests
+docs
+deploy
+__pycache__
+.pytest_cache
+e2e

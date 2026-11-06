@@ -25,7 +25,12 @@ Tests : `pip install -r requirements-dev.txt && pytest`.
 | `app/main.py` | API REST + pages (`/`, `/admin`, `/epreuve/{id}`, `/epreuve/{id}/corrige`) |
 | `docs/CAHIER_V4.11_AMENDEMENTS.md` | Corrections du cahier, interprétations, points à arbitrer |
 
+## Déploiement et tests navigateur
+
+Guide pas à pas (VM gratuite persistante, Render, sauvegardes, sécurité) : `docs/DEPLOIEMENT.md`.
+Test navigateur complet (utilisateur + administration, avec captures) : `bash e2e/run.sh` (Node 18+, Chromium embarqué téléchargé via npm).
+
 ## Limites connues
 
 Pas de compte utilisateur (cookie anonyme) ; pas de rendu LaTeX ; interface non testée automatiquement dans un navigateur ;
-pas de limitation de débit ; SQLite (un seul serveur). Voir les points à arbitrer dans `docs/`.
+SQLite (un seul serveur). Voir les points à arbitrer dans `docs/`.

@@ -140,3 +140,31 @@ def import_bank(conn, doc, mode: str) -> dict:
     except sqlite3.IntegrityError as ex:
         raise ApiError(422, "INVALID_IMPORT", "Conflit d'intégrité à l'import (ex. nom déjà utilisé)", errors=[str(ex)])
     return {k: len(doc[k]) for k in ("matieres", "parties", "classes", "specialites", "exercices")}
+
+
+def bootstrap_if_empty(conn, path: str) -> str:
+    """Restaure la banque depuis un fichier JSON si la base est vide (hébergeurs à disque éphémère)."""
+    f = Path(path)
+    if not f.is_file() or conn.execute("SELECT 1 FROM matieres LIMIT 1").fetchone():
+        return "ignoré"
+    try:
+        n = import_bank(conn, json.loads(f.read_text(encoding="utf-8")), "remplacer")
+    except (ApiError, ValueError) as e:
+        detail = getattr(e, "extra", {}).get("errors") or [str(e)]
+        print(f"[examgen] bootstrap {path} refusé : {detail[:3]}")
+        return "refusé"
+    print(f"[examgen] banque restaurée depuis {path} : {n}")
+    return "importé"
+
+
+def backup_to_dir(conn, directory: str, keep: int = 14) -> str | None:
+    """Sauvegarde JSON quotidienne (un fichier par jour), conserve les `keep` plus récentes."""
+    if not conn.execute("SELECT 1 FROM matieres LIMIT 1").fetchone():
+        return None
+    d = Path(directory)
+    d.mkdir(parents=True, exist_ok=True)
+    target = d / f"banque-{datetime.now(timezone.utc):%Y%m%d}.json"
+    target.write_text(json.dumps(export_bank(conn), ensure_ascii=False), encoding="utf-8")
+    for old in sorted(d.glob("banque-*.json"))[:-keep]:
+        old.unlink()
+    return str(target)

@@ -1,8 +1,9 @@
 """Données de démonstration : python -m app.seed [chemin.db]  (contenu fictif, pour essayer l'interface)."""
+import argparse
+import json
 import random
-import sys
 
-from . import db, repo
+from . import bank_io, db, repo
 from .models import ClasseIn, ExerciceIn, PartieIn
 
 
@@ -26,7 +27,7 @@ def main(path: str = "examgen.db") -> None:
         seq = R.choice([None, 1, 2, 3, 4, 5, 6])
         p = R.choice(parties)
         repo.create_exercice(conn, ExerciceIn(
-            sujet=f"**Exercice de démonstration #{i}** ({classe['nom']}, {p['nom']})\n\nCalculer $f(x)=x^2+{i}$ puis commenter.",
+            sujet=f"**Exercice de démonstration #{i}** ({classe['nom']}, {p['nom']})\n\nCalculer f(x) = x² + {i} puis commenter.",
             corrige=f"Corrigé de démonstration #{i} : voir le cours.",
             affectations=[{"matiereId": maths["id"], "partieId": p["id"]}], classeIds=[classe["id"]],
             specialiteIds=spec, session=seq, niveauIntrinseque=R.choice(["Facile", "Moyen", "Difficile"]),
@@ -35,4 +36,13 @@ def main(path: str = "examgen.db") -> None:
 
 
 if __name__ == "__main__":
-    main(*sys.argv[1:2])
+    ap = argparse.ArgumentParser(description="Données de démonstration")
+    ap.add_argument("db", nargs="?", default="examgen.db")
+    ap.add_argument("--json", help="exporte aussi la banque dans ce fichier (ex. bootstrap/banque.json)")
+    a = ap.parse_args()
+    main(a.db)
+    if a.json:
+        c = db.connect(a.db)
+        with open(a.json, "w", encoding="utf-8") as f:
+            json.dump(bank_io.export_bank(c), f, ensure_ascii=False, indent=1)
+        print("Export :", a.json)

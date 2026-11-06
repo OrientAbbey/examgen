@@ -1,0 +1,8 @@
+{
+  "name": "examgen-e2e",
+  "private": true,
+  "type": "module",
+  "description": "Test navigateur (Chromium headless embarqué) : parcours utilisateur + administration, génère des captures",
+  "scripts": { "test": "bash run.sh" },
+  "dependencies": { "@sparticuz/chromium": "153.0.0", "puppeteer-core": "25.16.0" }
+}

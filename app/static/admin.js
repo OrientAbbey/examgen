@@ -20,18 +20,26 @@ async function api(method, path, body) {
   if (r.status === 401) { await login(); return api(method, path, body); }
   return { ok: r.ok, status: r.status, data };
 }
-async function login() {
-  const t = prompt("Jeton administrateur (EXAMGEN_ADMIN_TOKEN) :");
-  if (t === null) throw new Error('annulé');
-  TOKEN = t; sessionStorage.setItem('adm', t);
+let loginP = null;       // une seule saisie de jeton à la fois, même si plusieurs requêtes échouent en parallèle
+function login() {
+  if (!loginP) loginP = (async () => {
+    const inp = el('input', { type: 'password', autocomplete: 'current-password', placeholder: 'Jeton administrateur' });
+    const ok = await ask('Connexion administrateur', b => b.append(inp));
+    loginP = null;
+    if (!ok || !inp.value) throw new Error('annulé');
+    TOKEN = inp.value; sessionStorage.setItem('adm', TOKEN);
+  })();
+  return loginP;
 }
 function err(r) {
   const d = r.data || {};
-  alert((d.message || d.code || 'Erreur ' + r.status) + (d.errors ? '\n- ' + d.errors.join('\n- ') : ''));
+  const det = Array.isArray(d.detail) ? d.detail.map(x => (x.loc || []).slice(1).join('.') + ' : ' + x.msg).join('\n- ') : '';
+  alert((d.message || (det ? 'Données invalides' : d.code) || 'Erreur ' + r.status) + (det ? '\n- ' + det : '') + (d.errors ? '\n- ' + d.errors.join('\n- ') : ''));
 }
 function ask(title, build) {              // dialogue générique ; build(body) remplit le corps ; retourne true si validé
   return new Promise(res => {
     const dlg = $('#dlg'); $('#dlg-t').textContent = title; const b = $('#dlg-b'); b.replaceChildren(); build(b);
+    dlg.returnValue = '';      // sinon Échap hériterait de la valeur du dialogue précédent
     dlg.onclose = () => res(dlg.returnValue === 'ok'); dlg.showModal();
   });
 }
@@ -56,16 +64,20 @@ async function supprimer(path, label, targets, withPartie) {
   return true;
 }
 const SEQ = ['', 1, 2, 3, 4, 5, 6];
-const view = $('#view');
+const host = $('#view');
 const TABS = { 'Matières & parties': tMatieres, Classes: tClasses, Spécialités: tSpecialites, Exercices: tExercices, 'Import / Export': tIO, Journal: tJournal, Réglages: tReglages };
 let current = 'Matières & parties';
 function nav() {
   $('#tabs').replaceChildren(...Object.keys(TABS).map(k => el('button', { class: k === current ? 'on' : '', onclick: () => { current = k; nav(); } }, k)));
-  view.replaceChildren(); TABS[current]().catch(e => { if (e.message !== 'annulé') view.append(el('p', { class: 'mut' }, 'Erreur : ' + e.message)); });
+  // Chaque rendu dessine dans SON conteneur : une réponse tardive d'un rendu périmé ne peut plus polluer l'écran.
+  const root = el('div'); host.replaceChildren(root);
+  TABS[current](root).catch(e => root.append(e.message === 'annulé'
+    ? el('p', {}, el('button', { class: 'primary', onclick: nav }, 'Se connecter'))
+    : el('p', { class: 'mut' }, 'Erreur : ' + e.message)));
 }
 const nameForm = (ph, onadd) => { const i = el('input', { type: 'text', placeholder: ph }); return el('div', { class: 'row' }, i, el('button', { class: 'primary', onclick: async () => { if (i.value.trim()) await onadd(i.value.trim()); } }, 'Ajouter')); };
 
-async function tMatieres() {
+async function tMatieres(view) {
   const ms = (await api('GET', '/matieres')).data, ps = (await api('GET', '/parties')).data;
   view.append(el('div', { class: 'card' }, nameForm('Nouvelle matière', async n => { const r = await api('POST', '/matieres', { nom: n }); r.ok ? nav() : err(r); })));
   for (const m of ms) {
@@ -80,7 +92,7 @@ async function tMatieres() {
       nameForm('Nouvelle partie', async n => { const r = await api('POST', '/parties', { matiereId: m.id, nom: n, ordre: mine.length + 1 }); r.ok ? nav() : err(r); })));
   }
 }
-async function tSpecialites() {
+async function tSpecialites(view) {
   const ss = (await api('GET', '/specialites')).data;
   view.append(el('div', { class: 'card' }, nameForm('Nouvelle spécialité', async n => { const r = await api('POST', '/specialites', { nom: n }); r.ok ? nav() : err(r); }),
     el('p', { class: 'mut' }, 'La valeur « Aucune » (exercice universel) est implicite et ne se supprime pas.'),
@@ -88,7 +100,7 @@ async function tSpecialites() {
       el('td', {}, el('button', { onclick: async () => { const n = prompt('Nouveau nom', s.nom); if (n) { const r = await api('PUT', '/specialites/' + s.id, { nom: n }); r.ok ? nav() : err(r); } } }, 'Renommer'), ' ',
         el('button', { class: 'danger', onclick: async () => { if (await supprimer('/specialites/' + s.id, s.nom, ss.filter(x => x.id !== s.id), false)) nav(); } }, 'Supprimer')))))));
 }
-async function tClasses() {
+async function tClasses(view) {
   const cs = (await api('GET', '/classes')).data;
   const nom = el('input', { type: 'text', placeholder: 'Nom de la classe' });
   const prev = el('select', {}, el('option', { value: '' }, 'Aucune'), cs.map(c => el('option', { value: c.id }, c.nom)));
@@ -108,16 +120,19 @@ async function tClasses() {
           const r = await api('PUT', '/classes/' + c.id, { nom: n.value, classePrecedenteId: p.value || null, aExamen: e1.checked, specialiteObligatoire: s1.checked }); r.ok ? nav() : err(r); } } }, 'Modifier'), ' ',
         el('button', { class: 'danger', onclick: async () => { if (await supprimer('/classes/' + c.id, c.nom, cs.filter(x => x.id !== c.id), false)) nav(); } }, 'Supprimer')))))));
 }
-async function tExercices() {
+async function tExercices(view) {
   const [ms, ps, cs, ss] = await Promise.all(['matieres', 'parties', 'classes', 'specialites'].map(async k => (await api('GET', '/' + k)).data));
   const f = { q: el('input', { type: 'text', placeholder: 'Recherche texte' }), m: el('select', {}, el('option', { value: '' }, 'Matière'), ms.map(x => el('option', { value: x.id }, x.nom))),
     p: el('select', {}, el('option', { value: '' }, 'Partie'), ps.map(x => el('option', { value: x.id }, (ms.find(m => m.id === x.matiereId) || {}).nom + ' › ' + x.nom))),
     c: el('select', {}, el('option', { value: '' }, 'Classe'), cs.map(x => el('option', { value: x.id }, x.nom))),
     s: el('select', {}, el('option', { value: '' }, 'Séquence'), el('option', { value: 'vide' }, 'Session vide'), SEQ.slice(1).map(n => el('option', { value: n }, 'Séquence ' + n))) };
   const list = el('div', {}), editor = el('div', {});
+  let seq = 0;               // une réponse périmée (arrivée après une plus récente) est ignorée
   const load = async () => {
+    const my = ++seq;
     const q = new URLSearchParams({ limit: 100 }); if (f.q.value) q.set('q', f.q.value); if (f.m.value) q.set('matiereId', f.m.value); if (f.p.value) q.set('partieId', f.p.value); if (f.c.value) q.set('classeId', f.c.value); if (f.s.value) q.set('session', f.s.value);
     const { data } = await api('GET', '/exercices?' + q);
+    if (my !== seq) return;
     list.replaceChildren(el('p', { class: 'mut' }, data.total + ' exercice(s)'), el('table', { class: 't' }, data.items.map(e => el('tr', {},
       el('td', {}, e.sujet.slice(0, 90)), el('td', {}, e.session ? 'S' + e.session : 'vide', e.tagExamen ? ' · Examen' : ''), el('td', {}, e.niveauIntrinseque),
       el('td', {}, el('button', { onclick: () => edit(e) }, 'Éditer'), ' ', el('button', { class: 'danger', onclick: async () => { if (confirm('Supprimer cet exercice ?')) { const r = await api('DELETE', '/exercices/' + e.id); r.ok ? load() : err(r); } } }, 'Supprimer'))))));
@@ -130,7 +145,8 @@ async function tExercices() {
     const tag = el('input', { type: 'checkbox', checked: e.tagExamen });
     const syncTag = () => { tag.disabled = sess.value === ''; if (tag.disabled) tag.checked = false; }; sess.addEventListener('change', syncTag); syncTag();   // tag grisé si session vide
     const mChecks = ms.map(m => { const cur = e.affectations.find(a => a.matiereId === m.id);
-      const cb = el('input', { type: 'checkbox', checked: !!cur }); const sel = el('select', {}, ps.filter(p => p.matiereId === m.id).map(p => el('option', { value: p.id, ...(cur && cur.partieId === p.id ? { selected: true } : {}) }, p.nom)));
+      const cb = el('input', { type: 'checkbox', checked: !!cur }); const mp = ps.filter(p => p.matiereId === m.id);
+      const sel = el('select', {}, mp.length ? mp.map(p => el('option', { value: p.id, ...(cur && cur.partieId === p.id ? { selected: true } : {}) }, p.nom)) : el('option', { value: '' }, '(aucune partie : à créer d\'abord)'));
       return { m, cb, sel, node: el('div', { class: 'row' }, el('label', {}, cb, ' ', m.nom), sel) }; });
     const cChecks = cs.map(c => ({ c, cb: el('input', { type: 'checkbox', checked: e.classeIds.includes(c.id) }) }));
     const sChecks = [{ id: 'SPECIAL:Aucune', nom: 'Aucune (universel)' }, ...ss].map(s => ({ s, cb: el('input', { type: 'checkbox', checked: e.specialiteIds.includes(s.id) }) }));
@@ -142,6 +158,8 @@ async function tExercices() {
       el('div', { class: 'grid' }, el('div', {}, el('label', {}, 'Session'), sess), el('div', {}, el('label', {}, 'Niveau intrinsèque'), niv)),
       el('label', {}, tag, ' Tag Examen (séquences 1 à 6 uniquement)'),
       el('div', { class: 'row', style: 'margin-top:.8rem' }, el('button', { class: 'primary', onclick: async () => {
+        const sans = mChecks.find(x => x.cb.checked && !x.sel.value);
+        if (sans) { alert(`Créez d'abord une partie pour la matière « ${sans.m.nom} » (onglet Matières & parties).`); return; }
         const body = { sujet: sujet.value, corrige: corrige.value, session: sess.value === '' ? null : Number(sess.value), niveauIntrinseque: niv.value, tagExamen: tag.checked,
           affectations: mChecks.filter(x => x.cb.checked).map(x => ({ matiereId: x.m.id, partieId: x.sel.value })), classeIds: cChecks.filter(x => x.cb.checked).map(x => x.c.id),
           specialiteIds: sChecks.filter(x => x.cb.checked).map(x => x.s.id) };
@@ -149,11 +167,12 @@ async function tExercices() {
         if (r.ok) { editor.replaceChildren(); load(); } else err(r); } }, 'Enregistrer'), el('button', { onclick: () => editor.replaceChildren() }, 'Fermer'))));
     editor.scrollIntoView({ behavior: 'smooth' });
   }
-  for (const k of Object.keys(f)) f[k].addEventListener(k === 'q' ? 'input' : 'change', load);
+  let timer; f.q.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(load, 250); });   // pas une requête par frappe
+  for (const k of Object.keys(f)) if (k !== 'q') f[k].addEventListener('change', load);
   view.append(el('div', { class: 'card' }, el('div', { class: 'row' }, Object.values(f), el('button', { class: 'primary', onclick: () => edit() }, '+ Nouvel exercice'))), editor, el('div', { class: 'card' }, list));
   load();
 }
-async function tIO() {
+async function tIO(view) {
   const mode = el('select', {}, el('option', { value: 'fusionner' }, 'Fusionner (mise à jour par id, ajout des nouveaux)'), el('option', { value: 'remplacer' }, 'Remplacer toute la banque'));
   const file = el('input', { type: 'file', accept: '.json,application/json' }), out = el('pre', { class: 'j' });
   view.append(el('div', { class: 'card' }, el('h2', {}, 'Export'), el('button', { class: 'primary', onclick: async () => {
@@ -164,17 +183,18 @@ async function tIO() {
       let doc; try { doc = JSON.parse(await file.files[0].text()); } catch { out.textContent = 'JSON illisible'; return; }
       const r = await api('POST', '/import?mode=' + mode.value, doc); out.textContent = r.ok ? 'Import réussi : ' + JSON.stringify(r.data) : (r.data.message + '\n- ' + (r.data.errors || []).join('\n- ')); } }, 'Importer')), out));
 }
-async function tJournal() {
+async function tJournal(view) {
   const types = ['', 'GENERATION', 'RULE_50_RELAXED', 'UNIQUENESS_SATURATED', 'INCOMPLETE_EXAM', 'INFO_HISTORY_PURGED'];
   const sel = el('select', {}, types.map(t => el('option', { value: t }, t || 'Tous les types'))), box = el('div', {});
-  const load = async () => { const { data } = await api('GET', '/journal?limit=200' + (sel.value ? '&type=' + sel.value : ''));
+  let seq = 0;
+  const load = async () => { const my = ++seq; const { data } = await api('GET', '/journal?limit=200' + (sel.value ? '&type=' + sel.value : '')); if (my !== seq) return;
     box.replaceChildren(el('p', { class: 'mut' }, data.total + ' entrée(s) — journal réservé à l\'administration'), el('table', { class: 't' },
       el('tr', {}, ['Date', 'Utilisateur', 'Type', 'Paramètres', 'Détails'].map(h => el('th', {}, h))),
       data.items.map(j => el('tr', {}, el('td', {}, j.timestamp.replace('T', ' ').slice(0, 19)), el('td', {}, j.userId.slice(0, 8)), el('td', {}, j.type),
         el('td', {}, el('pre', { class: 'j' }, JSON.stringify(j.params))), el('td', {}, el('pre', { class: 'j' }, JSON.stringify(j.details))))))); };
   sel.addEventListener('change', load); view.append(el('div', { class: 'card' }, sel), el('div', { class: 'card' }, box)); load();
 }
-async function tReglages() {
+async function tReglages(view) {
   const r = (await api('GET', '/reglages')).data, inp = el('input', { type: 'number', min: 1, value: r.retentionJours ?? '', placeholder: 'vide = conservation illimitée' }), out = el('p', { class: 'mut' });
   view.append(el('div', { class: 'card' }, el('h2', {}, 'Conservation de l\'historique d\'unicité'), el('label', {}, 'retentionJours'), inp,
     el('p', { class: 'mut' }, 'La purge s\'applique par utilisateur et ne supprime jamais sa dernière génération. Exécutée au démarrage puis toutes les 24 h.'),

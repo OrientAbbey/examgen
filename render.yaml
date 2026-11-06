@@ -1,0 +1,13 @@
+# Render (plan gratuit) : disque ÉPHÉMÈRE + mise en veille après 15 min. La banque est restaurée au
+# démarrage depuis bootstrap/banque.json ; l'historique d'unicité et le journal sont, eux, perdus.
+services:
+  - type: web
+    name: examgen
+    runtime: docker
+    plan: free
+    healthCheckPath: /healthz
+    envVars:
+      - key: EXAMGEN_ADMIN_TOKEN
+        generateValue: true
+      - key: EXAMGEN_TRUST_PROXY
+        value: "1"

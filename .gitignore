@@ -5,3 +5,5 @@ __pycache__/
 *.db-shm
 .pytest_cache/
 .venv/
+node_modules/
+e2e/out/

@@ -13,6 +13,7 @@ from fastapi.staticfiles import StaticFiles
 
 from . import bank_io, db, render, repo, service
 from .errors import ApiError
+from .ratelimit import Limiter
 from .models import ClasseIn, ExerciceIn, GenerateIn, NomIn, PartieIn, ReglagesIn
 
 STATIC = Path(__file__).parent / "static"
@@ -23,8 +24,13 @@ def create_app(db_path: Optional[str] = None, admin_token: Optional[str] = None)
     token_given = admin_token or os.environ.get("EXAMGEN_ADMIN_TOKEN")
     token = token_given or secrets.token_urlsafe(16)
 
+    if os.environ.get("EXAMGEN_ENV") == "production" and not token_given:
+        raise RuntimeError("EXAMGEN_ADMIN_TOKEN est obligatoire en production (EXAMGEN_ENV=production).")
+    backup_dir = os.environ.get("EXAMGEN_BACKUP_DIR")
+
     boot = db.connect(db_path)
     db.init(boot)
+    bank_io.bootstrap_if_empty(boot, os.environ.get("EXAMGEN_BOOTSTRAP_FILE", "bootstrap/banque.json"))
     boot.close()
 
     async def purge_loop():
@@ -33,6 +39,8 @@ def create_app(db_path: Optional[str] = None, admin_token: Optional[str] = None)
                 c = db.connect(db_path)
                 try:
                     service.purge_history(c)
+                    if backup_dir:
+                        bank_io.backup_to_dir(c, backup_dir)
                 finally:
                     c.close()
             await asyncio.to_thread(run)
@@ -48,6 +56,8 @@ def create_app(db_path: Optional[str] = None, admin_token: Optional[str] = None)
 
     app = FastAPI(title="Générateur d'épreuves", lifespan=lifespan)
     app.state.db_path, app.state.admin_token = db_path, token
+    app.state.gen_limiter = Limiter(int(os.environ.get("EXAMGEN_GEN_PER_MIN", "30")), 60)
+    app.state.admin_fail = Limiter(10, 300)    # 10 jetons erronés / 5 min / IP
 
     # ───────── transversal ─────────
     @app.exception_handler(ApiError)
@@ -60,8 +70,11 @@ def create_app(db_path: Optional[str] = None, admin_token: Optional[str] = None)
         new = not uid or len(uid) > 64
         request.state.uid = str(uuid.uuid4()) if new else uid
         resp = await call_next(request)
+        https = request.url.scheme == "https"
         if new:
-            resp.set_cookie("uid", request.state.uid, max_age=10 * 365 * 86400, httponly=True, samesite="lax")
+            resp.set_cookie("uid", request.state.uid, max_age=10 * 365 * 86400, httponly=True, samesite="lax", secure=https)
+        if https:
+            resp.headers["Strict-Transport-Security"] = "max-age=31536000"
         resp.headers["Content-Security-Policy"] = "default-src 'self'; style-src 'self' 'unsafe-inline'; frame-ancestors 'none'"
         resp.headers["X-Content-Type-Options"] = "nosniff"
         resp.headers["Referrer-Policy"] = "no-referrer"
@@ -76,7 +89,11 @@ def create_app(db_path: Optional[str] = None, admin_token: Optional[str] = None)
 
     def admin_required(request: Request):
         given = request.headers.get("x-admin-token", "")
+        ip = request.client.host if request.client else "?"
+        if request.app.state.admin_fail.blocked(ip):
+            raise ApiError(429, "RATE_LIMIT", "Trop d'essais, réessayez plus tard")
         if not hmac.compare_digest(given.encode(), request.app.state.admin_token.encode()):
+            request.app.state.admin_fail.add(ip)
             raise ApiError(401, "UNAUTHORIZED", "Jeton administrateur requis")
 
     # ───────── pages ─────────
@@ -114,8 +131,15 @@ def create_app(db_path: Optional[str] = None, admin_token: Optional[str] = None)
             "specialites": [{"id": s["id"], "nom": s["nom"]} for s in repo.list_specialites(conn)],
         }
 
+    @app.get("/healthz", include_in_schema=False)
+    def healthz(conn=Depends(get_db)):
+        conn.execute("SELECT 1").fetchone()
+        return {"status": "ok"}
+
     @app.post("/api/generate")
     def generate(data: GenerateIn, request: Request, conn=Depends(get_db)):
+        if not request.app.state.gen_limiter.allow(request.client.host if request.client else "?"):
+            raise ApiError(429, "RATE_LIMIT", "Trop de requêtes")
         g = service.generate_exam(conn, request.state.uid, data)
         gid = g["id"]
         # Silence total (cahier 2.2 / 4.m) : aucune indication sur l'état de l'épreuve (complète ou non).

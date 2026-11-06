@@ -1,0 +1,31 @@
+# VM persistante (Oracle Always Free, Google e2-micro, tout VPS) : app + HTTPS automatique (Caddy).
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    environment:
+      EXAMGEN_ADMIN_TOKEN: ${EXAMGEN_ADMIN_TOKEN:?Définir EXAMGEN_ADMIN_TOKEN dans le fichier .env}
+      EXAMGEN_TRUST_PROXY: "1"
+      EXAMGEN_BACKUP_DIR: /data/backups
+    volumes:
+      - data:/data          # base SQLite + sauvegardes JSON quotidiennes (14 jours)
+    expose:
+      - "8000"
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      DOMAIN: ${DOMAIN:-localhost}
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+volumes:
+  data:
+  caddy_data:
+  caddy_config:

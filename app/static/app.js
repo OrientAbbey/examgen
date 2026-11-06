@@ -29,6 +29,7 @@ async function generer(reuse) {
   try { r = await fetch('/api/generate', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(last) }); }
   catch { $('#statut').textContent = 'Service indisponible. Réessayez.'; return; }
   if (r.status >= 500) { $('#statut').textContent = 'Service indisponible. Réessayez.'; return; }
+  if (r.status === 429) { $('#statut').textContent = 'Trop de requêtes. Patientez un instant.'; return; }
   if (!r.ok) return;                         // cas métier : silence
   const j = await r.json();
   urls = j.urls;
