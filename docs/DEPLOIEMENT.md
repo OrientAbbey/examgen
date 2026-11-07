@@ -63,7 +63,7 @@ Conséquences : toute modification faite dans l'admin (nouveaux exercices) est *
 ## Sécurité en ligne
 
 HTTPS automatique (Caddy), cookie utilisateur `Secure` + HSTS, en-têtes CSP restrictifs, jeton admin comparé en temps constant, blocage temporaire après 10 jetons erronés (5 min, par IP), limitation de débit sur la génération, Markdown sans HTML brut, conteneur non-root.
-**Non couvert** : comptes utilisateurs individuels (identité = cookie anonyme), double authentification admin, rendu LaTeX, plusieurs serveurs en parallèle (SQLite).
+**Non couvert** : comptes utilisateurs individuels (identité = cookie anonyme), double authentification admin, figures et courbes, plusieurs serveurs en parallèle (SQLite).
 
 ## Dépannage
 

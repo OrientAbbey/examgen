@@ -14,7 +14,7 @@ from fastapi.staticfiles import StaticFiles
 from . import bank_io, db, render, repo, service
 from .errors import ApiError
 from .ratelimit import Limiter
-from .models import ClasseIn, ExerciceIn, GenerateIn, NomIn, PartieIn, ReglagesIn
+from .models import ClasseIn, ExerciceIn, GenerateIn, NomIn, PartieIn, PreviewIn, ReglagesIn
 
 STATIC = Path(__file__).parent / "static"
 
@@ -150,6 +150,11 @@ def create_app(db_path: Optional[str] = None, admin_token: Optional[str] = None)
 
     # ───────── module administrateur ─────────
     adm = APIRouter(prefix="/api/admin", dependencies=[Depends(admin_required)])
+
+    @adm.post("/preview")
+    def preview(d: PreviewIn):
+        """Aperçu fidèle : même rendu Markdown que les épreuves (les formules sont mises en forme côté navigateur)."""
+        return {"html": render.md(d.markdown)}
 
     @adm.get("/ping")
     def ping():

@@ -1,1 +1,1 @@
-window.addEventListener('load',function(){window.print()});
+(function(){var go=function(){setTimeout(function(){window.print();},150)};(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){window.addEventListener('load',go);if(document.readyState==='complete')go();});})();

@@ -69,3 +69,7 @@ class GenerateIn(BaseModel):
 
 class ReglagesIn(BaseModel):
     retentionJours: Optional[Annotated[int, Field(ge=1)]] = None
+
+
+class PreviewIn(BaseModel):
+    markdown: Annotated[str, Field(max_length=50000)]

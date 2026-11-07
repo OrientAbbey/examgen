@@ -40,6 +40,7 @@ async function generer(reuse) {
     const d = document.createElement('div'); d.className = 'md'; d.innerHTML = e.sujetHtml;  // HTML issu de markdown-it (html brut désactivé)
     s.append(h, d); box.append(s);
   }
+  renderMath(box);                           // KaTeX : indices, exposants, fractions, formules chimiques
   $('#epreuve').hidden = false;
   $('#epreuve').scrollIntoView({ behavior: 'smooth' });
 }

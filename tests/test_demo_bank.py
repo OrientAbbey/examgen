@@ -10,18 +10,37 @@ from app.models import GenerateIn
 
 EX = demo_bank.exercices()
 N = {"Facile": 2, "Moyen": 4, "Difficile": 6}
-# mise en forme défectueuse : « + −», « ×−», « 1y», « = -» (signe ASCII), « 1e^ », etc.
-DEFAUT = re.compile(r"×−|×-|\+ −|\+ -|= -|−\d+²|\(\d+ \+ −| = =|\b1[xyzt]\b|\b1e\^|\bNone\b|\bnan\b")
+MATH = re.compile(r"\$\$.*?\$\$|\$[^$]*\$", re.S)
+# Aucun symbole mathématique en Unicode « brut » : indices, exposants, racines… s'écrivent en LaTeX ($u_1$, $\\mathrm{e}^{2}$).
+UNICODE_MATH = set("²³⁰¹⁴⁵⁶⁷⁸⁹₀₁₂₃₄₅₆₇₈₉ₙ₊₋⁻√≤≥≠⇔∈ℝ∞∫Δπθ×−→≈·")
+# mise en forme défectueuse À L'INTÉRIEUR des formules : signes empilés, coefficient 1 superflu, None/nan
+DEFAUT = re.compile(r"\\times -|\+ -|- -|\+ \+|= =|\b1[xyzt]\b|\bNone\b|\bnan\b|\\frac\{1\}\{1\}|\{,\}\}")
+
+
+TOUS = demo_bank.tous()
 
 
 def test_enonces_et_corriges_complets_et_propres():
-    assert len(EX) >= 100
-    for e in EX:
+    assert len(EX) >= 100 and len(demo_bank.exercices_pc()) >= 20
+    for e in TOUS:
+        txt = e["sujet"] + e["corrige"]
         assert len(e["sujet"]) > 40 and "Solution :" in e["corrige"] and "Solution" not in e["sujet"], e
-        assert not DEFAUT.search(e["sujet"] + e["corrige"]), (e["classe"], e["partie"], e["session"], DEFAUT.search(e["sujet"] + e["corrige"]).group())
+        assert not (set(txt) & UNICODE_MATH), (e["classe"], e["partie"], sorted(set(txt) & UNICODE_MATH))
+        hors = MATH.sub("", txt)
+        assert not re.search(r"[\^_\\]", hors), ("formule hors $…$ :", e["classe"], e["partie"], re.search(r".{0,20}[\^_\\].{0,20}", hors).group())
+        assert txt.replace("\\$", "").count("$") % 2 == 0, "dollars non appariés"
+        for f in MATH.findall(txt):
+            assert not DEFAUT.search(f), (e["classe"], e["partie"], f)
         assert "démonstration" not in e["sujet"].lower() and "voir le cours" not in e["corrige"].lower()
-    sujets = [e["sujet"] for e in EX]
+    sujets = [e["sujet"] for e in TOUS]
     assert len(set(sujets)) == len(sujets), "énoncés en double"
+
+
+def test_physique_chimie_utilise_les_formules_moleculaires_ions_et_unites():
+    pc = demo_bank.exercices_pc()
+    txt = " ".join(e["sujet"] + e["corrige"] for e in pc)
+    for attendu in (r"\ce{H2O}", r"\ce{CO2}", r"\ce{H3O+}", r"Na+(aq)", r"\ce{CH4 + 2O2 -> CO2 + 2H2O}", r"\pu{mol.L-1}", r"\pu{m.s-1}", r"\Omega"):
+        assert attendu in txt, attendu
 
 
 def test_couverture_deux_themes_par_classe_et_sequence():
@@ -52,7 +71,7 @@ def conn(tmp_path_factory):
 
 def test_generation_sur_toute_la_grille(conn):
     """Toute combinaison valide produit une épreuve ; on mesure la part d'épreuves complètes."""
-    m = conn.execute("SELECT id FROM matieres").fetchone()[0]
+    m = conn.execute("SELECT id FROM matieres WHERE nom='Mathématiques'").fetchone()[0]
     cl = {r["nom"]: r["id"] for r in conn.execute("SELECT id, nom FROM classes")}
     sp = {r["nom"]: r["id"] for r in conn.execute("SELECT id, nom FROM specialites")}
     rng = random.Random(7)
@@ -70,7 +89,7 @@ def test_generation_sur_toute_la_grille(conn):
 
 
 def test_epreuve_type_terminale_est_complete_et_coherente(conn):
-    m = conn.execute("SELECT id FROM matieres").fetchone()[0]
+    m = conn.execute("SELECT id FROM matieres WHERE nom='Mathématiques'").fetchone()[0]
     ter = conn.execute("SELECT id FROM classes WHERE nom='Terminale'").fetchone()[0]
     sp = conn.execute("SELECT id FROM specialites WHERE nom='Mathématiques'").fetchone()[0]
     rng = random.Random(3)

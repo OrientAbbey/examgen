@@ -27,7 +27,7 @@ Le V4.10 se déclare « sans ambiguïté résiduelle » ; la lecture critique en
 6. **Unicité et complétude** : jusqu'à 50 tirages successifs (le tirage séquentiel pouvant se piéger lui-même alors qu'une épreuve complète existe). On garde la meilleure : d'abord la plus complète, puis la plus inédite (multiensemble jamais généré par l'utilisateur, tous paramètres confondus). Si seuls des doublons existent → doublon silencieux + `UNIQUENESS_SATURATED`.
 7. **Ordre d'affichage** : par ordre des parties puis ordre de tirage ; sujet et corrigé affichent « Exercice n » (même numérotation). Le contenu est **figé** à la génération (une modification ultérieure de la banque ne change pas une épreuve déjà générée).
 8. **« Classes de même niveau »** (3.1) : lu comme une faculté, non comme une contrainte validée.
-9. **Markdown** : HTML brut désactivé (sécurité) ; pas de rendu LaTeX pour l'instant.
+9. **Markdown et formules** : HTML brut désactivé (sécurité) ; formules LaTeX entre `$…$` rendues par KaTeX + mhchem (chimie), voir `docs/FORMULES.md`.
 
 ## C. Points à arbitrer (non tranchés par le V4.10)
 

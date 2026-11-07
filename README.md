@@ -30,7 +30,12 @@ Tests : `pip install -r requirements-dev.txt && pytest`.
 Guide pas à pas (VM gratuite persistante, Render, sauvegardes, sécurité) : `docs/DEPLOIEMENT.md`.
 Test navigateur complet (utilisateur + administration, avec captures) : `bash e2e/run.sh` (Node 18+, Chromium embarqué téléchargé via npm).
 
+## Formules (maths, chimie)
+
+Indices, exposants, fractions, formules moléculaires, ions, équations-bilans, unités : écrits en LaTeX entre `$…$` et rendus par KaTeX
+(embarqué, hors ligne), écran et impression. Éditeur avec aperçu en direct et aide. Guide : `docs/FORMULES.md`.
+
 ## Limites connues
 
-Pas de compte utilisateur (cookie anonyme) ; pas de rendu LaTeX ; interface non testée automatiquement dans un navigateur ;
+Pas de compte utilisateur (cookie anonyme) ; pas de figures ni de courbes ; interface non testée automatiquement dans un navigateur ;
 SQLite (un seul serveur). Voir les points à arbitrer dans `docs/`.

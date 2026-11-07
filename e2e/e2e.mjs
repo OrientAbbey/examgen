@@ -40,6 +40,10 @@ ok('U7 numérotation Exercice 1..4', (await page.$$eval('#exos h3', h => h.map(x
 ok('U8 le sujet ne contient pas de corrigé', !/Solution/.test(t1));
 const enonces = await page.$$eval('#exos .exo', xs => xs.map(x => ({ t: x.innerText, questions: x.querySelectorAll('li').length })));
 ok('U7b chaque exercice est un vrai énoncé (consigne + liste de questions)', enonces.every(e => e.questions >= 1 && /(Calculer|Résoudre|Déterminer|Démontrer|Montrer|Développer|Dresser|Justifier|Combien|Exprimer|Donner|Étudier|Factoriser|Comparer)/.test(e.t)) && !/démonstration|lorem|#\d+/i.test(enonces.map(e => e.t).join(' ')), enonces.map(e => e.questions).join('/'));
+const rend = await page.evaluate(() => { const c = document.querySelector('#exos').cloneNode(true); c.querySelectorAll('.katex-mathml').forEach(x => x.remove());
+  return { katex: document.querySelectorAll('#exos .katex').length, sub: document.querySelectorAll('#exos .msupsub').length, err: document.querySelectorAll('#exos .katex-error').length,
+    brut: /\$|\\(frac|mathrm|ce|pu|vec|sqrt|binom|ln|lim|text)|[_^]\{|\^[0-9a-z]|_[0-9a-z]/i.test(c.textContent) }; });
+ok('U7c formules mises en forme par KaTeX (indices/exposants), aucun LaTeX brut visible', rend.katex >= 5 && rend.sub >= 2 && rend.err === 0 && !rend.brut, JSON.stringify(rend));
 const themes = await page.evaluate(() => document.querySelectorAll('#exos .exo').length);
 await shot('03-epreuve-generee');
 await page.click('#regenerer'); await sleep(900);
@@ -54,12 +58,29 @@ const sujetUrl = popup.url().replace('/corrige', '');
 await popup.close();
 const pp = await browser.newPage(); await pp.evaluateOnNewDocument(() => { window.print = () => { window.__printed = true; }; });
 await pp.goto(sujetUrl + '?print=1'); await pp.waitForSelector('.exo'); await sleep(300);
-ok('U11 version imprimable : déclenche l\'impression, sans corrigé', (await pp.evaluate(() => window.__printed === true)) && !/Solution/.test(await pp.$eval('body', b => b.innerText)));
+ok('U11 version imprimable : formules rendues, impression déclenchée, sans corrigé', (await pp.$$eval('.katex', x => x.length)) >= 5 && (await pp.evaluate(() => window.__printed === true)) && !/Solution/.test(await pp.$eval('body', b => b.innerText)));
 await pp.pdf({ path: `${OUT}/epreuve-imprimable.pdf`, format: 'A4', printBackground: true }); await pp.close();
 // mobile
 const mob = await browser.newPage(); await mob.setViewport({ width: 390, height: 800, isMobile: true });
 await mob.goto(BASE + '/'); await mob.waitForSelector('#matiere'); await mob.screenshot({ path: `${OUT}/05-mobile.png` });
 ok('U12 mobile : pas de défilement horizontal', await mob.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)); await mob.close();
+
+// ───────── Physique-Chimie : formules moléculaires, ions, unités ─────────
+await page.goto(BASE + '/'); await page.waitForSelector('#matiere option:nth-child(3)');
+await page.select('#matiere', await page.evaluate(() => [...document.querySelectorAll('#matiere option')].find(o => o.textContent === 'Physique-Chimie').value));
+await page.select('#classe', await page.evaluate(() => [...document.querySelectorAll('#classe option')].find(o => o.textContent === 'Seconde').value));
+await page.select('#session', '1'); await clickText('#difficulte label', 'Facile'); await page.click('#generer');
+await page.waitForSelector('#epreuve:not([hidden]) .exo .katex');
+const chim = await page.evaluate(() => { const c = document.querySelector('#exos').cloneNode(true); c.querySelectorAll('.katex-mathml').forEach(x => x.remove());
+  const ce = [...document.querySelectorAll('#exos .katex-html')].map(x => x.textContent).join(' ');
+  return { exo: document.querySelectorAll('#exos .exo').length, sub: document.querySelectorAll('#exos .msupsub').length, err: document.querySelectorAll('#exos .katex-error').length,
+    mol: /mol/.test(ce), brut: /\$|\\(ce|pu|frac)|[_^]\{/.test(c.textContent) }; });
+ok('C1 épreuve de Physique-Chimie : formules moléculaires et unités rendues (H₂O, mol·g⁻¹…)', chim.exo === 2 && chim.sub >= 3 && chim.mol && chim.err === 0 && !chim.brut, JSON.stringify(chim));
+await shot('03b-epreuve-chimie');
+const [popup2] = await Promise.all([new Promise(r => browser.once('targetcreated', t => r(t.page()))), page.click('#corrige')]);
+await popup2.setViewport({ width: 900, height: 700 }); await popup2.waitForSelector('.exo .katex'); await sleep(300);
+ok('C2 corrigé de Physique-Chimie rendu (calculs avec unités)', (await popup2.$$eval('.katex', x => x.length)) >= 4 && (await popup2.$$eval('.katex-error', x => x.length)) === 0);
+await popup2.screenshot({ path: `${OUT}/04b-corrige-chimie.png`, fullPage: true }); await popup2.close();
 
 // ───────── Module administrateur ─────────
 await page.goto(BASE + '/admin'); await page.waitForSelector('#dlg[open] input[type=password]');
@@ -81,7 +102,7 @@ await shot('08-admin-classes');
 await clickText('#tabs button', 'Exercices'); await sleep(800);
 await shot('09-admin-exercices');
 await clickText('button', '+ Nouvel exercice'); await page.waitForSelector('#view textarea'); await sleep(900);
-const [ta1, ta2] = await page.$$('#view textarea'); await ta1.type('Sujet UI-TEST **gras**'); await ta2.type('Corrigé UI-TEST');
+const [ta1, ta2] = await page.$$('#view textarea'); await ta1.type('Sujet UI-TEST **gras**, avec $u_1$, $\\mathrm{e}^{2}$, $\\ce{H2O}$ et $\\ce{SO4^2-}$ ; $x^2 + \\frac{1}{2}$.'); await ta2.type('Corrigé UI-TEST');
 ok('A5 tag Examen grisé quand la session est vide', await page.evaluate(() => { const l = [...document.querySelectorAll('label')].find(x => x.textContent.includes('Tag Examen')); return l.querySelector('input').disabled; }));
 const mathsCb = await page.evaluateHandle(() => [...document.querySelectorAll('.row label')].find(l => l.textContent.trim() === 'Mathématiques').querySelector('input'));
 await mathsCb.asElement().click();
@@ -89,6 +110,11 @@ const terCb = await page.evaluateHandle(() => [...document.querySelectorAll('.ch
 await terCb.asElement().click();
 const sessSel = (await page.$$('#view select')).at(-2); await sessSel.select('2');
 ok('A6 tag Examen dégrisé pour une session 1-6', await page.evaluate(() => !([...document.querySelectorAll('label')].find(x => x.textContent.includes('Tag Examen')).querySelector('input').disabled)));
+await page.waitForFunction(() => document.querySelectorAll('#view .preview .katex').length >= 5, { timeout: 8000 }).catch(() => {});
+const pv = await page.evaluate(() => { const p = document.querySelector('#view .preview'); const c = p.cloneNode(true); c.querySelectorAll('.katex-mathml').forEach(x => x.remove());
+  return { katex: p.querySelectorAll('.katex').length, sub: p.querySelectorAll('.msupsub').length, err: p.querySelectorAll('.katex-error').length, brut: /\$|\\|[_^]\{|\^2|_1/.test(c.textContent), gras: !!p.querySelector('strong'),
+    aide: document.querySelectorAll('#view table.aide .katex').length }; });
+ok('A5b éditeur : aperçu en direct (u₁, e², H₂O, SO₄²⁻, fraction) et aide-mémoire rendus', pv.katex >= 5 && pv.sub >= 4 && pv.err === 0 && !pv.brut && pv.gras && pv.aide >= 14, JSON.stringify(pv));
 await shot('10-admin-editeur', false);
 await clickText('button', 'Enregistrer'); await page.waitForFunction(() => !document.querySelector('#view textarea'), { timeout: 8000 });
 await page.type('input[placeholder="Recherche texte"]', 'UI-TEST'); await sleep(500); await page.waitForFunction(() => /1 exercice\(s\)/.test(document.querySelector('#view').innerText), { timeout: 8000 }).catch(() => {});

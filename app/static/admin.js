@@ -120,6 +120,29 @@ async function tClasses(view) {
           const r = await api('PUT', '/classes/' + c.id, { nom: n.value, classePrecedenteId: p.value || null, aExamen: e1.checked, specialiteObligatoire: s1.checked }); r.ok ? nav() : err(r); } } }, 'Modifier'), ' ',
         el('button', { class: 'danger', onclick: async () => { if (await supprimer('/classes/' + c.id, c.nom, cs.filter(x => x.id !== c.id), false)) nav(); } }, 'Supprimer')))))));
 }
+
+// Aperçu fidèle (même rendu Markdown que les épreuves, formules mises en forme par KaTeX)
+function preview(ta) {
+  const box = el('div', { class: 'md preview' });
+  let timer, seq = 0;
+  const upd = () => { clearTimeout(timer); timer = setTimeout(async () => {
+    const my = ++seq; const r = await api('POST', '/preview', { markdown: ta.value });
+    if (my !== seq || !r.ok) return;
+    box.innerHTML = r.data.html; renderMath(box);       // HTML produit par le serveur (HTML brut désactivé)
+  }, 300); };
+  ta.addEventListener('input', upd); upd();
+  return box;
+}
+const AIDE = [['Indice', 'u_1'], ['Indice composé', 'u_{n+1}'], ['Exposant', 'x^2'], ['Exponentielle', '\\mathrm{e}^{2x}'], ['Puissance de 10', '10^{-4}'],
+  ['Fraction', '\\frac{a}{b}'], ['Racine', '\\sqrt{14}'], ['Ensemble des réels', '\\R'], ['Intervalle', '[0\\,;\\,+\\infty['], ['Vecteur', '\\overrightarrow{AB}'],
+  ['Formule chimique', '\\ce{H2O}'], ['Ion', '\\ce{SO4^2-}'], ['Équation-bilan', '\\ce{CH4 + 2O2 -> CO2 + 2H2O}'], ['Unité', '\\pu{m.s-1}']];
+function aide() {
+  const d = el('details', {}, el('summary', {}, 'Aide : écrire des formules (indices, exposants, chimie…)'),
+    el('p', { class: 'mut' }, 'Une formule s\'écrit entre dollars : $u_1$ dans une phrase, $$…$$ pour une formule centrée sur sa ligne.'),
+    el('table', { class: 'aide' }, AIDE.map(([nom, tex]) => el('tr', {}, el('td', {}, nom), el('td', {}, el('code', {}, '$' + tex + '$')), el('td', {}, el('span', { class: 'math inline' }, tex))))));
+  renderMath(d);
+  return d;
+}
 async function tExercices(view) {
   const [ms, ps, cs, ss] = await Promise.all(['matieres', 'parties', 'classes', 'specialites'].map(async k => (await api('GET', '/' + k)).data));
   const f = { q: el('input', { type: 'text', placeholder: 'Recherche texte' }), m: el('select', {}, el('option', { value: '' }, 'Matière'), ms.map(x => el('option', { value: x.id }, x.nom))),
@@ -151,7 +174,7 @@ async function tExercices(view) {
     const cChecks = cs.map(c => ({ c, cb: el('input', { type: 'checkbox', checked: e.classeIds.includes(c.id) }) }));
     const sChecks = [{ id: 'SPECIAL:Aucune', nom: 'Aucune (universel)' }, ...ss].map(s => ({ s, cb: el('input', { type: 'checkbox', checked: e.specialiteIds.includes(s.id) }) }));
     editor.replaceChildren(el('div', { class: 'card' }, el('h2', {}, e.id ? 'Modifier l\'exercice' : 'Nouvel exercice'),
-      el('label', {}, 'Sujet (Markdown)'), sujet, el('label', {}, 'Corrigé (Markdown)'), corrige,
+      aide(), el('label', {}, 'Sujet (Markdown + formules)'), sujet, preview(sujet), el('label', {}, 'Corrigé (Markdown + formules)'), corrige, preview(corrige),
       el('label', {}, 'Matières et partie associée'), mChecks.map(x => x.node),
       el('label', {}, 'Classes'), el('div', { class: 'checks' }, cChecks.map(x => el('label', {}, x.cb, x.c.nom))),
       el('label', {}, 'Spécialités'), el('div', { class: 'checks' }, sChecks.map(x => el('label', {}, x.cb, x.s.nom))),
