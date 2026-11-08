@@ -1,5 +1,6 @@
 import asyncio
 import hmac
+import re
 import os
 import secrets
 import uuid
@@ -8,10 +9,12 @@ from pathlib import Path
 from typing import Optional
 
 from fastapi import APIRouter, Body, Depends, FastAPI, Request
+from urllib.parse import unquote
+
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 
-from . import bank_io, db, render, repo, service
+from . import bank_io, db, media as media_mod, render, repo, service
 from .errors import ApiError
 from .ratelimit import Limiter
 from .models import ClasseIn, ExerciceIn, GenerateIn, NomIn, PartieIn, PreviewIn, ReglagesIn
@@ -75,7 +78,7 @@ def create_app(db_path: Optional[str] = None, admin_token: Optional[str] = None)
             resp.set_cookie("uid", request.state.uid, max_age=10 * 365 * 86400, httponly=True, samesite="lax", secure=https)
         if https:
             resp.headers["Strict-Transport-Security"] = "max-age=31536000"
-        resp.headers["Content-Security-Policy"] = "default-src 'self'; style-src 'self' 'unsafe-inline'; frame-ancestors 'none'"
+        resp.headers.setdefault("Content-Security-Policy", "default-src 'self'; style-src 'self' 'unsafe-inline'; frame-ancestors 'none'")
         resp.headers["X-Content-Type-Options"] = "nosniff"
         resp.headers["Referrer-Policy"] = "no-referrer"
         return resp
@@ -131,6 +134,16 @@ def create_app(db_path: Optional[str] = None, admin_token: Optional[str] = None)
             "specialites": [{"id": s["id"], "nom": s["nom"]} for s in repo.list_specialites(conn)],
         }
 
+    @app.get("/media/{mid}", include_in_schema=False)
+    def media_public(mid: str, conn=Depends(get_db)):
+        """Image d'un énoncé : servie telle quelle, mais isolée (CSP sandbox) pour neutraliser tout contenu actif."""
+        row = conn.execute("SELECT mime, data FROM medias WHERE id=?", (mid,)).fetchone() if media_mod.ID_RE.match(mid) else None
+        if row is None:
+            return Response("Image introuvable", status_code=404, media_type="text/plain; charset=utf-8")
+        return Response(bytes(row["data"]), media_type=row["mime"], headers={
+            "Cache-Control": "public, max-age=86400", "X-Content-Type-Options": "nosniff",
+            "Content-Security-Policy": "default-src 'none'; style-src 'unsafe-inline'; sandbox"})
+
     @app.get("/healthz", include_in_schema=False)
     def healthz(conn=Depends(get_db)):
         conn.execute("SELECT 1").fetchone()
@@ -151,10 +164,24 @@ def create_app(db_path: Optional[str] = None, admin_token: Optional[str] = None)
     # ───────── module administrateur ─────────
     adm = APIRouter(prefix="/api/admin", dependencies=[Depends(admin_required)])
 
+    @adm.post("/media", status_code=201)
+    async def media_upload(request: Request, conn=Depends(get_db)):
+        """Corps brut = octets de l'image (en-tête X-Filename pour le nom) : pas de dépendance multipart."""
+        if int(request.headers.get("content-length", "0") or 0) > media_mod.MAX_OCTETS + 1024:
+            raise ApiError(413, "MEDIA_TROP_GROS", "Image trop volumineuse")
+        return repo.add_media(conn, unquote(request.headers.get("x-filename", "image")), await request.body())
+
+    @adm.get("/media")
+    def media_list(conn=Depends(get_db)): return repo.list_medias(conn)
+
+    @adm.delete("/media/{mid}", status_code=204)
+    def media_delete(mid: str, force: int = 0, conn=Depends(get_db)): repo.delete_media(conn, mid, bool(force))
+
     @adm.post("/preview")
     def preview(d: PreviewIn):
         """Aperçu fidèle : même rendu Markdown que les épreuves (les formules sont mises en forme côté navigateur)."""
-        return {"html": render.md(d.markdown)}
+        h = render.md(d.markdown)
+        return {"html": h, "avertissements": re.findall(r'class="mol mol-error"><span>(.*?)</span>', h)}
 
     @adm.get("/ping")
     def ping():

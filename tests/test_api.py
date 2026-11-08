@@ -140,7 +140,7 @@ def test_validation_exercice(world):
 def test_export_import_roundtrip_et_modes(world, tmp_path):
     c = world["c"]
     doc = c.get("/api/admin/export", headers=H).json()
-    assert doc["schemaVersion"] == "1.1" and len(doc["exercices"]) == 90
+    assert doc["schemaVersion"] == "1.2" and len(doc["exercices"]) == 90
     # réimport tel quel (fusion) : idempotent
     r = c.post("/api/admin/import?mode=fusionner", json=doc, headers=H)
     assert r.status_code == 200 and r.json()["exercices"] == 90

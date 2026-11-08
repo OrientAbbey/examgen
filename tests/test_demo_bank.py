@@ -21,7 +21,7 @@ TOUS = demo_bank.tous()
 
 
 def test_enonces_et_corriges_complets_et_propres():
-    assert len(EX) >= 100 and len(demo_bank.exercices_pc()) >= 20
+    assert len(EX) >= 100 and len(demo_bank.exercices_pc()) >= 30
     for e in TOUS:
         txt = e["sujet"] + e["corrige"]
         assert len(e["sujet"]) > 40 and "Solution :" in e["corrige"] and "Solution" not in e["sujet"], e
@@ -39,8 +39,13 @@ def test_enonces_et_corriges_complets_et_propres():
 def test_physique_chimie_utilise_les_formules_moleculaires_ions_et_unites():
     pc = demo_bank.exercices_pc()
     txt = " ".join(e["sujet"] + e["corrige"] for e in pc)
-    for attendu in (r"\ce{H2O}", r"\ce{CO2}", r"\ce{H3O+}", r"Na+(aq)", r"\ce{CH4 + 2O2 -> CO2 + 2H2O}", r"\pu{mol.L-1}", r"\pu{m.s-1}", r"\Omega"):
+    for attendu in (r"\ce{H2O}", r"\ce{CO2}", r"\ce{H3O+}", r"Na+(aq)", r"\ce{CH4 + 2O2 -> CO2 + 2H2O}", r"\pu{mol.L-1}", r"\pu{m.s-1}", r"\Omega",
+                    r"\ce{CH3-CH2-OH}", r"\ce{CH3-CH(OH)-CH3}", r"\ce{CH3-CH2-COOH}",          # formules semi-développées
+                    "```mol topologique", "```mol developpee", "```mol cram",                      # structures dessinées
+                    r"\lTB{O}", r"\lTBR{Cl}"):                                                   # schémas de Lewis
         assert attendu in txt, attendu
+    from app import render
+    assert all("mol-error" not in render.md(e["sujet"] + e["corrige"]) for e in pc), "SMILES invalide dans la banque"
 
 
 def test_couverture_deux_themes_par_classe_et_sequence():

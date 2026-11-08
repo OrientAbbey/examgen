@@ -6,7 +6,7 @@ from pathlib import Path
 
 from jsonschema import Draft7Validator
 
-from . import repo
+from . import media, repo
 from .classes_tree import CycleError, assert_acyclic
 from .db import tx
 from .errors import ApiError
@@ -25,7 +25,7 @@ def export_bank(conn) -> dict:
         items += page
         off += 500
     return {
-        "schemaVersion": "1.1",
+        "schemaVersion": "1.2",
         "exportedAt": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "matieres": [{"id": r["id"], "nom": r["nom"]} for r in conn.execute("SELECT id,nom FROM matieres ORDER BY nom")],
         "parties": [{"id": r["id"], "matiereId": r["matiere_id"], "nom": r["nom"], "ordre": r["ordre"]}
@@ -36,6 +36,8 @@ def export_bank(conn) -> dict:
         "specialites": [{"id": r["id"], "nom": r["nom"]} for r in conn.execute("SELECT id,nom FROM specialites ORDER BY nom")],
         "exercices": [{k: e[k] for k in ("id", "sujet", "corrige", "affectations", "classeIds", "specialiteIds",
                                          "session", "niveauIntrinseque", "tagExamen")} for e in items],
+        "medias": [{"id": r["id"], "nom": r["nom"], "mime": r["mime"], "data": media.encoder(r["data"])}
+                   for r in conn.execute("SELECT id, nom, mime, data FROM medias ORDER BY created_at")],
     }
 
 
@@ -86,6 +88,14 @@ def validate_bank(doc, existing_prev: dict | None = None) -> list:
         for s in e["specialiteIds"]:
             if s != AUCUNE and s not in spe:
                 errs.append(f"exercice {i} : specialiteId inconnu {s}")
+    ids_m = [m["id"] for m in doc.get("medias", [])]
+    if len(ids_m) != len(set(ids_m)):
+        errs.append("medias : identifiants dupliqués")
+    for m in doc.get("medias", []):
+        try:
+            media.detecter(media.decoder(m["data"]))
+        except ApiError as e:
+            errs.append("media %s : %s" % (m["id"], e.message))
     return errs[:50]
 
 
@@ -103,8 +113,12 @@ def import_bank(conn, doc, mode: str) -> dict:
             conn.execute("PRAGMA defer_foreign_keys=ON")
             if mode == "remplacer":
                 for t in ("exercice_partie", "exercice_classe", "exercice_specialite", "exercices",
-                          "parties", "classes", "specialites", "matieres"):
+                          "parties", "classes", "specialites", "matieres", "medias"):
                     conn.execute(f"DELETE FROM {t}")
+            for md_ in doc.get("medias", []):
+                data = media.decoder(md_["data"])
+                conn.execute("INSERT INTO medias(id,nom,mime,data,created_at) VALUES(?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET nom=excluded.nom, mime=excluded.mime, data=excluded.data",
+                             (md_["id"], md_["nom"][:120], media.detecter(data), data, now))
             for m in doc["matieres"]:
                 conn.execute("INSERT INTO matieres(id,nom) VALUES(?,?) ON CONFLICT(id) DO UPDATE SET nom=excluded.nom",
                              (m["id"], m["nom"]))
@@ -139,7 +153,7 @@ def import_bank(conn, doc, mode: str) -> dict:
                                  [(e["id"], s) for s in dict.fromkeys(e["specialiteIds"])])
     except sqlite3.IntegrityError as ex:
         raise ApiError(422, "INVALID_IMPORT", "Conflit d'intégrité à l'import (ex. nom déjà utilisé)", errors=[str(ex)])
-    return {k: len(doc[k]) for k in ("matieres", "parties", "classes", "specialites", "exercices")}
+    return {k: len(doc[k]) for k in ("matieres", "parties", "classes", "specialites", "exercices")} | {"medias": len(doc.get("medias", []))}
 
 
 def bootstrap_if_empty(conn, path: str) -> str:

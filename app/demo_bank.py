@@ -7,6 +7,8 @@ Convention : le corrigé commence par « Solution : » ; aucun sujet ne contient
 from fractions import Fraction as F
 from math import acos, ceil, comb, degrees, e, exp, isqrt, log, log10, sqrt
 
+from . import chem
+
 R = r"\R"
 SEMI = r"\,;\,"
 
@@ -773,6 +775,65 @@ def desintegration(v):
                                     M(r"\frac{1}{%d} = %s\,\%%" % (2 ** k, dec(100 / 2 ** k, 2))) + "."]))
 
 
+def _mol(style: str, *lignes: str) -> str:
+    return "```mol %s\n%s\n```" % (style, "\n".join(lignes))
+
+
+def semi_developpee(v):
+    smi, nom, semi, groupe, familles, brute = [("CCO", "éthanol", r"\ce{CH3-CH2-OH}", "hydroxyle", "alcools", "C2H6O"),
+                                               ("CC(O)C", "propan-2-ol", r"\ce{CH3-CH(OH)-CH3}", "hydroxyle", "alcools", "C3H8O"),
+                                               ("CCC(=O)O", "acide propanoïque", r"\ce{CH3-CH2-COOH}", "carboxyle", "acides carboxyliques", "C3H6O2")][v]
+    cet = ("de l'" if nom[0] in "aeiouéè" else "du ") + nom
+    assert chem.formule_brute(smi) == brute
+    return ("On considère la molécule représentée ci-dessous en formule topologique.\n\n" + _mol("topologique", smi) + "\n\n"
+            + lst(["Déterminer sa formule brute.", "Écrire sa formule semi-développée.", "Nommer le groupe caractéristique présent et en déduire la famille de composés."]),
+            "Solution :\n\n" + lst(["Chaque sommet et chaque extrémité de ligne est un atome de carbone, complété par des atomes d'hydrogène : " + M(r"\ce{%s}" % brute) + ".",
+                                    "Formule semi-développée : " + M(semi) + " (les liaisons entre les atomes de carbone et avec le groupe caractéristique sont conservées, celles avec l'hydrogène sont omises).",
+                                    "Le groupe %s caractérise la famille des %s. Il s'agit %s." % (groupe, familles, cet)])
+            + "\n\nFormule développée (toutes les liaisons) :\n\n" + _mol("developpee", smi))
+
+
+def isomeres(v):
+    a, na, b, nb, kind, detail = [("CCCCO", "butan-1-ol", "CCC(C)O", "butan-2-ol", "isomères de position", "le groupe hydroxyle est porté par un carbone différent"),
+                                  ("CCO", "éthanol", "COC", "méthoxyméthane", "isomères de fonction", "la première molécule est un alcool, la seconde un éther"),
+                                  ("CCCCC", "pentane", "CC(C)CC", "2-méthylbutane", "isomères de chaîne", "le squelette carboné est linéaire dans un cas et ramifié dans l'autre")][v]
+    fa, fb = chem.formule_brute(a), chem.formule_brute(b)
+    assert fa == fb
+    return ("On considère les deux molécules suivantes, représentées en formule topologique.\n\n" + _mol("topologique", a + " molécule A", b + " molécule B") + "\n\n"
+            + lst(["Déterminer la formule brute de chacune des molécules.", "Ces deux molécules sont-elles isomères ? Justifier.", "Préciser le type d'isomérie."]),
+            "Solution :\n\n" + lst(["Molécule A : " + M(r"\ce{%s}" % fa) + " ; molécule B : " + M(r"\ce{%s}" % fb) + ".",
+                                    "Les deux molécules ont la même formule brute " + M(r"\ce{%s}" % fa) + " mais des formules développées différentes : ce sont des isomères.",
+                                    "Ce sont des %s : %s. Il s'agit du %s (molécule A) et du %s (molécule B)." % (kind, detail, na, nb)]))
+
+
+def lewis(v):
+    f, comp, schema, doublets_nl, smi = [(r"\ce{H2O}", {"H": 2, "O": 1}, r"\mathrm{H}-\lTB{O}-\mathrm{H}", 2, "O"),
+                                         (r"\ce{CO2}", {"C": 1, "O": 2}, r"\lTB{O}=\mathrm{C}=\lTB{O}", 4, "O=C=O"),
+                                         (r"\ce{HCl}", {"H": 1, "Cl": 1}, r"\mathrm{H}-\lTBR{Cl}", 3, "Cl")][v]
+    VAL = {"H": 1, "C": 4, "O": 6, "Cl": 7}
+    total = sum(k * VAL[a] for a, k in comp.items())
+    dev = {"O": "[H]O[H]", "O=C=O": "O=C=O", "Cl": "[H]Cl"}[smi]
+    detail = " + ".join("%d \\times %d" % (k, VAL[a]) for a, k in comp.items())
+    return ("Les atomes possèdent le nombre d'électrons de valence suivant : " + ", ".join(M(r"\ce{%s} : %d" % (a, VAL[a])) for a in comp) + ".\n\n"
+            + lst(["Calculer le nombre total d'électrons de valence de la molécule " + M(f) + ".", "En déduire le nombre total de doublets d'électrons à répartir.", "Établir le schéma de Lewis de la molécule."]),
+            "Solution :\n\n" + lst([M(r"%s = %d" % (detail, total)) + " électrons de valence.", M(r"\frac{%d}{2} = %d" % (total, total // 2)) + " doublets (liants et non liants).",
+                                    "Schéma de Lewis : " + M(schema) + " ; la molécule comporte " + M(str(doublets_nl)) + " doublets non liants et respecte la règle de l'octet (ou du duet pour l'hydrogène)."])
+            + "\n\nFormule développée correspondante :\n\n" + _mol("developpee petit", dev))
+
+
+def cram(v):
+    smi, ent, nom, subst = [("C[C@H](O)CC", "C[C@@H](O)CC", "butan-2-ol", [r"\ce{H}", r"\ce{OH}", r"\ce{CH3}", r"\ce{C2H5}"]),
+                            ("C[C@H](O)C(=O)O", "C[C@@H](O)C(=O)O", "acide lactique", [r"\ce{H}", r"\ce{OH}", r"\ce{CH3}", r"\ce{COOH}"]),
+                            ("N[C@@H](C)C(=O)O", "N[C@H](C)C(=O)O", "alanine", [r"\ce{H}", r"\ce{NH2}", r"\ce{CH3}", r"\ce{COOH}"])][v]
+    assert chem.formule_brute(smi) == chem.formule_brute(ent) and smi != ent
+    return ("La molécule ci-dessous est représentée en perspective de Cram.\n\n" + _mol("cram grand", smi) + "\n\n"
+            + lst(["Repérer l'atome de carbone asymétrique et justifier.", "Combien de stéréoisomères de configuration cette molécule possède-t-elle ?", "Représenter, en perspective de Cram, l'énantiomère de cette molécule."]),
+            "Solution :\n\n" + lst(["Le carbone asymétrique est le carbone lié à quatre substituants tous différents : " + ", ".join(M(x) for x in subst) + ".",
+                                    "Un seul carbone asymétrique : " + M("2^{1} = 2") + " stéréoisomères, qui sont deux énantiomères (images l'un de l'autre dans un miroir, non superposables).",
+                                    "L'énantiomère s'obtient en échangeant deux substituants du carbone asymétrique (liaisons en coin plein et en pointillé inversées)."])
+            + "\n\nCouple d'énantiomères (" + nom + ") :\n\n" + _mol("cram grand", smi + " molécule étudiée", ent + " énantiomère"))
+
+
 # (classe, partie, séquence, constructeur)
 FAMILLES = [
     ("Seconde", "Algèbre", 1, eq1), ("Seconde", "Algèbre", 2, dev), ("Seconde", "Algèbre", 3, ineq),
@@ -797,6 +858,7 @@ FAMILLES_PC = [
     ("Seconde", "Chimie", 1, qte_matiere), ("Seconde", "Physique", 2, vitesse), ("Seconde", "Chimie", 3, concentration), ("Seconde", "Physique", 5, ohm),
     ("Première", "Chimie", 2, equilibrage), ("Première", "Physique", 5, energie),
     ("Terminale", "Physique", 2, desintegration), ("Terminale", "Chimie", 4, ph),
+    ("Première", "Chimie", 1, semi_developpee), ("Première", "Chimie", 4, isomeres), ("Seconde", "Chimie", 4, lewis), ("Terminale", "Chimie", 1, cram),
 ]
 NIVEAUX = ["Facile", "Moyen", "Difficile"]
 AUCUNE, MATHS, PC = "SPECIAL:Aucune", "Mathématiques", "Physique-Chimie"

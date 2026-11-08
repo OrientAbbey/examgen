@@ -82,6 +82,43 @@ await popup2.setViewport({ width: 900, height: 700 }); await popup2.waitForSelec
 ok('C2 corrigé de Physique-Chimie rendu (calculs avec unités)', (await popup2.$$eval('.katex', x => x.length)) >= 4 && (await popup2.$$eval('.katex-error', x => x.length)) === 0);
 await popup2.screenshot({ path: `${OUT}/04b-corrige-chimie.png`, fullPage: true }); await popup2.close();
 
+// ───────── Structures chimiques : semi-développée, développée, Lewis, Cram ─────────
+async function genere(matiere, classe, specialite, session, diff) {
+  await page.goto(BASE + '/'); await page.waitForSelector('#matiere option:nth-child(3)');
+  const val = (sel, txt) => page.evaluate((s, t) => [...document.querySelectorAll(s + ' option')].find(o => o.textContent === t).value, sel, txt);
+  await page.select('#matiere', await val('#matiere', matiere)); await page.select('#classe', await val('#classe', classe));
+  if (specialite) await page.select('#specialite', await val('#specialite', specialite));
+  await page.select('#session', session); await clickText('#difficulte label', diff); await page.click('#generer');
+  await page.waitForSelector('#epreuve:not([hidden]) .exo');
+}
+const etat = (sel, root = page) => root.evaluate(s => { const f = [...document.querySelectorAll(s)];
+  return { n: f.length, ok: f.filter(x => x.classList.contains('rendered') && !x.classList.contains('mol-error') && x.querySelectorAll('svg line, svg path, svg polygon, svg text').length >= 3).length,
+    err: document.querySelectorAll('.mol-error, .katex-error').length, styles: f.map(x => x.getAttribute('data-style')).join(',') }; }, sel);
+async function ouvrirCorrige() { const [pp] = await Promise.all([new Promise(r => browser.once('targetcreated', t => r(t.page()))), page.click('#corrige')]); await pp.setViewport({ width: 900, height: 800 }); return pp; }
+await genere('Physique-Chimie', 'Première', 'Mathématiques', '1', 'Facile');
+await page.waitForFunction(() => document.querySelectorAll('#exos figure.mol.rendered').length >= 1, { timeout: 8000 }).catch(() => {});
+let st = await etat('#exos figure.mol');
+ok('S1 formule topologique dessinée (SVG) dans l\'énoncé de chimie organique', st.n >= 1 && st.ok === st.n && st.err === 0 && /topologique/.test(st.styles), JSON.stringify(st));
+await shot('03c-epreuve-structures');
+let pp3 = await ouvrirCorrige(); await pp3.waitForFunction(() => document.querySelectorAll('figure.mol.rendered').length >= 1, { timeout: 8000 }).catch(() => {}); await sleep(300);
+st = await etat('figure.mol', pp3); const ce = await pp3.$$eval('.katex-html', x => x.map(e => e.textContent).join(' '));
+ok('S2 corrigé : formule semi-développée (CH₃–CH₂–OH) et formule développée dessinée', st.ok >= 1 && /developpee/.test(st.styles) && /CH.*(OH|COOH)/.test(ce) && st.err === 0, JSON.stringify(st) + ce.slice(0, 80));
+await pp3.screenshot({ path: `${OUT}/04c-corrige-structures.png`, fullPage: true }); await pp3.close();
+
+await genere('Physique-Chimie', 'Seconde', '', '4', 'Facile');
+pp3 = await ouvrirCorrige(); await pp3.waitForFunction(() => document.querySelectorAll('figure.mol.rendered').length >= 1, { timeout: 8000 }).catch(() => {}); await sleep(300);
+st = await etat('figure.mol', pp3); const lew = await pp3.evaluate(() => ({ katex: document.querySelectorAll('.katex').length, err: document.querySelectorAll('.katex-error').length, doublets: [...document.querySelectorAll('.katex-html')].filter(x => /\u22c5\u22c5/.test(x.textContent)).length }));
+ok('S3 schéma de Lewis (doublets non liants) + formule développée rendus', lew.err === 0 && lew.doublets >= 1 && st.ok >= 1, JSON.stringify(lew));
+await pp3.screenshot({ path: `${OUT}/04d-corrige-lewis.png`, fullPage: true }); await pp3.close();
+
+await genere('Physique-Chimie', 'Terminale', 'Mathématiques', '1', 'Facile');
+await page.waitForFunction(() => document.querySelectorAll('#exos figure.mol.rendered').length >= 1, { timeout: 8000 }).catch(() => {});
+st = await etat('#exos figure.mol');
+pp3 = await ouvrirCorrige(); await pp3.waitForFunction(() => document.querySelectorAll('figure.mol.rendered').length >= 2, { timeout: 8000 }).catch(() => {}); await sleep(300);
+const st2 = await etat('figure.mol', pp3); const cap = await pp3.$$eval('figure.mol figcaption', x => x.map(e => e.textContent).join('|'));
+ok('S4 représentation de Cram : molécule puis couple d\'énantiomères avec légendes', st.ok >= 1 && /cram/.test(st.styles) && st2.ok >= 2 && /énantiomère/.test(cap) && st2.err === 0, JSON.stringify(st) + cap);
+await pp3.screenshot({ path: `${OUT}/04e-corrige-cram.png`, fullPage: true }); await pp3.close();
+
 // ───────── Module administrateur ─────────
 await page.goto(BASE + '/admin'); await page.waitForSelector('#dlg[open] input[type=password]');
 await shot('06-admin-connexion', false);
@@ -115,6 +152,17 @@ const pv = await page.evaluate(() => { const p = document.querySelector('#view .
   return { katex: p.querySelectorAll('.katex').length, sub: p.querySelectorAll('.msupsub').length, err: p.querySelectorAll('.katex-error').length, brut: /\$|\\|[_^]\{|\^2|_1/.test(c.textContent), gras: !!p.querySelector('strong'),
     aide: document.querySelectorAll('#view table.aide .katex').length }; });
 ok('A5b éditeur : aperçu en direct (u₁, e², H₂O, SO₄²⁻, fraction) et aide-mémoire rendus', pv.katex >= 5 && pv.sub >= 4 && pv.err === 0 && !pv.brut && pv.gras && pv.aide >= 14, JSON.stringify(pv));
+await page.click('.outils button[title="Formule chimique"]'); await page.click('.outils button[title^="Structure chimique"]');
+const ta0 = await page.$eval('#view textarea', t => t.value);
+ok('A5c barre d\'outils : insertion d\'une formule chimique et d\'un bloc de structure', /\$\\ce\{H2O\}\$/.test(ta0) && /```mol topologique/.test(ta0));
+await page.waitForFunction(() => document.querySelectorAll('#view .preview figure.mol.rendered').length >= 1, { timeout: 8000 }).catch(() => {});
+fs.writeFileSync(path.join(TMP, 'pixel.png'), Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==', 'base64'));
+await (await page.$('.outils input[type=file]')).uploadFile(path.join(TMP, 'pixel.png'));
+await page.waitForFunction(() => /!\[pixel\]\(\/media\//.test(document.querySelector('#view textarea').value), { timeout: 8000 }).catch(() => {});
+await page.waitForFunction(() => { const i = document.querySelector('#view .preview img.figure'); return i && i.complete && i.naturalWidth > 0; }, { timeout: 8000 }).catch(() => {});
+const pv2 = await page.evaluate(() => { const i = document.querySelector('#view .preview img.figure'); const f = document.querySelector('#view .preview figure.mol'); return { info: i ? [i.src.slice(-20), i.complete, i.naturalWidth, i.getBoundingClientRect().top | 0].join('/') : 'aucune img', n: document.querySelectorAll('#view .preview img').length, img: !!i && i.naturalWidth > 0, mol: !!f && f.classList.contains('rendered') && f.querySelectorAll('svg line, svg path, svg text').length >= 3 }; });
+pv2.ta = (await page.$eval('#view textarea', t => t.value)).slice(-70); pv2.alerts = alerts.join('|').slice(0, 160); pv2.errs = errors.join('|').slice(0, 160); pv2.bad = badreq.join('|').slice(0, 160);
+ok('A5d image téléversée affichée dans l\'aperçu, structure dessinée dans l\'aperçu', pv2.img && pv2.mol, JSON.stringify(pv2));
 await shot('10-admin-editeur', false);
 await clickText('button', 'Enregistrer'); await page.waitForFunction(() => !document.querySelector('#view textarea'), { timeout: 8000 });
 await page.type('input[placeholder="Recherche texte"]', 'UI-TEST'); await sleep(500); await page.waitForFunction(() => /1 exercice\(s\)/.test(document.querySelector('#view').innerText), { timeout: 8000 }).catch(() => {});
@@ -138,6 +186,8 @@ alerts.length = 0;
 await page.evaluate(() => [...document.querySelectorAll('table.t tr')].find(r => r.innerText.includes('Mathématiques')).querySelector('button.danger').click()); await sleep(900);
 ok('A10b dernière cible : message clair, rien supprimé', alerts.some(a => /aucune cible/.test(a)) && (await page.$$eval('table.t tr', r => r.length)) === before - 1);
 // import fusion
+await clickText('#tabs button', 'Médias'); await sleep(700);
+ok('A10c onglet Médias : l\'image téléversée est listée avec son utilisation', /1 exercice\(s\)|0 exercice\(s\)/.test(await page.$eval('#view', v => v.innerText)) && (await page.$$eval('#view table.t img', x => x.length)) >= 1);
 await clickText('#tabs button', 'Import / Export'); await sleep(400);
 const inp = await page.$('input[type=file]'); fs.writeFileSync(path.join(TMP, 'export.json'), await (await fetch(BASE + '/api/admin/export', { headers: { 'X-Admin-Token': TOKEN } })).text());
 await inp.uploadFile(path.join(TMP, 'export.json'));

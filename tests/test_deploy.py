@@ -77,6 +77,6 @@ def test_sauvegarde_quotidienne_rotation(world, tmp_path):
     out = bank_io.backup_to_dir(conn, str(d), keep=5)
     files = sorted(p.name for p in d.glob("banque-*.json"))
     assert len(files) == 5 and Path(out).name in files
-    assert json.loads(Path(out).read_text(encoding="utf-8"))["schemaVersion"] == "1.1"
+    assert json.loads(Path(out).read_text(encoding="utf-8"))["schemaVersion"] == "1.2"
     vide = db.connect(str(tmp_path / "vide.db")); db.init(vide)
     assert bank_io.backup_to_dir(vide, str(tmp_path / "bk2")) is None

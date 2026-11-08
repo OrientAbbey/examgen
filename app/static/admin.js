@@ -65,7 +65,7 @@ async function supprimer(path, label, targets, withPartie) {
 }
 const SEQ = ['', 1, 2, 3, 4, 5, 6];
 const host = $('#view');
-const TABS = { 'Matières & parties': tMatieres, Classes: tClasses, Spécialités: tSpecialites, Exercices: tExercices, 'Import / Export': tIO, Journal: tJournal, Réglages: tReglages };
+const TABS = { 'Matières & parties': tMatieres, Classes: tClasses, Spécialités: tSpecialites, Exercices: tExercices, 'Médias': tMedias, 'Import / Export': tIO, Journal: tJournal, Réglages: tReglages };
 let current = 'Matières & parties';
 function nav() {
   $('#tabs').replaceChildren(...Object.keys(TABS).map(k => el('button', { class: k === current ? 'on' : '', onclick: () => { current = k; nav(); } }, k)));
@@ -121,6 +121,41 @@ async function tClasses(view) {
         el('button', { class: 'danger', onclick: async () => { if (await supprimer('/classes/' + c.id, c.nom, cs.filter(x => x.id !== c.id), false)) nav(); } }, 'Supprimer')))))));
 }
 
+
+// Barre d'outils : insère des modèles de formules / structures / images à la position du curseur
+function insertAt(ta, texte, selDebut, selFin) {
+  const a = ta.selectionStart, b = ta.selectionEnd;
+  ta.value = ta.value.slice(0, a) + texte + ta.value.slice(b);
+  ta.focus();
+  ta.setSelectionRange(a + (selDebut ?? texte.length), a + (selFin ?? texte.length));
+  ta.dispatchEvent(new Event('input'));                    // met à jour l'aperçu
+}
+const OUTILS = [['u₁', 'Indice', '$u_{1}$', 3, 4], ['x²', 'Exposant', '$x^{2}$', 4, 5], ['a⁄b', 'Fraction', '$\\frac{a}{b}$', 8, 9], ['√', 'Racine carrée', '$\\sqrt{x}$', 8, 9],
+  ['ℝ', 'Ensemble des réels', '$\\R$'], ['H₂O', 'Formule chimique', '$\\ce{H2O}$', 5, 8], ['⇌', 'Équation chimique', '$\\ce{A + B -> C}$', 5, 15],
+  ['CH₃–', 'Formule semi-développée', '$\\ce{CH3-CH2-OH}$', 5, 17], [':Ö:', 'Doublets de Lewis', '$\\lTB{O}$', 6, 7],
+  ['⌬', 'Structure chimique (topologique, développée ou Cram)', '\n```mol topologique\nCCO éthanol\n```\n', 22, 25]];
+function barreOutils(ta) {
+  const file = el('input', { type: 'file', accept: 'image/png,image/jpeg,image/gif,image/webp,image/svg+xml', style: 'display:none' });
+  file.addEventListener('change', async () => {
+    const f = file.files[0]; if (!f) return;
+    const r = await fetch('/api/admin/media', { method: 'POST', headers: { 'X-Admin-Token': TOKEN, 'Content-Type': f.type || 'application/octet-stream', 'X-Filename': encodeURIComponent(f.name) }, body: f });
+    const d = await r.json().catch(() => ({}));
+    file.value = '';
+    if (r.ok) {
+      // curseur à l'intérieur d'un bloc ```…``` : on insère l'image après la fermeture du bloc (sinon elle casserait le bloc)
+      let pos = ta.selectionStart;
+      if ((ta.value.slice(0, pos).match(/```/g) || []).length % 2 === 1) {
+        const fin = ta.value.indexOf('```', pos);
+        if (fin >= 0) { const nl = ta.value.indexOf('\n', fin); pos = nl >= 0 ? nl + 1 : ta.value.length; }
+      }
+      ta.setSelectionRange(pos, pos);
+      insertAt(ta, '\n' + d.markdown + '\n');
+    } else err({ data: d, status: r.status });
+  });
+  return el('div', { class: 'row outils' }, OUTILS.map(([lib, titre, txt, a, b]) => el('button', { type: 'button', title: titre, onclick: () => insertAt(ta, txt, a, b) }, lib)),
+    el('button', { type: 'button', title: 'Insérer une image (schéma de Newman, Fischer, figure…)', onclick: () => file.click() }, '🖼'), file);
+}
+
 // Aperçu fidèle (même rendu Markdown que les épreuves, formules mises en forme par KaTeX)
 function preview(ta) {
   const box = el('div', { class: 'md preview' });
@@ -129,16 +164,21 @@ function preview(ta) {
     const my = ++seq; const r = await api('POST', '/preview', { markdown: ta.value });
     if (my !== seq || !r.ok) return;
     box.innerHTML = r.data.html; renderMath(box);       // HTML produit par le serveur (HTML brut désactivé)
+    setTimeout(() => {
+      const w = [...r.data.avertissements, ...[...box.querySelectorAll('.katex-error')].map(x => 'Formule invalide : ' + x.textContent.slice(0, 60))];
+      box.querySelectorAll('.avert').forEach(x => x.remove());
+      if (w.length) box.prepend(el('div', { class: 'avert mol-error' }, '⚠ ', w.join(' · ')));
+    }, 150);
   }, 300); };
   ta.addEventListener('input', upd); upd();
   return box;
 }
 const AIDE = [['Indice', 'u_1'], ['Indice composé', 'u_{n+1}'], ['Exposant', 'x^2'], ['Exponentielle', '\\mathrm{e}^{2x}'], ['Puissance de 10', '10^{-4}'],
   ['Fraction', '\\frac{a}{b}'], ['Racine', '\\sqrt{14}'], ['Ensemble des réels', '\\R'], ['Intervalle', '[0\\,;\\,+\\infty['], ['Vecteur', '\\overrightarrow{AB}'],
-  ['Formule chimique', '\\ce{H2O}'], ['Ion', '\\ce{SO4^2-}'], ['Équation-bilan', '\\ce{CH4 + 2O2 -> CO2 + 2H2O}'], ['Unité', '\\pu{m.s-1}']];
+  ['Formule chimique', '\\ce{H2O}'], ['Semi-développée', '\\ce{CH3-CH(OH)-CH3}'], ['Doublets de Lewis', '\\mathrm{H}-\\lTB{O}-\\mathrm{H}'], ['Ion', '\\ce{SO4^2-}'], ['Équation-bilan', '\\ce{CH4 + 2O2 -> CO2 + 2H2O}'], ['Unité', '\\pu{m.s-1}']];
 function aide() {
   const d = el('details', {}, el('summary', {}, 'Aide : écrire des formules (indices, exposants, chimie…)'),
-    el('p', { class: 'mut' }, 'Une formule s\'écrit entre dollars : $u_1$ dans une phrase, $$…$$ pour une formule centrée sur sa ligne.'),
+    el('p', { class: 'mut' }, 'Une formule s\'écrit entre dollars : $u_1$ dans une phrase, $$…$$ pour une formule centrée sur sa ligne. Pour dessiner une molécule : bloc ```mol topologique|developpee|cram (un SMILES par ligne, légende facultative après un espace). Schémas de Newman/Fischer ou figures : bouton 🖼.'),
     el('table', { class: 'aide' }, AIDE.map(([nom, tex]) => el('tr', {}, el('td', {}, nom), el('td', {}, el('code', {}, '$' + tex + '$')), el('td', {}, el('span', { class: 'math inline' }, tex))))));
   renderMath(d);
   return d;
@@ -174,7 +214,7 @@ async function tExercices(view) {
     const cChecks = cs.map(c => ({ c, cb: el('input', { type: 'checkbox', checked: e.classeIds.includes(c.id) }) }));
     const sChecks = [{ id: 'SPECIAL:Aucune', nom: 'Aucune (universel)' }, ...ss].map(s => ({ s, cb: el('input', { type: 'checkbox', checked: e.specialiteIds.includes(s.id) }) }));
     editor.replaceChildren(el('div', { class: 'card' }, el('h2', {}, e.id ? 'Modifier l\'exercice' : 'Nouvel exercice'),
-      aide(), el('label', {}, 'Sujet (Markdown + formules)'), sujet, preview(sujet), el('label', {}, 'Corrigé (Markdown + formules)'), corrige, preview(corrige),
+      aide(), el('label', {}, 'Sujet (Markdown + formules)'), barreOutils(sujet), sujet, preview(sujet), el('label', {}, 'Corrigé (Markdown + formules)'), barreOutils(corrige), corrige, preview(corrige),
       el('label', {}, 'Matières et partie associée'), mChecks.map(x => x.node),
       el('label', {}, 'Classes'), el('div', { class: 'checks' }, cChecks.map(x => el('label', {}, x.cb, x.c.nom))),
       el('label', {}, 'Spécialités'), el('div', { class: 'checks' }, sChecks.map(x => el('label', {}, x.cb, x.s.nom))),
@@ -194,6 +234,16 @@ async function tExercices(view) {
   for (const k of Object.keys(f)) if (k !== 'q') f[k].addEventListener('change', load);
   view.append(el('div', { class: 'card' }, el('div', { class: 'row' }, Object.values(f), el('button', { class: 'primary', onclick: () => edit() }, '+ Nouvel exercice'))), editor, el('div', { class: 'card' }, list));
   load();
+}
+async function tMedias(view) {
+  const ms = (await api('GET', '/media')).data;
+  view.append(el('div', { class: 'card' }, el('h2', {}, 'Images des énoncés'),
+    el('p', { class: 'mut' }, 'Téléversez les images depuis l\'éditeur d\'exercice (bouton 🖼). PNG, JPEG, GIF, WebP ou SVG, 2 Mo maximum. Le contenu est contrôlé (un SVG avec script est refusé).'),
+    ms.length ? el('table', { class: 't' }, ms.map(m => el('tr', {}, el('td', {}, el('img', { src: m.url, alt: m.nom, style: 'max-width:90px;max-height:60px;background:#fff' })), el('td', {}, m.nom), el('td', {}, Math.round(m.taille / 1024) + ' Ko'),
+      el('td', {}, m.utilisations + ' exercice(s)'), el('td', {}, el('button', { onclick: () => navigator.clipboard && navigator.clipboard.writeText('![' + m.nom.replace(/\.[^.]+$/, '') + '](' + m.url + ')') }, 'Copier le Markdown'), ' ',
+        el('button', { class: 'danger', onclick: async () => { if (!confirm('Supprimer cette image ?')) return; let r = await api('DELETE', '/media/' + m.id);
+          if (r.status === 409 && confirm('Image utilisée par ' + r.data.count + ' exercice(s). Supprimer quand même ?')) r = await api('DELETE', '/media/' + m.id + '?force=1');
+          r.ok ? nav() : err(r); } }, 'Supprimer'))))) : el('p', { class: 'mut' }, 'Aucune image.')));
 }
 async function tIO(view) {
   const mode = el('select', {}, el('option', { value: 'fusionner' }, 'Fusionner (mise à jour par id, ajout des nouveaux)'), el('option', { value: 'remplacer' }, 'Remplacer toute la banque'));

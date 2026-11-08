@@ -395,3 +395,31 @@ def list_journal(conn, type_=None, limit=100, offset=0):
         {"id": r["id"], "timestamp": r["ts"], "userId": r["user_id"], "generationId": r["generation_id"],
          "type": r["type"], "params": json.loads(r["params"]), "details": json.loads(r["details"])}
         for r in rows]}
+
+
+# ───────────────────────── Médias (images des énoncés) ─────────────────────────
+def add_media(conn, nom: str, data: bytes, id_=None):
+    from . import media
+    mime = media.detecter(data)
+    id_ = id_ or media.nouvel_id()
+    with tx(conn):
+        conn.execute("INSERT INTO medias(id,nom,mime,data,created_at) VALUES(?,?,?,?,?) ON CONFLICT(id) DO UPDATE SET nom=excluded.nom, mime=excluded.mime, data=excluded.data",
+                     (id_, (nom or "image")[:120], mime, data, now_iso()))
+    return {"id": id_, "nom": nom, "mime": mime, "taille": len(data), "url": "/media/" + id_, "markdown": "![%s](/media/%s)" % ((nom or "image").rsplit(".", 1)[0], id_)}
+
+
+def list_medias(conn):
+    out = []
+    for r in conn.execute("SELECT id, nom, mime, length(data) AS taille, created_at FROM medias ORDER BY created_at DESC"):
+        usages = _one(conn, "SELECT COUNT(*) c FROM exercices WHERE sujet LIKE ? OR corrige LIKE ?", (f"%/media/{r['id']}%",) * 2)["c"]
+        out.append({"id": r["id"], "nom": r["nom"], "mime": r["mime"], "taille": r["taille"], "url": "/media/" + r["id"], "utilisations": usages})
+    return out
+
+
+def delete_media(conn, id_, force=False):
+    _need(conn, "medias", id_, "NOT_FOUND")
+    n = _one(conn, "SELECT COUNT(*) c FROM exercices WHERE sujet LIKE ? OR corrige LIKE ?", (f"%/media/{id_}%",) * 2)["c"]
+    if n and not force:
+        raise ApiError(409, "REFERENCED", "Image utilisée par des exercices", count=n)
+    with tx(conn):
+        conn.execute("DELETE FROM medias WHERE id=?", (id_,))
