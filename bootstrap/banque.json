@@ -1,0 +1,3091 @@
+{
+ "schemaVersion": "1.2",
+ "exportedAt": "2026-11-08T19:47:00+00:00",
+ "matieres": [
+  {
+   "id": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+   "nom": "Mathématiques"
+  },
+  {
+   "id": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+   "nom": "Physique-Chimie"
+  }
+ ],
+ "parties": [
+  {
+   "id": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f",
+   "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+   "nom": "Algèbre",
+   "ordre": 1
+  },
+  {
+   "id": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653",
+   "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+   "nom": "Analyse",
+   "ordre": 2
+  },
+  {
+   "id": "7fa5847b-b399-4a9b-8b1b-20cc0d266e03",
+   "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+   "nom": "Géométrie",
+   "ordre": 3
+  },
+  {
+   "id": "41da7dbb-ce0b-42ab-816d-b421609685f5",
+   "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+   "nom": "Probabilités et statistiques",
+   "ordre": 4
+  },
+  {
+   "id": "cc8a5eae-ada8-4c87-908d-b229720e511b",
+   "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+   "nom": "Chimie",
+   "ordre": 1
+  },
+  {
+   "id": "a8171ad6-82fe-42a2-8647-cb8e55452d1a",
+   "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+   "nom": "Physique",
+   "ordre": 2
+  }
+ ],
+ "classes": [
+  {
+   "id": "ed78ac42-5366-4bc6-bbca-7c454662a017",
+   "nom": "Première",
+   "classePrecedenteId": "5ad3bc60-c424-429b-94ed-6f16dd33f64f",
+   "aExamen": false,
+   "specialiteObligatoire": true
+  },
+  {
+   "id": "5ad3bc60-c424-429b-94ed-6f16dd33f64f",
+   "nom": "Seconde",
+   "classePrecedenteId": null,
+   "aExamen": false,
+   "specialiteObligatoire": false
+  },
+  {
+   "id": "e867163f-8bb6-4c1f-bd03-57bf44a0197e",
+   "nom": "Terminale",
+   "classePrecedenteId": "ed78ac42-5366-4bc6-bbca-7c454662a017",
+   "aExamen": true,
+   "specialiteObligatoire": true
+  }
+ ],
+ "specialites": [
+  {
+   "id": "71264af1-a9b9-498c-8e6b-426345e74c3c",
+   "nom": "Mathématiques"
+  },
+  {
+   "id": "52c9f73d-7213-4554-a138-f3a78a40625d",
+   "nom": "Physique-Chimie"
+  }
+ ],
+ "exercices": [
+  {
+   "id": "ec36c5c7-e1c5-4715-981b-81472ce3778a",
+   "sujet": "La molécule ci-dessous est représentée en perspective de Cram.\n\n```mol cram grand\nN[C@@H](C)C(=O)O\n```\n\n1. Repérer l'atome de carbone asymétrique et justifier.\n2. Combien de stéréoisomères de configuration cette molécule possède-t-elle ?\n3. Représenter, en perspective de Cram, l'énantiomère de cette molécule.",
+   "corrige": "Solution :\n\n1. Le carbone asymétrique est le carbone lié à quatre substituants tous différents : $\\ce{H}$, $\\ce{NH2}$, $\\ce{CH3}$, $\\ce{COOH}$.\n2. Un seul carbone asymétrique : $2^{1} = 2$ stéréoisomères, qui sont deux énantiomères (images l'un de l'autre dans un miroir, non superposables).\n3. L'énantiomère s'obtient en échangeant deux substituants du carbone asymétrique (liaisons en coin plein et en pointillé inversées).\n\nCouple d'énantiomères (alanine) :\n\n```mol cram grand\nN[C@@H](C)C(=O)O molécule étudiée\nN[C@H](C)C(=O)O énantiomère\n```",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "cc8a5eae-ada8-4c87-908d-b229720e511b"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "237fb1e4-d9ee-4f46-9d9e-10450148f644",
+   "sujet": "La molécule ci-dessous est représentée en perspective de Cram.\n\n```mol cram grand\nC[C@H](O)C(=O)O\n```\n\n1. Repérer l'atome de carbone asymétrique et justifier.\n2. Combien de stéréoisomères de configuration cette molécule possède-t-elle ?\n3. Représenter, en perspective de Cram, l'énantiomère de cette molécule.",
+   "corrige": "Solution :\n\n1. Le carbone asymétrique est le carbone lié à quatre substituants tous différents : $\\ce{H}$, $\\ce{OH}$, $\\ce{CH3}$, $\\ce{COOH}$.\n2. Un seul carbone asymétrique : $2^{1} = 2$ stéréoisomères, qui sont deux énantiomères (images l'un de l'autre dans un miroir, non superposables).\n3. L'énantiomère s'obtient en échangeant deux substituants du carbone asymétrique (liaisons en coin plein et en pointillé inversées).\n\nCouple d'énantiomères (acide lactique) :\n\n```mol cram grand\nC[C@H](O)C(=O)O molécule étudiée\nC[C@@H](O)C(=O)O énantiomère\n```",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "cc8a5eae-ada8-4c87-908d-b229720e511b"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "2abf182f-c3df-41da-a87d-8c45f680cc35",
+   "sujet": "La molécule ci-dessous est représentée en perspective de Cram.\n\n```mol cram grand\nC[C@H](O)CC\n```\n\n1. Repérer l'atome de carbone asymétrique et justifier.\n2. Combien de stéréoisomères de configuration cette molécule possède-t-elle ?\n3. Représenter, en perspective de Cram, l'énantiomère de cette molécule.",
+   "corrige": "Solution :\n\n1. Le carbone asymétrique est le carbone lié à quatre substituants tous différents : $\\ce{H}$, $\\ce{OH}$, $\\ce{CH3}$, $\\ce{C2H5}$.\n2. Un seul carbone asymétrique : $2^{1} = 2$ stéréoisomères, qui sont deux énantiomères (images l'un de l'autre dans un miroir, non superposables).\n3. L'énantiomère s'obtient en échangeant deux substituants du carbone asymétrique (liaisons en coin plein et en pointillé inversées).\n\nCouple d'énantiomères (butan-2-ol) :\n\n```mol cram grand\nC[C@H](O)CC molécule étudiée\nC[C@@H](O)CC énantiomère\n```",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "cc8a5eae-ada8-4c87-908d-b229720e511b"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "43b1a8dc-a07c-46b3-a452-0effee0647c6",
+   "sujet": "Les atomes possèdent le nombre d'électrons de valence suivant : $\\ce{H} : 1$, $\\ce{Cl} : 7$.\n\n1. Calculer le nombre total d'électrons de valence de la molécule $\\ce{HCl}$.\n2. En déduire le nombre total de doublets d'électrons à répartir.\n3. Établir le schéma de Lewis de la molécule.",
+   "corrige": "Solution :\n\n1. $1 \\times 1 + 1 \\times 7 = 8$ électrons de valence.\n2. $\\frac{8}{2} = 4$ doublets (liants et non liants).\n3. Schéma de Lewis : $\\mathrm{H}-\\lTBR{Cl}$ ; la molécule comporte $3$ doublets non liants et respecte la règle de l'octet (ou du duet pour l'hydrogène).\n\nFormule développée correspondante :\n\n```mol developpee petit\n[H]Cl\n```",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "cc8a5eae-ada8-4c87-908d-b229720e511b"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "8746757b-ff5b-458e-af05-399fb327e373",
+   "sujet": "Les atomes possèdent le nombre d'électrons de valence suivant : $\\ce{C} : 4$, $\\ce{O} : 6$.\n\n1. Calculer le nombre total d'électrons de valence de la molécule $\\ce{CO2}$.\n2. En déduire le nombre total de doublets d'électrons à répartir.\n3. Établir le schéma de Lewis de la molécule.",
+   "corrige": "Solution :\n\n1. $1 \\times 4 + 2 \\times 6 = 16$ électrons de valence.\n2. $\\frac{16}{2} = 8$ doublets (liants et non liants).\n3. Schéma de Lewis : $\\lTB{O}=\\mathrm{C}=\\lTB{O}$ ; la molécule comporte $4$ doublets non liants et respecte la règle de l'octet (ou du duet pour l'hydrogène).\n\nFormule développée correspondante :\n\n```mol developpee petit\nO=C=O\n```",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "cc8a5eae-ada8-4c87-908d-b229720e511b"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "4e9d1415-1c86-4211-be1c-cf95b1510ff3",
+   "sujet": "Les atomes possèdent le nombre d'électrons de valence suivant : $\\ce{H} : 1$, $\\ce{O} : 6$.\n\n1. Calculer le nombre total d'électrons de valence de la molécule $\\ce{H2O}$.\n2. En déduire le nombre total de doublets d'électrons à répartir.\n3. Établir le schéma de Lewis de la molécule.",
+   "corrige": "Solution :\n\n1. $2 \\times 1 + 1 \\times 6 = 8$ électrons de valence.\n2. $\\frac{8}{2} = 4$ doublets (liants et non liants).\n3. Schéma de Lewis : $\\mathrm{H}-\\lTB{O}-\\mathrm{H}$ ; la molécule comporte $2$ doublets non liants et respecte la règle de l'octet (ou du duet pour l'hydrogène).\n\nFormule développée correspondante :\n\n```mol developpee petit\n[H]O[H]\n```",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "cc8a5eae-ada8-4c87-908d-b229720e511b"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "f6b45303-b715-450a-82d0-e9825b9394ff",
+   "sujet": "On considère les deux molécules suivantes, représentées en formule topologique.\n\n```mol topologique\nCCCCC molécule A\nCC(C)CC molécule B\n```\n\n1. Déterminer la formule brute de chacune des molécules.\n2. Ces deux molécules sont-elles isomères ? Justifier.\n3. Préciser le type d'isomérie.",
+   "corrige": "Solution :\n\n1. Molécule A : $\\ce{C5H12}$ ; molécule B : $\\ce{C5H12}$.\n2. Les deux molécules ont la même formule brute $\\ce{C5H12}$ mais des formules développées différentes : ce sont des isomères.\n3. Ce sont des isomères de chaîne : le squelette carboné est linéaire dans un cas et ramifié dans l'autre. Il s'agit du pentane (molécule A) et du 2-méthylbutane (molécule B).",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "cc8a5eae-ada8-4c87-908d-b229720e511b"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "2a8f7b76-bf24-4b09-adf6-0082bacf6594",
+   "sujet": "On considère les deux molécules suivantes, représentées en formule topologique.\n\n```mol topologique\nCCO molécule A\nCOC molécule B\n```\n\n1. Déterminer la formule brute de chacune des molécules.\n2. Ces deux molécules sont-elles isomères ? Justifier.\n3. Préciser le type d'isomérie.",
+   "corrige": "Solution :\n\n1. Molécule A : $\\ce{C2H6O}$ ; molécule B : $\\ce{C2H6O}$.\n2. Les deux molécules ont la même formule brute $\\ce{C2H6O}$ mais des formules développées différentes : ce sont des isomères.\n3. Ce sont des isomères de fonction : la première molécule est un alcool, la seconde un éther. Il s'agit du éthanol (molécule A) et du méthoxyméthane (molécule B).",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "cc8a5eae-ada8-4c87-908d-b229720e511b"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "167065b3-b4af-479b-a2cf-614843cc6772",
+   "sujet": "On considère les deux molécules suivantes, représentées en formule topologique.\n\n```mol topologique\nCCCCO molécule A\nCCC(C)O molécule B\n```\n\n1. Déterminer la formule brute de chacune des molécules.\n2. Ces deux molécules sont-elles isomères ? Justifier.\n3. Préciser le type d'isomérie.",
+   "corrige": "Solution :\n\n1. Molécule A : $\\ce{C4H10O}$ ; molécule B : $\\ce{C4H10O}$.\n2. Les deux molécules ont la même formule brute $\\ce{C4H10O}$ mais des formules développées différentes : ce sont des isomères.\n3. Ce sont des isomères de position : le groupe hydroxyle est porté par un carbone différent. Il s'agit du butan-1-ol (molécule A) et du butan-2-ol (molécule B).",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "cc8a5eae-ada8-4c87-908d-b229720e511b"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "7aaaf37a-09d4-410e-90ad-f540c5926ecb",
+   "sujet": "On considère la molécule représentée ci-dessous en formule topologique.\n\n```mol topologique\nCCC(=O)O\n```\n\n1. Déterminer sa formule brute.\n2. Écrire sa formule semi-développée.\n3. Nommer le groupe caractéristique présent et en déduire la famille de composés.",
+   "corrige": "Solution :\n\n1. Chaque sommet et chaque extrémité de ligne est un atome de carbone, complété par des atomes d'hydrogène : $\\ce{C3H6O2}$.\n2. Formule semi-développée : $\\ce{CH3-CH2-COOH}$ (les liaisons entre les atomes de carbone et avec le groupe caractéristique sont conservées, celles avec l'hydrogène sont omises).\n3. Le groupe carboxyle caractérise la famille des acides carboxyliques. Il s'agit de l'acide propanoïque.\n\nFormule développée (toutes les liaisons) :\n\n```mol developpee\nCCC(=O)O\n```",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "cc8a5eae-ada8-4c87-908d-b229720e511b"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "4af32be9-f538-4781-b818-af72868939c7",
+   "sujet": "On considère la molécule représentée ci-dessous en formule topologique.\n\n```mol topologique\nCC(O)C\n```\n\n1. Déterminer sa formule brute.\n2. Écrire sa formule semi-développée.\n3. Nommer le groupe caractéristique présent et en déduire la famille de composés.",
+   "corrige": "Solution :\n\n1. Chaque sommet et chaque extrémité de ligne est un atome de carbone, complété par des atomes d'hydrogène : $\\ce{C3H8O}$.\n2. Formule semi-développée : $\\ce{CH3-CH(OH)-CH3}$ (les liaisons entre les atomes de carbone et avec le groupe caractéristique sont conservées, celles avec l'hydrogène sont omises).\n3. Le groupe hydroxyle caractérise la famille des alcools. Il s'agit du propan-2-ol.\n\nFormule développée (toutes les liaisons) :\n\n```mol developpee\nCC(O)C\n```",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "cc8a5eae-ada8-4c87-908d-b229720e511b"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "ec86edfc-3888-4f81-b644-d40455ba825f",
+   "sujet": "On considère la molécule représentée ci-dessous en formule topologique.\n\n```mol topologique\nCCO\n```\n\n1. Déterminer sa formule brute.\n2. Écrire sa formule semi-développée.\n3. Nommer le groupe caractéristique présent et en déduire la famille de composés.",
+   "corrige": "Solution :\n\n1. Chaque sommet et chaque extrémité de ligne est un atome de carbone, complété par des atomes d'hydrogène : $\\ce{C2H6O}$.\n2. Formule semi-développée : $\\ce{CH3-CH2-OH}$ (les liaisons entre les atomes de carbone et avec le groupe caractéristique sont conservées, celles avec l'hydrogène sont omises).\n3. Le groupe hydroxyle caractérise la famille des alcools. Il s'agit de l'éthanol.\n\nFormule développée (toutes les liaisons) :\n\n```mol developpee\nCCO\n```",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "cc8a5eae-ada8-4c87-908d-b229720e511b"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "fb04831c-d041-45eb-82c0-48a038a3316e",
+   "sujet": "La concentration en ions oxonium d'une solution aqueuse vaut $[\\ce{H3O+}] = 1{,}0 \\times 10^{-11}\\,\\pu{mol.L-1}$.\n\n1. Calculer le pH de cette solution (à $0{,}1$ près).\n2. La solution est-elle acide, neutre ou basique ? Justifier.",
+   "corrige": "Solution :\n\n1. $\\mathrm{pH} = -\\log\\left([\\ce{H3O+}]\\right) = -\\log\\left(1{,}0 \\times 10^{-11}\\right) \\approx 11{,}0$.\n2. Le pH est supérieur à 7 : la solution est basique.",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "cc8a5eae-ada8-4c87-908d-b229720e511b"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "4f8bf5d0-32d4-4c46-88ba-39f8284ded3a",
+   "sujet": "La concentration en ions oxonium d'une solution aqueuse vaut $[\\ce{H3O+}] = 2{,}5 \\times 10^{-4}\\,\\pu{mol.L-1}$.\n\n1. Calculer le pH de cette solution (à $0{,}1$ près).\n2. La solution est-elle acide, neutre ou basique ? Justifier.",
+   "corrige": "Solution :\n\n1. $\\mathrm{pH} = -\\log\\left([\\ce{H3O+}]\\right) = -\\log\\left(2{,}5 \\times 10^{-4}\\right) \\approx 3{,}6$.\n2. Le pH est inférieur à 7 : la solution est acide.",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "cc8a5eae-ada8-4c87-908d-b229720e511b"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "73ebb599-144a-40ac-add5-de26ebcdec40",
+   "sujet": "La concentration en ions oxonium d'une solution aqueuse vaut $[\\ce{H3O+}] = 1{,}0 \\times 10^{-3}\\,\\pu{mol.L-1}$.\n\n1. Calculer le pH de cette solution (à $0{,}1$ près).\n2. La solution est-elle acide, neutre ou basique ? Justifier.",
+   "corrige": "Solution :\n\n1. $\\mathrm{pH} = -\\log\\left([\\ce{H3O+}]\\right) = -\\log\\left(1{,}0 \\times 10^{-3}\\right) \\approx 3{,}0$.\n2. Le pH est inférieur à 7 : la solution est acide.",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "cc8a5eae-ada8-4c87-908d-b229720e511b"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "b4dfabe3-7b52-4ddf-9a27-a76ec49b08a5",
+   "sujet": "Un échantillon radioactif contient initialement $N_0$ noyaux. La demi-vie de l'isotope est $t_{1/2} = 3\\,\\pu{jours}$. On rappelle que $N(t) = N_0 \\left(\\frac{1}{2}\\right)^{t/t_{1/2}}$.\n\n1. Combien de demi-vies se sont écoulées au bout de $12\\,\\pu{jours}$ ?\n2. Quelle fraction de $N_0$ reste-t-il à cet instant ?\n3. Exprimer ce résultat en pourcentage.",
+   "corrige": "Solution :\n\n1. $\\frac{t}{t_{1/2}} = \\frac{12}{3} = 4$ demi-vies.\n2. $N(t) = N_0 \\left(\\frac{1}{2}\\right)^{4} = \\frac{N_0}{16}$.\n3. $\\frac{1}{16} = 6{,}25\\,\\%$.",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "a8171ad6-82fe-42a2-8647-cb8e55452d1a"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "373fa176-d46b-438e-9c3f-e21ce9352fa7",
+   "sujet": "Un échantillon radioactif contient initialement $N_0$ noyaux. La demi-vie de l'isotope est $t_{1/2} = 5\\,\\pu{jours}$. On rappelle que $N(t) = N_0 \\left(\\frac{1}{2}\\right)^{t/t_{1/2}}$.\n\n1. Combien de demi-vies se sont écoulées au bout de $15\\,\\pu{jours}$ ?\n2. Quelle fraction de $N_0$ reste-t-il à cet instant ?\n3. Exprimer ce résultat en pourcentage.",
+   "corrige": "Solution :\n\n1. $\\frac{t}{t_{1/2}} = \\frac{15}{5} = 3$ demi-vies.\n2. $N(t) = N_0 \\left(\\frac{1}{2}\\right)^{3} = \\frac{N_0}{8}$.\n3. $\\frac{1}{8} = 12{,}50\\,\\%$.",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "a8171ad6-82fe-42a2-8647-cb8e55452d1a"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "db174d6b-6404-4b9e-bb89-9d0563d341cc",
+   "sujet": "Un échantillon radioactif contient initialement $N_0$ noyaux. La demi-vie de l'isotope est $t_{1/2} = 8\\,\\pu{jours}$. On rappelle que $N(t) = N_0 \\left(\\frac{1}{2}\\right)^{t/t_{1/2}}$.\n\n1. Combien de demi-vies se sont écoulées au bout de $16\\,\\pu{jours}$ ?\n2. Quelle fraction de $N_0$ reste-t-il à cet instant ?\n3. Exprimer ce résultat en pourcentage.",
+   "corrige": "Solution :\n\n1. $\\frac{t}{t_{1/2}} = \\frac{16}{8} = 2$ demi-vies.\n2. $N(t) = N_0 \\left(\\frac{1}{2}\\right)^{2} = \\frac{N_0}{4}$.\n3. $\\frac{1}{4} = 25{,}00\\,\\%$.",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "a8171ad6-82fe-42a2-8647-cb8e55452d1a"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "410c6770-c19c-4a8e-ba66-0d2966ccad73",
+   "sujet": "Un véhicule de masse $m = 70\\,\\pu{kg}$ roule à la vitesse $v = 10\\,\\pu{m.s-1}$.\n\n1. Calculer son énergie cinétique $E_\\mathrm{c} = \\frac{1}{2} m v^{2}$ (résultat en notation scientifique).\n2. Par quel facteur l'énergie cinétique est-elle multipliée lorsque la vitesse double ?",
+   "corrige": "Solution :\n\n1. $E_\\mathrm{c} = \\frac{1}{2} \\times 70 \\times 10^{2} = 3500\\,\\pu{J} = 3{,}5 \\times 10^{3}\\,\\pu{J}$.\n2. L'énergie cinétique est proportionnelle à $v^{2}$ : si $v$ double, $E_\\mathrm{c}$ est multipliée par $2^{2} = 4$.",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "a8171ad6-82fe-42a2-8647-cb8e55452d1a"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "4b54865d-2a5a-481f-b6c0-26a2147d1606",
+   "sujet": "Un véhicule de masse $m = 800\\,\\pu{kg}$ roule à la vitesse $v = 25\\,\\pu{m.s-1}$.\n\n1. Calculer son énergie cinétique $E_\\mathrm{c} = \\frac{1}{2} m v^{2}$ (résultat en notation scientifique).\n2. Par quel facteur l'énergie cinétique est-elle multipliée lorsque la vitesse double ?",
+   "corrige": "Solution :\n\n1. $E_\\mathrm{c} = \\frac{1}{2} \\times 800 \\times 25^{2} = 250000\\,\\pu{J} = 2{,}5 \\times 10^{5}\\,\\pu{J}$.\n2. L'énergie cinétique est proportionnelle à $v^{2}$ : si $v$ double, $E_\\mathrm{c}$ est multipliée par $2^{2} = 4$.",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "a8171ad6-82fe-42a2-8647-cb8e55452d1a"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "e2d25666-9756-47ea-b611-4df68abe6e1a",
+   "sujet": "Un véhicule de masse $m = 1200\\,\\pu{kg}$ roule à la vitesse $v = 20\\,\\pu{m.s-1}$.\n\n1. Calculer son énergie cinétique $E_\\mathrm{c} = \\frac{1}{2} m v^{2}$ (résultat en notation scientifique).\n2. Par quel facteur l'énergie cinétique est-elle multipliée lorsque la vitesse double ?",
+   "corrige": "Solution :\n\n1. $E_\\mathrm{c} = \\frac{1}{2} \\times 1200 \\times 20^{2} = 240000\\,\\pu{J} = 2{,}4 \\times 10^{5}\\,\\pu{J}$.\n2. L'énergie cinétique est proportionnelle à $v^{2}$ : si $v$ double, $E_\\mathrm{c}$ est multipliée par $2^{2} = 4$.",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "a8171ad6-82fe-42a2-8647-cb8e55452d1a"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "4c395828-2309-49b6-96fd-6488b772ca07",
+   "sujet": "La combustion complète du butane ($\\ce{C4H10}$) dans le dioxygène produit du dioxyde de carbone et de l'eau. Son équation, non ajustée, s'écrit : $\\ce{C4H10 + O2 -> CO2 + H2O}$.\n\n1. Ajuster cette équation de réaction.\n2. Quelle quantité de dioxygène faut-il pour brûler $4,0\\,\\pu{mol}$ de butane ?",
+   "corrige": "Solution :\n\n1. Équation ajustée : $\\ce{2C4H10 + 13O2 -> 8CO2 + 10H2O}$. Vérification — $carbone : 2 \\times 4 = 8 ; hydrogène : 2 \\times 10 = 10 \\times 2 ; oxygène : 13 \\times 2 = 8 \\times 2 + 10$.\n2. D'après les nombres stœchiométriques, $n(\\ce{O2}) = \\frac{13}{2} \\times n(\\ce{C4H10}) = \\frac{13}{2} \\times 4,0 = 26\\,\\pu{mol}$.",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "cc8a5eae-ada8-4c87-908d-b229720e511b"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "cf2f8123-127b-4a09-b731-6e7ed500a867",
+   "sujet": "La combustion complète du propane ($\\ce{C3H8}$) dans le dioxygène produit du dioxyde de carbone et de l'eau. Son équation, non ajustée, s'écrit : $\\ce{C3H8 + O2 -> CO2 + H2O}$.\n\n1. Ajuster cette équation de réaction.\n2. Quelle quantité de dioxygène faut-il pour brûler $0,50\\,\\pu{mol}$ de propane ?",
+   "corrige": "Solution :\n\n1. Équation ajustée : $\\ce{C3H8 + 5O2 -> 3CO2 + 4H2O}$. Vérification — $carbone : 3 = 3 ; hydrogène : 8 = 4 \\times 2 ; oxygène : 5 \\times 2 = 3 \\times 2 + 4$.\n2. D'après les nombres stœchiométriques, $n(\\ce{O2}) = 5 \\times n(\\ce{C3H8}) = 5 \\times 0,50 = 2,5\\,\\pu{mol}$.",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "cc8a5eae-ada8-4c87-908d-b229720e511b"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "6768495c-5792-44c4-8639-405be65b4448",
+   "sujet": "La combustion complète du méthane ($\\ce{CH4}$) dans le dioxygène produit du dioxyde de carbone et de l'eau. Son équation, non ajustée, s'écrit : $\\ce{CH4 + O2 -> CO2 + H2O}$.\n\n1. Ajuster cette équation de réaction.\n2. Quelle quantité de dioxygène faut-il pour brûler $2,0\\,\\pu{mol}$ de méthane ?",
+   "corrige": "Solution :\n\n1. Équation ajustée : $\\ce{CH4 + 2O2 -> CO2 + 2H2O}$. Vérification — $carbone : 1 = 1 ; hydrogène : 4 = 2 \\times 2 ; oxygène : 2 \\times 2 = 2 + 2$.\n2. D'après les nombres stœchiométriques, $n(\\ce{O2}) = 2 \\times n(\\ce{CH4}) = 2 \\times 2,0 = 4,0\\,\\pu{mol}$.",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "cc8a5eae-ada8-4c87-908d-b229720e511b"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "4b3fc2e4-84d7-4065-8d8a-ead4e461caba",
+   "sujet": "Un conducteur ohmique de résistance $R = 47\\,\\Omega$ est parcouru par un courant d'intensité $I = 0{,}30\\,\\pu{A}$.\n\n1. Calculer la tension $U$ à ses bornes, en volts.\n2. Calculer la puissance $P$ dissipée par effet Joule, en watts.",
+   "corrige": "Solution :\n\n1. $U = R \\times I = 47 \\times 0{,}30 = 14{,}10\\,\\pu{V}$ (loi d'Ohm).\n2. $P = U \\times I = 14{,}10 \\times 0{,}30 \\approx 4{,}230\\,\\pu{W}$.",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "a8171ad6-82fe-42a2-8647-cb8e55452d1a"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "50a37728-984a-496b-9424-7b5bf10eebc4",
+   "sujet": "Un conducteur ohmique de résistance $R = 220\\,\\Omega$ est parcouru par un courant d'intensité $I = 0{,}020\\,\\pu{A}$.\n\n1. Calculer la tension $U$ à ses bornes, en volts.\n2. Calculer la puissance $P$ dissipée par effet Joule, en watts.",
+   "corrige": "Solution :\n\n1. $U = R \\times I = 220 \\times 0{,}020 = 4{,}40\\,\\pu{V}$ (loi d'Ohm).\n2. $P = U \\times I = 4{,}40 \\times 0{,}020 \\approx 0{,}088\\,\\pu{W}$.",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "a8171ad6-82fe-42a2-8647-cb8e55452d1a"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "919ede83-c965-4fcb-aabb-d7b042ba874b",
+   "sujet": "Un conducteur ohmique de résistance $R = 100\\,\\Omega$ est parcouru par un courant d'intensité $I = 0{,}050\\,\\pu{A}$.\n\n1. Calculer la tension $U$ à ses bornes, en volts.\n2. Calculer la puissance $P$ dissipée par effet Joule, en watts.",
+   "corrige": "Solution :\n\n1. $U = R \\times I = 100 \\times 0{,}050 = 5{,}0\\,\\pu{V}$ (loi d'Ohm).\n2. $P = U \\times I = 5{,}0 \\times 0{,}050 \\approx 0{,}25\\,\\pu{W}$.",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "a8171ad6-82fe-42a2-8647-cb8e55452d1a"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "517d68df-5424-41e8-b9e2-42de564ee981",
+   "sujet": "On dissout $9{,}0\\,\\pu{g}$ de $\\ce{C6H12O6}$ dans de l'eau pour obtenir $100\\,\\pu{mL}$ de solution. Masses molaires atomiques : $M(\\ce{C}) = 12{,}0\\,\\pu{g.mol-1}$ ; $M(\\ce{H}) = 1{,}0\\,\\pu{g.mol-1}$ ; $M(\\ce{O}) = 16{,}0\\,\\pu{g.mol-1}$.\n\n1. Écrire l'équation de la dissolution du composé dans l'eau.\n2. Calculer la quantité de matière $n$ de soluté dissoute.\n3. En déduire la concentration en quantité de matière $c$ de la solution, en $\\pu{mol.L-1}$.",
+   "corrige": "Solution :\n\n1. $\\ce{C6H12O6(s) -> C6H12O6(aq)}$.\n2. $M = 180{,}0\\,\\pu{g.mol-1} \\quad ; \\quad n = \\frac{m}{M} = \\frac{9{,}0}{180{,}0} = 0{,}050\\,\\pu{mol}$.\n3. $c = \\frac{n}{V} = \\frac{0{,}050}{0{,}100} = 0{,}500\\,\\pu{mol.L-1}$.",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "cc8a5eae-ada8-4c87-908d-b229720e511b"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "8fdb8895-c93d-49e8-80c7-e4686bd8dad5",
+   "sujet": "On dissout $4{,}0\\,\\pu{g}$ de $\\ce{NaOH}$ dans de l'eau pour obtenir $500\\,\\pu{mL}$ de solution. Masses molaires atomiques : $M(\\ce{Na}) = 23{,}0\\,\\pu{g.mol-1}$ ; $M(\\ce{O}) = 16{,}0\\,\\pu{g.mol-1}$ ; $M(\\ce{H}) = 1{,}0\\,\\pu{g.mol-1}$.\n\n1. Écrire l'équation de la dissolution du composé dans l'eau.\n2. Calculer la quantité de matière $n$ de soluté dissoute.\n3. En déduire la concentration en quantité de matière $c$ de la solution, en $\\pu{mol.L-1}$.",
+   "corrige": "Solution :\n\n1. $\\ce{NaOH(s) -> Na+(aq) + HO-(aq)}$.\n2. $M = 40{,}0\\,\\pu{g.mol-1} \\quad ; \\quad n = \\frac{m}{M} = \\frac{4{,}0}{40{,}0} = 0{,}100\\,\\pu{mol}$.\n3. $c = \\frac{n}{V} = \\frac{0{,}100}{0{,}500} = 0{,}200\\,\\pu{mol.L-1}$.",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "cc8a5eae-ada8-4c87-908d-b229720e511b"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": true
+  },
+  {
+   "id": "848e3ed1-a5b3-407b-bd81-5923c2163f99",
+   "sujet": "On dissout $5{,}85\\,\\pu{g}$ de $\\ce{NaCl}$ dans de l'eau pour obtenir $250\\,\\pu{mL}$ de solution. Masses molaires atomiques : $M(\\ce{Na}) = 23{,}0\\,\\pu{g.mol-1}$ ; $M(\\ce{Cl}) = 35{,}5\\,\\pu{g.mol-1}$.\n\n1. Écrire l'équation de la dissolution du composé dans l'eau.\n2. Calculer la quantité de matière $n$ de soluté dissoute.\n3. En déduire la concentration en quantité de matière $c$ de la solution, en $\\pu{mol.L-1}$.",
+   "corrige": "Solution :\n\n1. $\\ce{NaCl(s) -> Na+(aq) + Cl-(aq)}$.\n2. $M = 58{,}5\\,\\pu{g.mol-1} \\quad ; \\quad n = \\frac{m}{M} = \\frac{5{,}85}{58{,}5} = 0{,}100\\,\\pu{mol}$.\n3. $c = \\frac{n}{V} = \\frac{0{,}100}{0{,}250} = 0{,}400\\,\\pu{mol.L-1}$.",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "cc8a5eae-ada8-4c87-908d-b229720e511b"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "c6955825-2cce-4645-896c-39d6cffd5457",
+   "sujet": "Un véhicule parcourt $210\\,\\pu{km}$ en $2{,}5\\,\\pu{h}$ à vitesse constante.\n\n1. Calculer sa vitesse $v$ en $\\pu{km.h-1}$.\n2. Convertir cette vitesse en $\\pu{m.s-1}$.",
+   "corrige": "Solution :\n\n1. $v = \\frac{d}{t} = \\frac{210}{2{,}5} = 84{,}0\\,\\pu{km.h-1}$.\n2. $v = \\frac{84{,}0}{3{,}6} \\approx 23{,}3\\,\\pu{m.s-1}$.",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "a8171ad6-82fe-42a2-8647-cb8e55452d1a"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "b692a914-2aed-489a-a838-c52e37b491b4",
+   "sujet": "Un véhicule parcourt $45\\,\\pu{km}$ en $0{,}5\\,\\pu{h}$ à vitesse constante.\n\n1. Calculer sa vitesse $v$ en $\\pu{km.h-1}$.\n2. Convertir cette vitesse en $\\pu{m.s-1}$.",
+   "corrige": "Solution :\n\n1. $v = \\frac{d}{t} = \\frac{45}{0{,}5} = 90{,}0\\,\\pu{km.h-1}$.\n2. $v = \\frac{90{,}0}{3{,}6} \\approx 25{,}0\\,\\pu{m.s-1}$.",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "a8171ad6-82fe-42a2-8647-cb8e55452d1a"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "3dd4da79-58c7-49bf-8fdc-3463233aa4e5",
+   "sujet": "Un véhicule parcourt $120\\,\\pu{km}$ en $1{,}5\\,\\pu{h}$ à vitesse constante.\n\n1. Calculer sa vitesse $v$ en $\\pu{km.h-1}$.\n2. Convertir cette vitesse en $\\pu{m.s-1}$.",
+   "corrige": "Solution :\n\n1. $v = \\frac{d}{t} = \\frac{120}{1{,}5} = 80{,}0\\,\\pu{km.h-1}$.\n2. $v = \\frac{80{,}0}{3{,}6} \\approx 22{,}2\\,\\pu{m.s-1}$.",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "a8171ad6-82fe-42a2-8647-cb8e55452d1a"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "65ee70e7-bcfe-4de7-b9b9-7006e3ad758c",
+   "sujet": "On donne les masses molaires atomiques : $M(\\ce{C}) = 12{,}0\\,\\pu{g.mol-1}$ ; $M(\\ce{H}) = 1{,}0\\,\\pu{g.mol-1}$ ; $M(\\ce{O}) = 16{,}0\\,\\pu{g.mol-1}$.\n\n1. Calculer la masse molaire moléculaire de $\\ce{C6H12O6}$.\n2. Calculer la quantité de matière $n$ contenue dans $90{,}0\\,\\pu{g}$ de ce composé.",
+   "corrige": "Solution :\n\n1. $M(\\ce{C6H12O6}) = 6 \\times 12{,}0 + 12 \\times 1{,}0 + 6 \\times 16{,}0 = 180{,}0\\,\\pu{g.mol-1}$.\n2. $n = \\frac{m}{M} = \\frac{90{,}0}{180{,}0} = 0{,}50\\,\\pu{mol}$.",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "cc8a5eae-ada8-4c87-908d-b229720e511b"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "428671f1-a7b7-4ff4-971f-06de077afab9",
+   "sujet": "On donne les masses molaires atomiques : $M(\\ce{C}) = 12{,}0\\,\\pu{g.mol-1}$ ; $M(\\ce{O}) = 16{,}0\\,\\pu{g.mol-1}$.\n\n1. Calculer la masse molaire moléculaire de $\\ce{CO2}$.\n2. Calculer la quantité de matière $n$ contenue dans $88{,}0\\,\\pu{g}$ de ce composé.",
+   "corrige": "Solution :\n\n1. $M(\\ce{CO2}) = 1 \\times 12{,}0 + 2 \\times 16{,}0 = 44{,}0\\,\\pu{g.mol-1}$.\n2. $n = \\frac{m}{M} = \\frac{88{,}0}{44{,}0} = 2{,}00\\,\\pu{mol}$.",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "cc8a5eae-ada8-4c87-908d-b229720e511b"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "7eab05e9-d567-490e-a22a-4a80b14a4e1f",
+   "sujet": "On donne les masses molaires atomiques : $M(\\ce{H}) = 1{,}0\\,\\pu{g.mol-1}$ ; $M(\\ce{O}) = 16{,}0\\,\\pu{g.mol-1}$.\n\n1. Calculer la masse molaire moléculaire de $\\ce{H2O}$.\n2. Calculer la quantité de matière $n$ contenue dans $36{,}0\\,\\pu{g}$ de ce composé.",
+   "corrige": "Solution :\n\n1. $M(\\ce{H2O}) = 2 \\times 1{,}0 + 1 \\times 16{,}0 = 18{,}0\\,\\pu{g.mol-1}$.\n2. $n = \\frac{m}{M} = \\frac{36{,}0}{18{,}0} = 2{,}00\\,\\pu{mol}$.",
+   "affectations": [
+    {
+     "matiereId": "b0a18662-d15b-4b9f-a267-543bdc1dbf34",
+     "partieId": "cc8a5eae-ada8-4c87-908d-b229720e511b"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "5c05a01c-36e3-4e09-9496-82101c0e9bb0",
+   "sujet": "**Problème.** Soit $f$ la fonction définie sur $\\R$ par $f(x) = x^{2}\\,\\mathrm{e}^{-x}$.\n\n1. Déterminer la limite de $f$ en $-\\infty$ (on admettra que $\\lim_{x \\to +\\infty} x^{2}\\mathrm{e}^{-x} = 0$).\n2. Montrer que $f'(x) = x(2 - x)\\mathrm{e}^{-x}$.\n3. Dresser le tableau de variations de $f$.\n4. Préciser les extremums locaux (valeurs exactes puis approchées à $10^{-3}$ près).",
+   "corrige": "Solution :\n\n1. En $-\\infty$ : $x^{2} \\to +\\infty$ et $\\mathrm{e}^{-x} \\to +\\infty$, donc $f(x) \\to +\\infty$. En $+\\infty$ : $f(x) \\to 0$.\n2. $f'(x) = 2x\\,\\mathrm{e}^{-x} - x^{2}\\mathrm{e}^{-x} = x(2 - x)\\mathrm{e}^{-x}$.\n3. $\\mathrm{e}^{-x} > 0$ : $f'$ a le signe de $x(2 - x)$. $f$ est décroissante sur $]-\\infty\\,;\\,0]$, croissante sur $[0\\,;\\,2]$, décroissante sur $[2\\,;\\,+\\infty[$.\n4. Minimum local $f(0) = 0$ ; maximum local $f(2) = 4\\mathrm{e}^{-2} \\approx 0{,}541$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "71264af1-a9b9-498c-8e6b-426345e74c3c"
+   ],
+   "session": null,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": false
+  },
+  {
+   "id": "a3ab9230-20a4-405b-bc42-95b2d9daf448",
+   "sujet": "**Problème.** Soit $f$ la fonction définie sur $\\R$ par $f(x) = x\\,\\mathrm{e}^{-2x}$.\n\n1. Déterminer la limite de $f$ en $-\\infty$, puis en $+\\infty$ (on admettra que $\\lim_{x \\to +\\infty} x\\,\\mathrm{e}^{-2x} = 0$).\n2. Calculer $f'(x)$ et dresser le tableau de variations de $f$.\n3. En déduire que $f$ admet un maximum et donner sa valeur exacte, puis une valeur approchée à $10^{-3}$ près.",
+   "corrige": "Solution :\n\n1. En $-\\infty$ : $x \\to -\\infty$ et $\\mathrm{e}^{-2x} \\to +\\infty$, donc $f(x) \\to -\\infty$. En $+\\infty$ : $f(x) \\to 0$.\n2. $f'(x) = \\mathrm{e}^{-2x} - 2x\\,\\mathrm{e}^{-2x} = (1 - 2x)\\mathrm{e}^{-2x}$. Elle est positive pour $x < \\frac{1}{2}$ et négative ensuite : $f$ est croissante sur $]-\\infty\\,;\\,\\frac{1}{2}]$ et décroissante sur $[\\frac{1}{2}\\,;\\,+\\infty[$.\n3. $f$ admet un maximum en $x = \\frac{1}{2}$ : $f\\left(\\frac{1}{2}\\right) = \\frac{1}{2}\\mathrm{e}^{-1} = \\frac{1}{2e} \\approx 0{,}184$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": null,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "4dd349a4-aae3-4f25-a23f-52eba9332300",
+   "sujet": "**Problème.** Soit $f$ la fonction définie sur $\\R$ par $f(x) = x\\,\\mathrm{e}^{-x}$.\n\n1. Déterminer la limite de $f$ en $-\\infty$, puis en $+\\infty$ (on admettra que $\\lim_{x \\to +\\infty} x\\,\\mathrm{e}^{-x} = 0$).\n2. Calculer $f'(x)$ et dresser le tableau de variations de $f$.\n3. En déduire que $f$ admet un maximum et donner sa valeur exacte, puis une valeur approchée à $10^{-3}$ près.",
+   "corrige": "Solution :\n\n1. En $-\\infty$ : $x \\to -\\infty$ et $\\mathrm{e}^{-x} \\to +\\infty$, donc $f(x) \\to -\\infty$. En $+\\infty$ : $f(x) \\to 0$.\n2. $f'(x) = \\mathrm{e}^{-x} - x\\,\\mathrm{e}^{-x} = (1 - x)\\mathrm{e}^{-x}$. Elle est positive pour $x < 1$ et négative ensuite : $f$ est croissante sur $]-\\infty\\,;\\,1]$ et décroissante sur $[1\\,;\\,+\\infty[$.\n3. $f$ admet un maximum en $x = 1$ : $f\\left(1\\right) = \\mathrm{e}^{-1} = \\frac{1}{e} \\approx 0{,}368$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": null,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "7741d4dc-f98b-4754-a88a-da7e85618782",
+   "sujet": "L'espace est muni d'un repère orthonormé. On considère les points $A(-1\\,;\\,0\\,;\\,2)$, $B(1\\,;\\,2\\,;\\,6)$ et $C(2\\,;\\,3\\,;\\,8)$.\n\n1. Calculer les coordonnées du vecteur $\\overrightarrow{AB}$, puis la distance $AB$.\n2. Les points $A$, $B$ et $C$ sont-ils alignés ?",
+   "corrige": "Solution :\n\n1. $\\overrightarrow{AB}(2\\,;\\,2\\,;\\,4)$ et $AB = \\sqrt{2^{2} + 2^{2} + 4^{2}} = \\sqrt{24} = 2\\sqrt{6}$.\n2. $\\overrightarrow{AC}(3\\,;\\,3\\,;\\,6)$. On a $\\overrightarrow{AC} = \\frac{3}{2} \\overrightarrow{AB}$ : les vecteurs sont colinéaires, donc $A$, $B$ et $C$ sont alignés.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "7fa5847b-b399-4a9b-8b1b-20cc0d266e03"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "71264af1-a9b9-498c-8e6b-426345e74c3c"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "b1c6b5e6-1ed5-4882-abe2-b0543d53b6a3",
+   "sujet": "L'espace est muni d'un repère orthonormé. On considère les points $A(0\\,;\\,1\\,;\\,-2)$, $B(2\\,;\\,3\\,;\\,0)$ et $C(1\\,;\\,2\\,;\\,1)$.\n\n1. Calculer les coordonnées du vecteur $\\overrightarrow{AB}$, puis la distance $AB$.\n2. Les points $A$, $B$ et $C$ sont-ils alignés ?",
+   "corrige": "Solution :\n\n1. $\\overrightarrow{AB}(2\\,;\\,2\\,;\\,2)$ et $AB = \\sqrt{2^{2} + 2^{2} + 2^{2}} = \\sqrt{12} = 2\\sqrt{3}$.\n2. $\\overrightarrow{AC}(1\\,;\\,1\\,;\\,3)$. Les coordonnées de $\\overrightarrow{AC}$ et $\\overrightarrow{AB}$ ne sont pas proportionnelles : les vecteurs ne sont pas colinéaires, donc $A$, $B$ et $C$ ne sont pas alignés.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "7fa5847b-b399-4a9b-8b1b-20cc0d266e03"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "67809519-e730-461e-9d3d-1adaa520f913",
+   "sujet": "L'espace est muni d'un repère orthonormé. On considère les points $A(1\\,;\\,2\\,;\\,3)$, $B(3\\,;\\,-1\\,;\\,4)$ et $C(5\\,;\\,-4\\,;\\,5)$.\n\n1. Calculer les coordonnées du vecteur $\\overrightarrow{AB}$, puis la distance $AB$.\n2. Les points $A$, $B$ et $C$ sont-ils alignés ?",
+   "corrige": "Solution :\n\n1. $\\overrightarrow{AB}(2\\,;\\,-3\\,;\\,1)$ et $AB = \\sqrt{2^{2} + (-3)^{2} + 1^{2}} = \\sqrt{14}$.\n2. $\\overrightarrow{AC}(4\\,;\\,-6\\,;\\,2)$. On a $\\overrightarrow{AC} = 2 \\overrightarrow{AB}$ : les vecteurs sont colinéaires, donc $A$, $B$ et $C$ sont alignés.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "7fa5847b-b399-4a9b-8b1b-20cc0d266e03"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "ef4cab7d-e1bc-40b7-8152-4987f3019b7d",
+   "sujet": "Soit $(u_n)$ la suite définie pour tout entier $n \\geq 0$ par $u_n = \\frac{4n + 7}{2n + 1}$.\n\n1. Calculer $u_{0}$ et $u_{1}$.\n2. Déterminer la limite de $(u_n)$ en factorisant numérateur et dénominateur par le terme de plus haut degré.",
+   "corrige": "Solution :\n\n1. $u_{0} = 7$ et $u_{1} = \\frac{11}{3}$.\n2. On factorise par $n$ au numérateur et au dénominateur : $u_n = \\frac{4 + \\dots}{2 + \\dots}$ où les termes omis tendent vers 0. Donc $\\lim_{n \\to +\\infty} u_n = \\frac{4}{2} = 2$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "71264af1-a9b9-498c-8e6b-426345e74c3c"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "318945d9-4b55-4b26-a2c7-b2cb603e9474",
+   "sujet": "Soit $(u_n)$ la suite définie pour tout entier $n \\geq 1$ par $u_n = \\frac{3n^{2} + 1}{n^{2} + n}$.\n\n1. Calculer $u_{1}$ et $u_{2}$.\n2. Déterminer la limite de $(u_n)$ en factorisant numérateur et dénominateur par le terme de plus haut degré.",
+   "corrige": "Solution :\n\n1. $u_{1} = 2$ et $u_{2} = \\frac{13}{6}$.\n2. On factorise par $n^{2}$ au numérateur et au dénominateur : $u_n = \\frac{3 + \\dots}{1 + \\dots}$ où les termes omis tendent vers 0. Donc $\\lim_{n \\to +\\infty} u_n = \\frac{3}{1} = 3$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "e054528c-e82a-4c14-a211-5eaef9f97fe2",
+   "sujet": "Soit $(u_n)$ la suite définie pour tout entier $n \\geq 0$ par $u_n = \\frac{2n + 1}{n + 3}$.\n\n1. Calculer $u_{0}$ et $u_{1}$.\n2. Déterminer la limite de $(u_n)$ en factorisant numérateur et dénominateur par le terme de plus haut degré.",
+   "corrige": "Solution :\n\n1. $u_{0} = \\frac{1}{3}$ et $u_{1} = \\frac{3}{4}$.\n2. On factorise par $n$ au numérateur et au dénominateur : $u_n = \\frac{2 + \\dots}{1 + \\dots}$ où les termes omis tendent vers 0. Donc $\\lim_{n \\to +\\infty} u_n = \\frac{2}{1} = 2$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "9d4f5cd5-2df2-4288-9614-cb8d767528d4",
+   "sujet": "Soit $(u_n)$ la suite géométrique de premier terme $u_0 = 81$ et de raison $q = \\frac{1}{3}$.\n\n1. Exprimer $u_n$ en fonction de $n$.\n2. Calculer $u_{3}$.\n3. Calculer $S = u_0 + u_1 + \\dots + u_{4}$.",
+   "corrige": "Solution :\n\n1. $u_n = u_0 \\times q^{n} = 81 \\times \\left(\\frac{1}{3}\\right)^{n}$.\n2. $u_{3} = 81 \\times \\left(\\frac{1}{3}\\right)^{3} = 3$.\n3. $S = u_0 \\times \\frac{1 - q^{5}}{1 - q} = 81 \\times \\frac{1 - \\left(\\frac{1}{3}\\right)^{5}}{1 - \\frac{1}{3}} = 121$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "71264af1-a9b9-498c-8e6b-426345e74c3c"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "c3540896-008f-46bf-9c8a-262527facdac",
+   "sujet": "Soit $(u_n)$ la suite géométrique de premier terme $u_0 = 5$ et de raison $q = 2$.\n\n1. Exprimer $u_n$ en fonction de $n$.\n2. Calculer $u_{5}$.\n3. Calculer $S = u_0 + u_1 + \\dots + u_{6}$.",
+   "corrige": "Solution :\n\n1. $u_n = u_0 \\times q^{n} = 5 \\times \\left(2\\right)^{n}$.\n2. $u_{5} = 5 \\times \\left(2\\right)^{5} = 160$.\n3. $S = u_0 \\times \\frac{1 - q^{7}}{1 - q} = 5 \\times \\frac{1 - \\left(2\\right)^{7}}{1 - 2} = 635$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "fce422d4-3967-4274-bf24-a5684e727713",
+   "sujet": "Soit $(u_n)$ la suite géométrique de premier terme $u_0 = 2$ et de raison $q = 3$.\n\n1. Exprimer $u_n$ en fonction de $n$.\n2. Calculer $u_{4}$.\n3. Calculer $S = u_0 + u_1 + \\dots + u_{5}$.",
+   "corrige": "Solution :\n\n1. $u_n = u_0 \\times q^{n} = 2 \\times \\left(3\\right)^{n}$.\n2. $u_{4} = 2 \\times \\left(3\\right)^{4} = 162$.\n3. $S = u_0 \\times \\frac{1 - q^{6}}{1 - q} = 2 \\times \\frac{1 - \\left(3\\right)^{6}}{1 - 3} = 728$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "c59f98a3-8ee9-41d4-ad0d-5bfe17c2887b",
+   "sujet": "Soit $f$ la fonction définie sur $\\R$ par $f(x) = (x^{2} + 4)(-x + 2)$.\n\n1. En utilisant la formule de dérivation d'un produit, calculer $f'(x)$.\n2. Calculer $f'(1)$.",
+   "corrige": "Solution :\n\n1. $f = uv$ avec $u(x) = x^{2} + 4$ et $v(x) = -x + 2$ ; $u'(x) = 2x$ et $v'(x) = -1$. $f'(x) = u'v + uv' = 2x(-x + 2) + (-1)(x^{2} + 4) = -3x^{2} + 4x - 4$.\n2. $f'(1) = -3 + 4 + (-4) = -3$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "71264af1-a9b9-498c-8e6b-426345e74c3c"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "e24997ad-ed8b-4009-af64-b92ba70ff525",
+   "sujet": "Soit $f$ la fonction définie sur $\\R$ par $f(x) = (x^{2} - 2)(3x + 1)$.\n\n1. En utilisant la formule de dérivation d'un produit, calculer $f'(x)$.\n2. Calculer $f'(1)$.",
+   "corrige": "Solution :\n\n1. $f = uv$ avec $u(x) = x^{2} - 2$ et $v(x) = 3x + 1$ ; $u'(x) = 2x$ et $v'(x) = 3$. $f'(x) = u'v + uv' = 2x(3x + 1) + 3(x^{2} - 2) = 9x^{2} + 2x - 6$.\n2. $f'(1) = 9 + 2 + (-6) = 5$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "0d4974b4-087b-4585-981f-e97e4fb47368",
+   "sujet": "Soit $f$ la fonction définie sur $\\R$ par $f(x) = (x^{2} + 1)(2x - 3)$.\n\n1. En utilisant la formule de dérivation d'un produit, calculer $f'(x)$.\n2. Calculer $f'(1)$.",
+   "corrige": "Solution :\n\n1. $f = uv$ avec $u(x) = x^{2} + 1$ et $v(x) = 2x - 3$ ; $u'(x) = 2x$ et $v'(x) = 2$. $f'(x) = u'v + uv' = 2x(2x - 3) + 2(x^{2} + 1) = 6x^{2} - 6x + 2$.\n2. $f'(1) = 6 + (-6) + 2 = 2$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "d0052262-ea94-4428-b424-9ce046fa791c",
+   "sujet": "Soit $(u_n)$ la suite définie pour tout entier naturel $n$ par $u_n = -2n^{2} + 10$.\n\n1. Calculer $u_0$, $u_1$ et $u_2$.\n2. Exprimer $u_{n+1} - u_n$ en fonction de $n$.\n3. En déduire le sens de variation de la suite $(u_n)$.",
+   "corrige": "Solution :\n\n1. $u_0 = 10, \\quad u_1 = 8, \\quad u_2 = 2$.\n2. $u_{n+1} - u_n = -4n - 2$.\n3. Pour tout $n \\geq 0$, $-4n - 2$ est strictement négatif : la suite $(u_n)$ est strictement décroissante.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "71264af1-a9b9-498c-8e6b-426345e74c3c"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "da82f5f4-7d64-4fe2-9b65-ee16f900f123",
+   "sujet": "Soit $(u_n)$ la suite définie pour tout entier naturel $n$ par $u_n = 3n^{2} - 2$.\n\n1. Calculer $u_0$, $u_1$ et $u_2$.\n2. Exprimer $u_{n+1} - u_n$ en fonction de $n$.\n3. En déduire le sens de variation de la suite $(u_n)$.",
+   "corrige": "Solution :\n\n1. $u_0 = -2, \\quad u_1 = 1, \\quad u_2 = 10$.\n2. $u_{n+1} - u_n = 6n + 3$.\n3. Pour tout $n \\geq 0$, $6n + 3$ est strictement positif : la suite $(u_n)$ est strictement croissante.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "50f3039d-d016-40fa-8dcc-ed9545501b26",
+   "sujet": "Soit $(u_n)$ la suite définie pour tout entier naturel $n$ par $u_n = n^{2} + 3n$.\n\n1. Calculer $u_0$, $u_1$ et $u_2$.\n2. Exprimer $u_{n+1} - u_n$ en fonction de $n$.\n3. En déduire le sens de variation de la suite $(u_n)$.",
+   "corrige": "Solution :\n\n1. $u_0 = 0, \\quad u_1 = 4, \\quad u_2 = 10$.\n2. $u_{n+1} - u_n = 2n + 4$.\n3. Pour tout $n \\geq 0$, $2n + 4$ est strictement positif : la suite $(u_n)$ est strictement croissante.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "6029f6ce-ebf1-45f7-adef-035d92f0dee0",
+   "sujet": "Dans un repère orthonormé, on considère les points $A(0\\,;\\,5)$, $B(4\\,;\\,2)$ et $C(8\\,;\\,-1)$.\n\n1. Calculer le coefficient directeur de la droite $(AB)$.\n2. Déterminer une équation réduite de $(AB)$.\n3. Le point $C$ appartient-il à la droite $(AB)$ ?",
+   "corrige": "Solution :\n\n1. $m = \\frac{y_B - y_A}{x_B - x_A} = \\frac{2 - 5}{4 - 0} = -\\frac{3}{4}$.\n2. $y = -\\frac{3}{4}x + 5$ : en effet, $A$ appartient à la droite, donc $5 = -\\frac{3}{4} \\times 0 + p$, d'où $p = 5$.\n3. Pour $x = 8$ : $-\\frac{3}{4} \\times 8 + 5 = -1$ $= -1$ : $C$ appartient à $(AB)$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "7fa5847b-b399-4a9b-8b1b-20cc0d266e03"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "71264af1-a9b9-498c-8e6b-426345e74c3c"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "2971a238-5249-40d1-bc96-e26a32f257ae",
+   "sujet": "Dans un repère orthonormé, on considère les points $A(-1\\,;\\,3)$, $B(2\\,;\\,-3)$ et $C(3\\,;\\,-4)$.\n\n1. Calculer le coefficient directeur de la droite $(AB)$.\n2. Déterminer une équation réduite de $(AB)$.\n3. Le point $C$ appartient-il à la droite $(AB)$ ?",
+   "corrige": "Solution :\n\n1. $m = \\frac{y_B - y_A}{x_B - x_A} = \\frac{-3 - 3}{2 - (-1)} = -2$.\n2. $y = -2x + 1$ : en effet, $A$ appartient à la droite, donc $3 = -2 \\times (-1) + p$, d'où $p = 1$.\n3. Pour $x = 3$ : $-2 \\times 3 + 1 = -5$ $\\neq -4$ : $C$ n'appartient pas à $(AB)$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "7fa5847b-b399-4a9b-8b1b-20cc0d266e03"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "8ae33ab5-5579-497b-8255-b347f761ef72",
+   "sujet": "Dans un repère orthonormé, on considère les points $A(1\\,;\\,2)$, $B(3\\,;\\,6)$ et $C(4\\,;\\,8)$.\n\n1. Calculer le coefficient directeur de la droite $(AB)$.\n2. Déterminer une équation réduite de $(AB)$.\n3. Le point $C$ appartient-il à la droite $(AB)$ ?",
+   "corrige": "Solution :\n\n1. $m = \\frac{y_B - y_A}{x_B - x_A} = \\frac{6 - 2}{3 - 1} = 2$.\n2. $y = 2x$ : en effet, $A$ appartient à la droite, donc $2 = 2 \\times 1 + p$, d'où $p = 0$.\n3. Pour $x = 4$ : $2 \\times 4 + 0 = 8$ $= 8$ : $C$ appartient à $(AB)$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "7fa5847b-b399-4a9b-8b1b-20cc0d266e03"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "e706aa86-8c9b-481b-af10-d70d7c677829",
+   "sujet": "Soit $f$ la fonction inverse définie sur $]0\\,;\\,+\\infty[$ par $f(x) = \\frac{1}{x}$.\n\n1. Calculer $f(5)$ et $f(2)$.\n2. Déterminer l'antécédent de $\\frac{1}{4}$ par $f$.\n3. Comparer $f(2)$ et $f(5)$. Que peut-on en déduire pour le sens de variation de $f$ ?",
+   "corrige": "Solution :\n\n1. $f(5) = \\frac{1}{5}$ et $f(2) = \\frac{1}{2}$.\n2. $f(x) = \\frac{1}{4} \\Leftrightarrow \\frac{1}{x} = \\frac{1}{4} \\Leftrightarrow x = 4$.\n3. $f(2) = \\frac{1}{2} > f(5) = \\frac{1}{5}$ alors que $2 < 5$ : l'ordre est inversé, ce qui illustre que $f$ est strictement décroissante sur $]0\\,;\\,+\\infty[$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "b3208281-c490-4c2d-862b-ed8d69e7e9d8",
+   "sujet": "Soit $f$ la fonction inverse définie sur $]0\\,;\\,+\\infty[$ par $f(x) = \\frac{1}{x}$.\n\n1. Calculer $f(\\frac{1}{3})$ et $f(3)$.\n2. Déterminer l'antécédent de $10$ par $f$.\n3. Comparer $f(\\frac{1}{3})$ et $f(3)$. Que peut-on en déduire pour le sens de variation de $f$ ?",
+   "corrige": "Solution :\n\n1. $f(\\frac{1}{3}) = 3$ et $f(3) = \\frac{1}{3}$.\n2. $f(x) = 10 \\Leftrightarrow \\frac{1}{x} = 10 \\Leftrightarrow x = \\frac{1}{10}$.\n3. $f(\\frac{1}{3}) = 3 > f(3) = \\frac{1}{3}$ alors que $\\frac{1}{3} < 3$ : l'ordre est inversé, ce qui illustre que $f$ est strictement décroissante sur $]0\\,;\\,+\\infty[$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": true
+  },
+  {
+   "id": "913b22a5-34e3-459f-95f5-eba16902c217",
+   "sujet": "Soit $f$ la fonction inverse définie sur $]0\\,;\\,+\\infty[$ par $f(x) = \\frac{1}{x}$.\n\n1. Calculer $f(2)$ et $f(4)$.\n2. Déterminer l'antécédent de $5$ par $f$.\n3. Comparer $f(2)$ et $f(4)$. Que peut-on en déduire pour le sens de variation de $f$ ?",
+   "corrige": "Solution :\n\n1. $f(2) = \\frac{1}{2}$ et $f(4) = \\frac{1}{4}$.\n2. $f(x) = 5 \\Leftrightarrow \\frac{1}{x} = 5 \\Leftrightarrow x = \\frac{1}{5}$.\n3. $f(2) = \\frac{1}{2} > f(4) = \\frac{1}{4}$ alors que $2 < 4$ : l'ordre est inversé, ce qui illustre que $f$ est strictement décroissante sur $]0\\,;\\,+\\infty[$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "7a5c6716-2e86-4a8b-a0ef-0a25b353c60c",
+   "sujet": "**Système d'équations.** Résoudre dans $\\R^{2}$ le système suivant, en éliminant une inconnue par combinaison linéaire :\n\n$$\\begin{cases} 3x - 2y = 4 \\quad (L_1) \\\\ 5x + 4y = 14 \\quad (L_2) \\end{cases}$$",
+   "corrige": "Solution :\n\n- On élimine $y$ : $(L_1) \\times 4 - (L_2) \\times (-2)$ donne $22x = 44$, d'où $x = 2$.\n- En reportant dans $(L_1)$ : $3 \\times 2 - 2y = 4$, d'où $y = 1$.\n- Vérification dans $(L_2)$ : $5 \\times 2 + \\times 4 = 14$ ✓.\n\nConclusion : $(x\\,;\\,y) = (2\\,;\\,1)$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "be7ce4ba-47cf-459d-bf40-f5bc5e85a009",
+   "sujet": "**Système d'équations.** Résoudre dans $\\R^{2}$ le système suivant, en éliminant une inconnue par combinaison linéaire :\n\n$$\\begin{cases} 2x + 3y = 12 \\quad (L_1) \\\\ x - y = 1 \\quad (L_2) \\end{cases}$$",
+   "corrige": "Solution :\n\n- On élimine $y$ : $(L_1) \\times (-1) - (L_2) \\times 3$ donne $-5x = -15$, d'où $x = 3$.\n- En reportant dans $(L_1)$ : $2 \\times 3 + 3y = 12$, d'où $y = 2$.\n- Vérification dans $(L_2)$ : $1 \\times 3 - \\times 1 = 1$ ✓.\n\nConclusion : $(x\\,;\\,y) = (3\\,;\\,2)$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "de7b3cbd-e6b3-4b35-ae7c-43c105a93da1",
+   "sujet": "**Système d'équations.** Résoudre dans $\\R^{2}$ le système suivant, en éliminant une inconnue par combinaison linéaire :\n\n$$\\begin{cases} x + y = 3 \\quad (L_1) \\\\ x - y = 1 \\quad (L_2) \\end{cases}$$",
+   "corrige": "Solution :\n\n- On élimine $y$ : $(L_1) \\times (-1) - (L_2) \\times 1$ donne $-2x = -4$, d'où $x = 2$.\n- En reportant dans $(L_1)$ : $1 \\times 2 + y = 3$, d'où $y = 1$.\n- Vérification dans $(L_2)$ : $1 \\times 2 - \\times 1 = 1$ ✓.\n\nConclusion : $(x\\,;\\,y) = (2\\,;\\,1)$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "0771f665-60b1-4ea5-8c5a-5679824bcd5f",
+   "sujet": "Dans un repère orthonormé, on considère les vecteurs $\\vec{u}(4\\,;\\,-2)$ et $\\vec{v}(-6\\,;\\,3)$.\n\n1. Calculer les coordonnées de $\\vec{u} + \\vec{v}$ et de $2\\vec{u} - \\vec{v}$.\n2. Les vecteurs $\\vec{u}$ et $\\vec{v}$ sont-ils colinéaires ? Justifier.\n3. Déterminer le réel $k$ tel que $\\vec{u}$ et $\\vec{w}(k\\,;\\,6)$ soient colinéaires.",
+   "corrige": "Solution :\n\n1. $\\vec{u} + \\vec{v}$ a pour coordonnées $(-2\\,;\\,1)$ et $2\\vec{u} - \\vec{v}$ a pour coordonnées $(14\\,;\\,-7)$.\n2. Déterminant : $4 \\times 3 - (-2) \\times (-6) = 0$. Il est nul : les vecteurs sont colinéaires.\n3. $\\vec{u}$ et $\\vec{w}$ colinéaires $\\Leftrightarrow 4 \\times 6 - (-2) \\times k = 0 \\Leftrightarrow k = -12$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "7fa5847b-b399-4a9b-8b1b-20cc0d266e03"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "fe48f876-8b35-4c8e-8aa8-2ef86b480286",
+   "sujet": "Dans un repère orthonormé, on considère les vecteurs $\\vec{u}(-3\\,;\\,6)$ et $\\vec{v}(2\\,;\\,-4)$.\n\n1. Calculer les coordonnées de $\\vec{u} + \\vec{v}$ et de $2\\vec{u} - \\vec{v}$.\n2. Les vecteurs $\\vec{u}$ et $\\vec{v}$ sont-ils colinéaires ? Justifier.",
+   "corrige": "Solution :\n\n1. $\\vec{u} + \\vec{v}$ a pour coordonnées $(-1\\,;\\,2)$ et $2\\vec{u} - \\vec{v}$ a pour coordonnées $(-8\\,;\\,16)$.\n2. Déterminant : $-3 \\times (-4) - 6 \\times 2 = 0$. Il est nul : les vecteurs sont colinéaires.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "7fa5847b-b399-4a9b-8b1b-20cc0d266e03"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "cb52ba52-d552-4a08-87ec-7d7a2f14baa1",
+   "sujet": "Dans un repère orthonormé, on considère les vecteurs $\\vec{u}(2\\,;\\,3)$ et $\\vec{v}(1\\,;\\,-4)$.\n\n1. Calculer les coordonnées de $\\vec{u} + \\vec{v}$ et de $2\\vec{u} - \\vec{v}$.\n2. Les vecteurs $\\vec{u}$ et $\\vec{v}$ sont-ils colinéaires ? Justifier.",
+   "corrige": "Solution :\n\n1. $\\vec{u} + \\vec{v}$ a pour coordonnées $(3\\,;\\,-1)$ et $2\\vec{u} - \\vec{v}$ a pour coordonnées $(3\\,;\\,10)$.\n2. Déterminant : $2 \\times (-4) - 3 \\times 1 = -11$. Il n'est pas nul : les vecteurs ne sont pas colinéaires.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "7fa5847b-b399-4a9b-8b1b-20cc0d266e03"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "fee508e1-9bf2-4f51-9def-679a2acb8f90",
+   "sujet": "Un comité de 5 personnes est choisi parmi 14 candidats : 8 femmes et 6 hommes.\n\n1. Combien de comités différents peut-on former ?\n2. Combien de comités comportent exactement 3 femmes ?\n3. Combien de comités comportent au moins une femme ?",
+   "corrige": "Solution :\n\n1. $\\binom{14}{5} = 2002$.\n2. $\\binom{8}{3} \\times \\binom{6}{2} = 56 \\times 15 = 840$.\n3. Total moins les comités sans femme : $2002 - \\binom{6}{5} = 2002 - 6 = 1996$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "41da7dbb-ce0b-42ab-816d-b421609685f5"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "71264af1-a9b9-498c-8e6b-426345e74c3c"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "26ba29d2-3997-4917-833e-b0604d476930",
+   "sujet": "Un comité de 4 personnes est choisi parmi 12 candidats : 7 femmes et 5 hommes.\n\n1. Combien de comités différents peut-on former ?\n2. Combien de comités comportent exactement 2 femmes ?\n3. Combien de comités comportent au moins une femme ?",
+   "corrige": "Solution :\n\n1. $\\binom{12}{4} = 495$.\n2. $\\binom{7}{2} \\times \\binom{5}{2} = 21 \\times 10 = 210$.\n3. Total moins les comités sans femme : $495 - \\binom{5}{4} = 495 - 5 = 490$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "41da7dbb-ce0b-42ab-816d-b421609685f5"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "518ab1c8-3653-4b81-9c6e-d3826b008a63",
+   "sujet": "Un comité de 3 personnes est choisi parmi 10 candidats : 6 femmes et 4 hommes.\n\n1. Combien de comités différents peut-on former ?\n2. Combien de comités comportent exactement 2 femmes ?\n3. Combien de comités comportent au moins une femme ?",
+   "corrige": "Solution :\n\n1. $\\binom{10}{3} = 120$.\n2. $\\binom{6}{2} \\times \\binom{4}{1} = 15 \\times 4 = 60$.\n3. Total moins les comités sans femme : $120 - \\binom{4}{3} = 120 - 4 = 116$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "41da7dbb-ce0b-42ab-816d-b421609685f5"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "ffd40a41-d733-4932-a73d-b9bf59fd5661",
+   "sujet": "Un test comporte 12 questions indépendantes ; pour chacune, la probabilité de répondre correctement au hasard est $0{,}2$. On note $X$ le nombre de bonnes réponses.\n\n1. Justifier que $X$ suit une loi binomiale dont on précisera les paramètres.\n2. Calculer $P(X = 2)$ à $10^{-4}$ près.\n3. Calculer la probabilité d'obtenir au moins une bonne réponse (à $10^{-4}$ près).\n4. Calculer $E(X)$.",
+   "corrige": "Solution :\n\n1. On répète 12 fois la même épreuve de Bernoulli (succès de probabilité $0{,}2$) de façon indépendante : $X \\sim \\mathcal{B}(12\\,;\\,0{,}2)$.\n2. $P(X = 2) = \\binom{12}{2} \\times 0{,}2^{2} \\times 0{,}8^{10} \\approx 0{,}2835$.\n3. $P(X \\geq 1) = 1 - 0{,}8^{12} \\approx 0{,}9313$.\n4. $E(X) = 12 \\times 0{,}2 = 2{,}4$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "41da7dbb-ce0b-42ab-816d-b421609685f5"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "71264af1-a9b9-498c-8e6b-426345e74c3c"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "a3f1c3b1-21e5-466e-8ba6-bcb8fe7cd239",
+   "sujet": "Un test comporte 8 questions indépendantes ; pour chacune, la probabilité de répondre correctement au hasard est $0{,}5$. On note $X$ le nombre de bonnes réponses.\n\n1. Justifier que $X$ suit une loi binomiale dont on précisera les paramètres.\n2. Calculer $P(X = 4)$ à $10^{-4}$ près.\n3. Calculer la probabilité d'obtenir au moins une bonne réponse (à $10^{-4}$ près).\n4. Calculer $E(X)$.",
+   "corrige": "Solution :\n\n1. On répète 8 fois la même épreuve de Bernoulli (succès de probabilité $0{,}5$) de façon indépendante : $X \\sim \\mathcal{B}(8\\,;\\,0{,}5)$.\n2. $P(X = 4) = \\binom{8}{4} \\times 0{,}5^{4} \\times 0{,}5^{4} \\approx 0{,}2734$.\n3. $P(X \\geq 1) = 1 - 0{,}5^{8} \\approx 0{,}9961$.\n4. $E(X) = 8 \\times 0{,}5 = 4{,}0$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "41da7dbb-ce0b-42ab-816d-b421609685f5"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": true
+  },
+  {
+   "id": "7d2d50ba-55a1-4f7b-a99e-4226559f68c7",
+   "sujet": "Un test comporte 10 questions indépendantes ; pour chacune, la probabilité de répondre correctement au hasard est $0{,}3$. On note $X$ le nombre de bonnes réponses.\n\n1. Justifier que $X$ suit une loi binomiale dont on précisera les paramètres.\n2. Calculer $P(X = 3)$ à $10^{-4}$ près.\n3. Calculer la probabilité d'obtenir au moins une bonne réponse (à $10^{-4}$ près).\n4. Calculer $E(X)$.",
+   "corrige": "Solution :\n\n1. On répète 10 fois la même épreuve de Bernoulli (succès de probabilité $0{,}3$) de façon indépendante : $X \\sim \\mathcal{B}(10\\,;\\,0{,}3)$.\n2. $P(X = 3) = \\binom{10}{3} \\times 0{,}3^{3} \\times 0{,}7^{7} \\approx 0{,}2668$.\n3. $P(X \\geq 1) = 1 - 0{,}7^{10} \\approx 0{,}9718$.\n4. $E(X) = 10 \\times 0{,}3 = 3{,}0$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "41da7dbb-ce0b-42ab-816d-b421609685f5"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "1ecb713f-d372-429b-a05c-ac12d2d122ae",
+   "sujet": "On considère les nombres complexes $z_1 = 3 - 4\\mathrm{i}$ et $z_2 = 2 + \\mathrm{i}$.\n\n1. Calculer $z_1 + z_2$ et $z_1 \\times z_2$.\n2. Calculer le module de $z_1$.\n3. Écrire le quotient $\\frac{z_1}{z_2}$ sous forme algébrique.",
+   "corrige": "Solution :\n\n1. $z_1 + z_2 = 5 - 3\\mathrm{i}$ et $z_1 \\times z_2 = 10 - 5\\mathrm{i}$.\n2. $|z_1| = \\sqrt{3^{2} + (-4)^{2}} = \\sqrt{25} = 5$.\n3. $\\frac{z_1}{z_2} = \\frac{z_1 \\times \\overline{z_2}}{|z_2|^{2}} = \\frac{(3 - 4\\mathrm{i})(2 - \\mathrm{i})}{5} = \\frac{2}{5} - \\frac{11}{5}\\mathrm{i}$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "7fa5847b-b399-4a9b-8b1b-20cc0d266e03"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "71264af1-a9b9-498c-8e6b-426345e74c3c"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "25ac6a41-672a-4e70-9465-acd1cd5ed42e",
+   "sujet": "On considère les nombres complexes $z_1 = -2 + 3\\mathrm{i}$ et $z_2 = 1 + \\mathrm{i}$.\n\n1. Calculer $z_1 + z_2$ et $z_1 \\times z_2$.\n2. Calculer le module de $z_1$.\n3. Écrire le quotient $\\frac{z_1}{z_2}$ sous forme algébrique.",
+   "corrige": "Solution :\n\n1. $z_1 + z_2 = -1 + 4\\mathrm{i}$ et $z_1 \\times z_2 = -5 + \\mathrm{i}$.\n2. $|z_1| = \\sqrt{(-2)^{2} + 3^{2}} = \\sqrt{13}$.\n3. $\\frac{z_1}{z_2} = \\frac{z_1 \\times \\overline{z_2}}{|z_2|^{2}} = \\frac{(-2 + 3\\mathrm{i})(1 - \\mathrm{i})}{2} = \\frac{1}{2} + \\frac{5}{2}\\mathrm{i}$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "7fa5847b-b399-4a9b-8b1b-20cc0d266e03"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": true
+  },
+  {
+   "id": "00741cda-71e8-48cb-8839-912e2154efba",
+   "sujet": "On considère les nombres complexes $z_1 = 1 + 2\\mathrm{i}$ et $z_2 = 3 - \\mathrm{i}$.\n\n1. Calculer $z_1 + z_2$ et $z_1 \\times z_2$.\n2. Calculer le module de $z_1$.\n3. Écrire le quotient $\\frac{z_1}{z_2}$ sous forme algébrique.",
+   "corrige": "Solution :\n\n1. $z_1 + z_2 = 4 + \\mathrm{i}$ et $z_1 \\times z_2 = 5 + 5\\mathrm{i}$.\n2. $|z_1| = \\sqrt{1^{2} + 2^{2}} = \\sqrt{5}$.\n3. $\\frac{z_1}{z_2} = \\frac{z_1 \\times \\overline{z_2}}{|z_2|^{2}} = \\frac{(1 + 2\\mathrm{i})(3 + \\mathrm{i})}{10} = \\frac{1}{10} + \\frac{7}{10}\\mathrm{i}$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "7fa5847b-b399-4a9b-8b1b-20cc0d266e03"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "9c691a77-dcb3-4c75-a188-247d1be70fa6",
+   "sujet": "L'espace est muni d'un repère orthonormé. Le plan $P$ a pour équation $3x - 2y + z - 4 = 0$.\n\n1. Donner un vecteur normal au plan $P$.\n2. Le point $A(1\\,;\\,-1\\,;\\,-1)$ appartient-il à $P$ ?\n3. Donner une représentation paramétrique de la droite $D$ perpendiculaire à $P$ passant par $A$.",
+   "corrige": "Solution :\n\n1. Un vecteur normal est $\\vec{n}(3\\,;\\,-2\\,;\\,1)$.\n2. $3 \\times 1 - 2 \\times (-1) + 1 \\times (-1) - 4 = 0$ : $A$ appartient à $P$.\n3. $D$ est dirigée par $\\vec{n}$ : $\\begin{cases} x = 1 + 3t \\\\ y = -1 - 2t \\\\ z = -1 + t \\end{cases}$, avec $t \\in \\R$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "7fa5847b-b399-4a9b-8b1b-20cc0d266e03"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "71264af1-a9b9-498c-8e6b-426345e74c3c"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "bfed7908-df85-4180-8c98-0b4f87a0e897",
+   "sujet": "L'espace est muni d'un repère orthonormé. Le plan $P$ a pour équation $x + 2y - z - 3 = 0$.\n\n1. Donner un vecteur normal au plan $P$.\n2. Le point $A(2\\,;\\,1\\,;\\,3)$ appartient-il à $P$ ?\n3. Donner une représentation paramétrique de la droite $D$ perpendiculaire à $P$ passant par $A$.\n4. Calculer la distance du point $A$ au plan $P$.",
+   "corrige": "Solution :\n\n1. Un vecteur normal est $\\vec{n}(1\\,;\\,2\\,;\\,-1)$.\n2. $1 \\times 2 + 2 \\times 1 - 1 \\times 3 - 3 = -2$ $\\neq 0$ : $A$ n'appartient pas à $P$.\n3. $D$ est dirigée par $\\vec{n}$ : $\\begin{cases} x = 2 + t \\\\ y = 1 + 2t \\\\ z = 3 - t \\end{cases}$, avec $t \\in \\R$.\n4. $d(A, P) = \\frac{|-2|}{\\sqrt{1 + 4 + 1}} = \\frac{2}{\\sqrt{6}} \\approx 0{,}816$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "7fa5847b-b399-4a9b-8b1b-20cc0d266e03"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "b80948d6-a187-4bf8-a056-d7cfb86f0e04",
+   "sujet": "L'espace est muni d'un repère orthonormé. Le plan $P$ a pour équation $2x - y + 3z - 5 = 0$.\n\n1. Donner un vecteur normal au plan $P$.\n2. Le point $A(1\\,;\\,0\\,;\\,1)$ appartient-il à $P$ ?\n3. Donner une représentation paramétrique de la droite $D$ perpendiculaire à $P$ passant par $A$.",
+   "corrige": "Solution :\n\n1. Un vecteur normal est $\\vec{n}(2\\,;\\,-1\\,;\\,3)$.\n2. $2 \\times 1 - 1 \\times 0 + 3 \\times 1 - 5 = 0$ : $A$ appartient à $P$.\n3. $D$ est dirigée par $\\vec{n}$ : $\\begin{cases} x = 1 + 2t \\\\ y = -t \\\\ z = 1 + 3t \\end{cases}$, avec $t \\in \\R$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "7fa5847b-b399-4a9b-8b1b-20cc0d266e03"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "aebb2eb0-0f65-475a-bf4f-7b2bf7f18ad7",
+   "sujet": "On considère le problème : $y' = 2 y + 4, \\quad y(0) = 1$.\n\n1. Déterminer la solution $y$ de ce problème.\n2. Calculer $y(1)$ (valeur approchée à $10^{-2}$ près).",
+   "corrige": "Solution :\n\n1. Une solution constante est $y = -\\frac{b}{a} = -2$ ; les solutions sont $y(x) = C\\,\\mathrm{e}^{2x} - 2$. La condition $y(0) = 1$ donne $C = 3$. Donc $y(x) = 3\\mathrm{e}^{2x} - 2$.\n2. $y(1) = 3\\mathrm{e}^{2} - 2 \\approx 20{,}17$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "52c9f73d-7213-4554-a138-f3a78a40625d",
+    "71264af1-a9b9-498c-8e6b-426345e74c3c"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "afce1fa6-5e10-4753-8962-60605c026fda",
+   "sujet": "On considère le problème : $y' = (-\\frac{1}{2}) y, \\quad y(0) = 4$.\n\n1. Déterminer la solution $y$ de ce problème.\n2. Calculer $y(2)$ (valeur approchée à $10^{-2}$ près).",
+   "corrige": "Solution :\n\n1. Les solutions de $y' = ay$ sont les fonctions $y(x) = C\\,\\mathrm{e}^{ax}$. La condition $y(0) = 4$ donne $C = 4$. Donc $y(x) = 4\\mathrm{e}^{-\\frac{x}{2}}$.\n2. $y(2) = 4\\mathrm{e}^{-1} \\approx 1{,}47$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "52c9f73d-7213-4554-a138-f3a78a40625d",
+    "71264af1-a9b9-498c-8e6b-426345e74c3c"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": true
+  },
+  {
+   "id": "dc73355a-b0b9-49db-9f4d-52b47f4fdd37",
+   "sujet": "On considère le problème : $y' = 2 y, \\quad y(0) = 3$.\n\n1. Déterminer la solution $y$ de ce problème.\n2. Calculer $y(1)$ (valeur approchée à $10^{-2}$ près).",
+   "corrige": "Solution :\n\n1. Les solutions de $y' = ay$ sont les fonctions $y(x) = C\\,\\mathrm{e}^{ax}$. La condition $y(0) = 3$ donne $C = 3$. Donc $y(x) = 3\\mathrm{e}^{2x}$.\n2. $y(1) = 3\\mathrm{e}^{2} \\approx 22{,}17$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "52c9f73d-7213-4554-a138-f3a78a40625d",
+    "71264af1-a9b9-498c-8e6b-426345e74c3c"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "521cbf67-7dd9-4410-8d09-14215de4210c",
+   "sujet": "Soit $f$ la fonction définie sur $\\R$ par $f(x) = 4x^{2} + 3x - 2$.\n\n1. Déterminer une primitive $F$ de $f$ sur $\\R$.\n2. Calculer l'intégrale $I = \\int_0^1 f(x)\\,\\mathrm{d}x$.",
+   "corrige": "Solution :\n\n1. $F(x) = \\frac{4}{3}x^{3} + \\frac{3}{2}x^{2} - 2x$.\n2. $I = F(1) - F(0) = \\frac{5}{6} - 0 = \\frac{5}{6}$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "71264af1-a9b9-498c-8e6b-426345e74c3c"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "2fe02974-41d5-4de0-a29a-fc3b48759962",
+   "sujet": "Soit $f$ la fonction définie sur $\\R$ par $f(x) = 6x^{2} - 4x + 5$.\n\n1. Déterminer une primitive $F$ de $f$ sur $\\R$.\n2. Calculer l'intégrale $I = \\int_0^1 f(x)\\,\\mathrm{d}x$.",
+   "corrige": "Solution :\n\n1. $F(x) = 2x^{3} - 2x^{2} + 5x$.\n2. $I = F(1) - F(0) = 5 - 0 = 5$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "a4ddfe6d-7dc7-4b04-8fb4-5c58a238c834",
+   "sujet": "Soit $f$ la fonction définie sur $\\R$ par $f(x) = 3x^{2} + 2x + 1$.\n\n1. Déterminer une primitive $F$ de $f$ sur $\\R$.\n2. Calculer l'intégrale $I = \\int_0^1 f(x)\\,\\mathrm{d}x$.",
+   "corrige": "Solution :\n\n1. $F(x) = x^{3} + x^{2} + x$.\n2. $I = F(1) - F(0) = 3 - 0 = 3$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "2295c640-e6f8-4298-8b5d-b45c9d8dc494",
+   "sujet": "**Exponentielle et logarithme.** Résoudre dans $\\R$ :\n\n1. $\\mathrm{e}^{x} = 20$\n2. $\\ln(x + 3) = \\ln(11)$ (on précisera l'ensemble de définition)\n3. $\\mathrm{e}^{x} \\geq 20$",
+   "corrige": "Solution :\n\n1. $\\mathrm{e}^{x} = 20 \\Leftrightarrow x = \\ln(20) \\approx 2{,}996$.\n2. L'équation a un sens pour $x + 3 > 0$, soit $x > -3$. Alors $x + 3 = 11 \\Leftrightarrow x = 8$, valeur bien supérieure à $-3$.\n3. La fonction $\\ln$ est croissante : $\\mathrm{e}^{x} \\geq 20 \\Leftrightarrow x \\geq \\ln(20)$. Ensemble des solutions : $[\\ln(20)\\,;\\,+\\infty[$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "71264af1-a9b9-498c-8e6b-426345e74c3c"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "7e8781cb-05a2-4640-af64-8130a428dfe7",
+   "sujet": "**Exponentielle et logarithme.** Résoudre dans $\\R$ :\n\n1. $\\mathrm{e}^{x} = 12$\n2. $\\ln(x + 2) = \\ln(9)$ (on précisera l'ensemble de définition)\n3. $\\mathrm{e}^{x} \\geq 12$",
+   "corrige": "Solution :\n\n1. $\\mathrm{e}^{x} = 12 \\Leftrightarrow x = \\ln(12) \\approx 2{,}485$.\n2. L'équation a un sens pour $x + 2 > 0$, soit $x > -2$. Alors $x + 2 = 9 \\Leftrightarrow x = 7$, valeur bien supérieure à $-2$.\n3. La fonction $\\ln$ est croissante : $\\mathrm{e}^{x} \\geq 12 \\Leftrightarrow x \\geq \\ln(12)$. Ensemble des solutions : $[\\ln(12)\\,;\\,+\\infty[$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": true
+  },
+  {
+   "id": "ff0e0df6-0806-4fd7-bc3c-b85bd3333def",
+   "sujet": "**Exponentielle et logarithme.** Résoudre dans $\\R$ :\n\n1. $\\mathrm{e}^{x} = 5$\n2. $\\ln(x + 1) = \\ln(7)$ (on précisera l'ensemble de définition)\n3. $\\mathrm{e}^{x} \\geq 5$",
+   "corrige": "Solution :\n\n1. $\\mathrm{e}^{x} = 5 \\Leftrightarrow x = \\ln(5) \\approx 1{,}609$.\n2. L'équation a un sens pour $x + 1 > 0$, soit $x > -1$. Alors $x + 1 = 7 \\Leftrightarrow x = 6$, valeur bien supérieure à $-1$.\n3. La fonction $\\ln$ est croissante : $\\mathrm{e}^{x} \\geq 5 \\Leftrightarrow x \\geq \\ln(5)$. Ensemble des solutions : $[\\ln(5)\\,;\\,+\\infty[$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "5fc440ed-65d0-4047-adc9-915fff442ec0",
+   "sujet": "Soit $f$ la fonction définie sur $\\R$ par $f(x) = (x + 2)\\mathrm{e}^{x}$.\n\n1. Calculer $f'(x)$ et montrer que $f'(x) = (x + 3)\\mathrm{e}^{x}$.\n2. Étudier le signe de $f'(x)$ et dresser le tableau de variations de $f$.\n3. En déduire le minimum de $f$ ; donner une valeur approchée à $10^{-3}$ près.",
+   "corrige": "Solution :\n\n1. $f = uv$ avec $u(x) = x + 2$ et $v(x) = \\mathrm{e}^{x}$ : $f'(x) = 1 \\times \\mathrm{e}^{x} + (x + 2)\\mathrm{e}^{x} = (x + 3)\\mathrm{e}^{x}$.\n2. $\\mathrm{e}^{x} > 0$, donc $f'(x)$ a le signe de $x + 3$ : $f$ est décroissante sur $]-\\infty\\,;\\,-3]$ et croissante sur $[-3\\,;\\,+\\infty[$.\n3. Le minimum est $f(-3) = -\\mathrm{e}^{-3} \\approx -0{,}050$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "71264af1-a9b9-498c-8e6b-426345e74c3c"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "90fb0c53-18a1-4cbe-b4da-2e1c5910bc31",
+   "sujet": "Soit $f$ la fonction définie sur $\\R$ par $f(x) = (x + 1)\\mathrm{e}^{x}$.\n\n1. Calculer $f'(x)$ et montrer que $f'(x) = (x + 2)\\mathrm{e}^{x}$.\n2. Étudier le signe de $f'(x)$ et dresser le tableau de variations de $f$.\n3. En déduire le minimum de $f$ ; donner une valeur approchée à $10^{-3}$ près.",
+   "corrige": "Solution :\n\n1. $f = uv$ avec $u(x) = x + 1$ et $v(x) = \\mathrm{e}^{x}$ : $f'(x) = 1 \\times \\mathrm{e}^{x} + (x + 1)\\mathrm{e}^{x} = (x + 2)\\mathrm{e}^{x}$.\n2. $\\mathrm{e}^{x} > 0$, donc $f'(x)$ a le signe de $x + 2$ : $f$ est décroissante sur $]-\\infty\\,;\\,-2]$ et croissante sur $[-2\\,;\\,+\\infty[$.\n3. Le minimum est $f(-2) = -\\mathrm{e}^{-2} \\approx -0{,}135$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "91714c73-0166-4ae0-992e-eeb6387f24ff",
+   "sujet": "Soit $f$ la fonction définie sur $\\R$ par $f(x) = x\\,\\mathrm{e}^{x}$.\n\n1. Calculer $f'(x)$ et montrer que $f'(x) = (x + 1)\\mathrm{e}^{x}$.\n2. Étudier le signe de $f'(x)$ et dresser le tableau de variations de $f$.\n3. En déduire le minimum de $f$ ; donner une valeur approchée à $10^{-3}$ près.",
+   "corrige": "Solution :\n\n1. $f = uv$ avec $u(x) = x$ et $v(x) = \\mathrm{e}^{x}$ : $f'(x) = 1 \\times \\mathrm{e}^{x} + x\\mathrm{e}^{x} = (x + 1)\\mathrm{e}^{x}$.\n2. $\\mathrm{e}^{x} > 0$, donc $f'(x)$ a le signe de $x + 1$ : $f$ est décroissante sur $]-\\infty\\,;\\,-1]$ et croissante sur $[-1\\,;\\,+\\infty[$.\n3. Le minimum est $f(-1) = -\\mathrm{e}^{-1} \\approx -0{,}368$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "a696d9b2-d5b0-4e6b-b9e4-291f5c4a62bd",
+   "sujet": "Soit $f$ la fonction définie sur $\\R \\setminus \\{\\frac{1}{2}\\}$ par $f(x) = \\frac{-x + 5}{4x - 2}$.\n\n1. Déterminer la limite de $f$ en $+\\infty$. Que peut-on en déduire pour la courbe de $f$ ?\n2. Justifier que la droite d'équation $x = \\frac{1}{2}$ est asymptote verticale à la courbe.",
+   "corrige": "Solution :\n\n1. Pour $x \\neq 0$, $f(x) = \\frac{-1 + \\frac{5}{x}}{4 - \\frac{2}{x}}$ ; donc $\\lim_{x \\to +\\infty} f(x) = -\\frac{1}{4}$. La droite d'équation $y = -\\frac{1}{4}$ est asymptote horizontale à la courbe en $+\\infty$.\n2. Le dénominateur s'annule en $x = \\frac{1}{2}$ alors que le numérateur y vaut $\\frac{9}{2}$ $\\neq 0$ : $f(x)$ tend vers $\\pm\\infty$ quand $x$ se rapproche de $\\frac{1}{2}$, donc la droite $x = \\frac{1}{2}$ est asymptote verticale.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "71264af1-a9b9-498c-8e6b-426345e74c3c"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "8045267c-0a81-45a9-bf01-2cbd4c169b83",
+   "sujet": "Soit $f$ la fonction définie sur $\\R \\setminus \\{-2\\}$ par $f(x) = \\frac{3x - 2}{2x + 4}$.\n\n1. Déterminer la limite de $f$ en $+\\infty$. Que peut-on en déduire pour la courbe de $f$ ?\n2. Justifier que la droite d'équation $x = -2$ est asymptote verticale à la courbe.",
+   "corrige": "Solution :\n\n1. Pour $x \\neq 0$, $f(x) = \\frac{3 - \\frac{2}{x}}{2 + \\frac{4}{x}}$ ; donc $\\lim_{x \\to +\\infty} f(x) = \\frac{3}{2}$. La droite d'équation $y = \\frac{3}{2}$ est asymptote horizontale à la courbe en $+\\infty$.\n2. Le dénominateur s'annule en $x = -2$ alors que le numérateur y vaut $-8$ $\\neq 0$ : $f(x)$ tend vers $\\pm\\infty$ quand $x$ se rapproche de $-2$, donc la droite $x = -2$ est asymptote verticale.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "85e29395-2b93-45d2-84ce-bad21c971981",
+   "sujet": "Soit $f$ la fonction définie sur $\\R \\setminus \\{3\\}$ par $f(x) = \\frac{2x + 1}{x - 3}$.\n\n1. Déterminer la limite de $f$ en $+\\infty$. Que peut-on en déduire pour la courbe de $f$ ?\n2. Justifier que la droite d'équation $x = 3$ est asymptote verticale à la courbe.",
+   "corrige": "Solution :\n\n1. Pour $x \\neq 0$, $f(x) = \\frac{2 + \\frac{1}{x}}{1 - \\frac{3}{x}}$ ; donc $\\lim_{x \\to +\\infty} f(x) = 2$. La droite d'équation $y = 2$ est asymptote horizontale à la courbe en $+\\infty$.\n2. Le dénominateur s'annule en $x = 3$ alors que le numérateur y vaut $7$ $\\neq 0$ : $f(x)$ tend vers $\\pm\\infty$ quand $x$ se rapproche de $3$, donc la droite $x = 3$ est asymptote verticale.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "fda7bcd2-ca43-4da2-a576-e92a9abc074b",
+   "sujet": "Soit $(u_n)$ la suite géométrique de premier terme $u_0 = -6$ et de raison $q = \\frac{2}{3}$.\n\n1. Exprimer $u_n$ en fonction de $n$, puis calculer $u_5$.\n2. Déterminer la limite de $(u_n)$.\n3. Pour tout $n$, on pose $S_n = u_0 + u_1 + \\dots + u_n$. Exprimer $S_n$ en fonction de $n$ puis déterminer la limite de $(S_n)$.",
+   "corrige": "Solution :\n\n1. $u_n = -6 \\times \\left(\\frac{2}{3}\\right)^{n}$ ; $u_5 = -6 \\times \\left(\\frac{2}{3}\\right)^{5} = -\\frac{64}{81}$.\n2. Comme $-1 < q < 1$, $(q^{n})$ tend vers 0, donc $(u_n)$ converge vers 0.\n3. $S_n = u_0 \\times \\frac{1 - q^{n+1}}{1 - q} = -18 \\left(1 - \\left(\\frac{2}{3}\\right)^{n+1}\\right)$. Comme $q^{n+1}$ tend vers 0, $S_n$ tend vers $-18$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "71264af1-a9b9-498c-8e6b-426345e74c3c"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "0b5d6816-ecb7-45bc-9efc-29091b6b7ff8",
+   "sujet": "Soit $(u_n)$ la suite géométrique de premier terme $u_0 = 5$ et de raison $q = \\frac{1}{3}$.\n\n1. Exprimer $u_n$ en fonction de $n$, puis calculer $u_5$.\n2. Déterminer la limite de $(u_n)$.\n3. Pour tout $n$, on pose $S_n = u_0 + u_1 + \\dots + u_n$. Exprimer $S_n$ en fonction de $n$ puis déterminer la limite de $(S_n)$.",
+   "corrige": "Solution :\n\n1. $u_n = 5 \\times \\left(\\frac{1}{3}\\right)^{n}$ ; $u_5 = 5 \\times \\left(\\frac{1}{3}\\right)^{5} = \\frac{5}{243}$.\n2. Comme $-1 < q < 1$, $(q^{n})$ tend vers 0, donc $(u_n)$ converge vers 0.\n3. $S_n = u_0 \\times \\frac{1 - q^{n+1}}{1 - q} = \\frac{15}{2} \\left(1 - \\left(\\frac{1}{3}\\right)^{n+1}\\right)$. Comme $q^{n+1}$ tend vers 0, $S_n$ tend vers $\\frac{15}{2}$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "42894155-f6a6-4be4-af09-0d0c70fa9722",
+   "sujet": "Soit $(u_n)$ la suite géométrique de premier terme $u_0 = 8$ et de raison $q = \\frac{1}{2}$.\n\n1. Exprimer $u_n$ en fonction de $n$, puis calculer $u_5$.\n2. Déterminer la limite de $(u_n)$.\n3. Pour tout $n$, on pose $S_n = u_0 + u_1 + \\dots + u_n$. Exprimer $S_n$ en fonction de $n$ puis déterminer la limite de $(S_n)$.",
+   "corrige": "Solution :\n\n1. $u_n = 8 \\times \\left(\\frac{1}{2}\\right)^{n}$ ; $u_5 = 8 \\times \\left(\\frac{1}{2}\\right)^{5} = \\frac{1}{4}$.\n2. Comme $-1 < q < 1$, $(q^{n})$ tend vers 0, donc $(u_n)$ converge vers 0.\n3. $S_n = u_0 \\times \\frac{1 - q^{n+1}}{1 - q} = 16 \\left(1 - \\left(\\frac{1}{2}\\right)^{n+1}\\right)$. Comme $q^{n+1}$ tend vers 0, $S_n$ tend vers $16$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "b083e153-480b-4d0f-a795-0417b67fe094",
+   "sujet": "Soit $(u_n)$ la suite définie par $u_0 = 2$ et, pour tout entier naturel $n$, $u_{n+1} = 3u_n - 2$.\n\n1. Calculer $u_1$, $u_2$ et $u_3$.\n2. Démontrer par récurrence que, pour tout entier naturel $n$, $u_n = 3^{n} + 1$.",
+   "corrige": "Solution :\n\n1. $u_1 = 4, \\quad u_2 = 10, \\quad u_3 = 28$.\n2. **Initialisation** : pour $n = 0$, $3^{0} + 1 = 2 = u_0$ : la propriété est vraie.\n   **Hérédité** : supposons $u_n = 3^{n} + 1$ pour un entier $n$. Alors $u_{n+1} = 3\\left(3^{n} + 1\\right) - 2 = 3^{n+1} + 3 - 2 = 3^{n+1} + 1$. La propriété est vraie au rang $n+1$.\n   **Conclusion** : elle est vraie pour tout entier naturel $n$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "71264af1-a9b9-498c-8e6b-426345e74c3c"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "dfce15fa-712b-4d2b-a9a4-7c309e819faa",
+   "sujet": "Soit $(u_n)$ la suite définie par $u_0 = 0$ et, pour tout entier naturel $n$, $u_{n+1} = 2u_n + 1$.\n\n1. Calculer $u_1$, $u_2$ et $u_3$.\n2. Démontrer par récurrence que, pour tout entier naturel $n$, $u_n = 2^{n} - 1$.",
+   "corrige": "Solution :\n\n1. $u_1 = 1, \\quad u_2 = 3, \\quad u_3 = 7$.\n2. **Initialisation** : pour $n = 0$, $2^{0} - 1 = 0 = u_0$ : la propriété est vraie.\n   **Hérédité** : supposons $u_n = 2^{n} - 1$ pour un entier $n$. Alors $u_{n+1} = 2\\left(2^{n} - 1\\right) + 1 = 2^{n+1} - 2 + 1 = 2^{n+1} - 1$. La propriété est vraie au rang $n+1$.\n   **Conclusion** : elle est vraie pour tout entier naturel $n$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "f741463b-9038-4651-b837-759adffdde01",
+   "sujet": "Soit $(u_n)$ la suite définie par $u_0 = 1$ et, pour tout entier naturel $n$, $u_{n+1} = 2u_n + 1$.\n\n1. Calculer $u_1$, $u_2$ et $u_3$.\n2. Démontrer par récurrence que, pour tout entier naturel $n$, $u_n = 2^{n+1} - 1$.",
+   "corrige": "Solution :\n\n1. $u_1 = 3, \\quad u_2 = 7, \\quad u_3 = 15$.\n2. **Initialisation** : pour $n = 0$, $2^{0+1} - 1 = 1 = u_0$ : la propriété est vraie.\n   **Hérédité** : supposons $u_n = 2^{n+1} - 1$ pour un entier $n$. Alors $u_{n+1} = 2\\left(2^{n+1} - 1\\right) + 1 = 2^{n+2} - 2 + 1 = 2^{n+2} - 1$. La propriété est vraie au rang $n+1$.\n   **Conclusion** : elle est vraie pour tout entier naturel $n$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "e867163f-8bb6-4c1f-bd03-57bf44a0197e"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "b8616cf9-b879-4b04-94ce-560378e60d42",
+   "sujet": "Soit $X$ une variable aléatoire suivant la loi binomiale $\\mathcal{B}(6\\,;\\,\\frac{1}{4})$.\n\n1. Calculer $P(X = 3)$.\n2. Calculer $P(X \\geq 1)$.\n3. Calculer l'espérance $E(X)$.",
+   "corrige": "Solution :\n\n1. $P(X = 3) = \\binom{6}{3} \\left(\\frac{1}{4}\\right)^{3} \\left(\\frac{3}{4}\\right)^{3} = 20 \\times \\frac{1}{64} \\times \\frac{27}{64} = \\frac{135}{1024}$.\n2. $P(X \\geq 1) = 1 - P(X = 0) = 1 - \\left(\\frac{3}{4}\\right)^{6} = \\frac{3367}{4096}$.\n3. $E(X) = n \\times p = 6 \\times \\frac{1}{4} = \\frac{3}{2}$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "41da7dbb-ce0b-42ab-816d-b421609685f5"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "71264af1-a9b9-498c-8e6b-426345e74c3c"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "5e573e70-b6d0-4d3e-8a52-9f11fc491a2b",
+   "sujet": "Soit $X$ une variable aléatoire suivant la loi binomiale $\\mathcal{B}(5\\,;\\,\\frac{1}{3})$.\n\n1. Calculer $P(X = 2)$.\n2. Calculer $P(X \\geq 1)$.\n3. Calculer l'espérance $E(X)$.",
+   "corrige": "Solution :\n\n1. $P(X = 2) = \\binom{5}{2} \\left(\\frac{1}{3}\\right)^{2} \\left(\\frac{2}{3}\\right)^{3} = 10 \\times \\frac{1}{9} \\times \\frac{8}{27} = \\frac{80}{243}$.\n2. $P(X \\geq 1) = 1 - P(X = 0) = 1 - \\left(\\frac{2}{3}\\right)^{5} = \\frac{211}{243}$.\n3. $E(X) = n \\times p = 5 \\times \\frac{1}{3} = \\frac{5}{3}$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "41da7dbb-ce0b-42ab-816d-b421609685f5"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": true
+  },
+  {
+   "id": "3ba690e1-e073-42e5-a430-be1e6b8e7211",
+   "sujet": "Soit $X$ une variable aléatoire suivant la loi binomiale $\\mathcal{B}(4\\,;\\,\\frac{1}{2})$.\n\n1. Calculer $P(X = 2)$.\n2. Calculer $P(X \\geq 1)$.\n3. Calculer l'espérance $E(X)$.",
+   "corrige": "Solution :\n\n1. $P(X = 2) = \\binom{4}{2} \\left(\\frac{1}{2}\\right)^{2} \\left(\\frac{1}{2}\\right)^{2} = 6 \\times \\frac{1}{4} \\times \\frac{1}{4} = \\frac{3}{8}$.\n2. $P(X \\geq 1) = 1 - P(X = 0) = 1 - \\left(\\frac{1}{2}\\right)^{4} = \\frac{15}{16}$.\n3. $E(X) = n \\times p = 4 \\times \\frac{1}{2} = 2$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "41da7dbb-ce0b-42ab-816d-b421609685f5"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "ff2f8dba-e22b-4bb0-81c8-fd3ea258ecfe",
+   "sujet": "Dans un lycée, une proportion $\\frac{3}{10}$ des élèves est en classe de Première (événement $A$). Parmi ces élèves, une proportion $\\frac{2}{3}$ pratique un sport (événement $B$) ; parmi les autres élèves, une proportion $\\frac{1}{5}$ pratique un sport. On choisit un élève au hasard.\n\n1. Calculer $P(A \\cap B)$.\n2. Calculer $P(B)$ à l'aide de la formule des probabilités totales.\n3. Sachant que l'élève pratique un sport, quelle est la probabilité qu'il soit en Première ?",
+   "corrige": "Solution :\n\n1. $P(A \\cap B) = P(A) \\times P_A(B) = \\frac{3}{10} \\times \\frac{2}{3} = \\frac{1}{5}$.\n2. $P(B) = P(A \\cap B) + P(\\overline{A} \\cap B) = \\frac{1}{5} + \\frac{7}{10} \\times \\frac{1}{5} = \\frac{17}{50}$.\n3. $P_B(A) = \\frac{P(A \\cap B)}{P(B)} = \\frac{\\frac{1}{5}}{\\frac{17}{50}} = \\frac{10}{17}$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "41da7dbb-ce0b-42ab-816d-b421609685f5"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "71264af1-a9b9-498c-8e6b-426345e74c3c"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "cac4b047-7aeb-419e-8527-a96c1f903ea3",
+   "sujet": "Dans un lycée, une proportion $\\frac{1}{3}$ des élèves est en classe de Première (événement $A$). Parmi ces élèves, une proportion $\\frac{3}{4}$ pratique un sport (événement $B$) ; parmi les autres élèves, une proportion $\\frac{1}{2}$ pratique un sport. On choisit un élève au hasard.\n\n1. Calculer $P(A \\cap B)$.\n2. Calculer $P(B)$ à l'aide de la formule des probabilités totales.\n3. Sachant que l'élève pratique un sport, quelle est la probabilité qu'il soit en Première ?",
+   "corrige": "Solution :\n\n1. $P(A \\cap B) = P(A) \\times P_A(B) = \\frac{1}{3} \\times \\frac{3}{4} = \\frac{1}{4}$.\n2. $P(B) = P(A \\cap B) + P(\\overline{A} \\cap B) = \\frac{1}{4} + \\frac{2}{3} \\times \\frac{1}{2} = \\frac{7}{12}$.\n3. $P_B(A) = \\frac{P(A \\cap B)}{P(B)} = \\frac{\\frac{1}{4}}{\\frac{7}{12}} = \\frac{3}{7}$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "41da7dbb-ce0b-42ab-816d-b421609685f5"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": true
+  },
+  {
+   "id": "e3f40058-3402-44b0-ab45-1761ac4bbf8b",
+   "sujet": "Dans un lycée, une proportion $\\frac{2}{5}$ des élèves est en classe de Première (événement $A$). Parmi ces élèves, une proportion $\\frac{1}{2}$ pratique un sport (événement $B$) ; parmi les autres élèves, une proportion $\\frac{1}{10}$ pratique un sport. On choisit un élève au hasard.\n\n1. Calculer $P(A \\cap B)$.\n2. Calculer $P(B)$ à l'aide de la formule des probabilités totales.\n3. Sachant que l'élève pratique un sport, quelle est la probabilité qu'il soit en Première ?",
+   "corrige": "Solution :\n\n1. $P(A \\cap B) = P(A) \\times P_A(B) = \\frac{2}{5} \\times \\frac{1}{2} = \\frac{1}{5}$.\n2. $P(B) = P(A \\cap B) + P(\\overline{A} \\cap B) = \\frac{1}{5} + \\frac{3}{5} \\times \\frac{1}{10} = \\frac{13}{50}$.\n3. $P_B(A) = \\frac{P(A \\cap B)}{P(B)} = \\frac{\\frac{1}{5}}{\\frac{13}{50}} = \\frac{10}{13}$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "41da7dbb-ce0b-42ab-816d-b421609685f5"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "63fb16a9-59da-4f6f-b696-b478afe49143",
+   "sujet": "**Trigonométrie.** Résoudre dans l'intervalle $[0\\,;\\,2\\pi]$ les équations suivantes :\n\n1. $\\sin x = -\\frac{1}{2}$\n2. $\\cos x = -\\frac{1}{2}$\n3. $\\sin x = \\frac{\\sqrt{2}}{2}$",
+   "corrige": "Solution :\n\n1. $\\sin x = -\\frac{1}{2} \\Leftrightarrow x \\in \\left\\{ \\frac{7\\pi}{6} ; \\frac{11\\pi}{6} \\right\\}$.\n2. $\\cos x = -\\frac{1}{2} \\Leftrightarrow x \\in \\left\\{ \\frac{2\\pi}{3} ; \\frac{4\\pi}{3} \\right\\}$.\n3. $\\sin x = \\frac{\\sqrt{2}}{2} \\Leftrightarrow x \\in \\left\\{ \\frac{\\pi}{4} ; \\frac{3\\pi}{4} \\right\\}$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "7fa5847b-b399-4a9b-8b1b-20cc0d266e03"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "71264af1-a9b9-498c-8e6b-426345e74c3c"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "09038a5b-f2e3-4bc0-bbd3-16b5c4761d87",
+   "sujet": "**Trigonométrie.** Résoudre dans l'intervalle $[0\\,;\\,2\\pi]$ les équations suivantes :\n\n1. $\\sin x = \\frac{\\sqrt{3}}{2}$\n2. $\\cos x = -\\frac{\\sqrt{2}}{2}$",
+   "corrige": "Solution :\n\n1. $\\sin x = \\frac{\\sqrt{3}}{2} \\Leftrightarrow x \\in \\left\\{ \\frac{\\pi}{3} ; \\frac{2\\pi}{3} \\right\\}$.\n2. $\\cos x = -\\frac{\\sqrt{2}}{2} \\Leftrightarrow x \\in \\left\\{ \\frac{3\\pi}{4} ; \\frac{5\\pi}{4} \\right\\}$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "7fa5847b-b399-4a9b-8b1b-20cc0d266e03"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": true
+  },
+  {
+   "id": "dc9e1973-2230-4935-963a-1365e1cf0581",
+   "sujet": "**Trigonométrie.** Résoudre dans l'intervalle $[0\\,;\\,2\\pi]$ les équations suivantes :\n\n1. $\\cos x = \\frac{1}{2}$",
+   "corrige": "Solution :\n\n1. $\\cos x = \\frac{1}{2} \\Leftrightarrow x \\in \\left\\{ \\frac{\\pi}{3} ; \\frac{5\\pi}{3} \\right\\}$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "7fa5847b-b399-4a9b-8b1b-20cc0d266e03"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "8325baba-3713-4449-9032-b8a545a9822e",
+   "sujet": "Dans un repère orthonormé, on considère les vecteurs $\\vec{u}(2\\,;\\,3)$ et $\\vec{v}(1\\,;\\,5)$.\n\n1. Calculer le produit scalaire $\\vec{u} \\cdot \\vec{v}$.\n2. Les vecteurs $\\vec{u}$ et $\\vec{v}$ sont-ils orthogonaux ?\n3. Calculer les normes $\\lVert \\vec{u} \\rVert$ et $\\lVert \\vec{v} \\rVert$.\n4. Déterminer l'angle géométrique $\\theta$ entre $\\vec{u}$ et $\\vec{v}$, au dixième de degré près.",
+   "corrige": "Solution :\n\n1. $\\vec{u} \\cdot \\vec{v} = 2 \\times 1 + 3 \\times 5 = 17$.\n2. $\\vec{u} \\cdot \\vec{v} = 17 \\neq 0$ : ils ne sont pas orthogonaux.\n3. $\\lVert \\vec{u} \\rVert = \\sqrt{13}$ et $\\lVert \\vec{v} \\rVert = \\sqrt{26}$.\n4. $\\cos\\theta = \\frac{\\vec{u} \\cdot \\vec{v}}{\\lVert \\vec{u} \\rVert \\times \\lVert \\vec{v} \\rVert} = \\frac{17}{\\sqrt{338}} \\approx 0{,}9247$, donc $\\theta \\approx 22{,}4^\\circ$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "7fa5847b-b399-4a9b-8b1b-20cc0d266e03"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "71264af1-a9b9-498c-8e6b-426345e74c3c"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "dd30d4d1-d9db-41e6-aec9-fd8d10c459ad",
+   "sujet": "Dans un repère orthonormé, on considère les vecteurs $\\vec{u}(2\\,;\\,1)$ et $\\vec{v}(1\\,;\\,3)$.\n\n1. Calculer le produit scalaire $\\vec{u} \\cdot \\vec{v}$.\n2. Les vecteurs $\\vec{u}$ et $\\vec{v}$ sont-ils orthogonaux ?\n3. Calculer les normes $\\lVert \\vec{u} \\rVert$ et $\\lVert \\vec{v} \\rVert$.\n4. Déterminer l'angle géométrique $\\theta$ entre $\\vec{u}$ et $\\vec{v}$, au dixième de degré près.",
+   "corrige": "Solution :\n\n1. $\\vec{u} \\cdot \\vec{v} = 2 \\times 1 + 1 \\times 3 = 5$.\n2. $\\vec{u} \\cdot \\vec{v} = 5 \\neq 0$ : ils ne sont pas orthogonaux.\n3. $\\lVert \\vec{u} \\rVert = \\sqrt{5}$ et $\\lVert \\vec{v} \\rVert = \\sqrt{10}$.\n4. $\\cos\\theta = \\frac{\\vec{u} \\cdot \\vec{v}}{\\lVert \\vec{u} \\rVert \\times \\lVert \\vec{v} \\rVert} = \\frac{5}{\\sqrt{50}} \\approx 0{,}7071$, donc $\\theta \\approx 45{,}0^\\circ$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "7fa5847b-b399-4a9b-8b1b-20cc0d266e03"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "eeaeaf29-9be5-45b9-ac4b-479af90ce63d",
+   "sujet": "Dans un repère orthonormé, on considère les vecteurs $\\vec{u}(3\\,;\\,4)$ et $\\vec{v}(-4\\,;\\,3)$.\n\n1. Calculer le produit scalaire $\\vec{u} \\cdot \\vec{v}$.\n2. Les vecteurs $\\vec{u}$ et $\\vec{v}$ sont-ils orthogonaux ?\n3. Calculer les normes $\\lVert \\vec{u} \\rVert$ et $\\lVert \\vec{v} \\rVert$.",
+   "corrige": "Solution :\n\n1. $\\vec{u} \\cdot \\vec{v} = 3 \\times (-4) + 4 \\times 3 = 0$.\n2. $\\vec{u} \\cdot \\vec{v} = 0$ : les vecteurs sont orthogonaux.\n3. $\\lVert \\vec{u} \\rVert = \\sqrt{25} = 5$ et $\\lVert \\vec{v} \\rVert = \\sqrt{25} = 5$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "7fa5847b-b399-4a9b-8b1b-20cc0d266e03"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "b65d20a7-060e-4a53-b9a7-8a7b8851f6f4",
+   "sujet": "Soit $f$ la fonction définie sur $\\R$ par $f(x) = x^{3} - 27x$.\n\n1. Calculer $f'(x)$ et la factoriser.\n2. Étudier le signe de $f'(x)$ et dresser le tableau de variations de $f$.\n3. Préciser les extremums locaux de $f$.",
+   "corrige": "Solution :\n\n1. $f'(x) = 3x^{2} - 27 = 3(x - 3)(x + 3)$.\n2. $f'(x)$ est positif pour $x \\leq -3$ et pour $x \\geq 3$, négatif entre $-3$ et $3$. $f$ est donc croissante sur $]-\\infty\\,;\\,-3]$, décroissante sur $[-3\\,;\\,3]$, croissante sur $[3\\,;\\,+\\infty[$.\n3. Maximum local $f(-3) = 54$ ; minimum local $f(3) = -54$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "71264af1-a9b9-498c-8e6b-426345e74c3c"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "6d529676-9131-49ee-8d7f-66c8a104acde",
+   "sujet": "Soit $f$ la fonction définie sur $\\R$ par $f(x) = x^{3} - 12x$.\n\n1. Calculer $f'(x)$ et la factoriser.\n2. Étudier le signe de $f'(x)$ et dresser le tableau de variations de $f$.\n3. Préciser les extremums locaux de $f$.",
+   "corrige": "Solution :\n\n1. $f'(x) = 3x^{2} - 12 = 3(x - 2)(x + 2)$.\n2. $f'(x)$ est positif pour $x \\leq -2$ et pour $x \\geq 2$, négatif entre $-2$ et $2$. $f$ est donc croissante sur $]-\\infty\\,;\\,-2]$, décroissante sur $[-2\\,;\\,2]$, croissante sur $[2\\,;\\,+\\infty[$.\n3. Maximum local $f(-2) = 16$ ; minimum local $f(2) = -16$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "3084921d-22e7-4759-82be-83e37d93a1d1",
+   "sujet": "Soit $f$ la fonction définie sur $\\R$ par $f(x) = x^{3} - 3x$.\n\n1. Calculer $f'(x)$ et la factoriser.\n2. Étudier le signe de $f'(x)$ et dresser le tableau de variations de $f$.\n3. Préciser les extremums locaux de $f$.",
+   "corrige": "Solution :\n\n1. $f'(x) = 3x^{2} - 3 = 3(x - 1)(x + 1)$.\n2. $f'(x)$ est positif pour $x \\leq -1$ et pour $x \\geq 1$, négatif entre $-1$ et $1$. $f$ est donc croissante sur $]-\\infty\\,;\\,-1]$, décroissante sur $[-1\\,;\\,1]$, croissante sur $[1\\,;\\,+\\infty[$.\n3. Maximum local $f(-1) = 2$ ; minimum local $f(1) = -2$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "341b26fd-1aca-4050-93ea-cd4f4313232d",
+   "sujet": "Soit $f$ la fonction définie sur $\\R$ par $f(x) = -x^{3} + 4x^{2} + 3x - 2$.\n\n1. Calculer $f'(x)$.\n2. Calculer $f(1)$ et $f'(1)$.\n3. En déduire une équation de la tangente $T$ à la courbe de $f$ au point d'abscisse 1.",
+   "corrige": "Solution :\n\n1. $f'(x) = -3x^{2} + 8x + 3$.\n2. $f(1) = 4$ et $f'(1) = 8$.\n3. $T : y = f'(1)(x - 1) + f(1) = 8(x - 1) + 4$, soit $y = 8x - 4$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "71264af1-a9b9-498c-8e6b-426345e74c3c"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "a652f582-429f-4f52-afc0-dbb154ed266d",
+   "sujet": "Soit $f$ la fonction définie sur $\\R$ par $f(x) = 2x^{3} + x^{2} - 4x + 5$.\n\n1. Calculer $f'(x)$.\n2. Calculer $f(1)$ et $f'(1)$.\n3. En déduire une équation de la tangente $T$ à la courbe de $f$ au point d'abscisse 1.",
+   "corrige": "Solution :\n\n1. $f'(x) = 6x^{2} + 2x - 4$.\n2. $f(1) = 4$ et $f'(1) = 4$.\n3. $T : y = f'(1)(x - 1) + f(1) = 4(x - 1) + 4$, soit $y = 4x$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "b2699e22-8990-4f24-a9f1-6a3a340790cc",
+   "sujet": "Soit $f$ la fonction définie sur $\\R$ par $f(x) = x^{3} - 3x^{2} + 2$.\n\n1. Calculer $f'(x)$.\n2. Calculer $f(1)$ et $f'(1)$.\n3. En déduire une équation de la tangente $T$ à la courbe de $f$ au point d'abscisse 1.\n4. Résoudre $f'(x) = 0$.",
+   "corrige": "Solution :\n\n1. $f'(x) = 3x^{2} - 6x$.\n2. $f(1) = 0$ et $f'(1) = -3$.\n3. $T : y = f'(1)(x - 1) + f(1) = -3(x - 1) + 0$, soit $y = -3x + 3$.\n4. $f'(x) = 3x^{2} - 6x = 3x(x - 2) = 0 \\Leftrightarrow x = 0 \\text{ ou } x = 2$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "4254c5fd-b668-4b7e-87d1-9e44f74356c8",
+   "sujet": "Soit $(u_n)$ la suite arithmétique de premier terme $u_0 = 12$ et de raison $r = -2$.\n\n1. Exprimer $u_n$ en fonction de $n$.\n2. Calculer $u_{10}$.\n3. Calculer $S = u_0 + u_1 + \\dots + u_{10}$.",
+   "corrige": "Solution :\n\n1. $u_n = u_0 + n \\times r = -2n + 12$.\n2. $u_{10} = 12 + 10 \\times (-2) = -8$.\n3. $S = 11 \\times \\frac{u_0 + u_{10}}{2} = 11 \\times \\frac{12 - 8}{2} = 22$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "71264af1-a9b9-498c-8e6b-426345e74c3c"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "c938fcc6-5cc0-447e-8d5f-bbf06816aed2",
+   "sujet": "Soit $(u_n)$ la suite arithmétique de premier terme $u_0 = -4$ et de raison $r = 3$.\n\n1. Exprimer $u_n$ en fonction de $n$.\n2. Calculer $u_{10}$.\n3. Calculer $S = u_0 + u_1 + \\dots + u_{10}$.\n4. Déterminer le plus petit entier $n$ tel que $u_n > 100$.",
+   "corrige": "Solution :\n\n1. $u_n = u_0 + n \\times r = 3n - 4$.\n2. $u_{10} = -4 + 10 \\times 3 = 26$.\n3. $S = 11 \\times \\frac{u_0 + u_{10}}{2} = 11 \\times \\frac{-4 + 26}{2} = 121$.\n4. $3n - 4 > 100 \\Leftrightarrow n > \\frac{104}{3}$ ; le plus petit entier est $n = 35$ ($u_{35} = 101$).",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": true
+  },
+  {
+   "id": "0ed1d4ee-ca14-4dec-9b8b-ad0cdf85f00d",
+   "sujet": "Soit $(u_n)$ la suite arithmétique de premier terme $u_0 = 3$ et de raison $r = 2$.\n\n1. Exprimer $u_n$ en fonction de $n$.\n2. Calculer $u_{10}$.\n3. Calculer $S = u_0 + u_1 + \\dots + u_{10}$.\n4. Déterminer le plus petit entier $n$ tel que $u_n > 50$.",
+   "corrige": "Solution :\n\n1. $u_n = u_0 + n \\times r = 2n + 3$.\n2. $u_{10} = 3 + 10 \\times 2 = 23$.\n3. $S = 11 \\times \\frac{u_0 + u_{10}}{2} = 11 \\times \\frac{3 + 23}{2} = 143$.\n4. $2n + 3 > 50 \\Leftrightarrow n > \\frac{47}{2}$ ; le plus petit entier est $n = 24$ ($u_{24} = 51$).",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "b1614bf5-3f07-42b4-9c1c-fc1e77d220a3",
+   "sujet": "Soit $f$ la fonction définie sur $\\R$ par $f(x) = 2x^{2} + 4x - 6$.\n\n1. Calculer le discriminant $\\Delta$ de $f(x)$.\n2. Résoudre l'équation $f(x) = 0$.\n3. En déduire le signe de $f(x)$ selon les valeurs de $x$.",
+   "corrige": "Solution :\n\n1. $\\Delta = b^{2} - 4ac = 4^{2} - 4 \\times 2 \\times (-6) = 64$.\n2. $\\Delta > 0$ : deux racines $x_1 = \\frac{-4 - 8}{4} = -3$ et $x_2 = \\frac{-4 + 8}{4} = 1$.\n3. Le coefficient de $x^{2}$ est positif : $f(x)$ est positif à l'extérieur des racines et négatif entre $-3$ et $1$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "71264af1-a9b9-498c-8e6b-426345e74c3c"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "241a2e4e-53e8-46ce-9bb6-3b1ecbcc0b9a",
+   "sujet": "Soit $f$ la fonction définie sur $\\R$ par $f(x) = x^{2} - 3x - 4$.\n\n1. Calculer le discriminant $\\Delta$ de $f(x)$.\n2. Résoudre l'équation $f(x) = 0$.\n3. En déduire le signe de $f(x)$ selon les valeurs de $x$.",
+   "corrige": "Solution :\n\n1. $\\Delta = b^{2} - 4ac = (-3)^{2} - 4 \\times 1 \\times (-4) = 25$.\n2. $\\Delta > 0$ : deux racines $x_1 = \\frac{3 - 5}{2} = -1$ et $x_2 = \\frac{3 + 5}{2} = 4$.\n3. Le coefficient de $x^{2}$ est positif : $f(x)$ est positif à l'extérieur des racines et négatif entre $-1$ et $4$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "3ba84fc7-c5c6-46d5-8657-33f1871576cc",
+   "sujet": "Soit $f$ la fonction définie sur $\\R$ par $f(x) = x^{2} - 5x + 6$.\n\n1. Calculer le discriminant $\\Delta$ de $f(x)$.\n2. Résoudre l'équation $f(x) = 0$.\n3. En déduire le signe de $f(x)$ selon les valeurs de $x$.",
+   "corrige": "Solution :\n\n1. $\\Delta = b^{2} - 4ac = (-5)^{2} - 4 \\times 1 \\times 6 = 1$.\n2. $\\Delta > 0$ : deux racines $x_1 = \\frac{5 - 1}{2} = 2$ et $x_2 = \\frac{5 + 1}{2} = 3$.\n3. Le coefficient de $x^{2}$ est positif : $f(x)$ est positif à l'extérieur des racines et négatif entre $2$ et $3$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "ed78ac42-5366-4bc6-bbca-7c454662a017"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "81ad56a2-f0a2-4a57-a4da-ff38755cbd19",
+   "sujet": "Voici les notes obtenues par 9 élèves à un contrôle : 4 ; 17 ; 9 ; 12 ; 14 ; 7 ; 19 ; 10 ; 15.\n\n1. Calculer la moyenne de cette série.\n2. Déterminer sa médiane.\n3. Calculer son étendue.\n4. Déterminer les premier et troisième quartiles.",
+   "corrige": "Solution :\n\n1. Moyenne : $\\frac{107}{9} \\approx 11{,}89$.\n2. Série ordonnée : 4 ; 7 ; 9 ; 10 ; 12 ; 14 ; 15 ; 17 ; 19. Effectif impair (9) : la médiane est la valeur de rang 5, soit 12.\n3. Étendue : $19 - 4 = 15$.\n4. $Q_1$ est la valeur de rang 3 : $Q_1 = 9$. $Q_3$ est la valeur de rang 7 : $Q_3 = 15$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "41da7dbb-ce0b-42ab-816d-b421609685f5"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "5f2b823e-1cfc-4548-a627-0eb05087da0e",
+   "sujet": "Voici les notes obtenues par 9 élèves à un contrôle : 6 ; 15 ; 9 ; 12 ; 11 ; 8 ; 16 ; 10 ; 12.\n\n1. Calculer la moyenne de cette série.\n2. Déterminer sa médiane.\n3. Calculer son étendue.",
+   "corrige": "Solution :\n\n1. Moyenne : $\\frac{99}{9} = 11$.\n2. Série ordonnée : 6 ; 8 ; 9 ; 10 ; 11 ; 12 ; 12 ; 15 ; 16. Effectif impair (9) : la médiane est la valeur de rang 5, soit 11.\n3. Étendue : $16 - 6 = 10$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "41da7dbb-ce0b-42ab-816d-b421609685f5"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": true
+  },
+  {
+   "id": "3aebcb0c-b981-4f8c-a919-b89f9482cf2d",
+   "sujet": "Voici les notes obtenues par 7 élèves à un contrôle : 12 ; 8 ; 13 ; 10 ; 13 ; 9 ; 12.\n\n1. Calculer la moyenne de cette série.\n2. Déterminer sa médiane.\n3. Calculer son étendue.",
+   "corrige": "Solution :\n\n1. Moyenne : $\\frac{77}{7} = 11$.\n2. Série ordonnée : 8 ; 9 ; 10 ; 12 ; 12 ; 13 ; 13. Effectif impair (7) : la médiane est la valeur de rang 4, soit 12.\n3. Étendue : $13 - 8 = 5$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "41da7dbb-ce0b-42ab-816d-b421609685f5"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 6,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "2c11cbfc-9e17-4c6c-93ac-e7c1bbcbb461",
+   "sujet": "Une urne contient 7 boules rouges, 9 boules bleues et 4 boules vertes, indiscernables au toucher. On tire une boule au hasard. On tire ensuite deux boules successivement, **sans remise**.\n\n1. Calculer la probabilité de tirer une boule rouge.\n2. Calculer la probabilité de ne pas tirer une boule rouge.\n3. Calculer la probabilité de tirer une boule rouge ou une boule verte.\n4. Calculer la probabilité d'obtenir deux boules rouges.",
+   "corrige": "Solution :\n\n1. $P(R) = \\frac{7}{20}$.\n2. $P(\\overline{R}) = 1 - \\frac{7}{20} = \\frac{13}{20}$.\n3. $P(R \\cup V) = \\frac{7 + 4}{20} = \\frac{11}{20}$.\n4. $P = \\frac{7}{20} \\times \\frac{6}{19} = \\frac{21}{190}$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "41da7dbb-ce0b-42ab-816d-b421609685f5"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "498af3fc-0a95-4b57-a1be-ad5bfae335a3",
+   "sujet": "Une urne contient 6 boules rouges, 4 boules bleues et 5 boules vertes, indiscernables au toucher. On tire une boule au hasard. On répète l'expérience deux fois, **avec remise**.\n\n1. Calculer la probabilité de tirer une boule rouge.\n2. Calculer la probabilité de ne pas tirer une boule rouge.\n3. Calculer la probabilité de tirer une boule rouge ou une boule verte.\n4. Calculer la probabilité d'obtenir deux boules rouges.",
+   "corrige": "Solution :\n\n1. $P(R) = \\frac{6}{15} = \\frac{2}{5}$.\n2. $P(\\overline{R}) = 1 - \\frac{2}{5} = \\frac{3}{5}$.\n3. $P(R \\cup V) = \\frac{6 + 5}{15} = \\frac{11}{15}$.\n4. Tirages indépendants : $P = \\left(\\frac{2}{5}\\right)^{2} = \\frac{4}{25}$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "41da7dbb-ce0b-42ab-816d-b421609685f5"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "f84540dc-0963-4a9e-92de-b3f7e839edcf",
+   "sujet": "Une urne contient 3 boules rouges, 5 boules bleues et 2 boules vertes, indiscernables au toucher. On tire une boule au hasard.\n\n1. Calculer la probabilité de tirer une boule rouge.\n2. Calculer la probabilité de ne pas tirer une boule rouge.\n3. Calculer la probabilité de tirer une boule rouge ou une boule verte.",
+   "corrige": "Solution :\n\n1. $P(R) = \\frac{3}{10}$.\n2. $P(\\overline{R}) = 1 - \\frac{3}{10} = \\frac{7}{10}$.\n3. $P(R \\cup V) = \\frac{3 + 2}{10} = \\frac{1}{2}$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "41da7dbb-ce0b-42ab-816d-b421609685f5"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "3fed5daf-980a-48a2-a4cb-e7b401390f7a",
+   "sujet": "Dans un repère orthonormé, on donne $A(0\\,;\\,-2)$, $B(3\\,;\\,1)$ et $C(2\\,;\\,5)$.\n\n1. Déterminer les coordonnées du point $D$ tel que $ABCD$ soit un parallélogramme.\n2. Vérifier que les diagonales $[AC]$ et $[BD]$ ont le même milieu.",
+   "corrige": "Solution :\n\n1. $ABCD$ est un parallélogramme si et seulement si $\\overrightarrow{AB} = \\overrightarrow{DC}$. Or $\\overrightarrow{AB}(3\\,;\\,3)$ et, en notant $D(x\\,;\\,y)$, $\\overrightarrow{DC}(2 - x\\,;\\,5 - y)$. On obtient $D(-1\\,;\\,2)$.\n2. Milieu de $[AC]$ : $I(1\\,;\\,\\frac{3}{2})$. Milieu de $[BD]$ : $I(1\\,;\\,\\frac{3}{2})$. Les deux milieux sont confondus.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "7fa5847b-b399-4a9b-8b1b-20cc0d266e03"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "a2a2f0d1-5328-418a-be36-4c110ad1c759",
+   "sujet": "Dans un repère orthonormé, on donne $A(-1\\,;\\,2)$, $B(2\\,;\\,0)$ et $C(4\\,;\\,3)$.\n\n1. Déterminer les coordonnées du point $D$ tel que $ABCD$ soit un parallélogramme.\n2. Vérifier que les diagonales $[AC]$ et $[BD]$ ont le même milieu.",
+   "corrige": "Solution :\n\n1. $ABCD$ est un parallélogramme si et seulement si $\\overrightarrow{AB} = \\overrightarrow{DC}$. Or $\\overrightarrow{AB}(3\\,;\\,-2)$ et, en notant $D(x\\,;\\,y)$, $\\overrightarrow{DC}(4 - x\\,;\\,3 - y)$. On obtient $D(1\\,;\\,5)$.\n2. Milieu de $[AC]$ : $I(\\frac{3}{2}\\,;\\,\\frac{5}{2})$. Milieu de $[BD]$ : $I(\\frac{3}{2}\\,;\\,\\frac{5}{2})$. Les deux milieux sont confondus.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "7fa5847b-b399-4a9b-8b1b-20cc0d266e03"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "85419541-5097-4c9b-a071-76e00347de03",
+   "sujet": "Dans un repère orthonormé, on donne $A(1\\,;\\,1)$, $B(4\\,;\\,2)$ et $C(5\\,;\\,5)$.\n\n1. Déterminer les coordonnées du point $D$ tel que $ABCD$ soit un parallélogramme.\n2. Vérifier que les diagonales $[AC]$ et $[BD]$ ont le même milieu.",
+   "corrige": "Solution :\n\n1. $ABCD$ est un parallélogramme si et seulement si $\\overrightarrow{AB} = \\overrightarrow{DC}$. Or $\\overrightarrow{AB}(3\\,;\\,1)$ et, en notant $D(x\\,;\\,y)$, $\\overrightarrow{DC}(5 - x\\,;\\,5 - y)$. On obtient $D(2\\,;\\,4)$.\n2. Milieu de $[AC]$ : $I(3\\,;\\,3)$. Milieu de $[BD]$ : $I(3\\,;\\,3)$. Les deux milieux sont confondus.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "7fa5847b-b399-4a9b-8b1b-20cc0d266e03"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 5,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "50fa405b-ed68-4f1e-9dbb-77b174a9acec",
+   "sujet": "Dans un repère orthonormé, on considère les points $A(-3\\,;\\,-1)$ et $B(5\\,;\\,5)$.\n\n1. Calculer la distance $AB$.\n2. Déterminer les coordonnées du milieu $I$ du segment $[AB]$.",
+   "corrige": "Solution :\n\n1. $AB = \\sqrt{(5 - (-3))^{2} + (5 - (-1))^{2}} = \\sqrt{64 + 36} = \\sqrt{100} = 10$.\n2. $I\\left(\\frac{-3 + 5}{2}\\,;\\,\\frac{-1 + 5}{2}\\right) = I(1\\,;\\,2)$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "7fa5847b-b399-4a9b-8b1b-20cc0d266e03"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "571fc169-5a54-489e-b339-af90a6ff3d5c",
+   "sujet": "Dans un repère orthonormé, on considère les points $A(-2\\,;\\,1)$ et $B(3\\,;\\,-4)$.\n\n1. Calculer la distance $AB$.\n2. Déterminer les coordonnées du milieu $I$ du segment $[AB]$.",
+   "corrige": "Solution :\n\n1. $AB = \\sqrt{(3 - (-2))^{2} + (-4 - 1)^{2}} = \\sqrt{25 + 25} = \\sqrt{50} = 5\\sqrt{2}$.\n2. $I\\left(\\frac{-2 + 3}{2}\\,;\\,\\frac{1 + (-4)}{2}\\right) = I(\\frac{1}{2}\\,;\\,-\\frac{3}{2})$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "7fa5847b-b399-4a9b-8b1b-20cc0d266e03"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": true
+  },
+  {
+   "id": "04b3beb7-1c8d-4a4b-8510-d506f3b29505",
+   "sujet": "Dans un repère orthonormé, on considère les points $A(1\\,;\\,2)$ et $B(4\\,;\\,6)$.\n\n1. Calculer la distance $AB$.\n2. Déterminer les coordonnées du milieu $I$ du segment $[AB]$.",
+   "corrige": "Solution :\n\n1. $AB = \\sqrt{(4 - 1)^{2} + (6 - 2)^{2}} = \\sqrt{9 + 16} = \\sqrt{25} = 5$.\n2. $I\\left(\\frac{1 + 4}{2}\\,;\\,\\frac{2 + 6}{2}\\right) = I(\\frac{5}{2}\\,;\\,4)$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "7fa5847b-b399-4a9b-8b1b-20cc0d266e03"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "115feb71-2582-4be8-a724-16a6c68a7043",
+   "sujet": "Soit $f$ la fonction définie sur $\\R$ par $f(x) = x^{2} - 10x$.\n\n1. Factoriser $f(x)$.\n2. Résoudre l'équation $f(x) = 0$.\n3. Montrer que $f(x) = (x - 5)^{2} - 25$. En déduire le minimum de $f$.\n4. Résoudre l'équation $f(x) = 24$.",
+   "corrige": "Solution :\n\n1. $f(x) = x(x - 10)$.\n2. $x(x - 10) = 0 \\Leftrightarrow x = 0 \\text{ ou } x = 10$.\n3. $(x - 5)^{2} - 25 = x^{2} - 10x + 25 - 25 = f(x)$. Un carré est positif ou nul, donc $f(x) \\geq -25$, avec égalité pour $x = 5$ : le minimum de $f$ est $-25$.\n4. $f(x) = 24 \\Leftrightarrow (x - 5)^{2} = 49 \\Leftrightarrow x = 12 \\text{ ou } x = -2$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "e2344974-f989-4030-9fe4-1e069f04f943",
+   "sujet": "Soit $f$ la fonction définie sur $\\R$ par $f(x) = x^{2} - 6x$.\n\n1. Factoriser $f(x)$.\n2. Résoudre l'équation $f(x) = 0$.\n3. Montrer que $f(x) = (x - 3)^{2} - 9$. En déduire le minimum de $f$.\n4. Résoudre l'équation $f(x) = 16$.",
+   "corrige": "Solution :\n\n1. $f(x) = x(x - 6)$.\n2. $x(x - 6) = 0 \\Leftrightarrow x = 0 \\text{ ou } x = 6$.\n3. $(x - 3)^{2} - 9 = x^{2} - 6x + 9 - 9 = f(x)$. Un carré est positif ou nul, donc $f(x) \\geq -9$, avec égalité pour $x = 3$ : le minimum de $f$ est $-9$.\n4. $f(x) = 16 \\Leftrightarrow (x - 3)^{2} = 25 \\Leftrightarrow x = 8 \\text{ ou } x = -2$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "9f8ed5c9-7b7c-4c4f-8bfc-e147a1c726e7",
+   "sujet": "Soit $f$ la fonction définie sur $\\R$ par $f(x) = x^{2} - 4x$.\n\n1. Factoriser $f(x)$.\n2. Résoudre l'équation $f(x) = 0$.\n3. Montrer que $f(x) = (x - 2)^{2} - 4$. En déduire le minimum de $f$.",
+   "corrige": "Solution :\n\n1. $f(x) = x(x - 4)$.\n2. $x(x - 4) = 0 \\Leftrightarrow x = 0 \\text{ ou } x = 4$.\n3. $(x - 2)^{2} - 4 = x^{2} - 4x + 4 - 4 = f(x)$. Un carré est positif ou nul, donc $f(x) \\geq -4$, avec égalité pour $x = 2$ : le minimum de $f$ est $-4$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 4,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "434e6505-0890-41c2-90c7-58b5354a06bb",
+   "sujet": "Soit $f$ la fonction affine définie sur $\\R$ par $f(x) = \\frac{5}{2}x - 1$.\n\n1. Calculer $f(4)$.\n2. Déterminer l'antécédent de $14$ par $f$.\n3. Donner le sens de variation de $f$, en justifiant.",
+   "corrige": "Solution :\n\n1. $f(4) = 9$.\n2. $f(x) = 14 \\Leftrightarrow \\frac{5}{2}x - 1 = 14 \\Leftrightarrow x = 6$.\n3. Le coefficient directeur $\\frac{5}{2}$ est positif : $f$ est strictement croissante sur $\\R$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "0d2d2efa-00b1-49d0-b1ab-5ae77444be4d",
+   "sujet": "Soit $f$ la fonction affine définie sur $\\R$ par $f(x) = -3x + 4$.\n\n1. Calculer $f(2)$.\n2. Déterminer l'antécédent de $-5$ par $f$.\n3. Donner le sens de variation de $f$, en justifiant.",
+   "corrige": "Solution :\n\n1. $f(2) = -2$.\n2. $f(x) = -5 \\Leftrightarrow -3x + 4 = -5 \\Leftrightarrow x = 3$.\n3. Le coefficient directeur $-3$ est négatif : $f$ est strictement décroissante sur $\\R$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "81bbfe3b-c431-43cb-af34-a3fc47b90dbc",
+   "sujet": "Soit $f$ la fonction affine définie sur $\\R$ par $f(x) = 2x + 1$.\n\n1. Calculer $f(3)$.\n2. Déterminer l'antécédent de $9$ par $f$.\n3. Donner le sens de variation de $f$, en justifiant.",
+   "corrige": "Solution :\n\n1. $f(3) = 7$.\n2. $f(x) = 9 \\Leftrightarrow 2x + 1 = 9 \\Leftrightarrow x = 4$.\n3. Le coefficient directeur $2$ est positif : $f$ est strictement croissante sur $\\R$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "5bb94bdc-a3af-4d8d-9362-dc1803aeb653"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "a58df0d0-2088-4017-8215-ea1d0678fd34",
+   "sujet": "**Inéquations.** Résoudre dans $\\R$, puis donner l'ensemble des solutions sous forme d'intervalle :\n\n1. $-4x + 3 < 15$\n2. $5x + 2 \\geq -8$\n3. $-3x + 1 > 7$",
+   "corrige": "Solution :\n\n1. $-4x + 3 < 15 \\Leftrightarrow -4x < 12 \\Leftrightarrow x > -3$. Ensemble des solutions : $]-3\\,;\\,+\\infty[$. (On change le sens de l'inégalité car on divise par un nombre négatif.)\n2. $5x + 2 \\geq -8 \\Leftrightarrow 5x \\geq -10 \\Leftrightarrow x \\geq -2$. Ensemble des solutions : $[-2\\,;\\,+\\infty[$.\n3. $-3x + 1 > 7 \\Leftrightarrow -3x > 6 \\Leftrightarrow x < -2$. Ensemble des solutions : $]-\\infty\\,;\\,-2[$. (On change le sens de l'inégalité car on divise par un nombre négatif.)",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "6fdb4dff-0449-41ea-a7f7-38bcbeff0566",
+   "sujet": "**Inéquations.** Résoudre dans $\\R$, puis donner l'ensemble des solutions sous forme d'intervalle :\n\n1. $3x - 1 > 8$\n2. $-2x + 5 \\leq 1$",
+   "corrige": "Solution :\n\n1. $3x - 1 > 8 \\Leftrightarrow 3x > 9 \\Leftrightarrow x > 3$. Ensemble des solutions : $]3\\,;\\,+\\infty[$.\n2. $-2x + 5 \\leq 1 \\Leftrightarrow -2x \\leq -4 \\Leftrightarrow x \\geq 2$. Ensemble des solutions : $[2\\,;\\,+\\infty[$. (On change le sens de l'inégalité car on divise par un nombre négatif.)",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": true
+  },
+  {
+   "id": "776f4501-d214-49c5-816e-bd31f358a56f",
+   "sujet": "**Inéquations.** Résoudre dans $\\R$, puis donner l'ensemble des solutions sous forme d'intervalle :\n\n1. $2x + 3 \\leq 11$",
+   "corrige": "Solution :\n\n1. $2x + 3 \\leq 11 \\Leftrightarrow 2x \\leq 8 \\Leftrightarrow x \\leq 4$. Ensemble des solutions : $]-\\infty\\,;\\,4]$.",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 3,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "6630d726-a219-4c5c-bd35-7d94199f3455",
+   "sujet": "**Développer et réduire** chacune des expressions suivantes :\n\n1. $(3x - 2)(2x + 5)$\n2. $(2x + 1)^{2}$\n3. $(x - 5)(x + 5)$",
+   "corrige": "Solution :\n\n1. $(3x - 2)(2x + 5) = 6x^{2} + 11x - 10$\n2. $(2x + 1)^{2} = 4x^{2} + 4x + 1$\n3. $(x - 5)(x + 5) = x^{2} - 25$",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "c97d12a2-b24d-4397-9827-773f48fb8df4",
+   "sujet": "**Développer et réduire** chacune des expressions suivantes :\n\n1. $(x + 2)(x - 7)$\n2. $(2x + 3)(x - 1)$\n3. $(x + 6)^{2}$",
+   "corrige": "Solution :\n\n1. $(x + 2)(x - 7) = x^{2} - 5x - 14$\n2. $(2x + 3)(x - 1) = 2x^{2} + x - 3$\n3. $(x + 6)^{2} = x^{2} + 12x + 36$",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "7634b29d-7624-4c1a-923e-5c5ffda178cb",
+   "sujet": "**Développer et réduire** chacune des expressions suivantes :\n\n1. $(x + 3)(x + 5)$\n2. $(x - 4)^{2}$",
+   "corrige": "Solution :\n\n1. $(x + 3)(x + 5) = x^{2} + 8x + 15$\n2. $(x - 4)^{2} = x^{2} - 8x + 16$",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 2,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  },
+  {
+   "id": "627dc67b-8376-4819-9d82-1f7b1d2e63a4",
+   "sujet": "**Équations du premier degré.** Résoudre dans $\\R$ les équations suivantes :\n\n1. $-3x + 8 = 2x - 7$\n2. $9x - 4 = -5x + 11$\n3. $2x + 5 = 7x - 5$",
+   "corrige": "Solution :\n\n1. $-3x + 8 = 2x - 7 \\Leftrightarrow -5x = -15 \\Leftrightarrow x = 3$\n2. $9x - 4 = -5x + 11 \\Leftrightarrow 14x = 15 \\Leftrightarrow x = \\frac{15}{14}$\n3. $2x + 5 = 7x - 5 \\Leftrightarrow -5x = -10 \\Leftrightarrow x = 2$",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Difficile",
+   "tagExamen": true
+  },
+  {
+   "id": "34dd14b1-30b7-4d57-8750-307cd298de2b",
+   "sujet": "**Équations du premier degré.** Résoudre dans $\\R$ les équations suivantes :\n\n1. $4x + 3 = -x + 13$\n2. $6x - 5 = 2x + 9$\n3. $7x + 1 = 3x - 4$",
+   "corrige": "Solution :\n\n1. $4x + 3 = -x + 13 \\Leftrightarrow 5x = 10 \\Leftrightarrow x = 2$\n2. $6x - 5 = 2x + 9 \\Leftrightarrow 4x = 14 \\Leftrightarrow x = \\frac{7}{2}$\n3. $7x + 1 = 3x - 4 \\Leftrightarrow 4x = -5 \\Leftrightarrow x = -\\frac{5}{4}$",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Moyen",
+   "tagExamen": false
+  },
+  {
+   "id": "7081605c-3070-4659-9e4c-9be12e4ff8ba",
+   "sujet": "**Équations du premier degré.** Résoudre dans $\\R$ les équations suivantes :\n\n1. $3x + 7 = x + 15$\n2. $5x - 2 = 2x + 10$",
+   "corrige": "Solution :\n\n1. $3x + 7 = x + 15 \\Leftrightarrow 2x = 8 \\Leftrightarrow x = 4$\n2. $5x - 2 = 2x + 10 \\Leftrightarrow 3x = 12 \\Leftrightarrow x = 4$",
+   "affectations": [
+    {
+     "matiereId": "8c38134d-db50-4b91-94b2-8b1214d81b32",
+     "partieId": "a08010c9-7384-4ed5-a2d2-ad8f7ca9ab4f"
+    }
+   ],
+   "classeIds": [
+    "5ad3bc60-c424-429b-94ed-6f16dd33f64f"
+   ],
+   "specialiteIds": [
+    "SPECIAL:Aucune"
+   ],
+   "session": 1,
+   "niveauIntrinseque": "Facile",
+   "tagExamen": false
+  }
+ ],
+ "medias": []
+}
