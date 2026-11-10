@@ -11,3 +11,10 @@ services:
         generateValue: true
       - key: EXAMGEN_TRUST_PROXY
         value: "1"
+      # Assistant IA facultatif (renseigner dans le tableau de bord Render ; voir docs/ASSISTANT_IA.md)
+      - key: EXAMGEN_LLM_MODEL
+        sync: false
+      - key: EXAMGEN_LLM_BASE_URL
+        sync: false
+      - key: EXAMGEN_LLM_API_KEY
+        sync: false

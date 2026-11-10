@@ -73,3 +73,40 @@ class ReglagesIn(BaseModel):
 
 class PreviewIn(BaseModel):
     markdown: Annotated[str, Field(max_length=50000)]
+
+
+class AiParametresIn(BaseModel):
+    texte: Annotated[str, Field(min_length=3, max_length=600)]
+
+
+class AiEpreuveIn(BaseModel):
+    action: Literal["bareme"]
+
+
+class AiExerciceIn(BaseModel):
+    action: Literal["generer", "verifier", "convertir", "reparer", "variantes", "metadonnees"]
+    matiereId: Optional[str] = None
+    partieId: Optional[str] = None
+    classeIds: list[str] = Field(default_factory=list, max_length=10)
+    specialiteId: Optional[str] = None
+    session: Optional[Annotated[int, Field(ge=1, le=6)]] = None
+    niveau: Optional[Niveau] = None
+    consigne: Annotated[str, Field(max_length=1500)] = ""
+    nbQuestions: Annotated[int, Field(ge=1, le=8)] = 3
+    n: Annotated[int, Field(ge=1, le=5)] = 3
+    sujet: Annotated[str, Field(max_length=12000)] = ""
+    corrige: Annotated[str, Field(max_length=12000)] = ""
+    erreurs: list[Annotated[str, Field(max_length=300)]] = Field(default_factory=list, max_length=20)
+
+    @model_validator(mode="after")
+    def _requis(self):
+        if self.action == "generer":
+            if not self.matiereId or not (self.partieId or self.consigne.strip()):
+                raise ValueError("generer : matière et (partie ou consigne) requises")
+        elif not self.sujet.strip():
+            raise ValueError("%s : le sujet est requis" % self.action)
+        if self.action in ("verifier", "variantes") and not self.corrige.strip():
+            raise ValueError("%s : le corrigé est requis" % self.action)
+        if self.action == "reparer" and not self.erreurs:
+            raise ValueError("reparer : la liste des erreurs est requise")
+        return self

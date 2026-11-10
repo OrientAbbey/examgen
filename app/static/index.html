@@ -23,8 +23,17 @@
   <div class="row" style="margin-top:1rem"><button class="primary" id="generer" disabled>Générer</button></div>
   <div id="statut" role="status"></div>
 </section>
+<section class="card noprint" id="assistant" hidden>
+  <details><summary>✨ Assistant : décrivez l'épreuve souhaitée</summary>
+    <label for="ia-texte">Votre demande</label>
+    <textarea id="ia-texte" rows="2" maxlength="600" placeholder="Ex. : une épreuve de maths de niveau moyen pour la Terminale, séquence 3"></textarea>
+    <div class="row"><button id="ia-go">Remplir le formulaire</button><label class="inline"><input type="checkbox" id="ia-auto"> Générer ensuite</label></div>
+    <p id="ia-msg" class="mut" role="status"></p>
+  </details>
+</section>
 <section class="card" id="epreuve" hidden>
-  <div class="row noprint"><button id="regenerer">Régénérer</button><button id="imprimer">Imprimer</button><button id="corrige">Voir Corrigé</button></div>
+  <div class="row noprint"><button id="regenerer">Régénérer</button><button id="imprimer">Imprimer</button><button id="corrige">Voir Corrigé</button><button id="bareme" hidden>Barème et durée (assistant)</button></div>
+  <div id="bareme-out" class="noprint"></div>
   <div id="exos"></div>
 </section>
 </main><script src="/static/katex/katex.min.js"></script><script src="/static/katex/mhchem.min.js"></script><script src="/static/katex/macros.js"></script><script src="/static/math.js"></script><script src="/static/app.js"></script></body></html>

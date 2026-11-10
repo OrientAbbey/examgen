@@ -58,6 +58,7 @@ Conséquences : toute modification faite dans l'admin (nouveaux exercices) est *
 | `EXAMGEN_BACKUP_DIR` | *(désactivé)* | Dossier des sauvegardes JSON quotidiennes |
 | `EXAMGEN_TRUST_PROXY` | `0` | `1` derrière Caddy / un PaaS (IP réelle, cookie `Secure`) |
 | `EXAMGEN_GEN_PER_MIN` | `30` | Générations max / minute / IP |
+| `EXAMGEN_LLM_*`, `EXAMGEN_AI_*` | *(désactivé)* | Assistant IA facultatif : voir `docs/ASSISTANT_IA.md` |
 | `HOST`, `PORT` | `127.0.0.1`, `8000` | Écoute (`0.0.0.0` en Docker ; `PORT` imposé par certains PaaS) |
 
 ## Sécurité en ligne

@@ -7,6 +7,14 @@ services:
       EXAMGEN_ADMIN_TOKEN: ${EXAMGEN_ADMIN_TOKEN:?Définir EXAMGEN_ADMIN_TOKEN dans le fichier .env}
       EXAMGEN_TRUST_PROXY: "1"
       EXAMGEN_BACKUP_DIR: /data/backups
+      # Assistant IA facultatif : laisser vide pour le désactiver (voir docs/ASSISTANT_IA.md)
+      EXAMGEN_LLM_PROVIDER: ${EXAMGEN_LLM_PROVIDER:-openai}
+      EXAMGEN_LLM_BASE_URL: ${EXAMGEN_LLM_BASE_URL:-}
+      EXAMGEN_LLM_MODEL: ${EXAMGEN_LLM_MODEL:-}
+      EXAMGEN_LLM_API_KEY: ${EXAMGEN_LLM_API_KEY:-}
+      EXAMGEN_AI_PUBLIC: ${EXAMGEN_AI_PUBLIC:-1}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     volumes:
       - data:/data          # base SQLite + sauvegardes JSON quotidiennes (14 jours)
     expose:

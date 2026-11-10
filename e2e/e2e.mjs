@@ -119,6 +119,21 @@ const st2 = await etat('figure.mol', pp3); const cap = await pp3.$$eval('figure.
 ok('S4 représentation de Cram : molécule puis couple d\'énantiomères avec légendes', st.ok >= 1 && /cram/.test(st.styles) && st2.ok >= 2 && /énantiomère/.test(cap) && st2.err === 0, JSON.stringify(st) + cap);
 await pp3.screenshot({ path: `${OUT}/04e-corrige-cram.png`, fullPage: true }); await pp3.close();
 
+// ───────── Assistant IA (faux fournisseur local) : formulaire en langage naturel et barème ─────────
+await page.goto(BASE + '/'); await page.waitForSelector('#assistant:not([hidden])');
+await page.click('#assistant summary'); await page.type('#ia-texte', 'une épreuve de maths de niveau moyen pour la Terminale, séquence 3');
+await page.click('#ia-go'); await page.waitForFunction(() => /Épreuve de mathématiques/.test(document.querySelector('#ia-msg').textContent), { timeout: 8000 });
+const ff = await page.evaluate(() => ({ m: document.querySelector('#matiere').selectedOptions[0].textContent, c: document.querySelector('#classe').selectedOptions[0].textContent,
+  sp: document.querySelector('#specialite').selectedOptions[0].textContent, s: document.querySelector('#session').value, d: (document.querySelector('input[name=diff]:checked') || {}).value,
+  actif: !document.querySelector('#generer').disabled, cache: document.querySelector('#epreuve').hidden }));
+ok('I1 l\'assistant remplit le formulaire (matière, classe, spécialité, séquence, difficulté) sans rien générer à la place de l\'utilisateur',
+  ff.m === 'Mathématiques' && ff.c === 'Terminale' && ff.sp === 'Mathématiques' && ff.s === '3' && ff.d === 'Moyen' && ff.actif && ff.cache, JSON.stringify(ff));
+await page.click('#generer'); await page.waitForSelector('#epreuve:not([hidden]) .exo'); await sleep(900);   // fin du défilement doux
+await page.click('#bareme'); await page.waitForSelector('#bareme-out table.bareme', { timeout: 8000 });
+const bar = await page.evaluate(() => ({ lignes: document.querySelectorAll('#bareme-out tr').length, txt: document.querySelector('#bareme-out').innerText, ex: document.querySelectorAll('#exos .exo').length }));
+ok('I2 barème et durée proposés : total 20 points, durée, une ligne par exercice', /20 pts/.test(bar.txt) && /60 min/.test(bar.txt) && bar.lignes === bar.ex + 2 && /Proposition de l'assistant/.test(bar.txt), JSON.stringify(bar).slice(0, 200));
+await shot('03d-assistant-bareme');
+
 // ───────── Module administrateur ─────────
 await page.goto(BASE + '/admin'); await page.waitForSelector('#dlg[open] input[type=password]');
 await shot('06-admin-connexion', false);
@@ -139,7 +154,7 @@ await shot('08-admin-classes');
 await clickText('#tabs button', 'Exercices'); await sleep(800);
 await shot('09-admin-exercices');
 await clickText('button', '+ Nouvel exercice'); await page.waitForSelector('#view textarea'); await sleep(900);
-const [ta1, ta2] = await page.$$('#view textarea'); await ta1.type('Sujet UI-TEST **gras**, avec $u_1$, $\\mathrm{e}^{2}$, $\\ce{H2O}$ et $\\ce{SO4^2-}$ ; $x^2 + \\frac{1}{2}$.'); await ta2.type('Corrigé UI-TEST');
+const [ta1, ta2] = await page.$$('#view .card > textarea'); await ta1.type('Sujet UI-TEST **gras**, avec $u_1$, $\\mathrm{e}^{2}$, $\\ce{H2O}$ et $\\ce{SO4^2-}$ ; $x^2 + \\frac{1}{2}$.'); await ta2.type('Corrigé UI-TEST');
 ok('A5 tag Examen grisé quand la session est vide', await page.evaluate(() => { const l = [...document.querySelectorAll('label')].find(x => x.textContent.includes('Tag Examen')); return l.querySelector('input').disabled; }));
 const mathsCb = await page.evaluateHandle(() => [...document.querySelectorAll('.row label')].find(l => l.textContent.trim() === 'Mathématiques').querySelector('input'));
 await mathsCb.asElement().click();
@@ -153,15 +168,15 @@ const pv = await page.evaluate(() => { const p = document.querySelector('#view .
     aide: document.querySelectorAll('#view table.aide .katex').length }; });
 ok('A5b éditeur : aperçu en direct (u₁, e², H₂O, SO₄²⁻, fraction) et aide-mémoire rendus', pv.katex >= 5 && pv.sub >= 4 && pv.err === 0 && !pv.brut && pv.gras && pv.aide >= 14, JSON.stringify(pv));
 await page.click('.outils button[title="Formule chimique"]'); await page.click('.outils button[title^="Structure chimique"]');
-const ta0 = await page.$eval('#view textarea', t => t.value);
+const ta0 = await page.$eval('#view .card > textarea', t => t.value);
 ok('A5c barre d\'outils : insertion d\'une formule chimique et d\'un bloc de structure', /\$\\ce\{H2O\}\$/.test(ta0) && /```mol topologique/.test(ta0));
 await page.waitForFunction(() => document.querySelectorAll('#view .preview figure.mol.rendered').length >= 1, { timeout: 8000 }).catch(() => {});
 fs.writeFileSync(path.join(TMP, 'pixel.png'), Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==', 'base64'));
 await (await page.$('.outils input[type=file]')).uploadFile(path.join(TMP, 'pixel.png'));
-await page.waitForFunction(() => /!\[pixel\]\(\/media\//.test(document.querySelector('#view textarea').value), { timeout: 8000 }).catch(() => {});
+await page.waitForFunction(() => /!\[pixel\]\(\/media\//.test(document.querySelector('#view .card > textarea').value), { timeout: 8000 }).catch(() => {});
 await page.waitForFunction(() => { const i = document.querySelector('#view .preview img.figure'); return i && i.complete && i.naturalWidth > 0; }, { timeout: 8000 }).catch(() => {});
 const pv2 = await page.evaluate(() => { const i = document.querySelector('#view .preview img.figure'); const f = document.querySelector('#view .preview figure.mol'); return { info: i ? [i.src.slice(-20), i.complete, i.naturalWidth, i.getBoundingClientRect().top | 0].join('/') : 'aucune img', n: document.querySelectorAll('#view .preview img').length, img: !!i && i.naturalWidth > 0, mol: !!f && f.classList.contains('rendered') && f.querySelectorAll('svg line, svg path, svg text').length >= 3 }; });
-pv2.ta = (await page.$eval('#view textarea', t => t.value)).slice(-70); pv2.alerts = alerts.join('|').slice(0, 160); pv2.errs = errors.join('|').slice(0, 160); pv2.bad = badreq.join('|').slice(0, 160);
+pv2.ta = (await page.$eval('#view .card > textarea', t => t.value)).slice(-70); pv2.alerts = alerts.join('|').slice(0, 160); pv2.errs = errors.join('|').slice(0, 160); pv2.bad = badreq.join('|').slice(0, 160);
 ok('A5d image téléversée affichée dans l\'aperçu, structure dessinée dans l\'aperçu', pv2.img && pv2.mol, JSON.stringify(pv2));
 await shot('10-admin-editeur', false);
 await clickText('button', 'Enregistrer'); await page.waitForFunction(() => !document.querySelector('#view textarea'), { timeout: 8000 });
@@ -186,6 +201,50 @@ alerts.length = 0;
 await page.evaluate(() => [...document.querySelectorAll('table.t tr')].find(r => r.innerText.includes('Mathématiques')).querySelector('button.danger').click()); await sleep(900);
 ok('A10b dernière cible : message clair, rien supprimé', alerts.some(a => /aucune cible/.test(a)) && (await page.$$eval('table.t tr', r => r.length)) === before - 1);
 // import fusion
+// ───────── Assistant IA (administration) : brouillons, vérification, variantes, métadonnées, couverture ─────────
+await clickText('#tabs button', 'Exercices'); await sleep(900);
+await clickText('button', '+ Nouvel exercice'); await page.waitForSelector('#view details.ia'); await sleep(900);
+const mathCb = await page.evaluateHandle(() => [...document.querySelectorAll('.row label')].find(l => l.textContent.trim() === 'Mathématiques').querySelector('input')); await mathCb.asElement().click();
+const terCb2 = await page.evaluateHandle(() => [...document.querySelectorAll('.checks label')].find(l => l.textContent.trim() === 'Terminale').querySelector('input')); await terCb2.asElement().click();
+await page.click('#view details.ia summary'); await page.type('#view details.ia textarea', 'suites géométriques');
+const total = async () => (await (await fetch(BASE + '/api/admin/exercices?limit=1', { headers: { 'X-Admin-Token': TOKEN } })).json()).total;
+const avant = await total();
+await clickText('#view details.ia button', 'Générer un exercice');
+await page.waitForSelector('#view .ia-carte .preview .katex', { timeout: 10000 }); await sleep(500);
+const pr = await page.evaluate(() => ({ cartes: document.querySelectorAll('.ia-carte').length, katex: document.querySelectorAll('.ia-carte .katex').length, err: document.querySelectorAll('.ia-carte .katex-error').length, avert: document.querySelectorAll('.ia-carte .avert').length }));
+ok('I3 génération par l\'assistant : brouillon affiché avec formules rendues, aucun avertissement', pr.cartes === 1 && pr.katex >= 4 && pr.err === 0 && pr.avert === 0, JSON.stringify(pr));
+await shot('10b-admin-assistant', false);
+await clickText('#view .ia-carte button', 'Utiliser dans le formulaire'); await sleep(900);
+const taIA = await page.$eval('#view .card > textarea', t => t.value);
+await page.waitForFunction(() => document.querySelectorAll('#view .preview .katex').length >= 3, { timeout: 8000 }).catch(() => {});
+ok('I4 « Utiliser » remplit le formulaire mais N\'ENREGISTRE RIEN (validation humaine)', /\$\(u_n\)\$/.test(taIA) && (await total()) === avant, taIA.slice(0, 60));
+await clickText('#view details.ia button', 'Vérifier le corrigé');
+await page.waitForFunction(() => /aucun problème/.test(document.querySelector('#view .ia-res').innerText), { timeout: 8000 }).catch(() => {});
+ok('I5 vérification du corrigé', /aucun problème/.test(await page.$eval('#view .ia-res', e => e.innerText)));
+await clickText('#view details.ia button', 'Variantes');
+await page.waitForFunction(() => document.querySelectorAll('#view .ia-res .ia-carte').length >= 3, { timeout: 10000 }).catch(() => {});
+ok('I6 trois variantes proposées', (await page.$$eval('#view .ia-res .ia-carte', x => x.length)) === 3);
+await clickText('#view details.ia button', 'Normaliser (LaTeX)');
+await page.waitForFunction(() => document.querySelectorAll('#view .ia-res .ia-carte li').length >= 2, { timeout: 10000 }).catch(() => {});
+ok('I7 normalisation : liste des modifications effectuées', (await page.$$eval('#view .ia-res .ia-carte li', x => x.length)) === 2);
+await clickText('#view details.ia button', 'Suggérer niveau / séquence');
+await page.waitForFunction(() => /Séquence : 3/.test(document.querySelector('#view .ia-res').innerText), { timeout: 8000 }).catch(() => {});
+await clickText('#view .ia-res button', 'Appliquer au formulaire');
+const meta = await page.evaluate(() => { const sel = [...document.querySelectorAll('#view select')]; return { niv: sel.at(-1).value, ses: sel.at(-2).value }; });
+ok('I8 métadonnées suggérées appliquées au formulaire (niveau, séquence)', meta.niv === 'Moyen' && meta.ses === '3', JSON.stringify(meta));
+await shot('10c-admin-assistant-resultats', false);
+
+await clickText('#tabs button', 'Couverture'); await sleep(900);
+const cov = await page.evaluate(() => ({ tables: document.querySelectorAll('table.couv').length, rouges: document.querySelectorAll('td.c0, td.c1').length, vertes: document.querySelectorAll('td.c2').length }));
+ok('I9 couverture de la banque : tableaux par classe, cases insuffisantes repérées', cov.tables === 3 && cov.rouges > 0 && cov.vertes > 0, JSON.stringify(cov));
+await shot('13b-admin-couverture');
+const cible = await page.evaluate(() => { const card = [...document.querySelectorAll('#view .card')].find(c => c.querySelector('h2') && c.querySelector('h2').textContent === 'Seconde');
+  const td = card.querySelector('td.cc.c0, td.cc.c1'); const idx = [...td.parentElement.children].indexOf(td); td.click(); return idx; });
+await page.waitForSelector('#view textarea'); await sleep(900);
+const bro = await page.evaluate(() => ({ vide: [...document.querySelectorAll('#view textarea')].every(t => t.value === ''), math: [...document.querySelectorAll('.row label')].find(l => l.textContent.trim() === 'Mathématiques').querySelector('input').checked,
+  sec: [...document.querySelectorAll('.checks label')].find(l => l.textContent.trim() === 'Seconde').querySelector('input').checked, ses: [...document.querySelectorAll('#view select')].at(-2).value }));
+ok('I10 une case de la couverture ouvre l\'éditeur prérempli (classe, partie, séquence) avec l\'assistant disponible', bro.vide && bro.math && bro.sec && bro.ses === String(cible) && !!(await page.$('#view details.ia')), JSON.stringify(bro) + cible);
+
 await clickText('#tabs button', 'Médias'); await sleep(700);
 ok('A10c onglet Médias : l\'image téléversée est listée avec son utilisation', /1 exercice\(s\)|0 exercice\(s\)/.test(await page.$eval('#view', v => v.innerText)) && (await page.$$eval('#view table.t img', x => x.length)) >= 1);
 await clickText('#tabs button', 'Import / Export'); await sleep(400);
@@ -199,13 +258,17 @@ await (await page.$('input[type=file]')).uploadFile(path.join(TMP, 'bad.json'));
 ok('A12 import invalide : erreurs listées, rien modifié', /Fichier invalide/.test(await page.$eval('pre.j', p => p.textContent)));
 // journal + réglages
 await clickText('#tabs button', 'Journal'); await sleep(900);
-ok('A13 journal : générations visibles', /GENERATION/.test(await page.$eval('#view', v => v.innerText)));
+ok('A13 journal : générations et appels de l\'assistant visibles', /GENERATION/.test(await page.$eval('#view', v => v.innerText)) && /AI_ACTION/.test(await page.$eval('#view', v => v.innerText)));
 await shot('13-admin-journal');
 await clickText('#tabs button', 'Réglages'); await sleep(400);
 await page.type('input[type=number]', '30'); await clickText('button', 'Enregistrer'); await sleep(500);
 ok('A14 réglage de rétention enregistré', /Enregistré/.test(await page.$eval('#view', v => v.innerText)));
 await clickText('button', 'Purger maintenant'); await sleep(600);
 ok('A15 purge manuelle', /supprimée/.test(await page.$eval('#view', v => v.innerText)));
+
+await page.waitForFunction(() => /modele-demo/.test(document.querySelector('#view').innerText), { timeout: 5000 }).catch(() => {});
+await clickText('button', 'Tester la connexion'); await page.waitForFunction(() => /Connexion réussie/.test(document.querySelector('#view').innerText), { timeout: 8000 }).catch(() => {});
+ok('I11 réglages : état de l\'assistant et test de connexion', /modele-demo/.test(await page.$eval('#view', v => v.innerText)) && /Connexion réussie/.test(await page.$eval('#view', v => v.innerText)) && !/cle-demo/.test(await page.$eval('#view', v => v.innerText)));
 ok('Z  aucune erreur JavaScript', errors.length === 0, errors.join(' | '));
 } catch (e) { console.log('EXCEPTION:', e.message, '| après:', step, '| ALERTS:', JSON.stringify(alerts), '| ERRORS:', JSON.stringify(errors), '| BADREQ:', JSON.stringify(badreq)); try { console.log('VIEW:', (await page.$eval('#view', v => v.innerText)).slice(0, 400)); console.log('DIALOG OPEN:', await page.$eval('#dlg', d => d.open)); await page.screenshot({ path: path.join(OUT, 'echec.png') }); } catch {} problems.push('exception'); }
 await browser.close();

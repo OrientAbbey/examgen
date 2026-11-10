@@ -65,7 +65,7 @@ async function supprimer(path, label, targets, withPartie) {
 }
 const SEQ = ['', 1, 2, 3, 4, 5, 6];
 const host = $('#view');
-const TABS = { 'Matières & parties': tMatieres, Classes: tClasses, Spécialités: tSpecialites, Exercices: tExercices, 'Médias': tMedias, 'Import / Export': tIO, Journal: tJournal, Réglages: tReglages };
+const TABS = { 'Matières & parties': tMatieres, Classes: tClasses, Spécialités: tSpecialites, Exercices: tExercices, Couverture: tCouverture, 'Médias': tMedias, 'Import / Export': tIO, Journal: tJournal, Réglages: tReglages };
 let current = 'Matières & parties';
 function nav() {
   $('#tabs').replaceChildren(...Object.keys(TABS).map(k => el('button', { class: k === current ? 'on' : '', onclick: () => { current = k; nav(); } }, k)));
@@ -183,7 +183,100 @@ function aide() {
   renderMath(d);
   return d;
 }
+
+// ───── Assistant IA : il propose des BROUILLONS, rien n'est enregistré sans validation humaine ─────
+function assistantIA(o) {
+  const box = el('details', { class: 'ia' }, el('summary', {}, '✨ Assistant IA'));
+  if (!o.AI.actif) {
+    box.append(el('p', { class: 'mut' }, 'Assistant non configuré. Renseignez EXAMGEN_LLM_MODEL et EXAMGEN_LLM_BASE_URL (voir docs/ASSISTANT_IA.md), puis redémarrez l\'application.'));
+    return box;
+  }
+  const consigne = el('textarea', { rows: 2, placeholder: 'Consigne (facultative) — ex. : problème sur les suites géométriques, contexte de placement financier' });
+  const nbq = el('select', {}, [2, 3, 4, 5, 6].map(n => el('option', { value: n, ...(n === 3 ? { selected: true } : {}) }, n + ' questions')));
+  const nv = el('select', {}, [2, 3, 4, 5].map(n => el('option', { value: n, ...(n === 3 ? { selected: true } : {}) }, n + ' variantes')));
+  const res = el('div', { class: 'ia-res' }), etat = el('span', { class: 'mut' });
+  const btns = [];
+  const bouton = (lib, titre, fn, cls) => { const b = el('button', { type: 'button', title: titre, class: cls || '', onclick: fn }, lib); btns.push(b); return b; };
+  const avert = liste => liste && liste.length ? el('div', { class: 'avert mol-error' }, '⚠ ' + liste.join(' · ')) : '';
+  const erreur = msg => res.replaceChildren(el('div', { class: 'avert mol-error' }, '⚠ ' + msg));
+  const apercu = async texte => { const d = el('div', { class: 'md preview' }); const r = await api('POST', '/preview', { markdown: texte }); if (r.ok) { d.innerHTML = r.data.html; renderMath(d); } return d; };
+
+  async function carte(titre, r, extra) {
+    const c = el('div', { class: 'ia-carte' }, el('strong', {}, titre), avert(r.avertissements));
+    if (r.modifications && r.modifications.length) c.append(el('ul', {}, r.modifications.map(m => el('li', {}, m))));
+    if (r.sujet != null) c.append(el('label', {}, 'Sujet proposé'), await apercu(r.sujet));
+    if (r.corrige != null) c.append(el('label', {}, 'Corrigé proposé'), await apercu(r.corrige));
+    setTimeout(() => {          // formules invalides dans la proposition → réparation guidée
+      const bad = [...c.querySelectorAll('.katex-error')].map(x => 'Formule invalide : ' + x.textContent.slice(0, 80));
+      if (bad.length && r.sujet != null) c.append(el('div', { class: 'row' }, el('span', { class: 'mut' }, bad.length + ' formule(s) non valide(s).'),
+        el('button', { type: 'button', onclick: () => appel('Réparation de la syntaxe', { action: 'reparer', sujet: r.sujet, corrige: r.corrige || 'Solution :', erreurs: bad.slice(0, 20) }, rendreExercice('Version réparée')) }, 'Réparer la syntaxe')));
+    }, 250);
+    c.append(el('div', { class: 'row' }, el('button', { type: 'button', class: 'primary', onclick: () => { extra ? extra(r) : o.charger(r); c.remove(); } }, 'Utiliser dans le formulaire'),
+      el('button', { type: 'button', onclick: () => c.remove() }, 'Ignorer')));
+    return c;
+  }
+  const rendreExercice = titre => async r => res.append(await carte(titre, r));
+  async function appel(libelle, payload, rendu) {
+    btns.forEach(b => b.disabled = true); etat.textContent = '⏳ ' + libelle + '… (quelques secondes)'; res.replaceChildren();
+    let r; try { r = await api('POST', '/ai/exercice', payload); } finally { btns.forEach(b => b.disabled = false); etat.textContent = ''; }
+    if (!r.ok) { erreur((r.data && (r.data.message || r.data.code)) || 'Erreur ' + r.status); return; }
+    await rendu(r.data);
+  }
+  const besoinTexte = () => { if (!o.sujet.value.trim() || !o.corrige.value.trim()) { erreur('Renseignez d\'abord le sujet et le corrigé.'); return false; } return true; };
+  const texte = () => ({ sujet: o.sujet.value, corrige: o.corrige.value });
+  box.append(el('p', { class: 'mut' }, 'L\'assistant propose des BROUILLONS : relisez-les, vérifiez les calculs, puis enregistrez vous-même.'), consigne,
+    el('div', { class: 'row' }, nbq, bouton('Générer un exercice', 'Rédige un énoncé et son corrigé d\'après la matière, la partie, les classes, la séquence et le niveau cochés ci-dessous',
+      () => { const l = o.lire(); if (!l.matiereId) { erreur('Cochez d\'abord une matière (et sa partie).'); return; }
+        appel('Rédaction', { action: 'generer', ...l, consigne: consigne.value, nbQuestions: Number(nbq.value) }, rendreExercice('Exercice proposé')); }, 'primary')),
+    el('div', { class: 'row' },
+      bouton('Vérifier le corrigé', 'L\'assistant refait les calculs et signale les erreurs', () => besoinTexte() && appel('Vérification', { action: 'verifier', ...texte() }, async r => {
+        if (r.verdict === 'ok') { res.append(el('p', {}, '✅ L\'assistant n\'a détecté aucun problème. (Cela ne dispense pas d\'une relecture.)')); return; }
+        res.append(el('div', { class: 'ia-carte' }, el('strong', {}, '⚠ Problèmes détectés'), el('ul', {}, r.problemes.map(p => el('li', {}, p)))));
+        if (r.corrigeCorrige) res.append(await carte('Corrigé corrigé proposé', { corrige: r.corrigeCorrige, avertissements: r.avertissements }, x => o.charger({ corrige: x.corrige })));
+      })),
+      bouton('Normaliser (LaTeX)', 'Réécrit les notations selon les règles (LaTeX, virgule décimale, unités, chimie) sans changer le fond',
+        () => o.sujet.value.trim() ? appel('Normalisation', { action: 'convertir', sujet: o.sujet.value, corrige: o.corrige.value || 'Solution :' }, rendreExercice('Version normalisée')) : erreur('Renseignez d\'abord le sujet.')),
+      nv, bouton('Variantes', 'Crée des variantes avec d\'autres valeurs numériques', () => besoinTexte() && appel('Création des variantes', { action: 'variantes', ...texte(), n: Number(nv.value) }, async r => {
+        for (let i = 0; i < r.variantes.length; i++) res.append(await carte('Variante ' + (i + 1), r.variantes[i]));
+      })),
+      bouton('Suggérer niveau / séquence', 'Propose le niveau, la séquence, la partie et les classes', () => besoinTexte() && appel('Analyse', { action: 'metadonnees', ...texte(), matiereId: o.lire().matiereId }, r => {
+        res.append(el('div', { class: 'ia-carte' }, el('strong', {}, 'Suggestion'), el('p', {}, [r.niveauIntrinseque && 'Niveau : ' + r.niveauIntrinseque, r.session && 'Séquence : ' + r.session, r.tagExamen && 'Tag Examen', r.justification].filter(Boolean).join(' · ')),
+          el('div', { class: 'row' }, el('button', { type: 'button', class: 'primary', onclick: () => o.chargerMeta(r) }, 'Appliquer au formulaire'))));
+      }))),
+    etat, res);
+  return box;
+}
+
+// ───── Couverture : où la banque est-elle trop mince pour composer des épreuves complètes ? ─────
+async function tCouverture(view) {
+  const ms = (await api('GET', '/matieres')).data;
+  if (!ms.length) { view.append(el('p', { class: 'mut' }, 'Créez d\'abord une matière.')); return; }
+  const sel = el('select', {}, ms.map(m => el('option', { value: m.id }, m.nom))), out = el('div');
+  const cellule = (cl, p, seq, n, seuil) => el('td', { class: 'cc ' + (seuil === null ? 'cn' : n === 0 ? 'c0' : n < seuil ? 'c1' : 'c2'), title: n + ' exercice(s) — cliquer pour en créer un ici',
+    onclick: () => { window.BROUILLON = { sujet: '', corrige: '', affectations: [{ matiereId: sel.value, partieId: p.partieId }], classeIds: [cl.classeId], specialiteIds: ['SPECIAL:Aucune'],
+      session: seq, niveauIntrinseque: 'Moyen', tagExamen: false }; current = 'Exercices'; nav(); } }, String(n));
+  const load = async () => {
+    const r = await api('GET', '/couverture?matiereId=' + sel.value); if (!r.ok) return; const j = r.data;
+    out.replaceChildren(el('p', { class: 'mut' }, j.lacunes.length + ' case(s) sous le seuil de ' + j.seuil + ' exercices. Pour composer une épreuve de 4 à 6 exercices variés sur une séquence, il faut au moins deux thèmes bien fournis. Cliquez une case pour créer un exercice à cet endroit (l\'assistant peut le rédiger).'),
+      ...j.classes.map(cl => el('div', { class: 'card' }, el('h2', {}, cl.classe), cl.parties.length ? el('table', { class: 't couv' },
+        el('tr', {}, ['Partie', '1', '2', '3', '4', '5', '6', 'Sans séquence'].map(h => el('th', {}, h))),
+        cl.parties.map(p => el('tr', {}, el('td', {}, p.partie), [1, 2, 3, 4, 5, 6].map(s => cellule(cl, p, s, p.sequences[String(s)], j.seuil)), cellule(cl, p, null, p.vide, null)))) : el('p', { class: 'mut' }, 'Aucune partie dans cette matière.'))));
+  };
+  sel.addEventListener('change', load);
+  view.append(el('div', { class: 'card' }, el('div', { class: 'row' }, el('strong', {}, 'Matière'), sel)), out);
+  await load();
+}
+
+async function carteIA(view) {
+  const c = (await api('GET', '/ai/config')).data || { actif: false }, out = el('p', { class: 'mut' });
+  view.append(el('div', { class: 'card' }, el('h2', {}, '✨ Assistant IA'),
+    c.actif ? el('p', {}, 'Actif : ' + c.fournisseur + ' · modèle ' + c.modele + ' · ' + c.hote + '. Ouvert au public : ' + (c.publicOuvert ? 'oui (remplissage du formulaire et barème)' : 'non (administration seulement)') + '.')
+      : el('p', { class: 'mut' }, 'Désactivé. Définissez EXAMGEN_LLM_MODEL et EXAMGEN_LLM_BASE_URL (et EXAMGEN_LLM_API_KEY si nécessaire) — voir docs/ASSISTANT_IA.md.'),
+    c.actif ? el('div', { class: 'row' }, el('button', { onclick: async () => { out.textContent = '⏳ Test en cours…'; const r = await api('POST', '/ai/test'); out.textContent = r.ok ? '✅ Connexion réussie (' + r.data.ms + ' ms).' : '⚠ ' + (r.data.message || r.data.code); } }, 'Tester la connexion'), out) : ''));
+}
+
 async function tExercices(view) {
+  const AI = (await api('GET', '/ai/config')).data || { actif: false };
   const [ms, ps, cs, ss] = await Promise.all(['matieres', 'parties', 'classes', 'specialites'].map(async k => (await api('GET', '/' + k)).data));
   const f = { q: el('input', { type: 'text', placeholder: 'Recherche texte' }), m: el('select', {}, el('option', { value: '' }, 'Matière'), ms.map(x => el('option', { value: x.id }, x.nom))),
     p: el('select', {}, el('option', { value: '' }, 'Partie'), ps.map(x => el('option', { value: x.id }, (ms.find(m => m.id === x.matiereId) || {}).nom + ' › ' + x.nom))),
@@ -213,8 +306,27 @@ async function tExercices(view) {
       return { m, cb, sel, node: el('div', { class: 'row' }, el('label', {}, cb, ' ', m.nom), sel) }; });
     const cChecks = cs.map(c => ({ c, cb: el('input', { type: 'checkbox', checked: e.classeIds.includes(c.id) }) }));
     const sChecks = [{ id: 'SPECIAL:Aucune', nom: 'Aucune (universel)' }, ...ss].map(s => ({ s, cb: el('input', { type: 'checkbox', checked: e.specialiteIds.includes(s.id) }) }));
+    const lire = () => {                       // paramètres cochés dans le formulaire (matière, partie, classes, spécialité, séquence, niveau)
+      const m = mChecks.find(x => x.cb.checked), sp = sChecks.find(x => x.cb.checked && x.s.id !== 'SPECIAL:Aucune');
+      return { matiereId: m ? m.m.id : null, partieId: m && m.sel.value ? m.sel.value : null, classeIds: cChecks.filter(x => x.cb.checked).map(x => x.c.id),
+        specialiteId: sp ? sp.s.id : null, session: sess.value === '' ? null : Number(sess.value), niveau: niv.value };
+    };
+    const charger = r => {                     // une proposition de l'assistant remplit le formulaire : RIEN n'est enregistré
+      if (r.sujet != null) sujet.value = r.sujet;
+      if (r.corrige != null) corrige.value = r.corrige;
+      if (r.niveauIntrinseque) niv.value = r.niveauIntrinseque;
+      sujet.dispatchEvent(new Event('input')); corrige.dispatchEvent(new Event('input'));
+    };
+    const chargerMeta = r => {
+      if (r.niveauIntrinseque) niv.value = r.niveauIntrinseque;
+      if (r.session) { sess.value = String(r.session); syncTag(); }
+      if (r.tagExamen != null && !tag.disabled) tag.checked = r.tagExamen;
+      if (r.partieId) mChecks.forEach(x => { if ([...x.sel.options].some(o => o.value === r.partieId)) { x.cb.checked = true; x.sel.value = r.partieId; } });
+      if (r.classeIds && r.classeIds.length) cChecks.forEach(x => { x.cb.checked = r.classeIds.includes(x.c.id); });
+    };
+    const panneau = assistantIA({ AI, sujet, corrige, lire, charger, chargerMeta });
     editor.replaceChildren(el('div', { class: 'card' }, el('h2', {}, e.id ? 'Modifier l\'exercice' : 'Nouvel exercice'),
-      aide(), el('label', {}, 'Sujet (Markdown + formules)'), barreOutils(sujet), sujet, preview(sujet), el('label', {}, 'Corrigé (Markdown + formules)'), barreOutils(corrige), corrige, preview(corrige),
+      aide(), panneau, el('label', {}, 'Sujet (Markdown + formules)'), barreOutils(sujet), sujet, preview(sujet), el('label', {}, 'Corrigé (Markdown + formules)'), barreOutils(corrige), corrige, preview(corrige),
       el('label', {}, 'Matières et partie associée'), mChecks.map(x => x.node),
       el('label', {}, 'Classes'), el('div', { class: 'checks' }, cChecks.map(x => el('label', {}, x.cb, x.c.nom))),
       el('label', {}, 'Spécialités'), el('div', { class: 'checks' }, sChecks.map(x => el('label', {}, x.cb, x.s.nom))),
@@ -234,6 +346,7 @@ async function tExercices(view) {
   for (const k of Object.keys(f)) if (k !== 'q') f[k].addEventListener('change', load);
   view.append(el('div', { class: 'card' }, el('div', { class: 'row' }, Object.values(f), el('button', { class: 'primary', onclick: () => edit() }, '+ Nouvel exercice'))), editor, el('div', { class: 'card' }, list));
   load();
+  if (window.BROUILLON) { const b = window.BROUILLON; window.BROUILLON = null; edit(b); }   // case de l'onglet Couverture → éditeur prérempli
 }
 async function tMedias(view) {
   const ms = (await api('GET', '/media')).data;
@@ -257,7 +370,7 @@ async function tIO(view) {
       const r = await api('POST', '/import?mode=' + mode.value, doc); out.textContent = r.ok ? 'Import réussi : ' + JSON.stringify(r.data) : (r.data.message + '\n- ' + (r.data.errors || []).join('\n- ')); } }, 'Importer')), out));
 }
 async function tJournal(view) {
-  const types = ['', 'GENERATION', 'RULE_50_RELAXED', 'UNIQUENESS_SATURATED', 'INCOMPLETE_EXAM', 'INFO_HISTORY_PURGED'];
+  const types = ['', 'GENERATION', 'RULE_50_RELAXED', 'UNIQUENESS_SATURATED', 'INCOMPLETE_EXAM', 'INFO_HISTORY_PURGED', 'AI_ACTION'];
   const sel = el('select', {}, types.map(t => el('option', { value: t }, t || 'Tous les types'))), box = el('div', {});
   let seq = 0;
   const load = async () => { const my = ++seq; const { data } = await api('GET', '/journal?limit=200' + (sel.value ? '&type=' + sel.value : '')); if (my !== seq) return;
@@ -268,6 +381,7 @@ async function tJournal(view) {
   sel.addEventListener('change', load); view.append(el('div', { class: 'card' }, sel), el('div', { class: 'card' }, box)); load();
 }
 async function tReglages(view) {
+  await carteIA(view);
   const r = (await api('GET', '/reglages')).data, inp = el('input', { type: 'number', min: 1, value: r.retentionJours ?? '', placeholder: 'vide = conservation illimitée' }), out = el('p', { class: 'mut' });
   view.append(el('div', { class: 'card' }, el('h2', {}, 'Conservation de l\'historique d\'unicité'), el('label', {}, 'retentionJours'), inp,
     el('p', { class: 'mut' }, 'La purge s\'applique par utilisateur et ne supprime jamais sa dernière génération. Exécutée au démarrage puis toutes les 24 h.'),

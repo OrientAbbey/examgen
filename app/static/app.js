@@ -44,6 +44,53 @@ async function generer(reuse) {
   $('#epreuve').hidden = false;
   $('#epreuve').scrollIntoView({ behavior: 'smooth' });
 }
+// ───── Assistant IA (facultatif : n'apparaît que s'il est configuré et ouvert au public) ─────
+async function initIA() {
+  let st;
+  try { st = await (await fetch('/api/ai/status')).json(); } catch { return; }
+  if (!st.actif || !st.public) return;
+  $('#assistant').hidden = false; $('#bareme').hidden = false;
+  $('#ia-go').addEventListener('click', iaRemplir);
+  $('#bareme').addEventListener('click', iaBareme);
+}
+function iaMessage(t) { $('#ia-msg').textContent = t; }
+async function iaRemplir() {
+  const texte = $('#ia-texte').value.trim();
+  if (texte.length < 3) return;
+  $('#ia-go').disabled = true; iaMessage('⏳ L\'assistant lit votre demande…');
+  let r;
+  try { r = await fetch('/api/ai/parametres', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ texte }) }); }
+  catch { iaMessage('Assistant indisponible pour le moment.'); $('#ia-go').disabled = false; return; }
+  $('#ia-go').disabled = false;
+  if (!r.ok) { iaMessage(r.status === 429 ? 'Trop de demandes, patientez un instant.' : 'Assistant indisponible pour le moment.'); return; }
+  const j = await r.json();
+  if (j.matiereId) $('#matiere').value = j.matiereId;
+  if (j.classeId) $('#classe').value = j.classeId;
+  if (j.specialiteId) $('#specialite').value = j.specialiteId;
+  if (j.session) $('#session').value = j.session;
+  if (j.difficulte) { const d = document.querySelector('input[name=diff][value=' + j.difficulte + ']'); if (d) d.checked = true; }
+  refresh();
+  const manque = [!j.matiereId && 'la matière', !j.classeId && 'la classe', !j.difficulte && 'la difficulté'].filter(Boolean);
+  iaMessage((j.explication || 'Formulaire rempli.') + (manque.length ? ' Complétez : ' + manque.join(', ') + '.' : ' Vérifiez puis cliquez sur Générer.'));
+  if ($('#ia-auto').checked && valide()) generer(false);
+}
+async function iaBareme() {
+  if (!urls) return;
+  const gid = urls.epreuve.split('/').pop(), out = $('#bareme-out');
+  out.textContent = '⏳ L\'assistant propose un barème…';
+  let r;
+  try { r = await fetch('/api/epreuve/' + gid + '/assistant', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ action: 'bareme' }) }); }
+  catch { out.textContent = 'Assistant indisponible pour le moment.'; return; }
+  if (!r.ok) { out.textContent = r.status === 429 ? 'Trop de demandes, patientez un instant.' : 'Assistant indisponible pour le moment.'; return; }
+  const j = await r.json(), t = document.createElement('table'); t.className = 'bareme';
+  const ligne = (...c) => { const tr = document.createElement('tr'); c.forEach(x => { const td = document.createElement('td'); td.textContent = x; tr.append(td); }); t.append(tr); };
+  ligne('Exercice', 'Points', 'Détail');
+  j.exercices.forEach(e => ligne('Exercice ' + e.numero, String(e.points).replace('.', ','), e.questions.map(q => q.q + ' : ' + String(q.points).replace('.', ',')).join(' · ')));
+  ligne('Total', String(j.total).replace('.', ',') + ' pts', j.dureeMinutes ? 'Durée suggérée : ' + j.dureeMinutes + ' min' : '');
+  const p = document.createElement('p'); p.className = 'mut'; p.textContent = (j.remarques || '') + ' (Proposition de l\'assistant : à adapter.)';
+  out.replaceChildren(t, p);
+}
+
 async function init() {
   try { meta = await (await fetch('/api/meta')).json(); }
   catch { $('#statut').textContent = 'Service indisponible. Réessayez.'; return; }
@@ -56,5 +103,6 @@ async function init() {
   $('#imprimer').addEventListener('click', () => urls && window.open(urls.imprimer, '_blank', 'noopener'));
   $('#corrige').addEventListener('click', () => urls && window.open(urls.corrige, '_blank', 'noopener'));
   refresh();
+  initIA();
 }
 init();

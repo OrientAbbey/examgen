@@ -1,6 +1,7 @@
 import asyncio
 import hmac
 import re
+import time
 import os
 import secrets
 import uuid
@@ -14,15 +15,16 @@ from urllib.parse import unquote
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 
-from . import bank_io, db, media as media_mod, render, repo, service
+from . import ai as ai_mod, bank_io, db, llm as llm_mod, media as media_mod, render, repo, service
 from .errors import ApiError
+from .llm import LLMError
 from .ratelimit import Limiter
-from .models import ClasseIn, ExerciceIn, GenerateIn, NomIn, PartieIn, PreviewIn, ReglagesIn
+from .models import AiEpreuveIn, AiExerciceIn, AiParametresIn, ClasseIn, ExerciceIn, GenerateIn, NomIn, PartieIn, PreviewIn, ReglagesIn
 
 STATIC = Path(__file__).parent / "static"
 
 
-def create_app(db_path: Optional[str] = None, admin_token: Optional[str] = None) -> FastAPI:
+def create_app(db_path: Optional[str] = None, admin_token: Optional[str] = None, llm=None) -> FastAPI:
     db_path = db_path or os.environ.get("EXAMGEN_DB", "examgen.db")
     token_given = admin_token or os.environ.get("EXAMGEN_ADMIN_TOKEN")
     token = token_given or secrets.token_urlsafe(16)
@@ -61,6 +63,12 @@ def create_app(db_path: Optional[str] = None, admin_token: Optional[str] = None)
     app.state.db_path, app.state.admin_token = db_path, token
     app.state.gen_limiter = Limiter(int(os.environ.get("EXAMGEN_GEN_PER_MIN", "30")), 60)
     app.state.admin_fail = Limiter(10, 300)    # 10 jetons erronés / 5 min / IP
+    # Assistant IA : désactivé tant que EXAMGEN_LLM_* n'est pas configuré (ou qu'un client n'est pas injecté, pour les tests)
+    cfg = None if llm is not None else llm_mod.config_from_env()
+    app.state.llm = llm if llm is not None else (llm_mod.LLMClient(cfg) if cfg else None)
+    app.state.ai_public = os.environ.get("EXAMGEN_AI_PUBLIC", "1") != "0"
+    app.state.ai_public_limiter = Limiter(int(os.environ.get("EXAMGEN_AI_PUBLIC_PER_MIN", "10")), 60)
+    app.state.ai_admin_limiter = Limiter(int(os.environ.get("EXAMGEN_AI_ADMIN_PER_MIN", "30")), 60)
 
     # ───────── transversal ─────────
     @app.exception_handler(ApiError)
@@ -161,8 +169,87 @@ def create_app(db_path: Optional[str] = None, admin_token: Optional[str] = None)
                 "urls": {"epreuve": f"/epreuve/{gid}", "imprimer": f"/epreuve/{gid}?print=1",
                          "corrige": f"/epreuve/{gid}/corrige"}}
 
+
+    # ───────── assistant IA ─────────
+    def _ia(request: Request, public: bool):
+        client = request.app.state.llm
+        if client is None:
+            raise ApiError(503, "AI_DESACTIVE", "L'assistant IA n'est pas configuré")
+        if public and not request.app.state.ai_public:
+            raise ApiError(403, "AI_PUBLIC_DESACTIVE", "L'assistant IA est réservé à l'administration")
+        lim = request.app.state.ai_public_limiter if public else request.app.state.ai_admin_limiter
+        if not lim.allow(request.client.host if request.client else "?"):
+            raise ApiError(429, "RATE_LIMIT", "Trop de demandes à l'assistant, patientez un instant")
+        return client
+
+    def _appel(conn, uid, action, params, fn, *args):
+        """Appelle l'assistant, convertit les erreurs du fournisseur, journalise (jamais la clé API ni le contenu complet)."""
+        t0 = time.monotonic()
+        try:
+            res = fn(*args)
+        except LLMError as e:
+            repo.add_journal(conn, uid, None, "AI_ACTION", {"action": action, **params}, {"erreur": e.code, "ms": int((time.monotonic() - t0) * 1000)})
+            raise ApiError(e.status, e.code, e.message)
+        repo.add_journal(conn, uid, None, "AI_ACTION", {"action": action, **params},
+                         {"ms": int((time.monotonic() - t0) * 1000), "avertissements": len(res.get("avertissements", [])) if isinstance(res, dict) else 0})
+        return res
+
+    @app.get("/api/ai/status")
+    def ai_status(request: Request):
+        actif = request.app.state.llm is not None
+        return {"actif": actif, "public": actif and request.app.state.ai_public}
+
+    @app.post("/api/ai/parametres")
+    def ai_parametres(d: AiParametresIn, request: Request, conn=Depends(get_db)):
+        """Demande en langage naturel → paramètres du formulaire (jamais une génération directe : l'utilisateur valide)."""
+        client = _ia(request, True)
+        return _appel(conn, request.state.uid, "parametres", {"texte": d.texte[:120]}, ai_mod.parametres, client, d.texte, service.catalogue_public(conn))
+
+    @app.post("/api/epreuve/{gid}/assistant")
+    def ai_epreuve(gid: str, d: AiEpreuveIn, request: Request, conn=Depends(get_db)):
+        client = _ia(request, True)
+        g = service.get_generation(conn, gid)
+        if g is None:
+            raise ApiError(404, "NOT_FOUND", "Épreuve introuvable")
+        return _appel(conn, request.state.uid, d.action, {"epreuve": gid}, ai_mod.bareme, client, g["contenu"])
+
     # ───────── module administrateur ─────────
     adm = APIRouter(prefix="/api/admin", dependencies=[Depends(admin_required)])
+
+    @adm.get("/ai/config")
+    def ai_config(request: Request):
+        c = request.app.state.llm
+        cfg_ = getattr(c, "cfg", None)
+        return {"actif": c is not None, "fournisseur": cfg_.provider if cfg_ else ("personnalisé" if c else None), "modele": cfg_.model if cfg_ else None,
+                "hote": cfg_.hote if cfg_ else None, "publicOuvert": request.app.state.ai_public}
+
+    @adm.post("/ai/test")
+    def ai_test(request: Request):
+        client = _ia(request, False)
+        t0 = time.monotonic()
+        try:
+            rep = client.complete("Réponds uniquement par le mot OK.", "ACTION: test")
+        except LLMError as e:
+            raise ApiError(e.status, e.code, e.message)
+        return {"ok": True, "ms": int((time.monotonic() - t0) * 1000), "reponse": rep.strip()[:40]}
+
+    @adm.post("/ai/exercice")
+    def ai_exercice(d: AiExerciceIn, request: Request, conn=Depends(get_db)):
+        client = _ia(request, False)
+        a, uid = d.action, "admin"
+        if a == "generer":
+            return _appel(conn, uid, a, {"matiere": d.matiereId, "partie": d.partieId, "session": d.session, "niveau": d.niveau}, ai_mod.generer, client, service.contexte_generation(conn, d))
+        c = {"sujet": d.sujet, "corrige": d.corrige, "n": d.n, "erreurs": d.erreurs}
+        if a == "verifier":
+            return _appel(conn, uid, a, {}, ai_mod.verifier, client, c)
+        if a in ("convertir", "reparer"):
+            return _appel(conn, uid, a, {}, ai_mod.convertir, client, c, a == "reparer")
+        if a == "variantes":
+            return _appel(conn, uid, a, {"n": d.n}, ai_mod.variantes, client, c)
+        return _appel(conn, uid, a, {}, ai_mod.metadonnees, client, {**c, **service.catalogue_metadonnees(conn, d.matiereId)})
+
+    @adm.get("/couverture")
+    def couverture(matiereId: str, conn=Depends(get_db)): return service.couverture(conn, matiereId)
 
     @adm.post("/media", status_code=201)
     async def media_upload(request: Request, conn=Depends(get_db)):

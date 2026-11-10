@@ -36,6 +36,12 @@ Indices, exposants, fractions, formules moléculaires, ions, équations-bilans, 
 (embarqué, hors ligne), écran et impression. Chimie : formules brutes et semi-développées, schémas de Lewis, structures dessinées
 (topologique, développée, Cram) à partir d'un SMILES, images téléversées. Éditeur avec barre d'outils, aperçu en direct et aide. Guide : `docs/FORMULES.md`.
 
+## Assistant IA (facultatif)
+
+Génération, vérification, normalisation et variantes d'exercices, suggestion de métadonnées, analyse de couverture de la banque,
+et, côté utilisateur, remplissage du formulaire en langage naturel et barème. Fournisseur interchangeable (modèle local Ollama,
+service compatible OpenAI, API Anthropic), désactivé par défaut, brouillons validés par un humain. Guide : `docs/ASSISTANT_IA.md`.
+
 ## Limites connues
 
 Pas de compte utilisateur (cookie anonyme) ; pas de tracé de courbes (images possibles) ; interface non testée automatiquement dans un navigateur ;

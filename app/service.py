@@ -109,3 +109,73 @@ def purge_history(conn, now=None) -> int:
         if n:
             repo.add_journal(conn, "system", None, "INFO_HISTORY_PURGED", {"retentionJours": days}, {"supprimes": n})
     return n
+
+
+# ───────────────────────── Assistant IA : contextes tirés de la base ─────────────────────────
+def catalogue_public(conn) -> dict:
+    return {"matieres": [{"id": r["id"], "nom": r["nom"]} for r in conn.execute("SELECT id, nom FROM matieres ORDER BY nom")],
+            "classes": [{"id": r["id"], "nom": r["nom"], "specialiteObligatoire": bool(r["specialite_obligatoire"])} for r in conn.execute("SELECT * FROM classes ORDER BY nom")],
+            "specialites": [{"id": r["id"], "nom": r["nom"]} for r in conn.execute("SELECT id, nom FROM specialites ORDER BY nom")]}
+
+
+def contexte_generation(conn, d) -> dict:
+    m = conn.execute("SELECT * FROM matieres WHERE id=?", (d.matiereId,)).fetchone()
+    if m is None:
+        raise ApiError(422, "UNKNOWN_PARAM", "Matière inconnue")
+    partie = None
+    if d.partieId:
+        partie = conn.execute("SELECT * FROM parties WHERE id=? AND matiere_id=?", (d.partieId, m["id"])).fetchone()
+        if partie is None:
+            raise ApiError(422, "UNKNOWN_PARAM", "Partie inconnue pour cette matière")
+    classes = []
+    for cid in d.classeIds:
+        r = conn.execute("SELECT nom FROM classes WHERE id=?", (cid,)).fetchone()
+        if r is None:
+            raise ApiError(422, "UNKNOWN_PARAM", "Classe inconnue")
+        classes.append(r["nom"])
+    spec = None
+    if d.specialiteId and d.specialiteId != "SPECIAL:Aucune":
+        r = conn.execute("SELECT nom FROM specialites WHERE id=?", (d.specialiteId,)).fetchone()
+        spec = r["nom"] if r else None
+    # exercice existant de la banque comme référence de style (même partie, de préférence même classe)
+    ex = None
+    for filtre, args in ((" AND ep.partie_id=?", [partie["id"]] if partie else None), ("", [])):
+        if args is None:
+            continue
+        ex = conn.execute("SELECT e.sujet FROM exercices e JOIN exercice_partie ep ON ep.exercice_id=e.id WHERE ep.matiere_id=?" + filtre + " ORDER BY RANDOM() LIMIT 1",
+                          [m["id"], *args]).fetchone()
+        if ex:
+            break
+    return {"matiere": m["nom"], "partie": partie["nom"] if partie else None, "classes": classes, "specialite": spec, "session": d.session, "niveau": d.niveau,
+            "consigne": d.consigne.strip(), "nbQuestions": d.nbQuestions, "exemple": ex["sujet"] if ex else None}
+
+
+def catalogue_metadonnees(conn, matiere_id=None) -> dict:
+    sql = "SELECT p.id, p.nom, m.nom AS matiere FROM parties p JOIN matieres m ON m.id=p.matiere_id" + (" WHERE m.id=?" if matiere_id else "") + " ORDER BY m.nom, p.ordre"
+    return {"parties": [{"id": r["id"], "nom": r["nom"], "matiere": r["matiere"]} for r in conn.execute(sql, [matiere_id] if matiere_id else [])],
+            "classes": [{"id": r["id"], "nom": r["nom"]} for r in conn.execute("SELECT id, nom FROM classes ORDER BY nom")]}
+
+
+SEUIL_COUVERTURE = 3
+
+
+def couverture(conn, matiere_id: str) -> dict:
+    """Nombre d'exercices par classe × partie × séquence (+ session vide) ; les cases sous le seuil sont des lacunes à combler."""
+    m = conn.execute("SELECT * FROM matieres WHERE id=?", (matiere_id,)).fetchone()
+    if m is None:
+        raise ApiError(404, "NOT_FOUND", "Matière introuvable")
+    comptes = {}
+    for r in conn.execute("""SELECT ec.classe_id, ep.partie_id, e.session, COUNT(*) n FROM exercices e
+                             JOIN exercice_partie ep ON ep.exercice_id=e.id AND ep.matiere_id=?
+                             JOIN exercice_classe ec ON ec.exercice_id=e.id GROUP BY ec.classe_id, ep.partie_id, e.session""", (matiere_id,)):
+        comptes[(r["classe_id"], r["partie_id"], r["session"])] = r["n"]
+    parties = list(conn.execute("SELECT id, nom FROM parties WHERE matiere_id=? ORDER BY ordre, nom", (matiere_id,)))
+    out, lacunes = [], []
+    for c in conn.execute("SELECT id, nom FROM classes ORDER BY nom"):
+        lignes = []
+        for p in parties:
+            seqs = {str(s): comptes.get((c["id"], p["id"], s), 0) for s in range(1, 7)}
+            lignes.append({"partieId": p["id"], "partie": p["nom"], "sequences": seqs, "vide": comptes.get((c["id"], p["id"], None), 0)})
+            lacunes += [{"classeId": c["id"], "classe": c["nom"], "partieId": p["id"], "partie": p["nom"], "session": int(s), "n": n} for s, n in seqs.items() if n < SEUIL_COUVERTURE]
+        out.append({"classeId": c["id"], "classe": c["nom"], "parties": lignes})
+    return {"matiere": m["nom"], "seuil": SEUIL_COUVERTURE, "classes": out, "lacunes": lacunes[:300]}

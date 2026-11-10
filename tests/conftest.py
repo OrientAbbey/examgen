@@ -19,16 +19,13 @@ def post(c, path, body, ok=(200, 201)):
     return r.json()
 
 
-@pytest.fixture
-def world(env):
-    """Matière à 4 parties, classes Seconde←Première←Terminale (examen), 1 spécialité, 90 exercices."""
-    c, path = env
+def peupler(c):
+    """Matière à 4 parties, classes Seconde←Première←Terminale (examen), 1 spécialité, 90 exercices (graine fixe)."""
     m = post(c, "/matieres", {"nom": "Maths"})
     parts = [post(c, "/parties", {"matiereId": m["id"], "nom": f"P{i}", "ordre": i}) for i in range(4)]
     sec = post(c, "/classes", {"nom": "Seconde"})
     pre = post(c, "/classes", {"nom": "Première", "classePrecedenteId": sec["id"]})
-    ter = post(c, "/classes", {"nom": "Terminale", "classePrecedenteId": pre["id"], "aExamen": True,
-                               "specialiteObligatoire": True})
+    ter = post(c, "/classes", {"nom": "Terminale", "classePrecedenteId": pre["id"], "aExamen": True, "specialiteObligatoire": True})
     sp = post(c, "/specialites", {"nom": "S"})
     import random
     R = random.Random(5)
@@ -41,4 +38,10 @@ def world(env):
             "classeIds": [classe["id"]], "specialiteIds": ["SPECIAL:Aucune"],
             "session": R.randint(1, 6), "niveauIntrinseque": R.choice(["Facile", "Moyen", "Difficile"]),
             "tagExamen": R.random() < 0.3}))
-    return dict(c=c, path=path, m=m, parts=parts, sec=sec, pre=pre, ter=ter, sp=sp, exos=exos)
+    return dict(c=c, m=m, parts=parts, sec=sec, pre=pre, ter=ter, sp=sp, exos=exos)
+
+
+@pytest.fixture
+def world(env):
+    c, path = env
+    return {**peupler(c), "path": path}
