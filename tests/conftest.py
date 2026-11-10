@@ -1,9 +1,16 @@
 import pytest
+from pathlib import Path
 from fastapi.testclient import TestClient
 
 from app.main import create_app
 
 H = {"X-Admin-Token": "tok"}
+
+
+@pytest.fixture(autouse=True)
+def no_default_bootstrap(monkeypatch):
+    """Keep isolated test databases empty unless a bootstrap file is under test."""
+    monkeypatch.setenv("EXAMGEN_BOOTSTRAP_FILE", str(Path(__file__).with_name("__missing_bootstrap__.json")))
 
 
 @pytest.fixture

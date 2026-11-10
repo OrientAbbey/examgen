@@ -46,6 +46,12 @@ def test_bootstrap_fichier_invalide_ne_bloque_pas_le_demarrage(tmp_path, monkeyp
     assert c.get("/healthz").status_code == 200 and c.get("/api/meta").json()["matieres"] == []
 
 
+def test_bootstrap_demo_par_defaut_pour_un_deploiement_neuf(tmp_path, monkeypatch):
+    monkeypatch.delenv("EXAMGEN_BOOTSTRAP_FILE", raising=False)
+    c = TestClient(create_app(str(tmp_path / "demo.db"), "tok"))
+    assert c.get("/api/admin/exercices?limit=1", headers=H).json()["total"] == 150
+
+
 def test_limite_de_debit_generation(tmp_path, monkeypatch):
     monkeypatch.setenv("EXAMGEN_GEN_PER_MIN", "3")
     c = TestClient(create_app(str(tmp_path / "r.db"), "tok"))
